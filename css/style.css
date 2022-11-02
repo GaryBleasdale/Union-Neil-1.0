@@ -733,15 +733,17 @@ h3 {
 }
 
 /* line 28, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_slick-nav.scss */
-.slicknav_menu .slicknav_nav a:hover {
+.slicknav_menu .slicknav_nav a:hover  {
   background: transparent;
   color: #009DFF;
 }
 
+
+
 /* line 32, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_slick-nav.scss */
-.slicknav_menu .slicknav_nav a.active {
+/* .slicknav_menu .slicknav_nav a.active {
   color: #009DFF;
-}
+} */
 
 @media (max-width: 767px) {
   /* line 35, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_slick-nav.scss */
@@ -853,7 +855,7 @@ h3 {
 
 /* line 15, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
 .header-area .main-header-area {
-  padding: 18px 0;
+  padding: 25px 0;
   background: #fff;
 }
 
@@ -953,11 +955,11 @@ h3 {
 
 /* line 85, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
 .header-area .main-header-area .Appointment .book_btn a {
-  background: #009DFF;
+  background: #debc0d;
   padding: 12px 26px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  border: 1px solid transparent;
+  border: 2px solid #debc0d;
   color: #fff;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -967,15 +969,15 @@ h3 {
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 85, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
   .header-area .main-header-area .Appointment .book_btn a {
-    padding: 12px 20px;
+    padding: 12px 26px;
   }
 }
 
 /* line 96, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
 .header-area .main-header-area .Appointment .book_btn a:hover {
   background: #fff;
-  color: #009DFF;
-  border: 1px solid #009DFF;
+  color: #e5c20e;
+  border: 2px solid #e5c20e;
 }
 
 /* line 104, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
@@ -983,6 +985,8 @@ h3 {
   text-align: center;
   padding: 12px 0;
 }
+
+
 
 /* line 108, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li {
@@ -1008,6 +1012,11 @@ h3 {
   /* line 118, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
   .header-area .main-header-area .main-menu ul li a {
     font-size: 15px;
+  }
+
+  .header-area .main-header-area .main-menu {
+    position:relative;
+    left: 50px;
   }
 }
 
@@ -1248,7 +1257,7 @@ h3 {
 
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_slider.scss */
 .slider_bg_1 {
-  background-image: url(../img/banner/banner.png);
+  background-image: url(../img/banner/casal_hero_1.jpg);
 }
 
 /* line 4, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_slider.scss */
@@ -1335,7 +1344,7 @@ h3 {
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
 .welcome_docmed_area {
   padding-top: 120px;
-  padding-bottom: 220px;
+  padding-bottom: 120px;
 }
 
 @media (max-width: 767px) {
@@ -1371,13 +1380,13 @@ h3 {
 
 /* line 17, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
 .welcome_docmed_area .welcome_thumb .thumb_1 img {
-  width: 60%;
+  width: 500px;
 }
 
 @media (max-width: 767px) {
   /* line 17, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
   .welcome_docmed_area .welcome_thumb .thumb_1 img {
-    width: 100%;
+    width: 450px;
   }
 }
 
@@ -1409,13 +1418,15 @@ h3 {
 
 /* line 39, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
 .welcome_docmed_area .welcome_thumb .thumb_2 img {
-  width: 89%;
+  width: 370px;
+  position:relative;
+  top: 30px;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   /* line 39, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
   .welcome_docmed_area .welcome_thumb .thumb_2 img {
-    width: 100%;
+    width: 350px;
   }
 }
 
@@ -6268,5 +6279,7 @@ h6 {
   margin-right: 10px;
   font-size: 12px;
 }
+
+
 
 /*# sourceMappingURL=style.css.map */

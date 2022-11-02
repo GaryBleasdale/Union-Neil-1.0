@@ -553,9 +553,9 @@ h3 {
   background: transparent;
   color: #009DFF;
 }
-.slicknav_menu .slicknav_nav a.active {
+/* .slicknav_menu .slicknav_nav a.active {
   color: #009DFF;
-}
+} */
 @media (max-width: 767px) {
   .slicknav_menu .slicknav_nav a i {
     display: none;
@@ -920,7 +920,7 @@ h3 {
 }
 
 .slider_bg_1 {
-  background-image: url(../img/banner/banner.png);
+  background-image: url(../img/banner/casal_idoso_enfermeira_1.jpg);
 }
 
 .slider_bg_2 {
@@ -4617,3 +4617,4 @@ h6 {
   margin-right: 10px;
   font-size: 12px;
 }/*# sourceMappingURL=style.css.map */
+
