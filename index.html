@@ -61,7 +61,6 @@
 }
 }
 .slider_text>h3{
-
     color: white !important;
     width: 250px !important;
     font-size: 40px !important;
@@ -69,7 +68,14 @@
     position: relative;
     top: 200px;
     left: 50px;
-
+}
+.slider_text>h5{
+    color: white !important;
+    width: 250px !important;
+    font-size: 24px !important;
+    position: relative;
+    top: 200px;
+    left: 50px;
 }
 
 .single_slider .container{
@@ -94,8 +100,57 @@
 }
 
 .services-list>li{
-    margin: 20px 0px;
+    margin: 20px 10px;
     font-size:18px;
+}
+
+.services-list{
+    display:flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+}
+
+.welcome_docmed_info{
+    margin:auto;
+    width:100%;
+}
+
+@media only screen and (max-width:700px){
+    .services-list{
+        max-height: 1060px !important;
+    }
+    .welcome_docmed_info{
+    margin:auto;
+    width:50%;
+}
+}
+
+@media only screen and (max-width:950px) and (min-width:700px){
+    .services-list{
+        max-height: 550px !important;
+    }
+}
+
+@media only screen and (max-width:1160px){
+    .services-list{
+        max-height: 400px
+    }
+}
+
+@media only screen and (max-width:1259px){
+    .services-list{
+        max-height: 350px
+    }
+}
+
+@media only screen and (min-width:1260px){
+    .services-list{
+        max-height: 350px
+    }
+    .services-list>li{
+    margin: 20px 40px;
+    font-size:18px;
+}
 }
 
 .flaticon-right{
@@ -297,8 +352,8 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="slider_text ">
-                                <h3>Trazendo Um novo padrão de home care ao Brasil</h3>
-                                
+                                <h3>Assistência Médica Domiciliar</h3>
+                                <h5>Cuidamos de quem você ama com profissionais altamente especializados e com o carinho de quem realmente se importa!</h5>
                                 <!-- <a href="#" class="boxed-btn3">Check Our Services</a> -->
                             </div>
                         </div>
@@ -331,19 +386,23 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="welcome_thumb">
                         <div class="thumb_1">
-                            <img src="img/department/nurse_and_patient.jpg" alt="">
+                            <img src="img/department/union_neil_1 (1).webp" alt="">
                         </div>
                         <div class="thumb_2">
-                            <img src="img/department/woman_painting.jpg" alt="">
+                            <img src="img/department/union_neil_2 (1).webp" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="welcome_docmed_info">
-                        <h2>É nosso prazer te dar as bem-vindas à UNION NEIL</h2>
-                        <h3>Fazemos do lar um lugar de cuidado e segurança </h3>
-                        <p>Temos como objetivo ajudar nossos clientes a alcançar um envelhecimento bem-sucedido a longo prazo em casa com cuidados abrangentes. Garantindo a dignidade, segurança e independência dos nossos clientes, a Union Neil está comprometida em mudar a forma como o mundo vive e envelhece em casa. 
-                            <br/><br/>As equipes de funcionários obtêm o treinamento, os recursos e o suporte necessários para oferecer uma experiência de atendimento excepcional aos clientes e suas famílias. Nosso compromisso com treinamento, investimento em ferramentas de tecnologia e suporte pessoal são elementos essenciais de nossa experiência em cuidar</p>
+                        <h2>UNION NEIL</h2>
+                        <h3>Um novo conceito de Home Care inédito no Brasil</h3>
+                        <p>A Union Neil traz para o Brasil um novo conceito de assistência médica domiciliar, integrando serviços médicos e hospitalares de alto padrão com cuidados focados no bem-estar físico, mental e emocional dos nossos pacientes. 
+                            <br/><br/>
+                            Para envelhecer mantendo a qualidade de vida e autonomia, entendemos que a assistência domiciliar precisa ser muito mais ampla do que apenas cuidados médicos. 
+                            <br/><br/>
+                            Por isso, com uma vasta equipe multidisciplinar, oferecemos uma grande diversidade de soluções personalizadas, tanto de baixa quanto alta complexidade, sempre focando no bem-estar integral dos pacientes e na tranquilidade para os seus familiares. Acreditamos que é possível envelhecer em casa, com muito mais autonomia, saúde e bem-estar.  
+                            </p>
                         <!-- <ul>
                             <li> <i class="flaticon-right"></i> Apartments frequently or motionless. </li>
                             <li> <i class="flaticon-right"></i> Duis aute irure dolor in reprehenderit in voluptate.</li>
@@ -363,9 +422,9 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="section_title diferenciais text-center mb-55">
-                        <h3>Nossos Diferenciais</h3>
-                        <p>Esteem spirit temper too say adieus who direct esteem. <br>
-                            It esteems luckily or picture placing drawing. </p>
+                        <h3>NOSSOS DIFERENCIAIS</h3>
+                        <p>A Union Neil traz um conceito inédito em cuidados domiciliares
+                        </p>
                     </div>
                 </div>
             </div>
@@ -377,7 +436,7 @@
                         </div>
                         <div class="department_content">
                             <h3><a href="#">Tratamentos Especializados</a></h3>
-                            <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                            <p>Temos uma grande diversidade de serviços e tratamentos especializados de última geração para proporcionar os melhores cuidados no conforto da sua casa. </p>
                             <!-- <a href="#" class="learn_more">Learn More</a> -->
                         </div>
                     </div>
@@ -385,11 +444,11 @@
                 <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
                     <div class="single_department">
                         <div class="department_thumb">
-                            <img src="img/department/driver_2.jpg" alt="">
+                            <img src="img/department/driver_2 (1).webp" alt="">
                         </div>
                         <div class="department_content">
                             <h3><a href="#">Serviço de Motorista</a></h3>
-                            <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                            <p>Acreditamos que a autonomia está relacionada com a qualidade de vida. Por isso, temos o serviço de motorista para proporcionar mais independência para você ou para o seu familiar. </p>
                             <!-- <a href="#" class="learn_more">Learn More</a> -->
                         </div>
                     </div>
@@ -397,11 +456,11 @@
                 <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
                     <div class="single_department">
                         <div class="department_thumb">
-                            <img src="img/department/pedicure_2.jpg" alt="">
+                            <img src="img/department/pedicure_2 (1) (1).webp" alt="">
                         </div>
                         <div class="department_content">
                             <h3><a href="#">Cuidado Estético</a></h3>
-                            <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                            <p>Um paciente não precisa apenas de cuidados médicos. Precisa de cuidados mais amplos, inclusive para melhorar a sua autoestima. Por isso, oferecemos uma ampla variedade de serviços estéticos domiciliares. </p>
                             <!-- <a href="#" class="learn_more">Learn More</a> -->
                         </div>
                     </div>
@@ -409,11 +468,11 @@
                 <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
                     <div class="single_department">
                         <div class="department_thumb">
-                            <img src="img/department/physio_ball.jpg" alt="">
+                            <img src="img/department/physio_ball (1).webp" alt="">
                         </div>
                         <div class="department_content">
                             <h3><a href="#">Terapia Ocupacional</a></h3>
-                            <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                            <p>A Terapia Ocupacional busca promover mais autonomia e qualidade de vida aos pacientes, desempenhando um papel extremamente importante no atendimento domiciliar. </p>
                             <!-- <a href="#" class="learn_more">Learn More</a> -->
                         </div>
                     </div>
@@ -421,11 +480,11 @@
                 <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
                     <div class="single_department">
                         <div class="department_thumb">
-                            <img src="img/department/lab_results.jpg" alt="">
+                            <img src="img/department/lab_results (1).webp" alt="">
                         </div>
                         <div class="department_content">
                             <h3><a href="#">Exames laboratoriais</a></h3>
-                            <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                            <p>A nossa equipe especializada vai até sua casa para fazer todas as coletas para os exames laboratoriais e a aplicação de vacinas. Tudo muito seguro e prático, para você e sua família.</p>
                             <!-- <a href="#" class="learn_more">Learn More</a> -->
                         </div>
                     </div>
@@ -437,7 +496,7 @@
                         </div>
                         <div class="department_content">
                             <h3><a href="#">Equipamentos Avançados</a></h3>
-                            <p>Esteem spirit temper too say adieus who direct esteem.</p>
+                            <p>A tecnologia é uma aliada na assistência médica domiciliar. Por isso, trabalhamos com os equipamentos e dispositivos mais modernos, oferecendo inovação, segurança e conforto para os nossos pacientes. </p>
                             <!-- <a href="#" class="learn_more">Learn More</a> -->
                         </div>
                     </div>
@@ -462,29 +521,33 @@
             </div>
             <div class="row">
                 
-                <div class="col-xl-6 col-lg-6">
+                
                     <div class="welcome_docmed_info">
                         
                         
                         <ul class="services-list">
-                            <li> <i class="flaticon-right"></i> Administração de medicamentos em domicílio</li>
-                            <li> <i class="flaticon-right"></i> Coleta a domicílio </li>
-                            <li> <i class="flaticon-right"></i> Fisioterapia domiciliar </li>
-                            <li> <i class="flaticon-right"></i> Fonoaudiologia domiciliar </li>
+                            <li> <i class="flaticon-right"></i> Administração de medicamentos</li>
+                            <li> <i class="flaticon-right"></i> Coleta em domicílio </li>
+                            <li> <i class="flaticon-right"></i> Fisioterapia</li>
+                            <li> <i class="flaticon-right"></i> Fonoaudiologia</li>
                             <li> <i class="flaticon-right"></i> Internação domiciliar</li>
-                            <li> <i class="flaticon-right"></i> Psicologia domiciliar </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div class="welcome_docmed_info">
-                        <ul class="services-list">
-                            <li> <i class="flaticon-right"></i> Serviço de nutrição domiciliar </li>
+                            <li> <i class="flaticon-right"></i> Psicologia </li>
+                            <li> <i class="flaticon-right"></i> Serviço de nutrição </li>
                             <li> <i class="flaticon-right"></i> Serviço de remoção</li>
                             <li> <i class="flaticon-right"></i> Serviço técnico em enfermagem</li>
                             <li> <i class="flaticon-right"></i> Serviço de cuidador</li>
                             <li> <i class="flaticon-right"></i> Visita de enfermagem</li>
                             <li> <i class="flaticon-right"></i> Visita Medica domiciliar</li>
+                            <li> <i class="flaticon-right"></i> Motorista</li>
+                            <li> <i class="flaticon-right"></i> Cuidados Estéticos</li>
+                            <li> <i class="flaticon-right"></i> Terapia Ocupacional</li>
+                        </ul>
+                    </div>
+                
+                <div class="col-xl-6 col-lg-6">
+                    <div class="welcome_docmed_info">
+                        <ul class="services-list">
+                            
                         </ul>
                     </div>
                 </div>
@@ -612,9 +675,8 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="section_title text-center mb-55">
-                            <h3>Que nos anima</h3>
-                            <p>Esteem spirit temper too say adieus who direct esteem. <br>
-                                It esteems luckily or picture placing drawing. </p>
+                            <h3>NOSSO PROPÓSITO</h3>
+                            <p>Levar até a sua casa um novo conceito de home care</p>
                         </div>
                     </div>
                 </div>
@@ -653,10 +715,9 @@
                                                     <!-- <div class="icon">
                                                         <i class="flaticon-first-aid-kit"></i>
                                                     </div> -->
-                                                    <h3>Leading edge care for Your family</h3>
-                                                    <p>Esteem spirit temper too say adieus who direct esteem.
-                                                        It esteems luckily picture placing drawing. Apartments frequently or motionless on
-                                                        reasonable projecting expression.
+                                                    <h3>Nossa Missão</h3>
+                                                    <p>Proporcionar atendimento personalizado de excelência, priorizando o bem-estar integral dos nossos pacientes, tanto em relação à sua saúde física, assim como mental e emocional. 
+
                                                     </p>
                                                 </div>
                                             </div>
@@ -674,10 +735,8 @@
                                                     <!-- <div class="icon">
                                                         <i class="flaticon-first-aid-kit"></i>
                                                     </div> -->
-                                                    <h3>Leading edge care for Your family</h3>
-                                                    <p>Esteem spirit temper too say adieus who direct esteem.
-                                                        It esteems luckily picture placing drawing. Apartments frequently or motionless on
-                                                        reasonable projecting expression.
+                                                    <h3>Nossa visão</h3>
+                                                    <p>Criar um novo padrão de qualidade e excelência para o segmento de assistência médica domiciliar, oferecendo serviços mais abrangentes de cuidados e tornando-se a maior referência no mercado nos próximos 5 anos. 
                                                     </p>
                                                 </div>
                                             </div>
@@ -691,11 +750,24 @@
                                                     <!-- <div class="icon">
                                                         <i class="flaticon-first-aid-kit"></i>
                                                     </div> -->
-                                                    <h3>Leading edge care for Your family</h3>
-                                                    <p>Esteem spirit temper too say adieus who direct esteem.
-                                                        It esteems luckily picture placing drawing. Apartments frequently or motionless on
-                                                        reasonable projecting expression.
-                                                    </p>
+                                                    <h3>Nossos Valores</h3>
+                                                    <ul>
+                                                        <li>Ética</li>
+                                                        <li>Transparência profissional        </li>
+                                                        <li>Integridade</li>
+                                                        <li>Valorização do ser humano
+                                                        </li>
+                                                        <li>Atendimento humanizado
+                                                        </li>
+                                                        <li>Segurança</li>
+                                                        <li>Comprometimento</li>
+                                                        <li>Conhecimento técnico-científico
+                                                        </li>
+                                                        <li>
+                                                            Inovação
+ 
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                             <!-- <div class="col-xl-6 col-md-6">
@@ -835,18 +907,18 @@
                 <div class="col-xl-6">
                     <div class="single_emergency d-flex align-items-center justify-content-center emergency_bg_1 overlay_skyblue">
                         <div class="info">
-                            <h3>Entre em contato conosco via WhatsApp</h3>
+                            <h3>Conheça mais sobre nossos serviços e planos</h3>
                             <!-- <p>Esteem spirit temper too say adieus.</p> -->
                         </div>
                         <div class="info_button">
-                            <a href="https://wa.me/+5515981012944" target="_blank" class="boxed-btn3-white">Quero conversar</a>
+                            <a href="https://wa.me/+5515981012944" target="_blank" class="boxed-btn3-white">WhatsApp</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="single_emergency d-flex align-items-center justify-content-center emergency_bg_2 overlay_skyblue">
                         <div class="info">
-                            <h3>Envie seu currículo a través desse link</h3>
+                            <h3>Quer trabalhar conosco?</h3>
                             <!-- <p>Esteem spirit temper too say adieus.</p> -->
                         </div>
                         <div class="info_button">
@@ -1083,12 +1155,32 @@
 function initMap() {
   const unionNeilOffice = { lat: -23.5122291, lng: -47.458910 };
   const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 14,
+    zoom: 16,
     center: unionNeilOffice
+  });
+  const contentString =
+    '<div id="content">' +
+    '<div id="siteNotice">' +
+    "</div>" +
+    '<h3 id="firstHeading" class="firstHeading">Escritório Union Neil</h3>' +
+    '<div id="bodyContent">' +
+    "<p>Av. Washington Luiz 310, Torre White <br/> Jardim Faculdade, Sorocaba, SP <br/> 18031-000 <br/> <a href='https://goo.gl/maps/WTb6CkdVewuevViFA' target='_blank' style='text-decoration:underline;color:blue'>Abrir no Google Maps</a></p>" +
+    "</div>" +
+    "</div>";
+  const infowindow = new google.maps.InfoWindow({
+    content: contentString,
+    ariaLabel: "Uluru",
   });
   const marker = new google.maps.Marker({
     position: unionNeilOffice,
     map: map,
+  });
+
+  marker.addListener("click", () => {
+    infowindow.open({
+      anchor: marker,
+      map,
+    });
   });
 }
 
