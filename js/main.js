@@ -187,6 +187,11 @@ $('.popup-video').magnificPopup({
 	type: 'iframe'
 });
 
+$('#test-form').magnificPopup({
+	type: 'inline',
+  closeBtnInside:true
+});
+
 
   // scrollIt for smoth scroll
   $.scrollIt({
