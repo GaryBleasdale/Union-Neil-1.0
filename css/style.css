@@ -2539,7 +2539,8 @@ h3 {
 /* line 122, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
 .footer .copy-right_text {
   padding-bottom: 30px;
-  background: #000000;
+  background: rgba(222, 188, 13, 0.75);
+
 }
 
 /* line 125, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
@@ -2550,7 +2551,7 @@ h3 {
 /* line 128, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
 .footer .copy-right_text .copy_right {
   font-size: 16px;
-  color: #919191;
+  color:white;
   margin-bottom: 0;
   font-weight: 400;
 }
@@ -2565,7 +2566,7 @@ h3 {
 
 /* line 136, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
 .footer .copy-right_text .copy_right a {
-  color: #5DB2FF;
+  color:white;
 }
 
 /* line 141, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */

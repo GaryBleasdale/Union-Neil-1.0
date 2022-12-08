@@ -82,6 +82,17 @@
             top: 200px;
             left: 50px;
         }
+        @media only screen and (max-width:767px){
+        .slider_text>h3 {
+            font-size: 26px !important;
+            top: 150px
+        }
+
+        .slider_text>h5 {
+            font-size: 22px !important;
+            top: 150px
+        }
+    }
 
         .single_slider .container {
 
@@ -127,7 +138,14 @@
 
             .welcome_docmed_info {
                 margin: auto;
-                width: 50%;
+                width: 80%;
+            }
+            .nurse-image-container{
+                padding:0px !important;
+            }
+
+            .nurse-image{
+                width:100% !important
             }
         }
 
@@ -179,7 +197,9 @@
         }
 
         .tab-pane>.row {
-            padding-top: 40px !important;
+            padding-top: 100px !important;
+            display:flex;
+            justify-content: center;
         }
 
         .footer_address {
@@ -212,7 +232,7 @@
             font-size: 16px;
         }
 
-        @media only screen and (max-width:768px) {
+        @media only screen and (max-width:990px) {
             .footer_top>.container {
                 display: flex;
                 flex-direction: column;
@@ -235,15 +255,31 @@
                 max-width: 100% !important;
             }
 
-            .department_content p{
+            .footer_title {
+                padding-bottom:15px !important;
+                margin-bottom: 0px !important;
+            }
+        }
+        @media only screen and (max-width:766px) {
+        .department_content p{
             font-size:20px !important
             }
             .department_content h3>a{
             font-size:26px !important
             }
-
+            #profile-tab,#contact-tab {
+                border-radius:0px;
+            }
+            .single_emergency{
+                text-align:center;
+            }
+            .info{
+                margin-bottom:25px;
+            }
+            .footer-box{
+                text-align:center;
+            }
         }
-
         @media only screen and (min-width:992px) {
             .col-xl-4.diferencial {
                 flex: 0 0 50%;
@@ -267,9 +303,46 @@
         }
 
         .footer_title{
-            font-size:24px;
-            text-decoration: underline;
+            font-size:22px !important;
+            font-weight: bold !important;
         }
+        .main-header-area{
+            padding-top:30px !important;
+            padding-bottom: 30px !important;
+        }
+
+        a[aria-selected="false"]{
+              background-color: rgba(230, 205, 74, 0.2);
+            }
+        #missao{
+            background-color: white;;
+        }
+
+        .business_info>h3,.business_info>p, .business_info>ul{
+            text-align:center;
+
+        }
+
+        .business_info>p{
+            font-size: 18px;
+            line-height:34px !important;
+        }
+        .business_info>h3{
+            font-weight:bold !important;
+            padding-bottom:30px;
+        }
+
+        .business_info>ul>li{
+            padding: 10px 0px;
+            font-size: 18px;
+        }
+
+        .missao-text{
+            padding-right:30px;
+            padding-left: 30px;
+        }
+
+
     </style>
 </head>
 
@@ -417,10 +490,10 @@
     <div class="welcome_docmed_area section" id="sobre-nos">
         <div class="container">
             <div class="row">
-                <div class="col-xl-6 col-lg-6">
+                <div class="col-xl-6 col-lg-6 nurse-image-container">
                     <div class="welcome_thumb">
                         <div class="thumb_1">
-                            <img src="img/department/union_neil_1 (1).webp" alt="">
+                            <img src="img/department/union_neil_1 (1).webp" class="nurse-image" alt="">
                         </div>
                         <div class="thumb_2">
                             <img src="img/department/union_neil_2 (1).webp" alt="">
@@ -758,9 +831,9 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                        <div class="row ">
+                        <div class="row missao-text">
                             <div>
-                                <div class="business_info">
+                                <div class="business_info ">
                                     <!-- <div class="icon">
                                                         <i class="flaticon-first-aid-kit"></i>
                                                     </div> -->
@@ -1005,8 +1078,8 @@
     <!-- footer start -->
     <footer class="footer">
         <div class="footer_top">
-            <div class="container">
-                <div class="row">
+            <div class="container footer-container">
+                <div class="row footer-box">
                     <div class="col-xl-4 col-md-6 col-lg-4">
                         <div class="footer_widget">
                             <div class="footer_logo">
@@ -1137,7 +1210,7 @@
     <script src="js/jquery.form.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/mail-script.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/gh/manuelmhtr/validate-rfc@latest/dist/index.js" type="text/javascript"></script>
     <script src="js/main.js"></script>
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0ExN4L1Waqi6d0noSQHGw7l9xeGRmuZc&callback=initMap">
@@ -1190,10 +1263,9 @@ $('.simple-ajax-popup').magnificPopup({
                 });
             });
         }
-  
 
-      
-
+        let strayComma = document.body.querySelector('.conatiner-fluid').firstChild;
+        strayComma.textContent = '';
     </script>
 </body>
 
