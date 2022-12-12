@@ -6,11 +6,9 @@ $(window).on('scroll', function () {
 	if (scroll < 400) {
     $("#sticky-header").removeClass("sticky");
     $('#back-top').fadeIn(500);
-    console.log(scroll)
 	} else {
     $("#sticky-header").addClass("sticky");
     $('#back-top').fadeIn(500);
-    console.log('working')
 	}
 });
 
