@@ -42,7 +42,7 @@ body {
 }
 
 .logo-image {
-  height: 80px !important;
+  height: 90px !important;
 }
 
 @media screen and (max-width:1200px) {
@@ -54,7 +54,7 @@ body {
 @media screen and (max-width:992px) {
   .logo-image {
     height: 55px !important;
-    width: 200px !important;
+    width: 150px !important;
   }
 }
 

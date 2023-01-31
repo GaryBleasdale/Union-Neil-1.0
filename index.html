@@ -372,6 +372,85 @@
             color:#1F1F1F
         }
 
+
+        @media only screen and (min-width: 1200px) {
+            #sticky-header>.container{
+            max-width:1340px !important
+          }
+        }
+
+        .modal-option{
+            width:140px; height: 130px;text-align:center;background: #debc0d; display:flex;align-items: center;justify-content: center; border-radius:10px;padding: 0px 10px;opacity:0.85;
+            transition: all 200ms
+        }
+        .modal-option:hover{   
+            opacity:1;
+            box-shadow: 3px 3px 18px -4px rgba(0,0,0,0.43);
+            transition: all 400ms
+        }
+
+        .modal-option:active{   
+            opacity:1;
+            box-shadow: 0px 0px 24px 11px rgba(222, 188, 13,0.5);
+        }
+
+        .modal-option>a{
+            color:#f7f7f7;
+            font-size:20px;
+            line-height:26px
+        }
+
+        .modal-options-container{
+            display:flex;
+            justify-content: space-around;
+            width:100%;
+        }
+
+        .inner-modal>h4{
+            font-size: 24px;
+            padding:20px 10px
+        }
+        
+
+        @media only screen and (max-width: 490px) {
+            .modal-options-container{
+            display:flex;
+            flex-direction:column;
+            justify-content: space-around;
+            align-items: center;
+            width:100%;
+            }
+
+            .modal-option{
+            height:80px;
+            margin: 10px 0px
+            }
+
+            .modal-option>a{
+            font-size:14px;
+            line-height:22px
+            }
+
+            .inner-modal>h4{
+           font-size:14px;
+            }
+        
+        }
+
+        @media only screen and (max-height: 490px) and (max-width: 490px){
+            .inner-modal>h4{
+           font-size:14px;
+           padding: 0px 10px;
+            }
+
+            .modal-option>a{
+            font-size:14px;
+            }
+
+            .modal-option{
+                margin:3px 0px;
+            }
+
     </style>
 </head>
 
@@ -387,7 +466,7 @@
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo-img">
                                 <a href="index.html">
-                                    <img src="img/logo_v1.png" alt="" class="logo-image">
+                                    <img src="img/2023-01-25_16-18-removebg-preview (1).png" alt="" class="logo-image">
                                 </a>
                             </div>
                         </div>
@@ -916,16 +995,24 @@
             </div>
         </div>
     </footer>
-    <div class='modal-container'style="height:100%;width:100%;background-color:rgba(0, 0, 0,0.7);position:absolute;top:0;left:0;z-index:10000;display:flex; align-items:center;justify-content:center;">
+    <div class='modal-container'style="height:100%;width:100%;background-color:rgba(0, 0, 0,0.7);position:absolute;top:0;left:0;z-index:10000;display:none; align-items:center;justify-content:center;">
         <div style=" background-color: white;border-radius:5px; margin: 0px 30px; z-index:100000;display:flex;align-items: center; justify-content: center; flex-direction:column;padding: 30px 0px" class="inner-modal">
 
-            <img src="img/logo_v1.png" alt="" class="logo-image">
-            <h4 style="padding:20px 0px;font-size:24px;margin:10px; text-align:center">Seja bem-vindo à Union Neil - Assistência Médica Domiciliar </br></br>
+            <img src="img/2023-01-25_16-18-removebg-preview (1).png" alt="" class="logo-image">
+            <h4 style="margin:10px; text-align:center">Seja bem-vindo à Union Neil - Assistência Médica Domiciliar </br></br>
             Por favor, indique a sua área de interesse:</h4>
             <div style="display:flex;justify-content: space-around; width:100%">
-                <div style="width:100px; text-align:center">Cuidados para Idosos</div>
-                <div style="width:100px; text-align:center">Cuidados para grávidas e lactantes</div>
-                <div style="width:100px; text-align:center">Cuidados para crianças</div>
+                <div class="modal-options-container">
+                    <div  class="modal-option">
+                        <a style="font-weight:bold;margin-bottom:0px;letter-spacing:1px;" href="/index.html">Cuidados para Idosos</p>    
+                    </div>
+                    <div class="modal-option">
+                        <a style="font-weight:bold;margin-bottom:0px;letter-spacing:1px;" href="/maternidade.html">Cuidados para Grávidas e Lactantes</p>    
+                    </div>
+                    <div class="modal-option">
+                        <a style="font-weight:bold;margin-bottom:0px;letter-spacing:1px;line-height:26px" href="/pediatrico.html">Cuidados para Crianças</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1017,19 +1104,25 @@ $('.simple-ajax-popup').magnificPopup({
         let strayComma = document.body.querySelector('.conatiner-fluid').firstChild;
         strayComma.textContent = '';
 
-        window.addEventListener('load',function(){
+        window.addEventListener("load", ()=>{
             let modal = document.body.querySelector('.modal-container')
-            if (scrollY===0){
+            let modalInner = document.body.querySelector('.inner-modal')
+            modalInner.addEventListener('click', ()=>{
+                localStorage.setItem('popupInteracted', 'true')
+            })
+            if (scrollY===0 /*&& localStorage['popupInteracted'] === undefined*/){
                 document.body.style.overflow = 'hidden'
-                modal.addEventListener('click', function(){
+                modal.style.display = 'flex'
+                modalInner.addEventListener('click', function(){
                     document.body.style.overflow = 'visible';     
                     modal.style.display = 'none'           
                 })
-            } else {
-                modal.style.display = 'none'
-            }    
-          }
-        )
+            } 
+            console.log(localStorage['popupInteracted'])
+        })
+           
+          
+        
 
         let sobreNos = document.body.querySelector('#sobre-nos-navbar')
         let megaMenu = document.body.querySelector('.mega-menu')
