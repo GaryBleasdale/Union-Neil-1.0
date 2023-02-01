@@ -346,7 +346,7 @@
             width:100%
         }
 
-        li{
+        #navigation>li{
             max-height:24px;
         }
 
@@ -368,7 +368,12 @@
         }
         
 
-        .mega-menu>p:hover{
+        .mega-menu>a{
+            padding-bottom: 20px !important;
+            cursor:pointer;
+        }
+
+        .mega-menu>a:hover{
             color:#1F1F1F
         }
 
@@ -450,6 +455,52 @@
             .modal-option{
                 margin:3px 0px;
             }
+        }
+
+        .departamentos-container{
+            justify-content: space-around;
+        }
+
+        .service_area{
+            background-color: white;
+            margin-bottom: 90px;
+        }
+
+        .single_service{
+            border-radius: 5px;
+            margin: 10px 0px;
+        }
+
+        .single_service>h3,.single_service>p,.single_service>a{
+            color:white !important
+        }
+
+        .single_service>h3{
+            font-size:34px !important;
+            letter-spacing:1px;
+        }
+
+        .single_service>a{
+            color:darkslategray !important;
+            border: 1px solid #debc0d;
+            background-color: white;
+        }
+
+        .materno-infantil{
+            background-color: gray !important;
+            background-image: url("./img/department/image\ 1.png");
+            background-size: cover;
+        }
+
+        .pediatrico{
+            background-color: gray !important;
+            background-image: url("./img/torsten-dederichs-XRcEsQKTWGk-unsplash\ 1.png") !important;
+            background-size: cover;
+        }
+
+        .mi-container,.pd-container{
+            width: 40% !important
+        }
 
     </style>
 </head>
@@ -474,10 +525,10 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li id="sobre-nos-navbar"><a class="active" href="#sobre-nos" >sobre nos</a>
+                                        <li id="sobre-nos-navbar"><a class="active" >sobre nos</a>
                                             <div class="mega-menu">
-                                                <p>Quem Somos</p>
-                                                <p>Nossos departamentos</p>
+                                                <a href="#sobre-nos">Quem Somos</a>
+                                                <a href="#departamentos">Nossos departamentos</a>
                                             </div>
                                         </li>
                                         
@@ -877,6 +928,38 @@
     </div>
     <!-- business_expert_area_end  -->
 
+
+        <!-- service_area_start -->
+    
+        <div class="service_area">
+            <div class="container p-0">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="section_title departamentos text-center mb-55" id="departamentos">
+                            <h3>Outros departamentos</h3>
+                            <p>Além de cuidados para pacientes idosos, também cuidamos de outros:
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters departamentos-container">
+                    <div class="col-xl-4 col-md-4 mi-container">
+                        <div class="single_service materno-infantil">
+                            <h3>Materno-Infantil</h3>
+                            <p>Clinical excellence must be the priority for any health care service provider.</p>
+                            <a href="#" class="boxed-btn3-white">Visitar página</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 pd-container">
+                        <div class="single_service pediatrico ">
+                            <h3>Pediátrico</h3>
+                            <p>Clinical excellence must be the priority for any health care service provider.</p>
+                            <a href="#" class="boxed-btn3-white">Visitar página</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- Emergency_contact start -->
     <div class="Emergency_contact section" id="contato">
         <div class="conatiner-fluid p-0">,
@@ -928,6 +1011,8 @@
     </div> 
 
     <!-- Google Map section end -->
+
+    <!-- service_area_end -->
     <!-- footer start -->
     <footer class="footer">
         <div class="footer_top">
@@ -1110,7 +1195,7 @@ $('.simple-ajax-popup').magnificPopup({
             modalInner.addEventListener('click', ()=>{
                 localStorage.setItem('popupInteracted', 'true')
             })
-            if (scrollY===0 /*&& localStorage['popupInteracted'] === undefined*/){
+            if (scrollY===0 &&  localStorage['popupInteracted'] === undefined){
                 document.body.style.overflow = 'hidden'
                 modal.style.display = 'flex'
                 modalInner.addEventListener('click', function(){
@@ -1118,7 +1203,6 @@ $('.simple-ajax-popup').magnificPopup({
                     modal.style.display = 'none'           
                 })
             } 
-            console.log(localStorage['popupInteracted'])
         })
            
           
