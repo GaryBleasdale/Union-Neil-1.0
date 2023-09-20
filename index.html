@@ -15,7 +15,7 @@
     <title>Union Neil | Assistência Médica Domiciliar</title>
     <meta name="description" content="Union Neil: Assistência médica domiciliar com profissionais experientes. Cuidados médicos especializados e auxilio com atividades diarias. Ligue agora para saber mais!">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon_unionNeil.png">
     <!-- CSS here -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -28,8 +28,13 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/slicknav.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
     <style>
+
 
         .about-us {
             justify-content: center;
@@ -66,6 +71,23 @@
             .fale-conosco {
                 display: none !important;
             }
+        }
+
+        .header-video-container{
+          padding:10px
+        }
+
+        @media only screen and (min-width:750px){
+           .site-main-header{
+            padding-top:50px;
+line-height:60px; 
+font-size:60px;
+line-height:60px;
+           }
+
+           .header-video-container{
+            padding: 40px;
+           }
         }
 
         .slider_text>h3 {
@@ -243,12 +265,33 @@
             font-size: 16px;
         }
 
+
+
+        .mobile-whatsapp-icon{
+          display:none
+        }
+
+        @media only screen and (max-width:992px){
+          .mobile-whatsapp-icon{
+              display:block;
+              right:50px;
+            }
+        }
+
+        @media only screen and (max-width:360px){
+          .mobile-whatsapp-icon{
+            right:0px;
+          }
+        }
+
         @media only screen and (max-width:990px) {
             .footer_top>.container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
+
+
 
             .footer_top>.container>.row {
                 flex-direction: column !important;
@@ -380,12 +423,24 @@
             <div id="sticky-header" class="main-header-area">
                 <div class="container nav-container">
                     <div class="row align-items-center">
-                        <div class="col-xl-3 col-lg-2">
+                        <div class="col-xl-3 col-lg-2" style="display:flex;justify-content: space-between;">
                             <div class="logo-img">
                                 <a href="index.html">
                                     <img src="./img/2023-01-25_16-18-removebg-preview (1).png" alt="" class="logo-image">
                                 </a>
                             </div>
+                            <div style="position:relative;" class="mobile-whatsapp-icon">
+                              <a href="https://api.whatsapp.com/send/?phone=5515981113016&text=Ol%C3%A1%21+Estou+precisando+de+assist%C3%AAncia+m%C3%A9dica+domiciliar.+Podem+me+ajudar%3F&type=phone_number&app_absent=0" target="_blank"><div style="display:flex; align-items: center; 
+                                justify-content: space-between;
+                                padding: 8px 25px;
+                                border: slategray 1px solid;
+                                border-radius: 35px; width:145px;
+                            ">
+                                <img src="/img/WhatsApp_icon.png" style="width:20px;height:20px; margin-right:7px" /><p style="font-size:14px; font-weight:bold;margin-bottom:0px;">WhatsApp</p>
+                              </div></a>
+
+                            </div>
+                            
                         </div>
                         <div class="col-xl-6 col-lg-7">
                             <div class="main-menu  d-none d-lg-block">
@@ -395,16 +450,23 @@
                                         <li><a href="#diferenciais">Diferenciais</a></li>
                                         <li><a href="#servicos">Serviços
                                         <li><a href="#missao">Missão</a></li>
-                                        <li class="fale-conosco"><a href="#contato">Fale conosco</a></li>
+                                        
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="Appointment">
-                                <div class="book_btn d-none d-lg-block">
-                                    <a href="#contato">Fale conosco</a>
-                                </div>
+                                
+                                    <a href="https://api.whatsapp.com/send/?phone=5515981113016&text=Ol%C3%A1%21+Estou+precisando+de+assist%C3%AAncia+m%C3%A9dica+domiciliar.+Podem+me+ajudar%3F&type=phone_number&app_absent=0" target="_blank"><div style="display:flex; align-items: center; 
+                                      justify-content: space-between;
+                                      padding: 8px 25px;
+                                      border: slategray 1px solid;
+                                      border-radius: 35px;
+                                  ">
+                                      <img src="/img/WhatsApp_icon.png" style="width:20px;height:20px; margin-right:7px" /><p style="font-size:14px; font-weight:bold;margin-bottom:0px;">WhatsApp</p>
+                                    </div></a>
+                                
                             </div>
                         </div>
                         <div class="col-12">
@@ -420,24 +482,15 @@
 
 
     <!-- slider_area_start -->
-    <div class="slider_area">
-        <div class="slider_active owl-carousel">
-           
-            <div class="single_slider  d-flex align-items-center slider_bg_1">
-                <div class="container image-container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="slider_text ">
-                                <h3>Assistência Médica Domiciliar</h3>
-                                <h5>Cuidamos de quem você ama com profissionais altamente especializados e com o carinho
-                                    de quem realmente se importa!</h5>
-                                <!-- <a href="#" class="boxed-btn3">Check Our Services</a> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="slider_area" style="max-width:1200px; margin:auto ">
+      <div style="display:flex;justify-content: center; align-items: center; flex-direction: column; padding:0px 30px">
+        <h1 class='site-main-header' style="font-family:Poppins; font-weight:600;  text-align:Center; letter-spacing: -1.2px; padding-bottom:20px; max-width:1024px">Cuidados domiciliares para as pessoas mais exigentes.
+        </h1>
+        <p style="font-size:20px; letter-spacing: -0.4px;color:rgba(16,16,16,0.66); max-width:700px; text-align:center;margin-bottom:20px;">Sabemos que cuidar de um ente querido em casa significa proporcionar uma ótima qualidade de vida para o paciente e seus familiares - e não apenas cuidar da doença</p>
+      </div>
+      <div class="header-video-container" >
+        <script src="https://fast.wistia.com/embed/medias/8a0ge966sw.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_8a0ge966sw seo=true videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/8a0ge966sw/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+      </div>
     </div>
     <!-- slider_area_end -->
     <!-- welcome_docmed_area_start -->
