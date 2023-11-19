@@ -1036,7 +1036,7 @@
         window.addEventListener('load', () => {
             let videoContainer = document.body.querySelector('.header-video-container');
             videoContainer.addEventListener('click', (e) => {
-               e.target.classList.add('watched')
+               videoContainer.classList.add('watched')
             })
             setTimeout(() => {
                 let appname = document.body.querySelector('.commonninja-ribbon');
