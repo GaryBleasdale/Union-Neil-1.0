@@ -429,6 +429,21 @@
 </head>
 
 <body>
+    <div style="position: fixed;
+    bottom: 30px;
+    z-index: 10000;
+    left: 30px;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 40px;
+    width: 206px;
+    text-align: center;
+    border: goldenrod 3px solid;
+    font-weight: bold;
+    display:none"
+    id="assista-depoimento-cta" >
+        <a href="#slider-header-area">Clique aqui e assista ao nosso depoimento!</a>
+    </div>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWFCK44" height="0" width="0"
@@ -511,7 +526,7 @@
 
 
     <!-- slider_area_start -->
-    <div class="slider_area" style="max-width:1200px; margin:auto ">
+    <div class="slider_area" style="max-width:1200px; margin:auto " id="slider-header-area">
         <div
             style="display:flex;justify-content: center; align-items: center; flex-direction: column; padding:0px 30px">
             <h1 class='site-main-header'
@@ -1019,10 +1034,30 @@
         })
 
         window.addEventListener('load', () => {
+            let videoContainer = document.body.querySelector('.header-video-container');
+            videoContainer.addEventListener('click', (e) => {
+               e.target.classList.add('watched')
+            })
             setTimeout(() => {
                 let appname = document.body.querySelector('.commonninja-ribbon');
                 appname.style.display = 'none';
             }, 300)
+            setTimeout(()=>{
+              let assistaDepoimentoCTA = document.getElementById('assista-depoimento-cta');
+              let playButton = document.body.querySelector('.w-big-play-button');
+              if (!videoContainer.classList.contains('watched')) {
+                assistaDepoimentoCTA.style.display = 'block';
+                assistaDepoimentoCTA.addEventListener('click', (e) => {
+                assistaDepoimentoCTA.style.display = "none"
+                
+                playButton.click();
+              })
+              }
+              playButton.addEventListener('click', (e) => {
+                assistaDepoimentoCTA.style.display = "none"
+              })
+              
+            }, 8000)
         })
 
 
