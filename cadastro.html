@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro | Union Neil</title>
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon_unionNeil.png">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body style="height:165vh">   
-    <div style = "display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 23px;
-    height: 100vh;
-    justify-content: center;">
-        <img src="./img/2023-01-25_16-18-removebg-preview (1).png" alt=""
-                                        class="logo-image">
-        <div>Por favor, insira a senha para continuar com seu cadastro:</div>
-        <input type="text" name="senha" id="senha" placeholder="Senha">
-        <button id="cadastrar">OK</button>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="img/union_neil_favicon.png"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="dist/tailwind-output.css" />
+  </head>
+  <body style="height: 165vh">
+    <div class=" flex flex-col items-center gap-[27px] h-screen justify-center px-2.5 py-0"
+    >
+      <img
+        src="./img/2023-01-25_16-18-removebg-preview (1).png"
+        alt=""
+        class="w-[150px] md:w-[225px]"
+      />
+      <div class="text-center text-xl">Por favor, insira a senha para continuar com seu cadastro:</div>
+      <div class="flex flex-col gap-[18px] w-[80%] md:w-1/2">
+        <input type="text" name="senha" id="senha" placeholder="Senha" class="h-[40px] text-xl p-[10px] rounded-[10px] border-[#CFB11C] border placeholder:text-xl focus-visible:outline-[#e4c00f]" />
+        <button id="cadastrar" class="text-xl bg-[rgba(207,177,28,0.1)] px-[17px] py-[5px] rounded-[10px] border border-black hover:bg-[rgba(207,177,28,0.4)]">Continuar</button>
+      </div>
     </div>
-</body>
-<script>
-    let cadastrar = document.getElementById('cadastrar')
+  </body>
+  <script>
+    let cadastrar = document.getElementById("cadastrar");
 
-    cadastrar.addEventListener('click',()=>{
-        let senha= document.getElementById('senha').value
-        console.log(senha)
-        fetch('/.netlify/functions/validate',{
-            method:'POST',
-            body:JSON.stringify({senha:senha}),
-            mode:'no-cors'})
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            if (data.message === 'valid'){
-                document.body.innerHTML = `${data.iframe}` 
-            } else {
-                alert('Senha inválida, por favor, tente novamente.')
-            }
-        })
-    })
-</script>
+    cadastrar.addEventListener("click", () => {
+      let senha = document.getElementById("senha").value;
+      fetch("/.netlify/functions/validate", {
+        method: "POST",
+        body: JSON.stringify({ senha: senha }),
+        mode: "no-cors",
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message === "valid") {
+            document.body.innerHTML = `${data.iframe}`;
+          } else {
+            alert("Senha inválida, por favor, tente novamente.");
+          }
+        });
+    });
+  </script>
 </html>
