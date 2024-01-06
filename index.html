@@ -1,748 +1,900 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="pt-BR">
-
-<head>
+  <head>
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KWFCK44');
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KWFCK44");
     </script>
     <!-- End Google Tag Manager -->
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Union Neil | Assistência Médica Domiciliar</title>
-    <meta name="description"
-        content="Cuidados Domiciliares para as pessoas mais exigentes. Excelência em cuidado. Experiência em ação. Empatia em cada gesto.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="img/union_neil_favicon.png">
+    <meta
+      name="description"
+      content="Cuidados Domiciliares para as pessoas mais exigentes. Excelência em cuidado. Experiência em ação. Empatia em cada gesto."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="img/union_neil_favicon.png"
+    />
     <!-- CSS here -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/gijgo.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/slicknav.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/themify-icons.css" />
+    <link rel="stylesheet" href="css/nice-select.css" />
+    <link rel="stylesheet" href="css/flaticon.css" />
+    <link rel="stylesheet" href="css/gijgo.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/slicknav.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
     <style>
-        .about-us {
-            justify-content: center;
-            border: none;
-        }
+      html {
+        overflow-x: hidden;
+      }
+      .about-us {
+        justify-content: center;
+        border: none;
+      }
 
-        #map {
-            height: 400px;
-            /* The height is 400 pixels */
-            width: 100%;
-            /* The width is the width of the web page */
-        }
+      #map {
+        height: 400px;
+        /* The height is 400 pixels */
+        width: 100%;
+        /* The width is the width of the web page */
+      }
 
-        .fale-conosco a {
-            font-weight: bold !important;
-            background-color: #debc0d;
-            color: white;
-            text-align: center;
-            padding: 20px 0px;
-            border-radius: 10px;
-            font-size: 16px;
-            border: 2px solid #debc0d;
-        }
+      .fale-conosco a {
+        font-weight: bold !important;
+        background-color: #debc0d;
+        color: white;
+        text-align: center;
+        padding: 20px 0px;
+        border-radius: 10px;
+        font-size: 16px;
+        border: 2px solid #debc0d;
+      }
 
-        .fale-conosco a:hover {
-            font-weight: bold !important;
-            background-color: rgba(222, 188, 13, 0.08) !important;
-            color: #debc0d !important;
-            border: 2px solid #debc0d;
-            border-radius: 10px;
-        }
+      .fale-conosco a:hover {
+        font-weight: bold !important;
+        background-color: rgba(222, 188, 13, 0.08) !important;
+        color: #debc0d !important;
+        border: 2px solid #debc0d;
+        border-radius: 10px;
+      }
 
-        @media only screen and (min-width:992px) {
-            .fale-conosco {
-                display: none !important;
-            }
+      @media only screen and (min-width: 992px) {
+        .fale-conosco {
+          display: none !important;
+        }
+      }
+
+      .header-video-container {
+        padding: 10px;
+      }
+
+      @media only screen and (min-width: 750px) {
+        .site-main-header {
+          padding-top: 50px;
+          line-height: 60px;
+          font-size: 60px;
+          line-height: 60px;
         }
 
         .header-video-container {
-            padding: 10px
+          padding: 40px;
+        }
+      }
+
+      .slider_text > h3 {
+        color: white !important;
+        width: 250px !important;
+        font-size: 40px !important;
+        font-weight: bolder !important;
+        position: relative;
+        top: 200px;
+        left: 50px;
+      }
+
+      .slider_text > h5 {
+        color: white !important;
+        width: 250px !important;
+        font-size: 24px !important;
+        position: relative;
+        top: 200px;
+        left: 50px;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .slider_text > h3 {
+          font-size: 26px !important;
+          top: 150px;
         }
 
-        @media only screen and (min-width:750px) {
-            .site-main-header {
-                padding-top: 50px;
-                line-height: 60px;
-                font-size: 60px;
-                line-height: 60px;
-            }
-
-            .header-video-container {
-                padding: 40px;
-            }
+        .slider_text > h5 {
+          font-size: 22px !important;
+          top: 150px;
         }
+      }
 
-        .slider_text>h3 {
-            color: white !important;
-            width: 250px !important;
-            font-size: 40px !important;
-            font-weight: bolder !important;
-            position: relative;
-            top: 200px;
-            left: 50px;
-        }
+      .single_slider .container {
+        height: 100%;
+        margin-left: 0px;
+        background: rgb(0, 0, 0);
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.6909138655462185) 0%,
+          rgba(0, 0, 0, 0.6320903361344538) 15%,
+          rgba(0, 212, 255, 0) 100%
+        );
+      }
 
-        .slider_text>h5 {
-            color: white !important;
-            width: 250px !important;
-            font-size: 24px !important;
-            position: relative;
-            top: 200px;
-            left: 50px;
-        }
+      .business_info {
+        width: 100%;
+      }
 
-        @media only screen and (max-width:767px) {
-            .slider_text>h3 {
-                font-size: 26px !important;
-                top: 150px
-            }
+      .section_title {
+        padding-top: 90px;
+        width: 100%;
+      }
 
-            .slider_text>h5 {
-                font-size: 22px !important;
-                top: 150px
-            }
-        }
+      .section_title.fale_conosco {
+        padding-top: 70px;
+      }
 
-        .single_slider .container {
+      .services-list > li {
+        margin: 20px 10px;
+        font-size: 18px;
+      }
 
-            height: 100%;
-            margin-left: 0px;
-            background: rgb(0, 0, 0);
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.6909138655462185) 0%, rgba(0, 0, 0, 0.6320903361344538) 15%, rgba(0, 212, 255, 0) 100%);
+      .services-list {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
 
-        }
+      .welcome_docmed_info {
+        margin: auto;
+        width: 100%;
+      }
 
-        .business_info {
-            width: 100%;
-        }
+      .nurse-image-container {
+        padding-top: 15%;
+      }
 
-
-
-        .section_title {
-            padding-top: 90px;
-            width: 100%;
-        }
-
-        .section_title.fale_conosco {
-            padding-top: 70px;
-        }
-
-        .services-list>li {
-            margin: 20px 10px;
-            font-size: 18px;
-        }
-
+      @media only screen and (max-width: 700px) {
         .services-list {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
+          max-height: 1560px !important;
         }
 
         .welcome_docmed_info {
-            margin: auto;
-            width: 100%;
+          margin: auto;
+          width: 80%;
         }
 
         .nurse-image-container {
-            padding-top: 15%;
+          padding: 0px !important;
         }
 
-        @media only screen and (max-width:700px) {
-            .services-list {
-                max-height: 1560px !important;
-            }
+        .nurse-image {
+          width: 100% !important;
+        }
+      }
 
-            .welcome_docmed_info {
-                margin: auto;
-                width: 80%;
-            }
+      @media only screen and (max-width: 950px) and (min-width: 700px) {
+        .services-list {
+          max-height: 550px !important;
+        }
+      }
 
-            .nurse-image-container {
-                padding: 0px !important;
-            }
+      @media only screen and (max-width: 1160px) {
+        .services-list {
+          max-height: 400px;
+        }
+      }
 
-            .nurse-image {
-                width: 100% !important
-            }
+      @media only screen and (max-width: 1259px) {
+        .services-list {
+          max-height: 350px;
+        }
+      }
+
+      @media only screen and (min-width: 1260px) {
+        .services-list {
+          max-height: 350px;
         }
 
-        @media only screen and (max-width:950px) and (min-width:700px) {
-            .services-list {
-                max-height: 550px !important;
-            }
+        .services-list > li {
+          margin: 20px 40px;
+          font-size: 18px;
         }
+      }
 
-        @media only screen and (max-width:1160px) {
-            .services-list {
-                max-height: 400px
-            }
-        }
+      .flaticon-right {
+        color: #debc0d;
+      }
 
-        @media only screen and (max-width:1259px) {
-            .services-list {
-                max-height: 350px
-            }
-        }
+      .section {
+        border-bottom: 1px dotted #debc0d;
+      }
 
-        @media only screen and (min-width:1260px) {
-            .services-list {
-                max-height: 350px
-            }
+      .our_services_area {
+        padding-bottom: 120px;
+      }
 
-            .services-list>li {
-                margin: 20px 40px;
-                font-size: 18px;
-            }
-        }
+      #home-tab,
+      #profile-tab,
+      #contact-tab {
+        text-align: center;
+      }
 
-        .flaticon-right {
-            color: #debc0d;
-        }
+      .tab-pane > .row {
+        padding-top: 100px !important;
+        display: flex;
+        justify-content: center;
+      }
 
-        .section {
-            border-bottom: 1px dotted #debc0d;
-        }
+      .footer_address {
+        line-height: 23px;
+        font-size: 18px;
+      }
 
-        .our_services_area {
-            padding-bottom: 120px;
-        }
+      .footer_top > .container > .row > .footer_top > .col-md-6 {
+        max-width: 25% !important;
+        flex-basis: 25% !important;
+      }
 
-        #home-tab,
-        #profile-tab,
-        #contact-tab {
-            text-align: center;
-        }
+      .footer_top > .container > .row > .col-xl-2 {
+        max-width: 25% !important;
+        flex-basis: 25% !important;
+      }
 
-        .tab-pane>.row {
-            padding-top: 100px !important;
-            display: flex;
-            justify-content: center;
-        }
+      .footer_top > .container > .row > .col-xl-4 {
+        max-width: 25% !important;
+        flex-basis: 25% !important;
+      }
 
-        .footer_address {
-            line-height: 23px;
-            font-size: 18px
-        }
+      .footer_top > .container > .row > .col-xl-3 {
+        max-width: 25% !important;
+        flex-basis: 25% !important;
+      }
 
+      .footer_address {
+        font-size: 16px;
+      }
 
-        .footer_top>.container>.row>.footer_top>.col-md-6 {
-            max-width: 25% !important;
-            flex-basis: 25% !important
-        }
+      .mobile-whatsapp-icon {
+        display: none;
+      }
 
-        .footer_top>.container>.row>.col-xl-2 {
-            max-width: 25% !important;
-            flex-basis: 25% !important
-        }
-
-        .footer_top>.container>.row>.col-xl-4 {
-            max-width: 25% !important;
-            flex-basis: 25% !important
-        }
-
-        .footer_top>.container>.row>.col-xl-3 {
-            max-width: 25% !important;
-            flex-basis: 25% !important
-        }
-
-        .footer_address {
-            font-size: 16px;
-        }
-
-
-
+      @media only screen and (max-width: 992px) {
         .mobile-whatsapp-icon {
-            display: none
+          display: block;
+          right: 50px;
+        }
+      }
+
+      @media only screen and (max-width: 360px) {
+        .mobile-whatsapp-icon {
+          right: 0px;
+        }
+      }
+
+      @media only screen and (max-width: 990px) {
+        .footer_top > .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
 
-        @media only screen and (max-width:992px) {
-            .mobile-whatsapp-icon {
-                display: block;
-                right: 50px;
-            }
+        .footer_top > .container > .row {
+          flex-direction: column !important;
         }
 
-        @media only screen and (max-width:360px) {
-            .mobile-whatsapp-icon {
-                right: 0px;
-            }
+        .footer_top > .container > .row > .col-xl-2 {
+          max-width: 100% !important;
         }
 
-        @media only screen and (max-width:990px) {
-            .footer_top>.container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-
-
-            .footer_top>.container>.row {
-                flex-direction: column !important;
-            }
-
-            .footer_top>.container>.row>.col-xl-2 {
-                max-width: 100% !important;
-            }
-
-            .footer_top>.container>.row>.col-xl-4 {
-                max-width: 100% !important;
-            }
-
-            .footer_top>.container>.row>.col-xl-3 {
-                max-width: 100% !important;
-            }
-
-            .footer_title {
-                padding-bottom: 15px !important;
-                margin-bottom: 0px !important;
-            }
+        .footer_top > .container > .row > .col-xl-4 {
+          max-width: 100% !important;
         }
 
-        @media only screen and (max-width:766px) {
-            .department_content p {
-                font-size: 20px !important
-            }
-
-            .department_content h3>a {
-                font-size: 26px !important
-            }
-
-            #profile-tab,
-            #contact-tab {
-                border-radius: 0px;
-            }
-
-            .single_emergency {
-                text-align: center;
-            }
-
-            .info {
-                margin-bottom: 25px;
-            }
-
-            .footer-box {
-                text-align: center;
-            }
-        }
-
-        @media only screen and (min-width:992px) {
-            .col-xl-4.diferencial {
-                flex: 0 0 50%;
-                min-width: 380px;
-            }
-        }
-
-        .row.diferencial {
-            justify-content: center !important;
-        }
-
-        @media only screen and (min-width:760px) {
-            .department_content {
-                height: 300px;
-            }
-
-        }
-
-        .footer_address {
-            font-size: 20px;
+        .footer_top > .container > .row > .col-xl-3 {
+          max-width: 100% !important;
         }
 
         .footer_title {
-            font-size: 22px !important;
-            font-weight: bold !important;
+          padding-bottom: 15px !important;
+          margin-bottom: 0px !important;
+        }
+      }
+
+      @media only screen and (max-width: 766px) {
+        .department_content p {
+          font-size: 20px !important;
         }
 
-        .main-header-area {
-            padding-top: 30px !important;
-            padding-bottom: 30px !important;
+        .department_content h3 > a {
+          font-size: 26px !important;
         }
 
-        a[aria-selected="false"] {
-            background-color: rgba(230, 205, 74, 0.2);
+        #profile-tab,
+        #contact-tab {
+          border-radius: 0px;
         }
 
-        #missao {
-            background-color: white;
-            ;
+        .single_emergency {
+          text-align: center;
         }
 
-        .business_info>h3,
-        .business_info>p,
-        .business_info>ul {
-            text-align: center;
-
+        .info {
+          margin-bottom: 25px;
         }
 
-        .business_info>p {
-            font-size: 18px;
-            line-height: 34px !important;
+        .footer-box {
+          text-align: center;
         }
+      }
 
-        .business_info>h3 {
-            font-weight: bold !important;
-            padding-bottom: 30px;
+      @media only screen and (min-width: 992px) {
+        .col-xl-4.diferencial {
+          flex: 0 0 50%;
+          min-width: 380px;
         }
+      }
 
-        .business_info>ul>li {
-            padding: 10px 0px;
-            font-size: 18px;
-        }
+      .row.diferencial {
+        justify-content: center !important;
+      }
 
-        .missao-text {
-            padding-right: 30px;
-            padding-left: 30px;
+      @media only screen and (min-width: 760px) {
+        .department_content {
+          height: 300px;
         }
+      }
 
-        .col-xl-12 {
-            padding: 0px;
-            width: 100%
-        }
+      .footer_address {
+        font-size: 20px;
+      }
+
+      .footer_title {
+        font-size: 22px !important;
+        font-weight: bold !important;
+      }
+
+      .main-header-area {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+      }
+
+      a[aria-selected="false"] {
+        background-color: rgba(230, 205, 74, 0.2);
+      }
+
+      #missao {
+        background-color: white;
+      }
+
+      .business_info > h3,
+      .business_info > p,
+      .business_info > ul {
+        text-align: center;
+      }
+
+      .business_info > p {
+        font-size: 18px;
+        line-height: 34px !important;
+      }
+
+      .business_info > h3 {
+        font-weight: bold !important;
+        padding-bottom: 30px;
+      }
+
+      .business_info > ul > li {
+        padding: 10px 0px;
+        font-size: 18px;
+      }
+
+      .missao-text {
+        padding-right: 30px;
+        padding-left: 30px;
+      }
+
+      .col-xl-12 {
+        padding: 0px;
+        width: 100%;
+      }
     </style>
     <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "fy7s8gh2x9");
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "fy7s8gh2x9");
     </script>
-</head>
+  </head>
 
-<body>
-    <div style="position: fixed;
-    bottom: 30px;
-    z-index: 10000;
-    left: 30px;
-    background: white;
-    padding: 10px 20px;
-    border-radius: 40px;
-    width: 206px;
-    text-align: center;
-    border: goldenrod 3px solid;
-    font-weight: bold;
-    display:none"
-    id="assista-depoimento-cta" >
-        <a href="#slider-header-area">Clique aqui e assista ao nosso depoimento!</a>
+  <body>
+    <div
+      style="
+        position: fixed;
+        bottom: 30px;
+        z-index: 10000;
+        left: 30px;
+        background: white;
+        padding: 10px 20px;
+        border-radius: 40px;
+        width: 206px;
+        text-align: center;
+        border: goldenrod 3px solid;
+        font-weight: bold;
+        display: none;
+      "
+      id="assista-depoimento-cta"
+    >
+      <a href="#slider-header-area"
+        >Clique aqui e assista ao nosso depoimento!</a
+      >
     </div>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWFCK44" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KWFCK44"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!-- header-start -->
     <header>
-        <div class="header-area sticky">
-            <div id="sticky-header" class="main-header-area">
-                <div class="container nav-container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-3 col-lg-2" style="display:flex;justify-content: space-between;">
-                            <div class="logo-img">
-                                <a href="index.html">
-                                    <img src="./img/2023-01-25_16-18-removebg-preview (1).png" alt=""
-                                        class="logo-image">
-                                </a>
-                            </div>
-                            <div style="position:relative;" class="mobile-whatsapp-icon">
-                                <a href="https://api.whatsapp.com/send/?phone=5515981113016&text=Ol%C3%A1%21+Estou+precisando+de+assist%C3%AAncia+m%C3%A9dica+domiciliar.+Podem+me+ajudar%3F&type=phone_number&app_absent=0"
-                                    target="_blank">
-                                    <div style="display:flex; align-items: center; 
-                                justify-content: space-between;
-                                padding: 8px 25px;
-                                border: slategray 1px solid;
-                                border-radius: 35px; width:145px;
-                            ">
-                                        <img src="/img/WhatsApp_icon.png"
-                                            style="width:20px;height:20px; margin-right:7px" />
-                                        <p style="font-size:14px; font-weight:bold;margin-bottom:0px;">WhatsApp</p>
-                                    </div>
-                                </a>
-
-                            </div>
-
-                        </div>
-                        <div class="col-xl-6 col-lg-7">
-                            <div class="main-menu  d-none d-lg-block">
-                                <nav>
-                                    <ul id="navigation">
-                                        <li><a class="active" href="#sobre-nos">sobre nos</a></li>
-                                        <li><a href="#diferenciais">Diferenciais</a></li>
-                                        <li><a href="#servicos">Serviços
-                                        <li><a href="#missao">Missão</a></li>
-
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                            <div class="Appointment">
-
-                                <a href="https://api.whatsapp.com/send/?phone=5515981113016&text=Ol%C3%A1%21+Estou+precisando+de+assist%C3%AAncia+m%C3%A9dica+domiciliar.+Podem+me+ajudar%3F&type=phone_number&app_absent=0"
-                                    target="_blank">
-                                    <div style="display:flex; align-items: center; 
-                                      justify-content: space-between;
-                                      padding: 8px 25px;
-                                      border: slategray 1px solid;
-                                      border-radius: 35px;
-                                  ">
-                                        <img src="/img/WhatsApp_icon.png"
-                                            style="width:20px;height:20px; margin-right:7px" />
-                                        <p style="font-size:14px; font-weight:bold;margin-bottom:0px;">WhatsApp</p>
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                    </div>
+      <div class="header-area sticky">
+        <div id="sticky-header" class="main-header-area">
+          <div class="container nav-container">
+            <div class="row align-items-center">
+              <div
+                class="col-xl-3 col-lg-2"
+                style="display: flex; justify-content: space-between"
+              >
+                <div class="logo-img">
+                  <a href="index.html">
+                    <img
+                      src="./img/2023-01-25_16-18-removebg-preview (1).png"
+                      alt=""
+                      class="logo-image"
+                    />
+                  </a>
                 </div>
+                <div style="position: relative" class="mobile-whatsapp-icon">
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=5515981113016&text=Ol%C3%A1%21+Estou+precisando+de+assist%C3%AAncia+m%C3%A9dica+domiciliar.+Podem+me+ajudar%3F&type=phone_number&app_absent=0"
+                    target="_blank"
+                  >
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 8px 25px;
+                        border: slategray 1px solid;
+                        border-radius: 35px;
+                        width: 145px;
+                      "
+                    >
+                      <img
+                        src="/img/WhatsApp_icon.png"
+                        style="width: 20px; height: 20px; margin-right: 7px"
+                      />
+                      <p
+                        style="
+                          font-size: 14px;
+                          font-weight: bold;
+                          margin-bottom: 0px;
+                        "
+                      >
+                        WhatsApp
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-7">
+                <div class="main-menu d-none d-lg-block">
+                  <nav>
+                    <ul id="navigation">
+                      <li><a class="active" href="#sobre-nos">sobre nos</a></li>
+                      <li><a href="#diferenciais">Diferenciais</a></li>
+                      <li><a href="#servicos">Serviços</a></li>
+                      <li><a href="#depoimentos">Depoimentos</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                <div class="Appointment">
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=5515981113016&text=Ol%C3%A1%21+Estou+precisando+de+assist%C3%AAncia+m%C3%A9dica+domiciliar.+Podem+me+ajudar%3F&type=phone_number&app_absent=0"
+                    target="_blank"
+                  >
+                    <div
+                      style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 8px 25px;
+                        border: slategray 1px solid;
+                        border-radius: 35px;
+                      "
+                    >
+                      <img
+                        src="/img/WhatsApp_icon.png"
+                        style="width: 20px; height: 20px; margin-right: 7px"
+                      />
+                      <p
+                        style="
+                          font-size: 14px;
+                          font-weight: bold;
+                          margin-bottom: 0px;
+                        "
+                      >
+                        WhatsApp
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="mobile_menu d-block d-lg-none"></div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </header>
     <!-- header-end -->
 
-
-
     <!-- slider_area_start -->
-    <div class="slider_area" style="max-width:1200px; margin:auto " id="slider-header-area">
+    <div
+      class="slider_area"
+      style="max-width: 1200px; margin: auto"
+      id="slider-header-area"
+    >
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          padding: 0px 30px;
+        "
+      >
+        <h1
+          class="site-main-header"
+          style="
+            font-family: Poppins;
+            font-weight: 600;
+            text-align: Center;
+            letter-spacing: -1.2px;
+            padding-bottom: 20px;
+            max-width: 1024px;
+          "
+        >
+          Cuidados domiciliares para as pessoas mais exigentes.
+        </h1>
+        <p
+          style="
+            font-size: 20px;
+            letter-spacing: -0.4px;
+            color: rgba(16, 16, 16, 0.66);
+            max-width: 700px;
+            text-align: center;
+            margin-bottom: 20px;
+          "
+        >
+          Sabemos que cuidar de um ente querido em casa significa proporcionar
+          uma ótima qualidade de vida para o paciente e seus familiares - e não
+          apenas cuidar da doença
+        </p>
+      </div>
+      <div class="header-video-container">
+        <script
+          src="https://fast.wistia.com/embed/medias/8a0ge966sw.jsonp"
+          async
+        ></script>
+        <script
+          src="https://fast.wistia.com/assets/external/E-v1.js"
+          async
+        ></script>
         <div
-            style="display:flex;justify-content: center; align-items: center; flex-direction: column; padding:0px 30px">
-            <h1 class='site-main-header'
-                style="font-family:Poppins; font-weight:600;  text-align:Center; letter-spacing: -1.2px; padding-bottom:20px; max-width:1024px">
-                Cuidados domiciliares para as pessoas mais exigentes.
-            </h1>
-            <p
-                style="font-size:20px; letter-spacing: -0.4px;color:rgba(16,16,16,0.66); max-width:700px; text-align:center;margin-bottom:20px;">
-                Sabemos que cuidar de um ente querido em casa significa proporcionar uma ótima qualidade de vida para o
-                paciente e seus familiares - e não apenas cuidar da doença</p>
-        </div>
-        <div class="header-video-container">
-            <script src="https://fast.wistia.com/embed/medias/8a0ge966sw.jsonp" async></script>
-            <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
-            <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
-                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                    <div class="wistia_embed wistia_async_8a0ge966sw seo=true videoFoam=true"
-                        style="height:100%;position:relative;width:100%">
-                        <div class="wistia_swatch"
-                            style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
-                            <img src="https://fast.wistia.com/embed/medias/8a0ge966sw/swatch"
-                                style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt=""
-                                aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
-                        </div>
-                    </div>
-                </div>
+          class="wistia_responsive_padding"
+          style="padding: 56.25% 0 0 0; position: relative"
+        >
+          <div
+            class="wistia_responsive_wrapper"
+            style="
+              height: 100%;
+              left: 0;
+              position: absolute;
+              top: 0;
+              width: 100%;
+            "
+          >
+            <div
+              class="wistia_embed wistia_async_8a0ge966sw seo=true videoFoam=true"
+              style="height: 100%; position: relative; width: 100%"
+            >
+              <div
+                class="wistia_swatch"
+                style="
+                  height: 100%;
+                  left: 0;
+                  opacity: 0;
+                  overflow: hidden;
+                  position: absolute;
+                  top: 0;
+                  transition: opacity 200ms;
+                  width: 100%;
+                "
+              >
+                <img
+                  src="https://fast.wistia.com/embed/medias/8a0ge966sw/swatch"
+                  style="
+                    filter: blur(5px);
+                    height: 100%;
+                    object-fit: contain;
+                    width: 100%;
+                  "
+                  alt=""
+                  aria-hidden="true"
+                  onload="this.parentNode.style.opacity=1;"
+                />
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- slider_area_end -->
     <!-- welcome_docmed_area_start -->
     <div class="welcome_docmed_area section" id="sobre-nos">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 nurse-image-container">
-                    <div class="welcome_thumb">
-                        <div class="thumb_1">
-                            <img src="img/department/union_neil_1 (1).webp" class="nurse-image" alt="">
-                        </div>
-                        <div class="thumb_2">
-                            <img src="img/department/union_neil_2 (1).webp" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div class="welcome_docmed_info">
-                        <h2>UNION NEIL</h2>
-                        <h3>Um novo conceito de Home Care inédito no Brasil</h3>
-                        <p>A Union Neil traz para o Brasil um novo e inovador conceito em serviços de assistência médica
-                            domiciliar, unindo serviços médicos e hospitalares de alta qualidade a uma abordagem
-                            holística para o bem-estar físico, mental e emocional de nossos pacientes.
-                            <br /><br />
-                            Com uma equipe multidisciplinar capacitada, atendemos tanto casos simples quanto complexos.
-                            Nosso objetivo é oferecer soluções personalizadas para cada paciente e tranquilidade para
-                            seus familiares.
-                            <br /><br />
-                            Compreendemos que a assistência domiciliar precisa ser muito mais ampla do que apenas
-                            cuidados médicos, especialmente para aqueles que buscam envelhecer mantendo a qualidade de
-                            vida e a autonomia. Por isso, a Union Neil também oferece soluções completas de bem-estar,
-                            incluindo serviços de limpeza doméstica, transporte, estética e beleza, entre outros.
-                            <br /><br />
-                            Acreditamos firmemente que é possível envelhecer com saúde, autonomia e bem-estar, sem abrir
-                            mão do conforto do lar. Venha nos conhecer!
-                        </p>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 nurse-image-container">
+            <div class="welcome_thumb">
+              <div class="thumb_1">
+                <img
+                  src="img/department/union_neil_1 (1).webp"
+                  class="nurse-image"
+                  alt=""
+                />
+              </div>
+              <div class="thumb_2">
+                <img src="img/department/union_neil_2 (1).webp" alt="" />
+              </div>
             </div>
+          </div>
+          <div class="col-xl-6 col-lg-6">
+            <div class="welcome_docmed_info">
+              <h2>UNION NEIL</h2>
+              <h3>Um novo conceito de Home Care inédito no Brasil</h3>
+              <p>
+                A Union Neil traz para o Brasil um novo e inovador conceito em
+                serviços de assistência médica domiciliar, unindo serviços
+                médicos e hospitalares de alta qualidade a uma abordagem
+                holística para o bem-estar físico, mental e emocional de nossos
+                pacientes. <br /><br />
+                Com uma equipe multidisciplinar capacitada, atendemos tanto
+                casos simples quanto complexos. Nosso objetivo é oferecer
+                soluções personalizadas para cada paciente e tranquilidade para
+                seus familiares.
+                <br /><br />
+                Compreendemos que a assistência domiciliar precisa ser muito
+                mais ampla do que apenas cuidados médicos, especialmente para
+                aqueles que buscam envelhecer mantendo a qualidade de vida e a
+                autonomia. Por isso, a Union Neil também oferece soluções
+                completas de bem-estar, incluindo serviços de limpeza doméstica,
+                transporte, estética e beleza, entre outros.
+                <br /><br />
+                Acreditamos firmemente que é possível envelhecer com saúde,
+                autonomia e bem-estar, sem abrir mão do conforto do lar. Venha
+                nos conhecer!
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- welcome_docmed_area_end -->
 
     <!-- offers_area_start -->
     <div class="our_department_area section" id="diferenciais">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section_title diferenciais text-center mb-55">
-                        <h3>NOSSOS DIFERENCIAIS</h3>
-                        <p>A Union Neil traz um conceito inédito em cuidados domiciliares
-                        </p>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="section_title diferenciais text-center mb-55">
+              <h3>NOSSOS DIFERENCIAIS</h3>
+              <p>
+                A Union Neil traz um conceito inédito em cuidados domiciliares
+              </p>
             </div>
-            <div class="row diferencial">
-                <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
-                    <div class="single_department">
-                        <div class="department_thumb">
-                            <img src="img/department/dressing_wound_2.jpg" alt="">
-                        </div>
-                        <div class="department_content">
-                            <h3><a href="#">Tratamentos Especializados</a></h3>
-                            <p>Combinamos tecnologia avançada e cuidados personalizados em tratamentos como
-                                fisioterapia, fonoaudiologia e cuidados paliativos. Nossa equipe multidisciplinar
-                                trabalha em colaboração para oferecer tratamentos seguros e eficazes.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
-                    <div class="single_department">
-                        <div class="department_thumb">
-                            <img src="img/department/driver_2 (1).webp" alt="">
-                        </div>
-                        <div class="department_content">
-                            <h3><a href="#">Serviço de Motorista</a></h3>
-                            <p>Nós valorizamos a autonomia como um fator chave para a qualidade de vida. Oferecemos
-                                serviço de transporte com motorista para promover a independência de nossos pacientes e
-                                suas famílias.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
-                    <div class="single_department">
-                        <div class="department_thumb">
-                            <img src="img/department/pedicure_2 (1) (1).webp" alt="">
-                        </div>
-                        <div class="department_content">
-                            <h3><a href="#">Cuidado Estético</a></h3>
-                            <p>Cuidamos da autoestima dos pacientes com serviços estéticos domiciliares, promovendo
-                                bem-estar e felicidade. Realizamos tudo com cuidado e atenção em seu lar.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
-                    <div class="single_department">
-                        <div class="department_thumb">
-                            <img src="img/department/physio_ball (1).webp" alt="">
-                        </div>
-                        <div class="department_content">
-                            <h3><a href="#">Terapia Ocupacional</a></h3>
-                            <p>Nossa Terapia Ocupacional em casa ajuda os pacientes a superar desafios diários,
-                                promovendo a melhora de habilidades cognitivas, físicas e emocionais. O cuidado
-                                personalizado incentiva a independência e autonomia, melhorando a autoestima e a
-                                qualidade de vida. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
-                    <div class="single_department">
-                        <div class="department_thumb">
-                            <img src="img/department/lab_results (1).webp" alt="">
-                        </div>
-                        <div class="department_content">
-                            <h3><a href="#">Exames laboratoriais</a></h3>
-                            <p>Oferecemos coletas para exames laboratoriais, no conforto do seu lar. Nossa equipe
-                                especializada garante segurança e praticidade, proporcionando comodidade e reduzindo
-                                riscos de contágio em deslocamentos.'
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
-                    <div class="single_department">
-                        <div class="department_thumb">
-                            <img src="img/department/grua_persona_mayor.webp" alt="">
-                        </div>
-                        <div class="department_content">
-                            <h3><a href="#">Equipamentos Avançados</a></h3>
-                            <p>Sabemos que o conforto e a segurança são prioridades para nossos pacientes e suas
-                                famílias. É por isso que utilizamos tecnologia de última geração em nossos cuidados
-                                domiciliares, oferecendo inovação e tranquilidade para um tratamento mais eficaz e
-                                confiável.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="row diferencial">
+          <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
+            <div class="single_department">
+              <div class="department_thumb">
+                <img src="img/department/dressing_wound_2.jpg" alt="" />
+              </div>
+              <div class="department_content">
+                <h3><a href="#">Tratamentos Especializados</a></h3>
+                <p>
+                  Combinamos tecnologia avançada e cuidados personalizados em
+                  tratamentos como fisioterapia, fonoaudiologia e cuidados
+                  paliativos. Nossa equipe multidisciplinar trabalha em
+                  colaboração para oferecer tratamentos seguros e eficazes.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
+            <div class="single_department">
+              <div class="department_thumb">
+                <img src="img/department/driver_2 (1).webp" alt="" />
+              </div>
+              <div class="department_content">
+                <h3><a href="#">Serviço de Motorista</a></h3>
+                <p>
+                  Nós valorizamos a autonomia como um fator chave para a
+                  qualidade de vida. Oferecemos serviço de transporte com
+                  motorista para promover a independência de nossos pacientes e
+                  suas famílias.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
+            <div class="single_department">
+              <div class="department_thumb">
+                <img src="img/department/pedicure_2 (1) (1).webp" alt="" />
+              </div>
+              <div class="department_content">
+                <h3><a href="#">Cuidado Estético</a></h3>
+                <p>
+                  Cuidamos da autoestima dos pacientes com serviços estéticos
+                  domiciliares, promovendo bem-estar e felicidade. Realizamos
+                  tudo com cuidado e atenção em seu lar.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
+            <div class="single_department">
+              <div class="department_thumb">
+                <img src="img/department/physio_ball (1).webp" alt="" />
+              </div>
+              <div class="department_content">
+                <h3><a href="#">Terapia Ocupacional</a></h3>
+                <p>
+                  Nossa Terapia Ocupacional em casa ajuda os pacientes a superar
+                  desafios diários, promovendo a melhora de habilidades
+                  cognitivas, físicas e emocionais. O cuidado personalizado
+                  incentiva a independência e autonomia, melhorando a autoestima
+                  e a qualidade de vida.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
+            <div class="single_department">
+              <div class="department_thumb">
+                <img src="img/department/lab_results (1).webp" alt="" />
+              </div>
+              <div class="department_content">
+                <h3><a href="#">Exames laboratoriais</a></h3>
+                <p>
+                  Oferecemos coletas para exames laboratoriais, no conforto do
+                  seu lar. Nossa equipe especializada garante segurança e
+                  praticidade, proporcionando comodidade e reduzindo riscos de
+                  contágio em deslocamentos.'
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6 col-lg-4 diferencial">
+            <div class="single_department">
+              <div class="department_thumb">
+                <img src="img/department/grua_persona_mayor.webp" alt="" />
+              </div>
+              <div class="department_content">
+                <h3><a href="#">Equipamentos Avançados</a></h3>
+                <p>
+                  Sabemos que o conforto e a segurança são prioridades para
+                  nossos pacientes e suas famílias. É por isso que utilizamos
+                  tecnologia de última geração em nossos cuidados domiciliares,
+                  oferecendo inovação e tranquilidade para um tratamento mais
+                  eficaz e confiável.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- offers_area_end -->
 
     <!-- Serviços area starts -->
 
     <div class="our_services_area section" id="servicos">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section_title text-center mb-55">
-                        <h3>Nossos Serviços</h3>
-                        <p>Conheça os principais serviços que disponibilizamos em domicílio.</p>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="section_title text-center mb-55">
+              <h3>Nossos Serviços</h3>
+              <p>
+                Conheça os principais serviços que disponibilizamos em
+                domicílio.
+              </p>
             </div>
-            <div class="row">
-
-
-                <div class="welcome_docmed_info">
-
-
-                    <ul class="services-list">
-                        <li> <i class="flaticon-right"></i> Administração de medicamentos</li>
-                        <li> <i class="flaticon-right"></i> Coleta em domicílio </li>
-                        <li> <i class="flaticon-right"></i> Fisioterapia</li>
-                        <li> <i class="flaticon-right"></i> Fonoaudiologia</li>
-                        <li> <i class="flaticon-right"></i> Internação domiciliar</li>
-                        <li> <i class="flaticon-right"></i> Psicologia </li>
-                        <li> <i class="flaticon-right"></i> Serviço de nutrição </li>
-                        <li> <i class="flaticon-right"></i> Serviço de remoção</li>
-                        <li> <i class="flaticon-right"></i> Serviço técnico em enfermagem</li>
-                        <li> <i class="flaticon-right"></i> Serviço de cuidador</li>
-                        <li> <i class="flaticon-right"></i> Visita de enfermagem</li>
-                        <li> <i class="flaticon-right"></i> Visita Medica domiciliar</li>
-                        <li> <i class="flaticon-right"></i> Motorista</li>
-                        <li> <i class="flaticon-right"></i> Cuidados Estéticos</li>
-                        <li> <i class="flaticon-right"></i> Terapia Ocupacional</li>
-                    </ul>
-                </div>
-
-                <div class="col-xl-6 col-lg-6">
-                    <div class="welcome_docmed_info">
-                        <ul class="services-list">
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="row">
+          <div class="welcome_docmed_info">
+            <ul class="services-list">
+              <li>
+                <i class="flaticon-right"></i> Administração de medicamentos
+              </li>
+              <li><i class="flaticon-right"></i> Coleta em domicílio</li>
+              <li><i class="flaticon-right"></i> Fisioterapia</li>
+              <li><i class="flaticon-right"></i> Fonoaudiologia</li>
+              <li><i class="flaticon-right"></i> Internação domiciliar</li>
+              <li><i class="flaticon-right"></i> Psicologia</li>
+              <li><i class="flaticon-right"></i> Serviço de nutrição</li>
+              <li><i class="flaticon-right"></i> Serviço de remoção</li>
+              <li>
+                <i class="flaticon-right"></i> Serviço técnico em enfermagem
+              </li>
+              <li><i class="flaticon-right"></i> Serviço de cuidador</li>
+              <li><i class="flaticon-right"></i> Visita de enfermagem</li>
+              <li><i class="flaticon-right"></i> Visita Medica domiciliar</li>
+              <li><i class="flaticon-right"></i> Motorista</li>
+              <li><i class="flaticon-right"></i> Cuidados Estéticos</li>
+              <li><i class="flaticon-right"></i> Terapia Ocupacional</li>
+            </ul>
+          </div>
+
+          <div class="col-xl-6 col-lg-6">
+            <div class="welcome_docmed_info">
+              <ul class="services-list"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Serviços area ends -->
@@ -813,145 +965,164 @@
         </div>
     </div> -->
     <!-- testmonial_area_end -->
+    <div class="section_title text-center mb-55" id="depoimentos">
+      <h3>Depoimentos</h3>
+      <p>Confira o que os nossos pacientes e clientes falam sobre nós</p>
+    </div>
 
-    <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
-    <div class="commonninja_component pid-9a45e7f7-1d75-4207-b5be-5407744d2ba8" style="margin-top:60px"
-        id="google-avaliacoes"></div>
+    <script
+      src="https://cdn.commoninja.com/sdk/latest/commonninja.js"
+      defer
+    ></script>
+    <div
+      class="commonninja_component pid-9a45e7f7-1d75-4207-b5be-5407744d2ba8"
+      style="margin-top: 60px"
+      id="google-avaliacoes"
+    ></div>
     <div class="section">
-        <a
-            href="https://www.google.com/maps/place/Union+Neil+%7C+Assist%C3%AAncia+M%C3%A9dica+Domiciliar/@-23.5120161,-47.4613799,17z/data=!4m16!1m9!3m8!1s0x94c58ba24e8c57f9:0x24b7cb939465f926!2sUnion+Neil+%7C+Assist%C3%AAncia+M%C3%A9dica+Domiciliar!8m2!3d-23.5120161!4d-47.458805!9m1!1b1!16s%2Fg%2F11sd2y75s5!3m5!1s0x94c58ba24e8c57f9:0x24b7cb939465f926!8m2!3d-23.5120161!4d-47.458805!16s%2Fg%2F11sd2y75s5?entry=ttu">
-            <p style="
-    max-width:200px;
-    margin: auto;
-    text-align: center;
-    font-size: 21px;
-    color: rgb(31, 78, 129);
-    font-weight: bold;
-    margin-top: 20px; margin-bottom:45px">Confira todas as avaliações</p>
-        </a>
+      <a
+        href="https://www.google.com/maps/place/Union+Neil+%7C+Assist%C3%AAncia+M%C3%A9dica+Domiciliar/@-23.5120161,-47.4613799,17z/data=!4m16!1m9!3m8!1s0x94c58ba24e8c57f9:0x24b7cb939465f926!2sUnion+Neil+%7C+Assist%C3%AAncia+M%C3%A9dica+Domiciliar!8m2!3d-23.5120161!4d-47.458805!9m1!1b1!16s%2Fg%2F11sd2y75s5!3m5!1s0x94c58ba24e8c57f9:0x24b7cb939465f926!8m2!3d-23.5120161!4d-47.458805!16s%2Fg%2F11sd2y75s5?entry=ttu"
+      >
+        <p
+          style="
+            max-width: 200px;
+            margin: auto;
+            text-align: center;
+            font-size: 21px;
+            color: #cbac17;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 45px;
+            border: 2px solid #b19717;
+            border-radius: 45px;
+            padding: 10px;
+          "
+        >
+          Confira todas as avaliações
+        </p>
+      </a>
     </div>
 
     <!-- Emergency_contact start -->
     <div class="Emergency_contact section" id="contato">
-        <div class="container-fluid p-0">,
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section_title fale_conosco text-center mb-55">
-                        <h3>Fale conosco</h3>
-                    </div>
-                </div>
+      <div class="container-fluid p-0">
+        ,
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="section_title fale_conosco text-center mb-55">
+              <h3>Fale conosco</h3>
             </div>
-            <div class="row no-gutters">
-                <div class="col-xl-6">
-                    <div
-                        class="single_emergency d-flex align-items-center justify-content-center emergency_bg_1 overlay_skyblue">
-                        <div class="info">
-                            <h3>Conheça mais sobre nossos serviços</h3>
-                        </div>
-                        <div class="info_button">
-                            <a href="https://wa.me/+5515981113016" target="_blank" class="boxed-btn3-white">WhatsApp</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div
-                        class="single_emergency d-flex align-items-center justify-content-center emergency_bg_2 overlay_skyblue">
-                        <div class="info">
-                            <h3>Quer trabalhar conosco?</h3>
-                        </div>
-                        <div class="info_button">
-                            <a href="https://wa.me/+5515981113016" class="boxed-btn3-white">Enviar Currículo</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="row no-gutters">
+          <div class="col-xl-6">
+            <div
+              class="single_emergency d-flex align-items-center justify-content-center emergency_bg_1 overlay_skyblue"
+            >
+              <div class="info">
+                <h3>Conheça mais sobre nossos serviços</h3>
+              </div>
+              <div class="info_button">
+                <a
+                  href="https://wa.me/+5515981113016"
+                  target="_blank"
+                  class="boxed-btn3-white"
+                  >WhatsApp</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6">
+            <div
+              class="single_emergency d-flex align-items-center justify-content-center emergency_bg_2 overlay_skyblue"
+            >
+              <div class="info">
+                <h3>Quer trabalhar conosco?</h3>
+              </div>
+              <div class="info_button">
+                <a href="https://wa.me/+5515981113016" class="boxed-btn3-white"
+                  >Enviar Currículo</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Emergency_contact end -->
     <!-- Google Map section begin -->
 
-        <div class="col-xl-12">
-            <div class="section_title text-center mb-55">
-                <h3>Venha conhecer nosso espaço de acolhimento ao familiar</h3>
-                <p>Clique no ícone para ver mais informações</p>
-            </div>
+    <div class="col-xl-12">
+      <div class="section_title text-center mb-55">
+        <h3>Venha conhecer nosso espaço de acolhimento ao familiar</h3>
+        <p>Clique no ícone para ver mais informações</p>
+      </div>
     </div>
-    <div id="map">
-    </div>
+    <div id="map"></div>
 
     <!-- Google Map section end -->
     <!-- footer start -->
     <footer class="footer">
-        <div class="footer_top">
-            <div class="container footer-container">
-                <div class="row footer-box">
-                    <div class="col-xl-4 col-md-6 col-lg-4">
-                        <div class="footer_widget">
-                            <div class="footer_logo">
-                                <a href="#">
-                                    <img src="img/Group 46boxed logo.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2  col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Email
-                            </h3>
-                            <p class="footer_address">
-                                sirlene@unionneil.com.br
-
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-md-6 col-lg-2">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Telefone
-                            </h3>
-                            <p class="footer_address">
-                                (15) 98 111-3016
-
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Endereço
-                            </h3>
-                            <p class="footer_address">
-                                Av. Washington Luiz 310, <br /> Torre White, <br>
-                                Jardim Faculdade, <br>
-                                Sorocaba<br />
-                                SP
-
-                            </p>
-                        </div>
-                    </div>
+      <div class="footer_top">
+        <div class="container footer-container">
+          <div class="row footer-box">
+            <div class="col-xl-4 col-md-6 col-lg-4">
+              <div class="footer_widget">
+                <div class="footer_logo">
+                  <a href="#">
+                    <img src="img/Group 46boxed logo.png" alt="" />
+                  </a>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="copy-right_text">
-            <div class="container">
-                <div class="footer_border"></div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <p class="copy_right text-center" style="font-size: 22px">
-                            CNPJ 48.768.101/0001-33 <br /> <br>
-                            <a href="/img/Política_de_Privacidade_Union_Neil.pdf" download
-                                style="font-size: 18px"><strong>POLÍTICA DE PRIVACIDADE DE DADOS</strong></a>
-                        </p>
-                    </div>
-                </div>
+            <div class="col-xl-2 col-md-6 col-lg-3">
+              <div class="footer_widget">
+                <h3 class="footer_title">Email</h3>
+                <p class="footer_address">sirlene@unionneil.com.br</p>
+              </div>
             </div>
+            <div class="col-xl-2 col-md-6 col-lg-2">
+              <div class="footer_widget">
+                <h3 class="footer_title">Telefone</h3>
+                <p class="footer_address">(15) 98 111-3016</p>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 col-lg-3">
+              <div class="footer_widget">
+                <h3 class="footer_title">Endereço</h3>
+                <p class="footer_address">
+                  Av. Washington Luiz 310, <br />
+                  Torre White, <br />
+                  Jardim Faculdade, <br />
+                  Sorocaba<br />
+                  SP
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="copy-right_text">
+        <div class="container">
+          <div class="footer_border"></div>
+          <div class="row">
+            <div class="col-xl-12">
+              <p class="copy_right text-center" style="font-size: 22px">
+                CNPJ 48.768.101/0001-33 <br />
+                <br />
+                <a
+                  href="/img/Política_de_Privacidade_Union_Neil.pdf"
+                  download
+                  style="font-size: 18px"
+                  ><strong>POLÍTICA DE PRIVACIDADE DE DADOS</strong></a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
     <!-- footer end  -->
-
-
-
 
     <!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
@@ -979,89 +1150,96 @@
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/mail-script.js"></script>
     <script src="js/main.js"></script>
-    <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0ExN4L1Waqi6d0noSQHGw7l9xeGRmuZc&callback=initMap">
-    </script>
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0ExN4L1Waqi6d0noSQHGw7l9xeGRmuZc&callback=initMap"
+    ></script>
     <script>
-        function initMap() {
-            const unionNeilOffice = { lat: -23.5122291, lng: -47.458910 };
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 16,
-                center: unionNeilOffice
+      function initMap() {
+        const unionNeilOffice = { lat: -23.5122291, lng: -47.45891 };
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 16,
+          center: unionNeilOffice,
+        });
+        const contentString =
+          '<div id="content">' +
+          '<div id="siteNotice">' +
+          "</div>" +
+          '<h3 id="firstHeading" class="firstHeading">Escritório Union Neil</h3>' +
+          '<div id="bodyContent">' +
+          "<p>Av. Washington Luiz 310, Torre White <br/> Jardim Faculdade, Sorocaba, SP <br/> 18031-000 <br/> <a href='https://goo.gl/maps/Rxa5RgpZ6ukGm8VQ7' target='_blank' style='text-decoration:underline;color:blue'>Abrir no Google Maps</a></p>" +
+          "</div>" +
+          "</div>";
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          ariaLabel: "Uluru",
+        });
+        const marker = new google.maps.Marker({
+          position: unionNeilOffice,
+          icon: "img/union_neil_pin_80x106_2_65x86.png",
+          map: map,
+        });
+
+        marker.addListener("click", () => {
+          infowindow.open({
+            anchor: marker,
+            map,
+          });
+        });
+      }
+
+      let strayComma =
+        document.body.querySelector(".container-fluid").firstChild;
+      strayComma.textContent = "";
+
+      // let navContainer = document.body.querySelector('.nav-container')
+      // let imageContainer = document.body.querySelector('.image-container')
+      // let containerPadding = window.getComputedStyle(navContainer).getPropertyValue("margin-left")
+      // imageContainer.style.paddingLeft = `${containerPadding}`
+
+      window.addEventListener("resize", () => {
+        let dynamicContainerPadding = window
+          .getComputedStyle(navContainer)
+          .getPropertyValue("margin-left");
+        imageContainer.style.paddingLeft = `${dynamicContainerPadding}`;
+        console.log(imageContainer.style.paddingLeft);
+      });
+
+      window.addEventListener("load", () => {
+        let videoContainer = document.body.querySelector(
+          ".header-video-container"
+        );
+        videoContainer.addEventListener("click", (e) => {
+          videoContainer.classList.add("watched");
+        });
+
+        setTimeout(() => {
+          let commonNinja = document.body.querySelector(
+            ".commonninja_component"
+          );
+          let appname = commonNinja.shadowRoot.querySelector(
+            ".commonninja-ribbon"
+          );
+          appname.style.display = "none";
+        }, 1000);
+        setTimeout(() => {
+          let assistaDepoimentoCTA = document.getElementById(
+            "assista-depoimento-cta"
+          );
+          let playButton = document.body.querySelector(".w-big-play-button");
+          if (!videoContainer.classList.contains("watched")) {
+            assistaDepoimentoCTA.style.display = "block";
+            assistaDepoimentoCTA.addEventListener("click", (e) => {
+              assistaDepoimentoCTA.style.display = "none";
+
+              playButton.click();
             });
-            const contentString =
-                '<div id="content">' +
-                '<div id="siteNotice">' +
-                "</div>" +
-                '<h3 id="firstHeading" class="firstHeading">Escritório Union Neil</h3>' +
-                '<div id="bodyContent">' +
-                "<p>Av. Washington Luiz 310, Torre White <br/> Jardim Faculdade, Sorocaba, SP <br/> 18031-000 <br/> <a href='https://goo.gl/maps/Rxa5RgpZ6ukGm8VQ7' target='_blank' style='text-decoration:underline;color:blue'>Abrir no Google Maps</a></p>" +
-                "</div>" +
-                "</div>";
-            const infowindow = new google.maps.InfoWindow({
-                content: contentString,
-                ariaLabel: "Uluru",
-            });
-            const marker = new google.maps.Marker({
-                position: unionNeilOffice,
-                icon: 'img/union_neil_pin_80x106_2_65x86.png',
-                map: map,
-            });
-
-            marker.addListener("click", () => {
-                infowindow.open({
-                    anchor: marker,
-                    map,
-                });
-            });
-        }
-
-        let strayComma = document.body.querySelector('.container-fluid').firstChild;
-        strayComma.textContent = '';
-
-
-        // let navContainer = document.body.querySelector('.nav-container')
-        // let imageContainer = document.body.querySelector('.image-container')
-        // let containerPadding = window.getComputedStyle(navContainer).getPropertyValue("margin-left")
-        // imageContainer.style.paddingLeft = `${containerPadding}`
-
-
-        window.addEventListener('resize', () => {
-
-            let dynamicContainerPadding = window.getComputedStyle(navContainer).getPropertyValue("margin-left")
-            imageContainer.style.paddingLeft = `${dynamicContainerPadding}`
-            console.log(imageContainer.style.paddingLeft)
-        })
-
-        window.addEventListener('load', () => {
-            let videoContainer = document.body.querySelector('.header-video-container');
-            videoContainer.addEventListener('click', (e) => {
-               videoContainer.classList.add('watched')
-            })
-            setTimeout(() => {
-                let appname = document.body.querySelector('.commonninja-ribbon');
-                appname.style.display = 'none';
-            }, 300)
-            setTimeout(()=>{
-              let assistaDepoimentoCTA = document.getElementById('assista-depoimento-cta');
-              let playButton = document.body.querySelector('.w-big-play-button');
-              if (!videoContainer.classList.contains('watched')) {
-                assistaDepoimentoCTA.style.display = 'block';
-                assistaDepoimentoCTA.addEventListener('click', (e) => {
-                assistaDepoimentoCTA.style.display = "none"
-                
-                playButton.click();
-              })
-              }
-              playButton.addEventListener('click', (e) => {
-                assistaDepoimentoCTA.style.display = "none"
-              })
-              
-            }, 8000)
-        })
-
-
+          }
+          playButton.addEventListener("click", (e) => {
+            assistaDepoimentoCTA.style.display = "none";
+          });
+        }, 8000);
+      });
     </script>
-</body>
-
+  </body>
 </html>
