@@ -441,7 +441,8 @@
   </head>
 
   <body>
-    <div
+    <a
+      href="#slider-header-area"
       style="
         position: fixed;
         bottom: 30px;
@@ -457,11 +458,9 @@
         display: none;
       "
       id="assista-depoimento-cta"
+      >Clique aqui e assista ao nosso depoimento!</a
     >
-      <a href="#slider-header-area"
-        >Clique aqui e assista ao nosso depoimento!</a
-      >
-    </div>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe
@@ -1231,7 +1230,6 @@
             assistaDepoimentoCTA.style.display = "block";
             assistaDepoimentoCTA.addEventListener("click", (e) => {
               assistaDepoimentoCTA.style.display = "none";
-
               playButton.click();
             });
           }
