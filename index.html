@@ -1,23 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="pt-BR">
   <head>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({
-          "gtm.start": new Date().getTime(),
-          event: "gtm.js",
-        });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-KWFCK44");
-    </script>
-    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Union Neil | Assistência Médica Domiciliar</title>
@@ -31,6 +14,34 @@
       type="image/x-icon"
       href="img/union_neil_favicon.png"
     />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-11343656312"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-11343656312");
+    </script>
+    <script>
+      function gtag_report_conversion(url) {
+        console.log("gtag_report_conversion");
+        var callback = function () {
+          if (typeof url != "undefined") {
+            window.location = url;
+          }
+        };
+        gtag("event", "conversion", {
+          send_to: "AW-11343656312/jEc9CKjlvOQYEPjqiaEq",
+          event_callback: callback,
+        });
+        return false;
+      }
+    </script>
     <!-- CSS here -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/owl.carousel.min.css" />
@@ -441,36 +452,6 @@
   </head>
 
   <body>
-    <a
-      href="#slider-header-area"
-      style="
-        position: fixed;
-        bottom: 30px;
-        z-index: 10000;
-        left: 30px;
-        background: white;
-        padding: 10px 20px;
-        border-radius: 40px;
-        width: 206px;
-        text-align: center;
-        border: goldenrod 3px solid;
-        font-weight: bold;
-        display: none;
-      "
-      id="assista-depoimento-cta"
-      >Clique aqui e assista ao nosso depoimento!</a
-    >
-
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-KWFCK44"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <!-- header-start -->
     <header>
       <div class="header-area sticky">
@@ -494,6 +475,7 @@
                   <a
                     href="https://api.whatsapp.com/send/?phone=5515981113016&text=Ol%C3%A1%21+Estou+precisando+de+assist%C3%AAncia+m%C3%A9dica+domiciliar.+Podem+me+ajudar%3F&type=phone_number&app_absent=0"
                     target="_blank"
+                    class="click-to-whatsapp"
                   >
                     <div
                       style="
@@ -540,6 +522,7 @@
                   <a
                     href="https://api.whatsapp.com/send/?phone=5515981113016&text=Ol%C3%A1%21+Estou+precisando+de+assist%C3%AAncia+m%C3%A9dica+domiciliar.+Podem+me+ajudar%3F&type=phone_number&app_absent=0"
                     target="_blank"
+                    class="click-to-whatsapp"
                   >
                     <div
                       style="
@@ -1154,6 +1137,15 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0ExN4L1Waqi6d0noSQHGw7l9xeGRmuZc&callback=initMap"
     ></script>
     <script>
+      // initialize 'click to whatsapp' google ads conversion
+      const whatsappButtons =
+        document.body.querySelectorAll(".click-to-whatsapp");
+      whatsappButtons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          gtag_report_conversion();
+        });
+      });
+
       function initMap() {
         const unionNeilOffice = { lat: -23.5122291, lng: -47.45891 };
         const map = new google.maps.Map(document.getElementById("map"), {
@@ -1191,53 +1183,20 @@
         document.body.querySelector(".container-fluid").firstChild;
       strayComma.textContent = "";
 
-      // let navContainer = document.body.querySelector('.nav-container')
-      // let imageContainer = document.body.querySelector('.image-container')
-      // let containerPadding = window.getComputedStyle(navContainer).getPropertyValue("margin-left")
-      // imageContainer.style.paddingLeft = `${containerPadding}`
+      // let navContainer = document.body.querySelector(".nav-container");
+      // let imageContainer = document.body.querySelector(".image-container");
+      // let containerPadding = window
+      //   .getComputedStyle(navContainer)
+      //   .getPropertyValue("margin-left");
+      // imageContainer.style.paddingLeft = `${containerPadding}`;
 
-      window.addEventListener("resize", () => {
-        let dynamicContainerPadding = window
-          .getComputedStyle(navContainer)
-          .getPropertyValue("margin-left");
-        imageContainer.style.paddingLeft = `${dynamicContainerPadding}`;
-        console.log(imageContainer.style.paddingLeft);
-      });
-
-      window.addEventListener("load", () => {
-        let videoContainer = document.body.querySelector(
-          ".header-video-container"
-        );
-        videoContainer.addEventListener("click", (e) => {
-          videoContainer.classList.add("watched");
-        });
-
-        setTimeout(() => {
-          let commonNinja = document.body.querySelector(
-            ".commonninja_component"
-          );
-          let appname = commonNinja.shadowRoot.querySelector(
-            ".commonninja-ribbon"
-          );
-          appname.style.display = "none";
-        }, 1000);
-        setTimeout(() => {
-          let assistaDepoimentoCTA = document.getElementById(
-            "assista-depoimento-cta"
-          );
-          let playButton = document.body.querySelector(".w-big-play-button");
-          if (!videoContainer.classList.contains("watched")) {
-            assistaDepoimentoCTA.style.display = "block";
-            assistaDepoimentoCTA.addEventListener("click", (e) => {
-              assistaDepoimentoCTA.style.display = "none";
-              playButton.click();
-            });
-          }
-          playButton.addEventListener("click", (e) => {
-            assistaDepoimentoCTA.style.display = "none";
-          });
-        }, 8000);
-      });
+      // window.addEventListener("resize", () => {
+      //   let dynamicContainerPadding = window
+      //     .getComputedStyle(navContainer)
+      //     .getPropertyValue("margin-left");
+      //   imageContainer.style.paddingLeft = `${dynamicContainerPadding}`;
+      //   console.log(imageContainer.style.paddingLeft);
+      // });
     </script>
   </body>
 </html>
