@@ -42,6 +42,8 @@ hamburgerMenu.addEventListener("click", () => {
 });
 
 // Google Map JS
+let map = document.getElementById("map");
+console.log(map);
 function initMap() {
   const unionNeilOffice = { lat: -23.5122291, lng: -47.45891 };
   const map = new google.maps.Map(document.getElementById("map"), {
