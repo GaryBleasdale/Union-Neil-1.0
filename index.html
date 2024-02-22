@@ -4,6 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./img/union_neil_favicon.png" />
+    <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=AW-11343656312"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    // Google Ads Conversion Tracking (Existing)
+    gtag("config", "AW-11343656312");
+
+    // Add GA4 Configuration
+    gtag("config", "G-T55SWE3RWZ");
+  </script>
+  <script>
+    function gtag_report_conversion(url) {
+      console.log("gtag_report_conversion");
+      var callback = function () {
+        if (typeof url != "undefined") {
+          window.location = url;
+        }
+      };
+      gtag("event", "conversion", {
+        send_to: "AW-11343656312/jEc9CKjlvOQYEPjqiaEq",
+        event_callback: callback,
+      });
+      return false;
+    }
+  </script>
     <title>Union Neil | Assistência em Cuidados Domiciliares</title>
     <link rel="stylesheet" href="./dist/tailwind-output.css" />
     <!-- Font import-->
