@@ -14,7 +14,8 @@ window.addEventListener("scroll", () => {
 const hamburgerMenu = document.querySelector(".hamburger-menu");
 const mobileMenu = document.querySelector(".mobile-menu");
 
-hamburgerMenu.addEventListener("click", () => {
+// Function to toggle mobile menu visibility
+function toggleMobileMenu() {
   mobileMenu.classList.toggle("opacity-100");
   mobileMenu.classList.toggle("opacity-0");
 
@@ -23,27 +24,39 @@ hamburgerMenu.addEventListener("click", () => {
 
   mobileMenu.classList.toggle("translate-y-full");
   mobileMenu.classList.toggle("translate-y-0");
-  document.addEventListener("click", (e) => {
-    if (
-      !mobileMenu.contains(e.target) &&
-      !hamburgerMenu.contains(e.target) &&
-      mobileMenu.classList.contains("translate-y-0")
-    ) {
-      mobileMenu.classList.toggle("opacity-100");
-      mobileMenu.classList.toggle("opacity-0");
+}
 
-      mobileMenu.classList.toggle("hidden");
-      mobileMenu.classList.toggle("block");
+// Event listener for the hamburger menu
+hamburgerMenu.addEventListener("click", () => {
+  toggleMobileMenu();
+});
 
-      mobileMenu.classList.toggle("translate-y-full");
-      mobileMenu.classList.toggle("translate-y-0");
-    }
+// Event listener for clicking outside the mobile menu
+document.addEventListener("click", (e) => {
+  if (
+    !mobileMenu.contains(e.target) &&
+    !hamburgerMenu.contains(e.target) &&
+    mobileMenu.classList.contains("translate-y-0")
+  ) {
+    toggleMobileMenu();
+  }
+});
+
+// Prevent the document-level event listener from hiding the menu when it's clicked
+mobileMenu.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+// Add event listeners to links inside the mobile menu to close the menu on click
+const menuLinks = mobileMenu.querySelectorAll("a");
+menuLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    toggleMobileMenu();
   });
 });
 
 // Google Map JS
-let map = document.getElementById("map");
-console.log(map);
+
 function initMap() {
   const unionNeilOffice = { lat: -23.5122291, lng: -47.45891 };
   const map = new google.maps.Map(document.getElementById("map"), {
