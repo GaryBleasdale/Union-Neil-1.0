@@ -49,11 +49,11 @@ mobileMenu.addEventListener("click", (e) => {
 
 // Add event listeners to links inside the mobile menu to close the menu on click
 const menuLinks = mobileMenu.querySelectorAll("a");
-menuLinks.forEach((link) => {
+for (link of menuLinks) {
   link.addEventListener("click", () => {
     toggleMobileMenu();
   });
-});
+}
 
 // Google Map JS
 
@@ -76,7 +76,7 @@ function initMap() {
     content: contentString,
     ariaLabel: "Uluru",
   });
-  const marker = new google.maps.Marker({
+  const marker = new google.maps.marker.AdvancedMarkerElement({
     position: unionNeilOffice,
     icon: "img/union_neil_pin_80x106_2_65x86.png",
     map: map,
