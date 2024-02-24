@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@googlemaps/map-loader": "^0.2.0",
     "@netlify/functions": "^2.4.1",
     "@splidejs/splide": "^4.1.4"
   },

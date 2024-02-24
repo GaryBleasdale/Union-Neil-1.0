@@ -79,8 +79,8 @@
           </div>
           <div class="items-center justify-center w-full hidden lg:flex">
             <ul class="flex-row w-[70%] flex justify-around">
-              <li class="hover:cursor-pointer"><a href="#historias-do-coracao">Histórias do Coração</a></li>
-              <li class="hover:cursor-pointer"><a href="#servicos">Nossos Serviços</a></li>
+              <li class="hover:cursor-pointer hover:font-bold"><a href="#historias-do-coracao">Histórias do Coração</a></li>
+              <li class="hover:cursor-pointer relative"><a href="#servicos">Nossos Serviços</a></li>
               <li class="hover:cursor-pointer"><a href="#depoimentos">Depoimentos</a></li>
               <li class="hover:cursor-pointer"><a href="#contato">Contato</a></li>
             </ul>
@@ -94,7 +94,7 @@
             <span class="block w-full h-0.5 bg-black"></span>
           </button>
           <div
-            class="transform transition-all ease-in-out duration-300 translate-y-full opacity-0 hidden absolute w-full right-0 bottom-[-300px] bg-white mobile-menu"
+            class="transform transition-all ease-in-out duration-300 translate-y-full opacity-0 hidden absolute w-full right-0 bottom-[-299px] bg-white mobile-menu px-5 py-0 border-b-2 border-b-[goldenrod] border-solid"
           >
             <ul class="flex flex-col w-[70%] justify-around h-[300px]">
               <li class="hover:cursor-pointer"><a href="#historias-do-coracao">Histórias do Coração</a></li>
@@ -168,7 +168,7 @@
             />
           </div>
 
-          <div class="gap-4 flex flex-col md:w-1/2 text-xl">
+          <div class="gap-4 flex flex-col md:w-1/2 text-xl md:p-4">
             <div class="hidden md:block text-2xl font-bold">
               <h2>
                 Um novo conceito de Cuidados Domiciliares, inédito no Brasil
@@ -237,13 +237,21 @@
         <div class="md:block text-2xl font-bold mb-5">
           <h2>Conheça os nossos serviços</h2>
           <div class="title-underline"></div>
-          <div class="py-12 bg-gray-50" id="servicos">
-            <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
-              <p class="font-bold">Seção em Construção</p>
-              <p>Por favor, <a href="https://api.whatsapp.com/send/?phone=5515981113016&text=Ol%C3%A1%21+Estou+precisando+de+assist%C3%AAncia+m%C3%A9dica+domiciliar.+Podem+me+ajudar%3F&type=phone_number&app_absent=0" target="_blank" class="class="underline text-yellow-800 hover:text-yellow-600">clique aqui</a> para mais informações.</p>
-            </div>
-            <div id="depoimentos"></div>
           </div>
+          <div class="text-lg gap-2 flex flex-col mb-5 lg:my-10 lg:text-xl">
+            <p>Cuidar de um ente querido em casa envolve dedicação, sensibilidade e muito conhecimento. Estamos aqui para apoiá-lo nessa jornada. Nossa equipe se destaca pela competência e profissionalismo.</p> <p>
+              Dedicada a garantir que cada paciente desfrute de uma vida plena e confortável em casa, a Union Neil é reconhecida por sua atuação em empresas renomadas. Ao escolher a Union Neil, você opta por uma parceria que compreende suas expectativas e está pronta para atendê-las. 
+            </p> 
+          </div>
+          <div id="depoimentos"></div>
+          <div class="flex flex-col items-center justify-center">
+            <button class="bg-[goldenrod] text-white px-10 py-3 rounded-lg mt-3">
+              <a href="https://api.whatsapp.com/send/?phone=5515981113016&text=Ol%C3%A1%21+Estou+precisando+de+assist%C3%AAncia+m%C3%A9dica+domiciliar.+Podem+me+ajudar%3F&type=phone_number&app_absent=0" target="_blank"">Entre em contato conosco</a>
+            </button>
+          </div>
+            
+          
+         
         </div>
       </div>
       <!-- End Services Section-->
@@ -405,7 +413,7 @@ Diante disso, só tenho a fazer ótimas recomendações da empresa UNIONNEIL.
 
       </div>
       <!-- End Depoimentos Section-->
-      <!-- Contact Section-->
+      <!-- Contact Section
       <div class="container">
         <div class="md:block text-2xl font-bold mb-5">
           <h2>Entre em contato conosco hoje</h2>
@@ -414,7 +422,7 @@ Diante disso, só tenho a fazer ótimas recomendações da empresa UNIONNEIL.
         <div id="map" style="position:relative;overflow:hidden">s</div>
         
       </div>
-      <!-- End Contact Section-->
+      End Contact Section-->
       <footer class="h-max w-full p-[30px] bg-[lightyellow]">
         <div class="flex flex-col items-center justify-center gap-7">
           <img src="./img/union_neil_favicon.png" class="w-[150px]" />
@@ -424,10 +432,10 @@ Diante disso, só tenho a fazer ótimas recomendações da empresa UNIONNEIL.
           </p>
           <p class="text-center">
             🏢 Av. Washington Luiz 310, Torre White, sala 116 - Jardim Emilia,
-            Sorocaba - SP, 18031-000
+              Sorocaba - SP, 18031-000
           </p>
           <p class="text-center">✉️ atendimento@unionneil.com.br</p>
-          <p class="text-center">📱 15 98101-2944</p>
+          <p class="text-center"><a href="https://api.whatsapp.com/send/?phone=5515981113016&text=Ol%C3%A1%21+Estou+precisando+de+assist%C3%AAncia+m%C3%A9dica+domiciliar.+Podem+me+ajudar%3F&type=phone_number&app_absent=0" target="_blank"><strong>📱 (15) 98 101 2944 </strong> (Clique para entrar em contato)</a></p>
           <p class="text-center">
             © 2024 Union Neil Ltda. Todos os direitos reservados
           </p>
@@ -442,10 +450,8 @@ Diante disso, só tenho a fazer ótimas recomendações da empresa UNIONNEIL.
         </div>
       </footer>
     </div>
-    <script src="./global.js"></script>
-    <script loading="async"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0ExN4L1Waqi6d0noSQHGw7l9xeGRmuZc&callback=initMap"
-  ></script>
+    <script src="./global.js" type="module"></script>
+   
 
   </body>
 </html>
