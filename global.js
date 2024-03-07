@@ -62,11 +62,10 @@ _wq.push({
     // This function will run once the video is fully loaded
 
     console.log("Wistia video is loaded!");
-    // const initialModal = document.getElementById("initial-modal");
-    // console.log("im", initialModal);
-    // initialModal.classList.add("hidden");
-    // const body = document.querySelector("body");
-    // body.classList.remove("overflow-y-hidden");
+    const initialModal = document.getElementById("initial-modal");
+    initialModal.classList.add("hidden");
+    const body = document.querySelector("body");
+    body.classList.remove("overflow-y-hidden");
 
     // Listen for the play event
     video.bind("play", function () {
