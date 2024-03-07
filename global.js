@@ -1,7 +1,7 @@
 // Make navbar fixed on scroll
 const navbar = document.body.querySelector(".navbar");
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 150) {
+  if (window.scrollY > 1000) {
     navbar.classList.add("fixed", "w-[100%]", "z-[1]");
     navbar.classList.remove("relative");
   } else {
