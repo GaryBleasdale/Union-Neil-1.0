@@ -54,3 +54,36 @@ for (const link of menuLinks) {
     toggleMobileMenu();
   });
 }
+
+window._wq = window._wq || [];
+_wq.push({
+  id: "_all", // The _all keyword means this will run for every Wistia embed on the page
+  onReady: function (video) {
+    // This function will run once the video is fully loaded
+
+    console.log("Wistia video is loaded!");
+    const initialModal = document.getElementById("initial-modal");
+    console.log("im", initialModal);
+    initialModal.classList.add("hidden");
+    const body = document.querySelector("body");
+    body.classList.remove("overflow-y-hidden");
+
+    // Listen for the play event
+    video.bind("play", function () {
+      const initialModal = document.getElementById("initial-modal");
+      console.log("im", initialModal);
+      initialModal.classList.add("hidden");
+      console.log("Wistia video has started playing!");
+      // Perform your actions here when the video starts playing
+    });
+
+    // You can bind to other events in a similar manner
+    // video.bind("pause", function() {
+    //   console.log("Wistia video is paused.");
+    // });
+
+    // video.bind("end", function() {
+    //   console.log("Wistia video has ended.");
+    // });
+  },
+});
