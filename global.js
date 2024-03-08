@@ -55,25 +55,21 @@ for (const link of menuLinks) {
   });
 }
 
+// Wistia video API
 window._wq = window._wq || [];
 _wq.push({
-  id: "_all", // The _all keyword means this will run for every Wistia embed on the page
-  onReady: function (video) {
-    // This function will run once the video is fully loaded
-
-    console.log("Wistia video is loaded!");
+  id: "_all",
+  onReady: (video) => {
     const initialModal = document.getElementById("initial-modal");
     initialModal.classList.add("hidden");
     const body = document.querySelector("body");
     body.classList.remove("overflow-y-hidden");
 
-    // Listen for the play event
-    video.bind("play", function () {
+    video.bind("play", () => {
       const initialModal = document.getElementById("initial-modal");
       console.log("im", initialModal);
       initialModal.classList.add("hidden");
       console.log("Wistia video has started playing!");
-      // Perform your actions here when the video starts playing
     });
 
     // You can bind to other events in a similar manner

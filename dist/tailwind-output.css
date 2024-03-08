@@ -619,16 +619,12 @@ video {
   z-index: 1;
 }
 
-.m-auto {
-  margin: auto;
-}
-
-.m-2 {
-  margin: 0.5rem;
-}
-
 .m-5 {
   margin: 1.25rem;
+}
+
+.m-auto {
+  margin: auto;
 }
 
 .mx-2 {
@@ -694,10 +690,6 @@ video {
   display: none;
 }
 
-.aspect-video {
-  aspect-ratio: 16 / 9;
-}
-
 .h-0 {
   height: 0px;
 }
@@ -708,10 +700,6 @@ video {
 
 .h-6 {
   height: 1.5rem;
-}
-
-.h-\[100\%\] {
-  height: 100%;
 }
 
 .h-\[300px\] {
@@ -771,32 +759,28 @@ video {
   width: 80%;
 }
 
-.w-full {
-  width: 100%;
+.w-\[90vw\] {
+  width: 90vw;
 }
 
-.w-\[80vw\] {
-  width: 80vw;
+.w-full {
+  width: 100%;
 }
 
 .w-screen {
   width: 100vw;
 }
 
+.max-w-\[1628px\] {
+  max-width: 1628px;
+}
+
 .max-w-\[250px\] {
   max-width: 250px;
 }
 
-.max-w-\[800px\] {
-  max-width: 800px;
-}
-
 .max-w-md {
   max-width: 28rem;
-}
-
-.max-w-\[1628px\] {
-  max-width: 1628px;
 }
 
 .translate-y-0 {
@@ -957,6 +941,10 @@ video {
   background-color: rgba(207,177,28,0.1);
 }
 
+.bg-\[rgba\(207\2c 181\2c 44\2c 0\.8\)\] {
+  background-color: rgba(207,181,44,0.8);
+}
+
 .bg-\[seashell\] {
   --tw-bg-opacity: 1;
   background-color: rgb(255 245 238 / var(--tw-bg-opacity));
@@ -970,14 +958,6 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-\[rgba\(207\2c 181\2c 44\2c 0\.4\)\] {
-  background-color: rgba(207,181,44,0.4);
-}
-
-.bg-\[rgba\(207\2c 181\2c 44\2c 0\.8\)\] {
-  background-color: rgba(207,181,44,0.8);
 }
 
 .bg-gradient-to-r {
@@ -1025,6 +1005,11 @@ video {
 
 .p-\[30px\] {
   padding: 30px;
+}
+
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 .px-2 {
@@ -1075,11 +1060,6 @@ video {
 .py-\[5px\] {
   padding-top: 5px;
   padding-bottom: 5px;
-}
-
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 }
 
 .pb-\[50px\] {
@@ -1234,10 +1214,6 @@ video {
   background-color: rgba(207,177,28,0.4);
 }
 
-.hover\:font-bold:hover {
-  font-weight: 700;
-}
-
 .focus-visible\:outline-\[\#e4c00f\]:focus-visible {
   outline-color: #e4c00f;
 }
@@ -1334,10 +1310,6 @@ video {
 
   .lg\:flex-row-reverse {
     flex-direction: row-reverse;
-  }
-
-  .lg\:bg-\[url\(\'\/img\/Hero_Image_Desktop-1\.webp\'\)\] {
-    background-image: url('/img/Hero_Image_Desktop-1.webp');
   }
 
   .lg\:p-5 {
