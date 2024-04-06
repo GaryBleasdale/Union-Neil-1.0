@@ -1012,6 +1012,10 @@ video {
   background-image: linear-gradient(to top,rgba(0,0,0,0.25) 67%,rgba(0,0,0,0) 100%);
 }
 
+.bg-\[url\(\'\.\/img\/mobile\\_hero\\_placeholder\.png\'\)\] {
+  background-image: url('./img/mobile\_hero\_placeholder.png');
+}
+
 .p-2 {
   padding: 0.5rem;
 }

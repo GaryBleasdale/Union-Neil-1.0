@@ -16,6 +16,17 @@ window.addEventListener("scroll", () => {
 	}
 });
 
+const videoElement = document.querySelector("video");
+const placeholderImage = document.getElementById("mobile-hero-placeholder");
+
+// Add an event listener to the video element
+videoElement.addEventListener("canplaythrough", () => {
+	// Hide the placeholder image
+	placeholderImage.classList.add("hidden");
+	// Show the video element
+	videoElement.classList.remove("hidden");
+});
+
 // // Mobile
 const hamburgerMenu = document.querySelector(".hamburger-menu");
 const mobileMenu = document.querySelector(".mobile-menu");
