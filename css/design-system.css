@@ -1,0 +1,11 @@
+h1 {
+    @apply font-lato;
+  }
+  
+  h2 {
+    @apply font-poppins;
+  }
+  
+  * {
+    @apply font-notoSans;
+  }
