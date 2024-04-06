@@ -16,15 +16,21 @@ window.addEventListener("scroll", () => {
 	}
 });
 
-const videoElement = document.querySelector("video");
-const placeholderImage = document.getElementById("mobile-hero-placeholder");
+const mobileVideo = document.getElementById("mobile-hero-video");
+const mobilePlaceholder = document.getElementById("mobile-hero-placeholder");
+const desktopVideo = document.getElementById("desktop-hero-video");
+const desktopPlaceholder = document.getElementById("desktop-hero-placeholder");
 
-// Add an event listener to the video element
-videoElement.addEventListener("canplaythrough", () => {
-	// Hide the placeholder image
-	placeholderImage.classList.add("hidden");
-	// Show the video element
-	videoElement.classList.remove("hidden");
+mobileVideo.addEventListener("canplaythrough", () => {
+	mobilePlaceholder.classList.add("hidden");
+
+	mobileVideo.classList.remove("hidden");
+});
+
+desktopVideo.addEventListener("canplaythrough", () => {
+	desktopPlaceholder.classList.add("hidden");
+
+	desktopVideo.classList.remove("hidden");
 });
 
 // // Mobile

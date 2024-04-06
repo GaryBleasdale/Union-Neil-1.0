@@ -149,11 +149,11 @@
       <a href="wa.link/rtvc0v"
         target="_blank" class="hidden" id="whatsapp-cta">
         <div
-          class="flex flex-row items-center gap-10 justify-center border p-2.5 rounded-[10px] border-solid border-[darkgoldenrod] " >
+          class="flex flex-row items-center gap-10 justify-center border p-2.5 rounded-[10px] border-solid border-[darkgoldenrod] bg-[rgb(184,134,11,0.1)]" >
 
-          <img src="./img/WhatsApp_icon.png" class="w-[50px]" alt="WhatsApp icon"/><span class="font-bold md:text-[19px] text-base"
+          <img src="./img/WhatsApp_icon.png" class="w-[50px] " alt="WhatsApp icon"/><span class="font-bold md:text-[19px] text-base"
             >
-            Solicite seu orçamento</span>
+            Quero falar com a Union</span>
         </div>
       </a>
     </nav>
@@ -167,15 +167,15 @@
           Cuidados domiciliares para pessoas <strong class="text-[#151515]">exigentes</strong>
         </h1>
       </div>
-      <div></div>
-      <video class="hidden" autoplay muted loop> <source src="./img/5524254-uhd_2160_3840_24fps.mp4" type="video/webm" /> <source src="./img/5524254-uhd_2160_3840_24fps.mp4" type="video/mp4" /> Your browser does not support the video tag. </video> 
-      <img src="./img/mobile_hero_placeholder.png" class="w-full" alt="Mobile Hero Placeholder" id="mobile-hero-placeholder"/>
+
+      <video class="hidden" autoplay muted loop id="mobile-hero-video"> <source src="./img/5524254-uhd_2160_3840_24fps.mp4" type="video/webm" /> <source src="./img/5524254-uhd_2160_3840_24fps.mp4" type="video/mp4" /> Your browser does not support the video tag. </video> 
+      <img src="./img/mobile_hero_placeholder.png" class="w-full " id="mobile-hero-placeholder" alt="Mobile Hero Placeholder" />
     <div class="flex flex-col items-center justify-between gap-7 pt-16 bg-[linear-gradient(to_top,rgba(0,0,0,0.25)_67%,rgba(0,0,0,0)_100%)] absolute w-full bottom-0">
       <div>
         <a href="#intro" class="mt-7 p-3 rounded-[40px] border-1 text-lg text-[#242424] bg-[rgb(218,165,32,0.8)]"><strong>QUERO SABER MAIS</strong></a>
       </div>   
 
-      <a href="wa.link/rtvc0v" class="p-3 text-[#242424] rounded-[40px] text-base bg-[rgb(218,165,32,0.8)] mb-7"><strong>QUERO UM ORÇAMENTO</strong></a>
+      <a href="wa.link/rtvc0v" class="p-3 text-[#242424] rounded-[40px] text-base bg-[rgb(218,165,32,0.8)] mb-7"><strong>QUERO FALAR COM A UNION</strong></a>
     </div>
     </div>
     <!-- desktop -->
@@ -186,24 +186,26 @@
         Cuidados domiciliares para pessoas <strong class="text-[#151515]">exigentes</strong>
       </h1>
     </div>
-  <video class="w-full max-w-[1350px] m-auto" autoplay muted loop>
+
+  <video class="w-full max-w-[1350px] m-auto hidden" autoplay muted loop id="desktop-hero-video">
     <source src="./img/A106_09021836_C055.mp4" type="video/webm" />
     <source src="./img/A106_09021836_C055.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
+  <img src="./img/hero_desktop_placeholder.png" class="w-full hero-placeholder" alt="Desktop Hero Placeholder" id="desktop-hero-placeholder"/>
   <div class="flex flex-col items-center justify-between gap-7 pt-16 bg-[linear-gradient(to_top,rgba(0,0,0,0.25)_67%,rgba(0,0,0,0)_100%)] absolute w-full bottom-0">
     <div>
       <a href="#intro" class="mt-7 p-3 rounded-[40px] border-1 text-lg text-[#242424] bg-[goldenrod]"><strong>QUERO SABER MAIS</strong></a>
     </div>   
 
-    <a href="wa.link/rtvc0v" class="p-3 text-black rounded-[40px] text-base bg-[goldenrod] mb-7"><strong>QUERO UM ORÇAMENTO</strong></a>
+    <a href="wa.link/rtvc0v" class="p-3 text-black rounded-[40px] text-base bg-[goldenrod] mb-7"><strong>QUERO FALAR COM A UNION</strong></a>
   </div>
   </div>
     <!-- End Hero Section-->
     <!-- Intro Section-->
     <div class="container">
       <div class="md:hidden text-2xl font-bold font-poppins">
-        <h2>Comprender as suas necessidades é o nosso alicerce</h2>
+        <h2>Compreender as necessidades da sua família é a nossa força</h2>
         <div class="title-underline"></div>
       </div>
       <div class="flex flex-col md:flex-row">
@@ -218,7 +220,7 @@
         <div class="gap-4 flex flex-col md:w-1/2 text-lg md:p-4">
           <div class="hidden md:block text-2xl font-bold">
             <h2>
-              Comprender as suas necessidades é o nosso alicerce
+              Compreender as necessidades da sua família é a nossa força
             </h2>
             <div class="title-underline"></div>
           </div>
@@ -227,7 +229,7 @@
           <p>Compreendemos que cada paciente e família tem necessidades únicas, especialmente quando se trata de cuidados de saúde no aconchego e na familiaridade do próprio lar. </p> 
           <p>Entendemos também que cuidar de um ente querido em casa envolve uma constante dedicação a resolver as mais variadas necessidades, cada uma exigindo de uma atencão meticulosa e de uma execução cuidadosa para garantir o conforto e a satisfação plena.</p>
           <img src="./img/union_neil_2 (1) (1).webp"
-          class="md:hidden w-[400px] relative xl:left-[150px] top-[10px] rounded-md"
+          class="md:hidden w-full relative xl:left-[150px] top-[10px] rounded-md"
           alt="Paciente pintando e sorridente" />
           
         </div>
@@ -235,86 +237,136 @@
 
 
     </div>
-
-
-    <!-- End Intro Section-->
-    <!-- Video Section-->
-    <div class="my-10">
+    </div>
+        <!-- Cuidado Total Section-->
+        <div class="container">
+          <div class="md:hidden text-2xl font-bold font-poppins">
+            <h2>Cuidado Total: A Essência da Harmonia Familiar</h2>
+            <div class="title-underline"></div>
+          </div>
+          <div class="flex flex-col md:flex-row-reverse">
+            <div class="relative lg:w-1/2 flex flex-col items-center justify-center xl:items-start">
+              <img src="./img/pexels-andrea-piacquadio-3768131.jpg" class="md:w-[400px] relative my-5 md:my-0 rounded-md"
+                alt="Enfermeira e Paciente sorrindo" id="intro"/>
+              <img src="./img/physio_ball (1) (1).webp"
+                class="hidden md:block w-[400px] relative xl:left-[150px] top-[10px] rounded-md"
+                alt="Paciente pintando e sorridente" />
+            </div>
+    
+            <div class="gap-4 flex flex-col md:w-1/2 text-lg md:p-4">
+              <div class="hidden md:block text-2xl font-bold">
+                <h2>
+                  Cuidado Total: A Essência da Harmonia Familiar
+                </h2>
+                <div class="title-underline"></div>
+              </div>
+              <p>
+                Na Union, <strong>ultrapassamos a mera prestação de serviços para tecer uma teia de suporte que envolve cada aspecto da vida doméstica, assegurando a paz e a ordem. </strong>
+              </p>
+              <p>Mergulhamos profundamente nas particularidades de cada lar, compreendendo a essência de suas necessidades para conectar você aos profissionais mais adequados.</p> 
+              <p><strong>A supervisão constante de nossa equipe é um pilar central da nossa metodología.</strong> A figura da Enfermeira Chefe, sempre acessível e atenta, é a garantia de que a qualidade e a eficácia dos cuidados estão sempre sob observação rigorosa. Elas são os olhos da família dentro de casa, assegurando que a execução dos cuidados seja impecável e que a paz e o bem-estar reinem, permitindo que você se dedique aos momentos que verdadeiramente importam.</p>
+              <img src="./img/physio_ball (1) (1).webp"
+              class="md:hidden w-full relative xl:left-[150px] top-[10px] rounded-md"
+              alt="Paciente pintando e sorridente" />
+              
+            </div>
+            
+    
+    
+        </div>
+        </div>
+    
+    
+        <!-- End Cuidado Total Section-->
+        <!-- Video Section-->
+    <div class="container">
       <div class="md:block text-2xl font-bold mb-5">
-        <h2>Ouça os nossos pacientes</h2>
+        <h2>Vozes dos nossos pacientes</h2>
         <div class="title-underline"></div>
       </div>
 
-        <p class="mb-3 text-lg">Cremos que a melhor testemunha dos nossos serviços vem dos nossos pacientes.  Assista esse curto vídeo para ouvir como os nossos pacientes falam sobre a Union.</p>
+        <p class="mb-10 text-lg">Cremos que a melhor testemunha dos nossos serviços vem dos nossos pacientes.  Assista esse curto vídeo para ouvir como os nossos pacientes descrevem à Union.</p>
 
       <script src="https://fast.wistia.com/embed/medias/8a0ge966sw.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_8a0ge966sw seo=true videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/8a0ge966sw/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div></div>
     <!-- End Video Section-->
-    <!-- Services Section-->
-    <div class="">
+    <!-- Falarmos Section-->
+    <!-- end Falarmos Section-->
+    <div class="container">
       <div class="md:block text-2xl font-bold mb-5">
-        <h2>Conheça os nossos serviços</h2>
+        <h2>Vamos falarmos</h2>
         <div class="title-underline"></div>
       </div>
-      <div class="text-lg mb-5 lg:my-10 lg:text-xl ">
-        <p>Nossa equipe reúne profissionais das seguintes áreas, todos cuidadosamente selecionados, capacitados e
-          coordenados para lhe fornecer um serviço excepcional:</p>
-        <div
-          class="flex w-full h-auto flex-col-reverse lg:flex-row-reverse justify-center gap-[30px] my-[30px] items-center">
-          <img src="./img/AllTogetherUN 1 (1) (1).png" class=" w-full md:w-1/2 h-max rounded-[5px] hidden md:block"
-            alt="Foto da equipe Union Neil" />
-          <div class="grid gap-[22px] my-3 grid-cols-[1fr] md:grid-cols-[1fr_1fr] ">
-            <a href="wa.link/rtvc0v"
-              target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-              Cuidadoras</a>
-              <a href="wa.link/rtvc0v"
-              target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-              Enfermeiras</a>
-              <a href="wa.link/rtvc0v"
-              target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-              Acompanhantes</a>
-              <a href="wa.link/rtvc0v"
-              target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤ Técnicos
-              de Enfermagem</a>
-            <a href="wa.link/rtvc0v"
-              target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-              Auxiliares de Enfermagem</a>
-
-
-            <a href="wa.link/rtvc0v"
-              target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-              Fisioterapeutas</a>
-
-
-            
-            <a href="wa.link/rtvc0v"
-              target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-              Nutricionistas</a>
-            <a href="wa.link/rtvc0v"
-              target="_blank" class="bg-[#f0e68c] text-black px-4 py-4 rounded-lg shadow w-[270px] font-bold">➤
-              Fonoaudiólogos</a>
-
-          </div>
-
-        </div>
-
+      <div class="text-lg mb-5 lg:my-10 lg:text-xl">
+        
+        <p class="mb-3">Adoramos ouvir sua história e estamos prontos para dialogar, seja por uma chamada rápida ou um bate-papo no WhatsApp.</p>
+        <p> Vamos conhecer sua situação detalhadamente e orientá-lo sobre os próximos passos com todo o respeito e atenção que você merece.</p>
+        <div class="flex items-center justify-center">
+          <button class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424]  flex flex-row items-center py-3 px-6  shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.1)]"><img src="./img/WhatsApp_icon.png" class="w-[50px] mr-3" alt="WhatsApp icon"/><strong>Quero falar com a Union</strong></button>
+        </div>   
       </div>
-
-      <div class="text-lg gap-2 flex flex-col mb-5 lg:my-10 lg:text-xl">
-        <p>Na Union Neil, sabemos o quanto é importante ter a certeza de que seus entes queridos estão recebendo o
-          melhor cuidado possível. Nossa equipe se destaca pela competência e profissionalismo, dedicada a garantir que
-          cada paciente desfrute de uma vida plena e confortável em casa. </p>
-        <p>Ao escolher a Union Neil, você opta por uma parceria que compreende suas expectativas e está pronta para
-          atendê-las. Entre em contato para conhecer as soluções personalizadas que temos a oferecer.</p>
-      </div>
-      <img src="./img/AllTogetherUN 1 (1) (1).png" class=" w-full md:w-1/2 rounded-[5px] md:hidden"
-        alt="Foto da equipe Union Neil" />
-      <div id="depoimentos"></div>
-
-
-
     </div>
-  </div>
-  <!-- End Services Section-->
+
+
+    <!-- End Intro Section-->
+        <!-- Services Section-->
+        <div class="container">
+          <div class="md:block text-2xl font-bold mb-5">
+            <h2>Nossa Equipe</h2>
+            <div class="title-underline"></div>
+          </div>
+          <div class="text-lg mb-5 lg:my-10 lg:text-xl ">
+            <p>Nossa equipe reúne profissionais das seguintes áreas, todos cuidadosamente selecionados, capacitados e
+              coordenados para lhe fornecer um serviço excepcional:</p>
+            <div
+              class="flex w-full h-auto flex-col-reverse lg:flex-row-reverse justify-center gap-[30px] my-[30px] items-center">
+              <img src="./img/AllTogetherUN 1 (1) (1).png" class=" w-full md:w-1/2 h-max rounded-[5px] hidden md:block"
+                alt="Foto da equipe Union Neil" />
+              <div class="grid gap-[22px] my-3 grid-cols-[1fr] md:grid-cols-[1fr_1fr] ">
+                <a href="wa.link/rtvc0v"
+                  target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
+                  Cuidadoras</a>
+                  <a href="wa.link/rtvc0v"
+                  target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
+                  Enfermeiras</a>
+                  <a href="wa.link/rtvc0v"
+                  target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
+                  Acompanhantes</a>
+                  <a href="wa.link/rtvc0v"
+                  target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤ Técnicos
+                  de Enfermagem</a>
+                <a href="wa.link/rtvc0v"
+                  target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
+                  Auxiliares de Enfermagem</a>
+    
+    
+                <a href="wa.link/rtvc0v"
+                  target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
+                  Fisioterapeutas</a>
+    
+    
+                
+                <a href="wa.link/rtvc0v"
+                  target="_blank" class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
+                  Nutricionistas</a>
+                <a href="wa.link/rtvc0v"
+                  target="_blank" class="bg-[#f0e68c] text-black px-4 py-4 rounded-lg shadow w-[270px] font-bold">➤
+                  Fonoaudiólogos</a>
+    
+              </div>
+    
+            </div>
+    
+          </div>
+    
+          <div class="text-lg gap-2 flex flex-col mb-5 lg:my-10 lg:text-xl">
+          </div>
+          <img src="./img/AllTogetherUN 1 (1) (1).png" class=" w-full md:w-1/2 rounded-[5px] md:hidden"
+            alt="Foto da equipe Union Neil" />
+        </div>
+      </div>
+      <!-- End Services Section-->
+    
+
   <!-- Depoimentos Section-->
   <div class="container">
     <div class="md:block text-2xl font-bold mb-5">
