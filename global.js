@@ -3,7 +3,7 @@ const navbar = document.body.querySelector(".navbar");
 const whatsAppCTA = document.getElementById("whatsapp-cta");
 const topNavbar = document.getElementById("top-navbar");
 window.addEventListener("scroll", () => {
-	if (window.scrollY > 1000) {
+	if (window.scrollY > 1300) {
 		navbar.classList.add("fixed", "w-[100%]", "z-[1]");
 		navbar.classList.remove("relative");
 		whatsAppCTA.classList.remove("hidden");
