@@ -23,13 +23,11 @@ const desktopPlaceholder = document.getElementById("desktop-hero-placeholder");
 
 mobileVideo.addEventListener("canplaythrough", () => {
 	mobilePlaceholder.classList.add("hidden");
-
 	mobileVideo.classList.remove("hidden");
 });
 
 desktopVideo.addEventListener("canplaythrough", () => {
 	desktopPlaceholder.classList.add("hidden");
-
 	desktopVideo.classList.remove("hidden");
 });
 
