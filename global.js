@@ -2,19 +2,19 @@
 const navbar = document.body.querySelector(".navbar");
 const whatsAppCTA = document.getElementById("whatsapp-cta");
 const topNavbar = document.getElementById("top-navbar");
-window.addEventListener("scroll", () => {
-	if (window.scrollY > 1900) {
-		navbar.classList.add("fixed", "w-[100%]", "z-[1]");
-		navbar.classList.remove("relative");
-		whatsAppCTA.classList.remove("hidden");
-		topNavbar.classList.add("hidden");
-	} else {
-		navbar.classList.remove("fixed");
-		navbar.classList.add("relative");
-		whatsAppCTA.classList.add("hidden");
-		topNavbar.classList.remove("hidden");
-	}
-});
+// window.addEventListener("scroll", () => {
+// 	if (window.scrollY > 1900) {
+// 		navbar.classList.add("fixed", "w-[100%]", "z-[1]");
+// 		navbar.classList.remove("relative");
+// 		whatsAppCTA.classList.remove("hidden");
+// 		topNavbar.classList.add("hidden");
+// 	} else {
+// 		navbar.classList.remove("fixed");
+// 		navbar.classList.add("relative");
+// 		whatsAppCTA.classList.add("hidden");
+// 		topNavbar.classList.remove("hidden");
+// 	}
+// });
 
 const mobileVideo = document.getElementById("mobile-hero-video");
 const mobilePlaceholder = document.getElementById("mobile-hero-placeholder");
