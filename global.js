@@ -76,6 +76,18 @@ for (const link of menuLinks) {
 	});
 }
 
+// Functionality for services section mobile
+
+const chevrons = document.querySelectorAll(".service-title");
+for (const chevron of chevrons) {
+	chevron.addEventListener("click", () => {
+		const chevronIcon = chevron.querySelector("img");
+		const serviceContent = chevron.querySelector(".service-card-text");
+		chevronIcon.classList.toggle("rotate-180");
+		serviceContent.classList.toggle("hidden");
+	});
+}
+
 // // Wistia video API
 // window._wq = window._wq || [];
 // _wq.push({
