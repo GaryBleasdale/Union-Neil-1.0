@@ -16,15 +16,15 @@ const topNavbar = document.getElementById("top-navbar");
 // 	}
 // });
 
-const mobileVideo = document.getElementById("mobile-hero-video");
-const mobilePlaceholder = document.getElementById("mobile-hero-placeholder");
+// const mobileVideo = document.getElementById("mobile-hero-video");
+// const mobilePlaceholder = document.getElementById("mobile-hero-placeholder");
 const desktopVideo = document.getElementById("desktop-hero-video");
 const desktopPlaceholder = document.getElementById("desktop-hero-placeholder");
 
-mobileVideo.addEventListener("canplaythrough", () => {
-	mobilePlaceholder.classList.add("hidden");
-	mobileVideo.classList.remove("hidden");
-});
+// mobileVideo.addEventListener("canplaythrough", () => {
+// 	mobilePlaceholder.classList.add("hidden");
+// 	mobileVideo.classList.remove("hidden");
+// });
 
 desktopVideo.addEventListener("canplaythrough", () => {
 	desktopPlaceholder.classList.add("hidden");
