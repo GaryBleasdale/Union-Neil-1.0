@@ -58,6 +58,7 @@
       return false;
     }
   </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <title>Union Neil | Assistência e Cuidados Domiciliares</title>
   <link rel="stylesheet" href="./dist/tailwind-output.css" />
   <!-- Font import-->
@@ -113,9 +114,9 @@
         <div class="items-center justify-center w-full hidden lg:flex">
           <ul class="flex-row w-[70%] flex justify-around">
             <li class="hover:cursor-pointer hover:border-b-[#CFB52C] relative border-b-[#CFB52C5e] border-b-2 pb-1 transition-[200ms]"><a href="#intro">Sobre nós</a></li>
+            <li class="hover:cursor-pointer hover:border-b-[#CFB52C] relative border-b-[#CFB52C5e] border-b-2 pb-1  transition-[200ms]"><a href="#ajudar">Como te ajudamos</a></li>
              <li class="hover:cursor-pointer hover:border-b-[#CFB52C] relative border-b-[#CFB52C5e] border-b-2 pb-1  transition-[200ms]"><a href="#depoimento">Depoimentos</a></li>
             <li class="hover:cursor-pointer hover:border-b-[#CFB52C] relative border-b-[#CFB52C5e] border-b-2 pb-1  transition-[200ms]"><a href="#contato">Contato</a></li>
-            <li class="hover:cursor-pointer hover:border-b-[#CFB52C] relative border-b-[#CFB52C5e] border-b-2 pb-1 "><a href="#equipe">Nossa Equipe</a></li>
           </ul>
         </div>
         <button class="flex flex-col h-6 w-6 justify-between items-center lg:hidden hamburger-menu" aria-label="Menu">
@@ -133,6 +134,12 @@
                   d="M12 23a1 1 0 0 1-.78-.38l-8-10c-.29-.37-.29-.88 0-1.25l8-9.99c.38-.47 1.18-.47 1.56 0l8 10c.29.37.29.88 0 1.25l-8 10a1 1 0 0 1-.78.38ZM5.28 12 12 20.4l6.72-8.4L12 3.6 5.28 12Z">
                 </path>
               </svg><a href="#intro">Sobre Nós</a></li>
+              <li class="hover:cursor-pointer flex flex-row items-center"><svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24" fill="#CFB52C" class="h-[15px] mr-1">
+                <path
+                  d="M12 23a1 1 0 0 1-.78-.38l-8-10c-.29-.37-.29-.88 0-1.25l8-9.99c.38-.47 1.18-.47 1.56 0l8 10c.29.37.29.88 0 1.25l-8 10a1 1 0 0 1-.78.38ZM5.28 12 12 20.4l6.72-8.4L12 3.6 5.28 12Z">
+                </path>
+              </svg><a href="#ajudar">Como te ajudamos</a></li>
                <li class="hover:cursor-pointer flex flex-row items-center"><svg xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24" fill="#CFB52C" class="h-[15px] mr-1">
                 <path
@@ -145,12 +152,7 @@
                   d="M12 23a1 1 0 0 1-.78-.38l-8-10c-.29-.37-.29-.88 0-1.25l8-9.99c.38-.47 1.18-.47 1.56 0l8 10c.29.37.29.88 0 1.25l-8 10a1 1 0 0 1-.78.38ZM5.28 12 12 20.4l6.72-8.4L12 3.6 5.28 12Z">
                 </path>
               </svg><a href="#contato">Contato</a></li>
-            <li class="hover:cursor-pointer flex flex-row items-center"><svg xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24" fill="#CFB52C" class="h-[15px] mr-1">
-                <path
-                  d="M12 23a1 1 0 0 1-.78-.38l-8-10c-.29-.37-.29-.88 0-1.25l8-9.99c.38-.47 1.18-.47 1.56 0l8 10c.29.37.29.88 0 1.25l-8 10a1 1 0 0 1-.78.38ZM5.28 12 12 20.4l6.72-8.4L12 3.6 5.28 12Z">
-                </path>
-              </svg><a href="#equipe">Nossa Equipe</a></li>
+
           </ul>
         </div>
       </div>
@@ -211,6 +213,7 @@
   </div>
     <!-- End Hero Section-->
     <!-- Intro Section-->
+    <div id="intro" class="relative bottom-[85px]"></div>
     <div class="container">
       <div class="md:hidden text-2xl font-bold font-poppins">
         <h2>Compreender as necessidades da sua família é a nossa força</h2>
@@ -219,7 +222,7 @@
       <div class="flex flex-col md:flex-row">
         <div class="relative lg:w-1/2 flex flex-col items-center justify-center xl:items-start">
           <img src="./img/union_neil_1 (1) (1).webp" class="md:w-[400px] relative my-5 md:my-0 rounded-md"
-            alt="Enfermeira e Paciente sorrindo" id="intro" loading="lazy"/>
+            alt="Enfermeira e Paciente sorrindo" loading="lazy"/>
           <img src="./img/union_neil_2 (1) (1).webp"
             class="hidden md:block w-[400px] relative xl:left-[150px] top-[10px] rounded-md"
             alt="Paciente pintando e sorridente" loading="lazy" />
@@ -232,10 +235,8 @@
             </h2>
             <div class="title-underline"></div>
           </div>
-          <p>Na Union Neil, <strong>transcendemos o básico em cuidados domiciliares</strong>, abraçando a personalização e o respeito à singularidade de cada
-            paciente, e providenciando um serviço completo e gerenciado.  
-          <p>Compreendemos que cada paciente e família tem necessidades únicas, especialmente quando se trata de cuidados de saúde no aconchego e na familiaridade do próprio lar. </p> 
-          <p>Entendemos também que cuidar de um ente querido em casa envolve uma constante dedicação a resolver as mais variadas necessidades, cada uma exigindo de uma atencão meticulosa e de uma execução cuidadosa para garantir o conforto e a satisfação plena.</p>
+          <p>Na Union Neil, elevamos o cuidado domiciliar à forma de arte, focando em soluções que atendem às necessidades únicas de cada paciente, diretamente no conforto do seu lar. Reconhecemos que cuidar de um ente querido exige não apenas atenção aos detalhes, mas um sistema de apoio completo projetado para abordar todos os aspectos da vida doméstica.</p>
+            <p>Nossa abordagem vai além dos serviços convencionais; conseguimos entender as particularidades de cada lar, criando para você a equipe de profissionais mais adequada. Sob a supervisão vigilante de nossa Enfermeira Chefe, acessível e dedicada, garantimos que a qualidade e eficácia dos cuidados sejam continuamente mantidas, transformando sua casa em um santuário onde você pode se concentrar no que realmente importa.</p>
           <img src="./img/union_neil_2 (1) (1).webp"
           class="md:hidden w-full relative xl:left-[150px] top-[10px] rounded-md"
           alt="Paciente pintando e sorridente" loading="lazy"/>
@@ -246,8 +247,112 @@
 
     </div>
     </div>
+    <!-- Serviços Section-->
+    <div id="ajudar" class="relative bottom-[85px]"></div>
+    <div class="container">
+      <div class="md:hidden text-2xl font-bold font-poppins">
+        <h2>Como trazemos Paz para a sua família?</h2>
+        <div class="title-underline"></div>
+      </div>
+
+        <div class="gap-4 flex flex-col md:w-1/2 text-lg md:p-4">
+          <div class="hidden md:block text-2xl font-bold">
+            <h2>
+              Como trazemos Paz para a sua família?
+            </h2>
+            <div class="title-underline"></div>
+          </div>
+        </div>
+        <div class="grid grid-cols-[1fr] md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr_] gap-[30px] pt-8">
+          <div  class="bg-[rgb(184,134,11,0.25)] md:max-w-[350px]  p-4 rounded-xl service-title flex flex-col justify-between border-[3px] border-solid border-[#daa52026]"><div class="flex flex-row items-center justify-between "><h2 class="font-bold text-lg text-[#000000c5]">Profissionais caprichosamente selecionados e capacitados</h2><img src="img/chevron.png" class="w-6 h-5 ml-2 mr-1 md:hidden rounded-sm transition-transform duration-[400ms]"/></div><div class="service-card-text hidden md:block"><p class=" my-2">Seleção e designação cuidadosa de profissionais para atender às especificidades de cada lar. 
+          </p><img src="/img/reuniao_union.jpg" class="rounded-md"/></div></div>
+          <div  class="bg-[rgb(184,134,11,0.15)] md:max-w-[350px] p-4 rounded-xl service-title flex flex-col justify-between border-[3px] border-solid border-[#daa5203b]"><div class="flex flex-row items-center justify-between"><h2 class="font-bold text-lg text-[#000000c5]">Visitas regulares e dedicadas das Enfermeiras Chefes</h2><img src="img/chevron.png" class="w-6 h-5 ml-2 mr-1  md:hidden transition-transform duration-[400ms]"/></div><div class="service-card-text hidden md:block"><p class=" my-2">Visitas detalhadas e atentas da Enfermeira Chefe para um acompanhamento minucioso. 
+          </p><img src="/img/AllTogetherUN 1 (1) (1).png" class="aspect-[4_/_3] object-cover rounded-md"></div></div>
+          <div  class="bg-[rgb(184,134,11,0.25)] md:max-w-[350px] p-4 rounded-xl  service-title flex flex-col justify-between border-[3px] border-solid border-[#daa52026]"><div class="flex flex-row items-center  justify-between"><h2 class="font-bold text-lg text-[#000000c5]">Equipe domiciliar orientada e supervisionada diariamente</h2><img src="img/chevron.png" class="w-6 h-5 ml-2 mr-1  md:hidden transition-transform duration-[400ms]"/></div><div class="service-card-text hidden md:block"><p class="my-2">Orientação diária para garantir um padrão de cuidado excepcional na casa do paciente.
+          </p>
+            <img src="/img/dando_agua.jpg" class="aspect-[4_/_3] object-cover rounded-md">
+          </div></div>
+          <div  class="bg-[rgb(184,134,11,0.15)] md:max-w-[350px] p-4 rounded-xl  service-title flex flex-col justify-between border-[3px] border-solid border-[#daa5203b]"><div class="flex flex-row items-center  justify-between" ><h2 class="font-bold text-lg text-[#000000c5]">Canal de comunicação direta com as Enfermeiras Chefes</h2><img src="img/chevron.png" class="w-6 h-5 ml-2 mr-1  md:hidden transition-transform duration-[400ms]"/></div><div class="service-card-text hidden md:block justify-between"><p class=" my-2">Comunique-se diretamente com as nossas Enfermeiras Chefe a qualquer momento. 
+          </p> <img src="/img/uniformes.jpg" class="aspect-[4_/_3] object-cover rounded-md"></div></div>
+          <div  class="bg-[rgb(184,134,11,0.25)] md:max-w-[350px]  p-4 rounded-xl  service-title flex flex-col justify-between border-[3px]  border-solid border-[#daa52026]"><div class="flex flex-row items-center  justify-between "><h2 class="font-bold text-lg text-[#000000c5]">Transporte, agendamento e acompanhamento nas Consultas Médicas</h2><img src="img/chevron.png" class="w-6 h-5 ml-2 mr-1  md:hidden transition-transform duration-[400ms]"/></div><div class="service-card-text hidden md:block"><p class=" my-2">Gerenciamos seus compromissos médicos, com eficiência e cuidado.
+          </p> <img src="/img/driver_2 (1) (1).webp" class="aspect-[4_/_3] object-cover rounded-md"></div></div>
+          <div  class="bg-[rgb(184,134,11,0.15)] md:max-w-[350px]  p-4 rounded-xl  service-title flex flex-col justify-between border-[3px] border-solid border-[#daa5203b]"><div class="flex flex-row items-center  justify-between "><h2 class="font-bold text-lg text-[#000000c5]">Gestão de Estoque de remédios</h2><img src="img/chevron.png" class="w-6 h-5 ml-2 mr-1  md:hidden transition-transform duration-[400ms]" /></div><div class="service-card-text hidden md:block"><p class=" my-2">Administração precisa do estoque dos medicamentos do paciente, para sua tranquilidade.
+          </p> <img src="/img/gestao_remedio.jpg" class="aspect-[4_/_3] object-cover rounded-md"></div></div>
+          <div  class="bg-[rgb(184,134,11,0.25)] md:max-w-[350px] p-4 rounded-xl  service-title flex flex-col justify-between border-[3px] border-solid border-[#daa52026]"><div class="flex flex-row items-center  justify-between "><h2 class="font-bold text-lg text-[#000000c5]">Serviços Domésticos</h2><img src="img/chevron.png" class="w-6 h-5 ml-2 mr-1  md:hidden transition-transform duration-[400ms]"/></div><div class="service-card-text hidden md:block"><p class=" my-2">Preparo de refeições, higienização das roupas do paciente, e serviços de faxina para seu conforto. 
+          </p><img src="/img/food.jpg" class="aspect-[4_/_3] object-cover rounded-md"></div></div>
+          <div  class="bg-[rgb(184,134,11,0.15)] md:max-w-[350px]  p-4 rounded-xl  service-title flex flex-col justify-between border-[3px] border-solid border-[#daa5203b]"><div class="flex flex-row items-center justify-between "><h2 class="font-bold text-lg text-[#000000c5]">Serviços de Estética e Bem-estar</h2><img src="img/chevron.png" class="w-6 h-5 ml-2 mr-1  md:hidden transition-transform duration-[400ms]"/></div><div class="service-card-text hidden md:block"><p class=" my-2">Realçe o bem-estar do paciente com serviços estéticos exclusivos no conforto do seu lar.
+          </p><img src="/img/estetica_@.jpg" class="aspect-[4_/_3] object-cover rounded-md"></div></div>
+
+        </div>
+        
+
+
+    </div>
+    </div>
+
+
+
+    <!-- End Serviços Section -->
+        <!-- End where are we Section-->
+        <!-- Services Section-->
+        <div class="container" id="equipe">
+          <div class="md:block text-2xl font-bold mb-5">
+            <h2>Nossa Equipe</h2>
+            <div class="title-underline"></div>
+          </div>
+          <div class="text-lg mb-5 lg:my-10 lg:text-xl ">
+            <p>Nossa equipe reúne profissionais das seguintes áreas, todos cuidadosamente selecionados, capacitados e
+              coordenados para lhe fornecer um serviço excepcional:</p>
+            <div
+              class="flex w-full h-auto flex-col-reverse lg:flex-row-reverse justify-center gap-[30px] my-[30px] items-center">
+              <div class="grid gap-[22px] my-3 grid-cols-[1fr] md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr_] xl:grid-cols-[1fr_1fr_1fr_1fr_] ">
+                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
+                  <div class="mr-2"> ➤ </div><div>Cuidadoras</div>
+                </div>
+                
+                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
+                  <div class="mr-2"> ➤ </div><div>Enfermeiras</div>
+                </div>
+                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
+                  
+                  <div class="mr-2"> ➤ </div><div>Acompanhantes</div>
+                </div>
+                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
+                 
+                  <div class="mr-2"> ➤ </div><div>Técnicos de Enfermagem</div>
+                </div>
+                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
+                  
+                  <div class="mr-2"> ➤ </div><div>Auxiliares de Enfermagem</div>
+                </div>
+                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
+                  
+                  <div class="mr-2"> ➤ </div><div>Fisioterapeutas</div>
+                </div>
+    
+    
+                
+                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
+                  
+                  <div class="mr-2"> ➤ </div><div>Nutricionistas</div>
+                </div>
+                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
+                  
+                  <div class="mr-2"> ➤ </div><div>Fonoaudiólogos</div>
+                </div>
+    
+              </div>
+    
+            </div>
+    
+          </div>
+    
+          <div class="text-lg gap-2 flex flex-col mb-5 lg:my-10 lg:text-xl">
+          </div>
+      </div>
+      <!-- End Services Section-->
         <!-- Cuidado Total Section-->
-        <div class="container">
+        <!-- <div class="container">
           <div class="md:hidden text-2xl font-bold font-poppins">
             <h2>Cuidado Total: A Essência da Harmonia Familiar</h2>
             <div class="title-underline"></div>
@@ -284,12 +389,13 @@
         </div>
         </div>
     
-    
+     -->
         <!-- End Cuidado Total Section-->
         <!-- Video Section-->
-    <div class="container" id="depoimento" >
+     <div id="depoimento" class="relative bottom-[85px]"></div>
+    <div class="container"  >
       <div class="md:block text-2xl font-bold mb-5">
-        <h2>Vozes dos nossos pacientes</h2>
+        <h2>A voz dos nossos pacientes</h2>
         <div class="title-underline"></div>
       </div>
 
@@ -313,7 +419,7 @@
 
         <li>
           <div id="slide1"
-            class="max-w-md mx-auto bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden">
+            class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
             <div class="p-4">
               <div class="mb-2 gap-4">
                 <div class="my-2">⭐⭐⭐⭐⭐</div>
@@ -340,7 +446,7 @@
         </li>
         <li>
           <div id="slide1"
-            class="max-w-md mx-auto bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden">
+            class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
             <div class="p-4">
               <div class="mb-2 gap-4">
                 <div class="my-2">⭐⭐⭐⭐⭐</div>
@@ -363,12 +469,12 @@
         </li>
         <li>
           <div id="slide1"
-            class="max-w-md mx-auto bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden">
+            class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
             <div class="p-4">
               <div class="mb-2 gap-4">
                 <div class="my-2">⭐⭐⭐⭐⭐</div>
                 <div class="text-lg font-semibold text-gray-900">
-                  Os cuidados tem sido sempre feitos com extrema atenção, dedicação e profissionalismo
+                  Os cuidados têm sido sempre feitos com extrema atenção, dedicação e profissionalismo
                 </div>
                 <p class="text-gray-700 italic">
                   Meu nome é Bruno, e sou neto do Odair, paciente da Union Neil. O Odair perdeu a força nas pernas e
@@ -392,7 +498,7 @@
 
         <li>
           <div id="slide1"
-            class="max-w-md mx-auto bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden">
+            class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
             <div class="p-4">
               <div class="mb-2 gap-4">
                 <div class="my-2">⭐⭐⭐⭐⭐</div>
@@ -418,7 +524,7 @@
         </li>
         <li>
           <div id="slide1"
-            class="max-w-md mx-auto bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden">
+            class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
             <div class="p-4">
               <div class="mb-2 gap-4">
                 <div class="my-2">⭐⭐⭐⭐⭐</div>
@@ -459,17 +565,17 @@
         <li></li>
       </ul>
     </div>
-    <div id="contato"></div>
+
 
   </div>
 
   </div>
   <!-- End Depoimentos Section-->
     <!-- Falarmos Section-->
-
-    <div class="container" id="contato">
+    <div id="contato" class="relative bottom-[85px]"></div>
+    <div class="container" >
       <div class="md:block text-2xl font-bold mb-5">
-        <h2>Vamos falarmos</h2>
+        <h2>Vamos falar</h2>
         <div class="title-underline"></div>
       </div>
       <div class="text-lg mb-5 lg:my-10 lg:text-xl">
@@ -477,26 +583,27 @@
         <p class="mb-3">Adoramos ouvir sua história e estamos prontos para dialogar, seja por uma chamada rápida ou um bate-papo no WhatsApp.</p>
         <p> Vamos conhecer sua situação detalhadamente e orientá-lo sobre os próximos passos com todo o respeito e atenção que você merece.</p>
         <div class="flex items-center justify-center flex-col">
-          <a href="https://wa.link/rtvc0v" class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424]  flex flex-row items-center py-3 px-6  shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)]" target="_blank" ><img src="./img/WhatsApp_icon.png" class="w-[50px] mr-3" loading="lazy" alt="WhatsApp icon"/><strong>Preciso de cuidados e assistência domiciliar</strong></a>
-          <a href="https://wa.link/rffhb5" class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424]  flex flex-row items-center py-3 px-6  shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.02)]" target="_blank" ><img src="./img/WhatsApp_icon.png" class="w-[50px] mr-3" loading="lazy" alt="WhatsApp icon"/><strong>Sou profissional e quero enviar meu currículo</strong></a>
+          <a href="https://wa.link/rtvc0v" class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424]  flex flex-row items-center py-3 px-6  shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)]" target="_blank" ><img src="./img/WhatsApp_icon.png" class="w-[50px] mr-3" loading="lazy" alt="WhatsApp icon"/><strong class="text-center">Quero falar com a Union</strong></a>
+          <a href="https://wa.link/rffhb5" class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424]  flex flex-row items-center py-3 px-6  shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.02)]" target="_blank" ><img src="./img/CV-or-Resume-Icon-Graphics-13336606-2-580x376.png" class="w-[50px] mr-3" loading="lazy" alt="WhatsApp icon"/><strong class="text-center">Sou profissional e quero enviar meu currículo</strong></a>
         </div>
         
       </div>
     </div>
     <!-- end Falarmos Section-->
     <!-- Where are we-->
+
     <div class="container">
       <div class="md:hidden text-2xl font-bold font-poppins">
         <h2>Nosso Escritório</h2>
         <div class="title-underline"></div>
       </div>
       <div class="flex flex-col md:flex-row-reverse">
-        <div class="relative lg:w-1/2 flex flex-col items-center justify-center xl:items-start">
-          <img src="./img/union_espaço_acolhimento.jpg" class="md:w-[400px] relative my-5 md:my-0 rounded-md"
-            alt="Enfermeira e Paciente sorrindo" id="intro" loading="lazy"/>
-          <img src="./img/reuniao_union.jpg"
+        <div class="relative lg:w-1/2 flex flex-col justify-center  items-end">
+          <img src="./img/union_espaço_acolhimento.jpg" class="md:w-[400px] relative my-5 md:my-0 rounded-md "
+            alt="Enfermeira e Paciente sorrindo"loading="lazy"/>
+          <!-- <img src="./img/reuniao_union.jpg"
             class="hidden md:block w-[400px] relative xl:left-[150px] top-[10px] rounded-md"
-            alt="Paciente pintando e sorridente" loading="lazy"/>
+            alt="Paciente pintando e sorridente" loading="lazy"/> -->
         </div>
 
         <div class="gap-4 flex flex-col md:w-1/2 text-lg md:p-4">
@@ -506,7 +613,7 @@
             </h2>
             <div class="title-underline"></div>
           </div>
-          <p>Agende uma visita consoco para poder conversarmos pessoalmente, e venha conheçer nosso escritório.</p> <p>Estaremos encantados em recebê-los!</p>
+          <p>Agende uma visita conosco para poder conversarmos pessoalmente e venha conhecer nosso escritório.</p> <p>Estaremos encantados em recebê-los!</p>
           <div class="font-extrabold text-[#272727]">
             <div>Av. Washington Luiz 310</div>
             <div>Torre White, Sala 116</div>
@@ -514,9 +621,9 @@
             <div>Sorocaba</div>
             <div>SP</div>
           </div>
-          <img src="./img/reuniao_union.jpg"
+          <!-- <img src="./img/reuniao_union.jpg"
           class="md:hidden w-full relative xl:left-[150px] top-[10px] rounded-md"
-          alt="Paciente pintando e sorridente" loading="lazy"/>
+          alt="Paciente pintando e sorridente" loading="lazy"/> -->
           
         </div>
         
@@ -526,64 +633,7 @@
     </div>
 
 
-    <!-- End where are we Section-->
-        <!-- Services Section-->
-        <div class="container" id="equipe">
-          <div class="md:block text-2xl font-bold mb-5">
-            <h2>Nossa Equipe</h2>
-            <div class="title-underline"></div>
-          </div>
-          <div class="text-lg mb-5 lg:my-10 lg:text-xl ">
-            <p>Nossa equipe reúne profissionais das seguintes áreas, todos cuidadosamente selecionados, capacitados e
-              coordenados para lhe fornecer um serviço excepcional:</p>
-            <div
-              class="flex w-full h-auto flex-col-reverse lg:flex-row-reverse justify-center gap-[30px] my-[30px] items-center">
-              <img src="./img/AllTogetherUN 1 (1) (1).png" class=" w-full md:w-1/2 h-max rounded-[5px] hidden md:block" loading="lazy"
-                alt="Foto da equipe Union Neil" />
-              <div class="grid gap-[22px] my-3 grid-cols-[1fr] md:grid-cols-[1fr_1fr] ">
-                <a href="#contato"
-                  class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-                  Cuidadoras</a>
-                  <a href="#contato"
-                   class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-                  Enfermeiras</a>
-                  <a href="#contato"
-                  class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-                  Acompanhantes</a>
-                  <a href="#contato"
-                  class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤ Técnicos
-                  de Enfermagem</a>
-                <a href="#contato"
-                  class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-                  Auxiliares de Enfermagem</a>
-    
-    
-                <a href="#contato"
-                   class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-                  Fisioterapeutas</a>
-    
-    
-                
-                <a href="#contato"
-                  class="bg-[#f0e68c] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold">➤
-                  Nutricionistas</a>
-                <a href="#contato"
-                  class="bg-[#f0e68c] text-black px-4 py-4 rounded-lg shadow w-[270px] font-bold">➤
-                  Fonoaudiólogos</a>
-    
-              </div>
-    
-            </div>
-    
-          </div>
-    
-          <div class="text-lg gap-2 flex flex-col mb-5 lg:my-10 lg:text-xl">
-          </div>
-          <img src="./img/AllTogetherUN 1 (1) (1).png" class=" w-full md:w-1/2 rounded-[5px] md:hidden" loading="lazy"
-            alt="Foto da equipe Union Neil" />
-        </div>
-      </div>
-      <!-- End Services Section-->
+
     
 
   
