@@ -1055,6 +1055,10 @@ video {
   border-width: 2px;
 }
 
+.border-\[3px\] {
+  border-width: 3px;
+}
+
 .border-b-2 {
   border-bottom-width: 2px;
 }
@@ -1081,6 +1085,14 @@ video {
 .border-gray-200 {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+
+.border-\[\#daa5203b\] {
+  border-color: #daa5203b;
+}
+
+.border-\[\#daa52026\] {
+  border-color: #daa52026;
 }
 
 .border-b-\[\#CFB52C5e\] {
@@ -1152,6 +1164,10 @@ video {
 
 .bg-\[\#cfb52c1c\] {
   background-color: #cfb52c1c;
+}
+
+.bg-\[\#f0e68c94\] {
+  background-color: #f0e68c94;
 }
 
 .bg-\[linear-gradient\(to_bottom\2c \#e3cd94ba_0\%\2c rgba\(0\2c 0\2c 0\2c 0\)_33\%\)\] {
@@ -1638,6 +1654,10 @@ video {
 @media (min-width: 1280px) {
   .xl\:left-\[150px\] {
     left: 150px;
+  }
+
+  .xl\:grid-cols-\[1fr_1fr_1fr_1fr_\] {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
   .xl\:items-start {
