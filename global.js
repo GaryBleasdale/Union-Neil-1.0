@@ -95,7 +95,7 @@ function toggleFAQ(element) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	const faqItems = document.querySelectorAll("#faq .flex");
+	const faqItems = document.querySelectorAll(".faq-item");
 	faqItems.forEach((item) => {
 		item.addEventListener("click", () => toggleFAQ(item));
 	});
