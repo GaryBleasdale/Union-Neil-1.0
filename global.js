@@ -87,7 +87,19 @@ for (const chevron of chevrons) {
 		serviceContent.classList.toggle("hidden");
 	});
 }
+function toggleFAQ(element) {
+	const answer = element.nextElementSibling;
+	const chevronIcon = element.querySelector("img");
+	answer.classList.toggle("hidden");
+	chevronIcon.classList.toggle("rotate-180");
+}
 
+document.addEventListener("DOMContentLoaded", () => {
+	const faqItems = document.querySelectorAll("#faq .flex");
+	faqItems.forEach((item) => {
+		item.addEventListener("click", () => toggleFAQ(item));
+	});
+});
 // // Wistia video API
 // window._wq = window._wq || [];
 // _wq.push({
