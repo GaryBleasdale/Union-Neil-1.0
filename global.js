@@ -96,9 +96,9 @@ function toggleFAQ(element) {
 
 document.addEventListener("DOMContentLoaded", () => {
 	const faqItems = document.querySelectorAll(".faq-item");
-	faqItems.forEach((item) => {
+	for (const item of faqItems) {
 		item.addEventListener("click", () => toggleFAQ(item));
-	});
+	}
 });
 // // Wistia video API
 // window._wq = window._wq || [];
