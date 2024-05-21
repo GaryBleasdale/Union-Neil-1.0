@@ -627,6 +627,10 @@ video {
   bottom: 120px;
 }
 
+.bottom-\[130px\] {
+  bottom: 130px;
+}
+
 .bottom-\[85px\] {
   bottom: 85px;
 }
@@ -696,10 +700,6 @@ video {
 
 .mb-10 {
   margin-bottom: 2.5rem;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
 }
 
 .mb-3 {
@@ -1334,10 +1334,6 @@ video {
 
 .leading-\[39px\] {
   line-height: 39px;
-}
-
-.leading-none {
-  line-height: 1;
 }
 
 .tracking-\[-2px\] {
