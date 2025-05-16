@@ -2,7 +2,9 @@
   "dependencies": {
     "@googlemaps/map-loader": "^0.2.0",
     "@netlify/functions": "^2.4.1",
-    "@splidejs/splide": "^4.1.4"
+    "@qwik.dev/partytown": "^0.11.0",
+    "@splidejs/splide": "^4.1.4",
+    "live-server": "^1.2.2"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.7"

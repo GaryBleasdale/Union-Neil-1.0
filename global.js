@@ -18,18 +18,18 @@ const topNavbar = document.getElementById("top-navbar");
 
 // const mobileVideo = document.getElementById("mobile-hero-video");
 // const mobilePlaceholder = document.getElementById("mobile-hero-placeholder");
-const desktopVideo = document.getElementById("desktop-hero-video");
-const desktopPlaceholder = document.getElementById("desktop-hero-placeholder");
+// const desktopVideo = document.getElementById("desktop-hero-video");
+// const desktopPlaceholder = document.getElementById("desktop-hero-placeholder");
 
 // mobileVideo.addEventListener("canplaythrough", () => {
 // 	mobilePlaceholder.classList.add("hidden");
 // 	mobileVideo.classList.remove("hidden");
 // });
 
-desktopVideo.addEventListener("canplaythrough", () => {
-	desktopPlaceholder.classList.add("hidden");
-	desktopVideo.classList.remove("hidden");
-});
+// desktopVideo.addEventListener("canplaythrough", () => {
+// 	desktopPlaceholder.classList.add("hidden");
+// 	desktopVideo.classList.remove("hidden");
+// });
 
 // // Mobile
 const hamburgerMenu = document.querySelector(".hamburger-menu");
@@ -76,8 +76,69 @@ for (const link of menuLinks) {
 	});
 }
 
-// Functionality for services section mobile
+// Lazy load Wistia player
+function initWistiaPlayer() {
+  const container = document.getElementById('wistia-player-container');
+  if (!container) return;
+  
+  const loadWistia = (e) => {
+    console.log(e)
+    console.log('hi')
+    // Only load once
+    container.removeEventListener('click', loadWistia);
+    
+    // Create Wistia player script
+    const wistiaScript1 = document.createElement('script');
+    wistiaScript1.src = 'https://fast.wistia.com/player.js';
+    wistiaScript1.defer = true;
 
+    const wistiaScript2 = document.createElement('script');
+    wistiaScript2.src = 'https://fast.wistia.com/embed/8a0ge966sw.js';
+    wistiaScript2.defer = true;
+    wistiaScript2.type = 'module';
+
+    
+    // Create the player element
+    container.innerHTML = `
+      <style>
+        wistia-player[media-id='8a0ge966sw']:not(:defined) { 
+          background-color:black; 
+          display: block; 
+          padding-top:56.25%; 
+          
+        }
+      </style>
+      <wistia-player id="depoimento-wistia" media-id="8a0ge966sw" aspect="1.7777777777777777"></wistia-player>
+    `;
+
+    // Add scripts to the document
+    document.head.appendChild(wistiaScript1);
+    document.head.appendChild(wistiaScript2);
+    
+    const player = document.getElementById("depoimento-wistia");
+    console.log(player)
+    player.addEventListener('loaded-data',()=>{
+      player.play()
+    })
+
+  };
+  
+  // Add click event listener
+  container.addEventListener('click', loadWistia);
+}
+
+// Initialize Wistia player when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  initWistiaPlayer();
+  
+  // Other existing DOMContentLoaded code...
+  const faqItems = document.querySelectorAll(".faq-item");
+  for (const item of faqItems) {
+    item.addEventListener("click", () => toggleFAQ(item));
+  }
+});
+
+// Functionality for services section mobile
 const chevrons = document.querySelectorAll(".service-title");
 for (const chevron of chevrons) {
 	chevron.addEventListener("click", () => {
