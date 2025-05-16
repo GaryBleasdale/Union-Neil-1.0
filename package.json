@@ -10,6 +10,7 @@
     "tailwindcss": "^3.3.7"
   },
   "scripts": {
-    "tailwind-watch": "npx tailwindcss -i ./css/tailwind-input.css -o ./dist/tailwind-output.css --watch"
+    "tailwind-watch": "npx tailwindcss -i ./css/tailwind-input.css -o ./dist/tailwind-output.css --watch",
+    "partytown": "partytown copylib public/~partytown"
   }
 }
