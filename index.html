@@ -2,13 +2,6 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-<script>
-  partytown = {
-    lib: '/~partytown/',
-    forward: ['dataLayer.push', 'gtag']
-  };
-</script>
-
     <script defer>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -79,33 +72,10 @@
 </head>
 
 <body class="font-notoSans">
-  <!-- <div class="h-screen w-screen absolute bg-[rgba(207,181,44,0.8)] z-[1] flex items-center justify-center"
-    id="initial-modal">
-    <div class="bg-white p-5 rounded-lg text-lg font-bold text-center m-5">
-      Carregando site... por favor, aguarde uns instantes
-      <br>
-      <?xml version="1.0" encoding="utf-8"?>
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-        style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;" width="200px"
-        height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-        <g transform="translate(50 50)">
-          <path fill="#e90c59" transform="scale(0.8)"
-            d="M40.7-34.3c-9.8-9.8-25.6-9.8-35.4,0L0-29l-5.3-5.3c-9.8-9.8-25.6-9.8-35.4,0l0,0c-9.8,9.8-9.8,25.6,0,35.4l5.3,5.3L-23,18.7l23,23l23-23L35.4,6.3L40.7,1C50.4-8.8,50.4-24.6,40.7-34.3z">
-            <animateTransform attributeName="transform" type="scale" repeatCount="indefinite" dur="1s"
-              keyTimes="0;0.05;0.39;0.45;0.6;1"
-              values="0.68;0.8;0.6000000000000001;0.7200000000000001;0.68;0.6400000000000001" calcMode="spline"
-              keySplines="0.215 0.61,0.355 1;0.215 0.61,0.355 1;0.215 0.61,0.355 1;0.215 0.61,0.355 1;0.215 0.61,0.355 1">
-            </animateTransform>
-          </path>
-        </g>
-      </svg>
-    </div> -->
-
-  </div>
   <div>
     <!--Navbar-->
     <nav
-      class="flex px-[30px] py-5 flex-col gap-5 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.06)] bg-white navbar  h-max font-notoSans fixed w-[100%] z-[1]">
+      class="flex px-[30px] py-5 flex-col gap-5 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.06)] bg-white navbar  h-max font-notoSans w-[100%] z-[1]">
       <div class="flex items-center justify-between" id="top-navbar">
         <div>
           <img src="./img/Union Neil Logo.png" class="max-w-[180px] sm:max-w-[250px]" alt="Union Neil Logo" loading="eager" />
@@ -168,17 +138,20 @@
 
     </nav>
     <!-- End Navbar-->
+
     <!-- Hero Section-->
-   <!-- mobile -->
     <div
-      class="relative md:hidden">
-      <div class="absolute bg-[linear-gradient(to_bottom,#e3cd94ba_0%,rgba(0,0,0,0)_33%)] h-full">
-        <h1 class="font-bold text-center  text-[2.5rem]  md:text-5xl xl:text-7xl px-2 py-8 text-[#393939] tracking-[-2px] leading-[39px] font-lato mt-[90px] sm:mt-[120px]">
+      class="relative aspect-[259/464] sm:aspect-[927/520]">
+      <div class="absolute bg-[linear-gradient(to_bottom,#e3cd94ba_0%,rgba(0,0,0,0)_33%)] h-full w-full">
+        <h1 class="font-bold text-center  text-[2.5rem]  md:text-5xl xl:text-7xl px-2 py-8 text-[#393939] tracking-[-2px] leading-[39px] font-lato">
           Cuidados domiciliares para pessoas <strong class="text-[#151515]">exigentes</strong>
         </h1>
       </div>
-      <img src="./img/mobile_hero_placeholder-min.avif" class="w-full pt-[90px]" id="mobile-hero-placeholder" alt="Mobile Hero Placeholder" loading="eager" />
-      <!-- <video class="hidden pt-[90px] " autoplay muted loop id="mobile-hero-video"> <source src="./img/5524254-uhd_2160_3840_24fps.mp4" type="video/webm" /> <source src="./img/5524254-uhd_2160_3840_24fps.mp4" type="video/mp4" /> Your browser does not support the video tag. </video>  -->
+      <picture>
+        <source srcset="./img/mobile_hero_placeholder-min.avif" media="(max-width:639px)">
+         <source srcset="./img/hero_desktop_placeholder-min.avif" media="(min-width:640px)">
+         <img src="./img/hero_desktop_placeholder-min.avif" alt="imagem de cabeçeira" fetchpriority="high" width="100%"/>
+      </picture>
     <div class="flex flex-col items-center justify-between gap-7 pt-16 bg-[linear-gradient(to_top,rgba(0,0,0,0.25)_67%,rgba(0,0,0,0)_100%)] absolute w-full bottom-0">
       <div>
         <a href="#intro" class="mt-7 p-3 rounded-[40px] border-1 text-lg text-[#242424] bg-[rgb(218,165,32,0.8)]"><strong>QUERO SABER MAIS</strong></a>
@@ -187,29 +160,7 @@
       <a href="#contato" class="p-3 text-[#242424] rounded-[40px] text-base bg-[rgb(218,165,32,0.8)] mb-7" ><strong>QUERO FALAR COM A UNION</strong></a>
     </div>
     </div>
-    <!-- desktop -->
-    <div
-    class="relative hidden md:flex items-center max-w-[1350px] m-auto ">
-    <div class="absolute bg-[linear-gradient(to_bottom,#e3cd94ba_0%,rgba(0,0,0,0)_33%)] h-full w-full max-w-[1350px]" >
-      <!-- <h1 class="font-bold text-center text-[2.5rem] md:text-5xl xl:text-7xl px-2 py-8 text-[#393939] tracking-[-2px] max-w-[1350px]m-auto mt-[135px]">
-        Cuidados domiciliares para pessoas <strong class="text-[#151515]">exigentes</strong>
-      </h1> -->
-    </div>
-    <img src="./img/hero_desktop_placeholder-min.avif" class="w-full hero-placeholder md:pt-[130px]" alt="Desktop Hero Placeholder" id="desktop-hero-placeholder" loading="eager"/>
-  <!-- <video class="w-full max-w-[1350px] m-auto hidden md:pt-[130px]" autoplay muted loop id="desktop-hero-video">
-    <source src="./img/A106_09021836_C055.mp4" type="video/webm"  />
-    <source src="./img/A106_09021836_C055.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video> -->
-  
-  <div class="flex flex-col items-center justify-between gap-7 pt-16 bg-[linear-gradient(to_top,rgba(0,0,0,0.25)_67%,rgba(0,0,0,0)_100%)] absolute w-full bottom-0">
-    <div>
-      <a href="#intro" class="mt-7 p-3 rounded-[40px] border-1 text-lg text-[#242424] bg-[goldenrod]" ><strong>QUERO SABER MAIS</strong></a>
-    </div>   
 
-    <a href="#contato" class="p-3 text-black rounded-[40px] text-base bg-[goldenrod] mb-7" ><strong>QUERO FALAR COM A UNION</strong></a>
-  </div>
-  </div>
     <!-- End Hero Section-->
     
     <!-- Intro Section-->
