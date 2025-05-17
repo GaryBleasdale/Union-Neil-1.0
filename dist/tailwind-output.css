@@ -1319,6 +1319,26 @@ h2 {
   padding-bottom: 11rem;
 }
 
+.pt-\[130px\] {
+  padding-top: 130px;
+}
+
+.pt-\[120px\] {
+  padding-top: 120px;
+}
+
+.pt-\[110px\] {
+  padding-top: 110px;
+}
+
+.pt-\[108px\] {
+  padding-top: 108px;
+}
+
+.pt-\[106px\] {
+  padding-top: 106px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1692,6 +1712,10 @@ h2 {
 
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:pt-\[130px\] {
+    padding-top: 130px;
   }
 }
 

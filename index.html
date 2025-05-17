@@ -25,7 +25,7 @@
 <body class="font-lato">
   <div>
     <nav
-      class="flex px-[30px] py-5 flex-col gap-5 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.06)] bg-white navbar  h-max font-notoSans w-[100%] z-[1]"
+      class="flex px-[30px] py-5 flex-col gap-5 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.06)] bg-white navbar  h-max font-notoSans w-[100%] z-[1] fixed"
       x-data="{ open: false}">
       <div class="flex items-center justify-between" id="top-navbar">
         <div>
@@ -100,7 +100,7 @@
       </a>
 
     </nav>
-    <div class="relative aspect-[259/464] sm:aspect-[927/520]">
+    <div class="relative aspect-[259/464] sm:aspect-[927/520] pt-[106px] sm:pt-[130px]">
       <div class="absolute bg-[linear-gradient(to_bottom,#e3cd94ba_0%,rgba(0,0,0,0)_33%)] h-full w-full">
         <h1
           class="font-bold text-center  text-[2.5rem]  md:text-5xl xl:text-7xl px-2 py-8 text-[#393939] tracking-[-2px] leading-[39px]">
@@ -127,7 +127,7 @@
       </div>
     </div>
 
-    <div id="intro" class="relative bottom-[85px]"></div>
+    <div id="intro" class="relative bottom-[85px] "></div>
     <div class="container">
       <div class="md:hidden text-2xl font-bold font-poppins">
         <h2>Compreender as necessidades da sua família é a nossa força</h2>
@@ -813,6 +813,7 @@
 
   </div>
   <script src="./wistia-lazyload.js" type="module" defer></script>
+  <script src="./navbar.js" type="module" defer></script>
 
 </body>
 
