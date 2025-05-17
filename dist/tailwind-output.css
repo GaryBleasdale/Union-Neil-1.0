@@ -1,15 +1,3 @@
-h1 {
-  font-family: Lato, sans-serif;
-}
-
-h2 {
-  font-family: Poppins, sans-serif;
-}
-
-* {
-  font-family: Noto Sans, sans-serif;
-}
-
 /*
 ! tailwindcss v3.3.7 | MIT License | https://tailwindcss.com
 */
@@ -629,6 +617,10 @@ video {
   margin-top: 4px;
 }
 
+h2 {
+  font-weight: 800;
+}
+
 .static {
   position: static;
 }
@@ -653,10 +645,6 @@ video {
   bottom: -299px;
 }
 
-.bottom-\[120px\] {
-  bottom: 120px;
-}
-
 .bottom-\[130px\] {
   bottom: 130px;
 }
@@ -675,6 +663,18 @@ video {
 
 .top-\[10px\] {
   top: 10px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.top-\[106px\] {
+  top: 106px;
+}
+
+.bottom-\[120px\] {
+  bottom: 120px;
 }
 
 .z-10 {
@@ -808,20 +808,16 @@ video {
   display: none;
 }
 
-.aspect-\[1\/2\] {
-  aspect-ratio: 1/2;
-}
-
 .aspect-\[2\/1\.2\] {
   aspect-ratio: 2/1.2;
 }
 
-.aspect-\[4_\/_3\] {
-  aspect-ratio: 4 / 3;
-}
-
 .aspect-\[259\/464\] {
   aspect-ratio: 259/464;
+}
+
+.aspect-\[4_\/_3\] {
+  aspect-ratio: 4 / 3;
 }
 
 .h-0 {
@@ -941,18 +937,8 @@ video {
   max-width: 28rem;
 }
 
-.translate-y-0 {
-  --tw-translate-y: 0px;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .translate-y-full {
   --tw-translate-y: 100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.rotate-180 {
-  --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -966,6 +952,10 @@ video {
 
 .grid-cols-\[1fr\] {
   grid-template-columns: 1fr;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -998,6 +988,10 @@ video {
 
 .justify-around {
   justify-content: space-around;
+}
+
+.gap-12 {
+  gap: 3rem;
 }
 
 .gap-2 {
@@ -1034,10 +1028,6 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
-}
-
-.overflow-y-hidden {
-  overflow-y: hidden;
 }
 
 .scroll-smooth {
@@ -1134,11 +1124,6 @@ video {
   border-bottom-color: rgb(218 165 32 / var(--tw-border-opacity));
 }
 
-.bg-\[\#D0B52D\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(208 181 45 / var(--tw-bg-opacity));
-}
-
 .bg-\[\#cfb52c1c\] {
   background-color: #cfb52c1c;
 }
@@ -1193,6 +1178,11 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#D0B52D\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 181 45 / var(--tw-bg-opacity));
 }
 
 .bg-\[linear-gradient\(to_bottom\2c \#e3cd94ba_0\%\2c rgba\(0\2c 0\2c 0\2c 0\)_33\%\)\] {
@@ -1317,6 +1307,18 @@ video {
   padding-top: 90px;
 }
 
+.pb-8 {
+  padding-bottom: 2rem;
+}
+
+.pb-11 {
+  padding-bottom: 2.75rem;
+}
+
+.pb-44 {
+  padding-bottom: 11rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1327,14 +1329,6 @@ video {
 
 .font-lato {
   font-family: Lato, sans-serif;
-}
-
-.font-notoSans {
-  font-family: Noto Sans, sans-serif;
-}
-
-.font-poppins {
-  font-family: Poppins, sans-serif;
 }
 
 .text-2xl {
@@ -1452,10 +1446,6 @@ video {
   opacity: 0;
 }
 
-.opacity-100 {
-  opacity: 1;
-}
-
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -1478,15 +1468,6 @@ video {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.blur {
-  --tw-blur: blur(8px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition-\[200ms\] {
@@ -1517,6 +1498,150 @@ video {
 
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* lato-300 - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: "Lato, sans-serif";
+
+  font-style: normal;
+
+  font-weight: 300;
+
+  src: url("../fonts/lato-v24-latin-300.woff2") format("woff2");
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* lato-300italic - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: "Lato, sans-serif";
+
+  font-style: italic;
+
+  font-weight: 300;
+
+  src: url("../fonts/lato-v24-latin-300italic.woff2") format("woff2");
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* lato-regular - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: "Lato, sans-serif";
+
+  font-style: normal;
+
+  font-weight: 400;
+
+  src: url("../fonts/lato-v24-latin-regular.woff2") format("woff2");
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* lato-italic - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: "Lato, sans-serif";
+
+  font-style: italic;
+
+  font-weight: 400;
+
+  src: url("../fonts/lato-v24-latin-italic.woff2") format("woff2");
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* lato-700 - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: "Lato, sans-serif";
+
+  font-style: normal;
+
+  font-weight: 700;
+
+  src: url("../fonts/lato-v24-latin-700.woff2") format("woff2");
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* lato-700italic - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: "Lato, sans-serif";
+
+  font-style: italic;
+
+  font-weight: 700;
+
+  src: url("../fonts/lato-v24-latin-700italic.woff2") format("woff2");
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* lato-900 - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: "Lato, sans-serif";
+
+  font-style: normal;
+
+  font-weight: 900;
+
+  src: url("../fonts/lato-v24-latin-900.woff2") format("woff2");
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* lato-900italic - latin */
+
+@font-face {
+  font-display: swap;
+
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+
+  font-family: "Lato, sans-serif";
+
+  font-style: italic;
+
+  font-weight: 900;
+
+  src: url("../fonts/lato-v24-latin-900italic.woff2") format("woff2");
+
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 .placeholder\:text-xl::-moz-placeholder {
@@ -1564,6 +1689,10 @@ video {
   .sm\:max-w-\[250px\] {
     max-width: 250px;
   }
+
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 768px) {
@@ -1590,14 +1719,6 @@ video {
 
   .md\:hidden {
     display: none;
-  }
-
-  .md\:aspect-\[2\/1\] {
-    aspect-ratio: 2/1;
-  }
-
-  .md\:aspect-\[927\/520\] {
-    aspect-ratio: 927/520;
   }
 
   .md\:w-1\/2 {

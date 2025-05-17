@@ -2,12 +2,6 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-    <script defer>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KWFCK44');</script>
-  <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
@@ -22,63 +16,19 @@
       y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "fy7s8gh2x9");
   </script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-
-    // Google Ads Conversion Tracking (Existing)
-    gtag("config", "AW-11343656312");
-
-    // Add GA4 Configuration
-    gtag("config", "G-T55SWE3RWZ");
-  </script>
-  <script>
-    function gtag_report_conversion(url) {
-      console.log("gtag_report_conversion");
-      var callback = function () {
-        if (typeof url != "undefined") {
-          window.location = url;
-        }
-      };
-      gtag("event", "conversion", {
-        send_to: "AW-11343656312/jEc9CKjlvOQYEPjqiaEq",
-        event_callback: callback,
-      });
-      return false;
-    }
-  </script>
   <title>Union Neil | Assistência e Cuidados Domiciliares</title>
-  <link rel="stylesheet" href="./dist/tailwind-output.css" />
-  <!-- Font import-->
-  <link rel="preconnect" href="https://fonts.googleapis.com" defer/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin defer/>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-    rel="stylesheet" defer/>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" defer>
-  <!-- end Font import-->
-  <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous"
-    defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider-extensions.min.js
-    " crossorigin="anonymous" defer></script>
-
-  <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet"
-    crossorigin="anonymous" />
-
+  <link rel="stylesheet" href="./dist/tailwind-output.css"/>
     <script>(function(a,b,c,d){try{var e=b.head||b.getElementsByTagName("head")[0];var f=b.createElement("script");f.setAttribute("src",c);f.setAttribute("charset","UTF-8");f.defer=true;a.neuroleadId=d;e.appendChild(f)}catch(g){}})(window,document,"https://cdn.leadster.com.br/neurolead/neurolead.min.js","8lFq1zeFlhKlhx6oDqUbLbIDu")</script> 
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
-<body class="font-notoSans">
+<body class="font-lato">
   <div>
-    <!--Navbar-->
     <nav
-      class="flex px-[30px] py-5 flex-col gap-5 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.06)] bg-white navbar  h-max font-notoSans w-[100%] z-[1]">
+      class="flex px-[30px] py-5 flex-col gap-5 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.06)] bg-white navbar  h-max font-notoSans w-[100%] z-[1]"  x-data="{ open: false}">
       <div class="flex items-center justify-between" id="top-navbar">
         <div>
-          <img src="./img/Union Neil Logo.png" class="max-w-[180px] sm:max-w-[250px]" alt="Union Neil Logo" loading="eager" />
+          <img src="./img/Union Neil Logo.png" class="max-w-[180px] sm:max-w-[250px]" alt="Union Neil Logo" fetchpriority="high" />
         </div>
         <div class="items-center justify-center w-full hidden lg:flex">
           <ul class="flex-row w-[70%] flex justify-around">
@@ -88,13 +38,13 @@
             <li class="hover:cursor-pointer hover:border-b-[#CFB52C] relative border-b-[#CFB52C5e] border-b-2 pb-1  transition-[200ms]"><a href="#contato">Contato</a></li>
           </ul>
         </div>
-        <button class="flex flex-col h-6 w-6 justify-between items-center lg:hidden hamburger-menu" aria-label="Menu">
+        <button class="flex flex-col h-6 w-6 justify-between items-center lg:hidden hamburger-menu" aria-label="Menu" @click="open = ! open">
           <span class="block w-full h-0.5 bg-black"></span>
           <span class="block w-full h-0.5 bg-black"></span>
           <span class="block w-full h-0.5 bg-black"></span>
         </button>
         <div
-          class="transform transition-all ease-in-out duration-300 translate-y-full opacity-0 hidden absolute w-full right-0 bottom-[-299px] bg-white mobile-menu px-5 py-0 border-b-2 border-b-[goldenrod] border-solid lg:hidden z-10">
+          class="absolute z-[1] w-screen p-5 left-0 top-[106px] bg-white" style="display:none" x-show="open">
           <ul class="flex flex-col w-[70%] justify-around h-[300px]">
            
             <li class="hover:cursor-pointer flex flex-row items-center"><svg xmlns="http://www.w3.org/2000/svg"
@@ -137,13 +87,10 @@
       </a>
 
     </nav>
-    <!-- End Navbar-->
-
-    <!-- Hero Section-->
     <div
       class="relative aspect-[259/464] sm:aspect-[927/520]">
       <div class="absolute bg-[linear-gradient(to_bottom,#e3cd94ba_0%,rgba(0,0,0,0)_33%)] h-full w-full">
-        <h1 class="font-bold text-center  text-[2.5rem]  md:text-5xl xl:text-7xl px-2 py-8 text-[#393939] tracking-[-2px] leading-[39px] font-lato">
+        <h1 class="font-bold text-center  text-[2.5rem]  md:text-5xl xl:text-7xl px-2 py-8 text-[#393939] tracking-[-2px] leading-[39px]">
           Cuidados domiciliares para pessoas <strong class="text-[#151515]">exigentes</strong>
         </h1>
       </div>
@@ -161,9 +108,6 @@
     </div>
     </div>
 
-    <!-- End Hero Section-->
-    
-    <!-- Intro Section-->
     <div id="intro" class="relative bottom-[85px]"></div>
     <div class="container">
       <div class="md:hidden text-2xl font-bold font-poppins">
@@ -172,7 +116,7 @@
       </div>
       <div class="flex flex-col md:flex-row">
         <div class="relative lg:w-1/2 flex flex-col items-center justify-center xl:items-start">
-          <img src="./img/union_neil_1 (1) (1).webp" class="md:w-[400px] relative my-5 md:my-0 rounded-md" loading="lazy" alt="Enfermeira e Paciente sorrindo"/>
+          <img src="./img/union_neil_1 (1) (1).webp" class="md:w-[400px] relative my-5 md:my-0 rounded-md"  alt="Enfermeira e Paciente sorrindo"/>
           <img src="./img/union_neil_2 (1) (1).webp"
             class="hidden md:block w-[400px] relative xl:left-[150px] top-[10px] rounded-md"
             alt="Paciente pintando e sorridente" loading="lazy" />
@@ -195,7 +139,7 @@
 
     </div>
     </div>
-    <!-- Serviços Section-->
+
     <div id="ajudar" class="relative bottom-[85px]"></div>
     <div class="container">
       <div class="md:hidden text-2xl font-bold font-poppins">
@@ -237,6 +181,7 @@
 
     </div>
     </div>
+    
             <!-- Video Section-->
             <div id="depoimento" class="relative bottom-[85px]"></div>
             <div class="container"  >
@@ -249,226 +194,18 @@
                 <p class="mb-10 text-lg">Cremos que a melhor testemunha dos nossos serviços vem daqueles de quem cuidamos.  Assista esse curto vídeo para ouvir como os nossos pacientes descrevem à Union.</p>
 
                 <div id="wistia-player-container" class=" cursor-pointer group aspect-[2/1.2]">
-                  <div style="padding-top: 56.25%; background: url('./img/video_thumbnail.png') center/cover no-repeat;"></div>
+                  <picture>
+                    <source srcset="./img/video_thumbnail_mobile.png" media="(max-width:639px)">
+                    <source srcset="./img/video_thumbnail.png" media="(min-width:640px)">
+                    <img srcset="" src="./img/video_thumbnail.png" loading="lazy" alt="video de depoimento">
+                  </picture>  
+                  
+
                 </div>
-                <!-- <script src="https://fast.wistia.com/player.js" defer></script><script src="https://fast.wistia.com/embed/8a0ge966sw.js" defer type="module"></script><style>wistia-player[media-id='8a0ge966sw']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/8a0ge966sw/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style> <wistia-player media-id="8a0ge966sw" aspect="1.7777777777777777"></wistia-player> -->
                  </div>
             <!-- End Video Section-->
-    <!-- Depoimentos Section-->
-    <div id="google-ratings" class="relative bottom-[85px]"></div>
-    <div class="container">
-      <div class="md:block text-2xl font-bold mb-5">
-        <h2>A Union, nas palvras de quem cuidamos</h2>
-  
-        <div class="title-underline"></div>
-      </div>
-      <div class="flex items-center justify-center my-4">
-        ⬅️<p class="italic my-2 text-xl font-normal mx-2 ">Deslize para ler mais</p>➡️
-      </div>
-  
-      <div class="swiffy-slider slider-item-show2 slider-nav-caret slider-indicators-round slider-nav-mousedrag">
-        <ul class="slider-container">
-          <li>
-            <div id="slide1" class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
-                <div class="p-4 text-center flex flex-col items-center">
-                    <img src="./img/google-icon.png" alt="Google icon" class="h-4 mb-4">
-                    <div class="text-lg font-semibold text-gray-900">Edgar Francisco Pereira</div>
-                    <div class="flex justify-center items-center my-2">
-                        <span>⭐⭐⭐⭐⭐</span>
-                        <span id="time-ago" class="ml-2 text-gray-600"></span>
-                    </div>
-                    <p id="review-text" class="text-gray-700 italic">
-                      Extremamente excelente, uma equipe que trabalha com amor e carinho, foram 03 meses que cuidaram de um ente querido e sempre deram o melhor, recomendo a todos que necessitam de cuidador de idosos ou pessoas que necessitem de cuidados especiais, a equipe é monitorada por médicas competentes. Você recebe diariamente um resumo dos medicamentos, cuidados e estado de saúde do paciente.
-                    </p>
-                </div>
-            </div>
-        </li>
-          <li>
-            <div id="slide1" class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
-              <div class="p-4 text-center flex flex-col items-center">
-                <img src="./img/google-icon.png" alt="Google icon" class="h-4 mb-4">
-                    <div class="text-lg font-semibold text-gray-900">Antônio Giangiácomo Junior, filho do Senhor Antônio</div>
-                    <div class="flex justify-center items-center my-2">
-                        <span>⭐⭐⭐⭐⭐</span>
-                        <span id="time-ago" class="ml-2 text-gray-600"></span>
-                    </div>
-                    <p id="review-text" class="text-gray-700 italic">
-                      Empresa com profissionais qualificados, carinhosos e muito atenciosos em todas situações.
-                    </p>
-                </div>
-            </div>
-        </li>
-  
-          <li>
-            <div id="slide1" class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
-              <div class="p-4 text-center flex flex-col items-center">
-                <img src="./img/google-icon.png" alt="Google icon" class="h-4 mb-4">
-                    <div class="text-lg font-semibold text-gray-900">Arlete Sanches de Lima, filha do Senhor Bonifácio</div>
-                    <div class="flex justify-center items-center my-2">
-                        <span>⭐⭐⭐⭐⭐</span>
-                        <span id="time-ago" class="ml-2 text-gray-600"></span>
-                    </div>
-                    <p id="review-text" class="text-gray-700 italic">
-                        Meu nome é Arlete, tenho 64 anos. Meu contato com a UNIONNEIL começou em maio/23, após uma queda sofrida por meu pai Sr. Bonifácio, de 97 anos, que causou fratura de fêmur. Desde então ele tem sido cuidado por profissionais dessa empresa que se mostrou extremamente comprometida com o bem estar do paciente e de seus familiares. A equipe de enfermagem é altamente preparada e competente. Diante disso, só tenho a fazer ótimas recomendações da empresa UNIONNEIL.
-                    </p>
-                </div>
-            </div>
-        </li>
-        <li>
-          <div id="slide1" class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
-            <div class="p-4 text-center flex flex-col items-center">
-              <img src="./img/google-icon.png" alt="Google icon" class="h-4 mb-4">
-                  <div class="text-lg font-semibold text-gray-900">Maria Katsumi Fukasawa, esposa do Senhor Manolo</div>
-                  <div class="flex justify-center items-center my-2">
-                      <span>⭐⭐⭐⭐⭐</span>
-                      <span id="time-ago" class="ml-2 text-gray-600"></span>
-                  </div>
-                  <p id="review-text" class="text-gray-700 italic">
-                    Foi muito bom, as profissionais da enfermagem são muito eficientes, gostamos muito, fizeram ótimos
-                    trabalhos com muito carinho, amor e dedicação.
-                  </p>
-              </div>
-          </div>
-      </li>
-      <li>
-        <div id="slide1" class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
-          <div class="p-4 text-center flex flex-col items-center">
-            <img src="./img/google-icon.png" alt="Google icon" class="h-4 mb-4">
-                <div class="text-lg font-semibold text-gray-900">Bruno Dutra, neto do Senhor Odair</div>
-                <div class="flex justify-center items-center my-2">
-                    <span>⭐⭐⭐⭐⭐</span>
-                    <span id="time-ago" class="ml-2 text-gray-600"></span>
-                </div>
-                <p id="review-text" class="text-gray-700 italic">
-                  Meu nome é Bruno, e sou neto do Odair, paciente da Union Neil. O Odair perdeu a força nas pernas e
-                  ficou difícil para eu cuidar dele sozinho, entramos em contato com a Union Neil por uma indicação.
-                  Desde o primeiro momento, me senti ouvido e compreendido e os cuidados para com o Odair tem sido
-                  sempre feitos com extrema atenção,dedicação e profissionalismo. Sempre senti que ele estava em boas
-                  mãos. Hoje, o Odair está muito melhor ,sei que o papel da Union Neil foi fundamental, ajudou a mim e
-                  minha família, com muito carinho ,hoje , eu também posso indicar a Union Neil para todos aqueles que
-                  estiverem precisando de cuidados domiciliares.Obrigado Union Neil de coração.
-                </p>
-            </div>
-        </div>
-    </li>
-    <li>
-      <div id="slide1" class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
-        <div class="p-4 text-center flex flex-col items-center">
-          <img src="./img/google-icon.png" alt="Google icon" class="h-4 mb-4">
-              <div class="text-lg font-semibold text-gray-900">Francine Barros da Silva, enfermeira na Unimed Sorocaba</div>
-              <div class="flex justify-center items-center my-2">
-                  <span>⭐⭐⭐⭐⭐</span>
-                  <span id="time-ago" class="ml-2 text-gray-600"></span>
-              </div>
-              <p id="review-text" class="text-gray-700 italic">
-                Uma empresa extremamente comprometida em cuidar da saúde e garantir o bem estar dos pacientes e seus familiares. Os funcionarios se caracterizam pelo imenso respeito,dedicação e cuidado para com os pacientes. Recomendo sem dúvidas a todas as famílias que estejam precisando de cuidados para um ente querido em casa.
-
-              </p>
-          </div>
-      </div>
-  </li>
-  <li>
-    <div id="slide1" class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden">
-      <div class="p-4 text-center flex flex-col items-center">
-        <img src="./img/google-icon.png" alt="Google icon" class="h-4 mb-4">
-            <div class="text-lg font-semibold text-gray-900">Rogério Lima, esposo da Senhora Fernanda</div>
-            <div class="flex justify-center items-center my-2">
-                <span>⭐⭐⭐⭐⭐</span>
-                <span id="time-ago" class="ml-2 text-gray-600"></span>
-            </div>
-            <p id="review-text" class="text-gray-700 italic">
-              Realmente cuidam dos pacientes como se fossem da propria familia, com muito carinho e respeito .Os profissionais são dedicados e atenciosos, sempre pensando no bem-estar dos pacientes e da familia.  Se você tem alguém que precisa de cuidados especiais em casa, pode confiar  de olhos fechados.  Recomendo muito!
-            </p>
-        </div>
-    </div>
-</li>
-  
-        </ul>
-  
-        <button type="button" class="slider-nav"></button>
-        <button type="button" class="slider-nav slider-nav-next"></button>
-  
-        <ul class="slider-indicators">
-          <li class="active"></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
-  
-  
-    </div>
-  
-    </div>
-    <!-- End Depoimentos Section-->
-
-
-    <!-- End Serviços Section -->
-        <!-- End where are we Section-->
-        <!-- Services Section-->
-        <!-- <div class="container" id="equipe">
-          <div class="md:block text-2xl font-bold mb-5">
-            <h2>Nossa Equipe</h2>
-            <div class="title-underline"></div>
-          </div>
-          <div class="text-lg mb-5 lg:my-10 lg:text-xl ">
-            <p>Nossa equipe reúne profissionais das seguintes áreas, todos cuidadosamente selecionados, capacitados e coordenados para lhe fornecer um serviço excepcional:</p>
-            <div
-              class="flex w-full h-auto flex-col-reverse lg:flex-row-reverse justify-center gap-[30px] my-[30px] items-center">
-              <div class="grid gap-[22px] my-3 grid-cols-[1fr] md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr_] xl:grid-cols-[1fr_1fr_1fr_1fr_] ">
-                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
-                  <div class="mr-2"> ➤ </div><div>Cuidadoras</div>
-                </div>
-                
-                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
-                  <div class="mr-2"> ➤ </div><div>Enfermeiras</div>
-                </div>
-                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
-                  
-                  <div class="mr-2"> ➤ </div><div>Acompanhantes Hospitalares</div>
-                </div>
-                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
-                 
-                  <div class="mr-2"> ➤ </div><div>Técnicos de Enfermagem</div>
-                </div>
-                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
-                  
-                  <div class="mr-2"> ➤ </div><div>Auxiliares de Enfermagem</div>
-                </div>
-                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
-                  
-                  <div class="mr-2"> ➤ </div><div>Fisioterapeutas</div>
-                </div>
-    
-    
-                
-                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
-                  
-                  <div class="mr-2"> ➤ </div><div>Nutricionistas</div>
-                </div>
-                <div class="bg-[#f0e68c94] text-black px-5 py-5 rounded-lg shadow w-[270px] font-bold flex items-center">
-                  
-                  <div class="mr-2"> ➤ </div><div>Fonoaudiólogos</div>
-                </div>
-    
-              </div>
-    
-            </div>
-    
-          </div>
-    
-          <div class="text-lg gap-2 flex flex-col mb-5 lg:my-10 lg:text-xl">
-          </div>
-      </div> -->
-      <!-- End Services Section-->
-      
-        <!-- Cuidado Total Section-->
-        <!-- <div class="container">
+                    <!-- Cuidado Total Section-->
+        <div class="container">
           <div class="md:hidden text-2xl font-bold font-poppins">
             <h2>Cuidado Total: A Essência da Harmonia Familiar</h2>
             <div class="title-underline"></div>
@@ -499,21 +236,158 @@
               alt="Paciente pintando e sorridente" loading="lazy"/>
               
             </div>
-            
-    
-    
+
         </div>
         </div>
-    
-     -->
+
         <!-- End Cuidado Total Section-->
-         <!-- <div class="p-[3px] bg-[#D0B52D] max-w-[1350px] m-auto">
-          <video class="w-full  m-auto" autoplay muted loop id="desktop-hero-video">
-            <source src="./img/trimmed_UNION.mp4" type="video/webm" />
-            <source src="./img/trimmed_UNION.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-         </div> -->
+    <!-- Depoimentos Section-->
+    <div id="google-ratings" class="relative bottom-[85px]"></div>
+    <div class="container">
+      <div class="md:block text-2xl font-bold mb-5">
+        <h2>A Union, nas palvras de quem cuidamos</h2>
+  
+        <div class="title-underline"></div>
+      </div>
+  
+        <ul class="review-container grid sm:grid-cols-2 gap-12">
+          <li>
+            <div class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden h-full">
+              <div class="p-4 text-center flex flex-col items-center justify-between h-full">
+                <div>
+                  <div class="text-lg font-semibold text-gray-900">Edgar Francisco Pereira</div>
+                  <div class="flex justify-center items-center my-2">
+                      <span>⭐⭐⭐⭐⭐</span>
+                      <span class="ml-2 text-gray-600"></span>
+                  </div>
+                </div>
+                <div class="flex items-center h-full">
+                    <p class="text-gray-700 italic">
+                      Extremamente excelente, uma equipe que trabalha com amor e carinho, foram 03 meses que cuidaram de um ente querido e sempre deram o melhor, recomendo a todos que necessitam de cuidador de idosos ou pessoas que necessitem de cuidados especiais, a equipe é monitorada por médicas competentes. Você recebe diariamente um resumo dos medicamentos, cuidados e estado de saúde do paciente.
+                    </p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div id="slide1" class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden  h-full">
+              <div class="p-4 text-center flex flex-col items-center justify-between h-full">
+                <div>
+                  <div class="text-lg font-semibold text-gray-900">Antônio Giangiácomo Junior, filho do Senhor Antônio</div>
+                    <div class="flex justify-center items-center my-2">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span class="ml-2 text-gray-600"></span>
+                    </div>
+                </div>
+                <div class="flex items-center h-full">
+                    <p class="text-gray-700 italic">
+                      Empresa com profissionais qualificados, carinhosos e muito atenciosos em todas situações.
+                    </p>
+                </div>
+              </div>
+            </div>
+        </li>
+  
+          <li>
+            <div class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden h-full">
+              <div class="p-4 text-center flex flex-col items-center justify-between h-full">
+                <div>
+                  <div class="text-lg font-semibold text-gray-900">Arlete Sanches de Lima, filha do Senhor Bonifácio</div>
+                  <div class="flex justify-center items-center my-2">
+                      <span>⭐⭐⭐⭐⭐</span>
+                      <span class="ml-2 text-gray-600"></span>
+                  </div>
+                </div>
+                <div class="flex items-center h-full">
+                    <p class="text-gray-700 italic">
+                      Meu nome é Arlete, tenho 64 anos. Meu contato com a UNIONNEIL começou em maio/23, após uma queda sofrida por meu pai Sr. Bonifácio, de 97 anos, que causou fratura de fêmur. Desde então ele tem sido cuidado por profissionais dessa empresa que se mostrou extremamente comprometida com o bem estar do paciente e de seus familiares. A equipe de enfermagem é altamente preparada e competente. Diante disso, só tenho a fazer ótimas recomendações da empresa UNIONNEIL.
+                    </p>
+                </div>
+              </div>
+            </div>
+          </li>
+        <li>
+          <div class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden h-full">
+            <div class="p-4 text-center flex flex-col items-center justify-between h-full">
+              <div>
+                <div class="text-lg font-semibold text-gray-900">Maria Katsumi Fukasawa, esposa do Senhor Manolo</div>
+                <div class="flex justify-center items-center my-2">
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <span class="ml-2 text-gray-600"></span>
+                </div>
+              </div>
+              <div class="flex items-center h-full">
+                  <p class="text-gray-700 italic">
+                    Foi muito bom, as profissionais da enfermagem são muito eficientes, gostamos muito, fizeram ótimos trabalhos com muito carinho, amor e dedicação.
+                  </p>
+              </div>
+            </div>
+          </div>
+        </li>
+      <li>
+        <div class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden h-full">
+          <div class="p-4 text-center flex flex-col items-center justify-between h-full">
+            <div>
+              <div class="text-lg font-semibold text-gray-900">Bruno Dutra, neto do Senhor Odair</div>
+              <div class="flex justify-center items-center my-2">
+                  <span>⭐⭐⭐⭐⭐</span>
+                  <span class="ml-2 text-gray-600"></span>
+              </div>
+            </div>
+            <div class="flex items-center h-full">
+                <p class="text-gray-700 italic">
+                  Meu nome é Bruno, e sou neto do Odair, paciente da Union Neil. O Odair perdeu a força nas pernas e ficou difícil para eu cuidar dele sozinho, entramos em contato com a Union Neil por uma indicação. Desde o primeiro momento, me senti ouvido e compreendido e os cuidados para com o Odair tem sido sempre feitos com extrema atenção, dedicação e profissionalismo. Sempre senti que ele estava em boas mãos. Hoje, o Odair está muito melhor, sei que o papel da Union Neil foi fundamental, ajudou a mim e minha família, com muito carinho, hoje, eu também posso indicar a Union Neil para todos aqueles que estiverem precisando de cuidados domiciliares. Obrigado Union Neil de coração.
+                </p>
+            </div>
+          </div>
+        </div>
+      </li>
+    <li>
+      <div class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden h-full">
+        <div class="p-4 text-center flex flex-col items-center justify-between h-full">
+          <div>
+            <div class="text-lg font-semibold text-gray-900">Francine Barros da Silva, enfermeira na Unimed Sorocaba</div>
+            <div class="flex justify-center items-center my-2">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span class="ml-2 text-gray-600"></span>
+            </div>
+          </div>
+          <div class="flex items-center h-full">
+              <p class="text-gray-700 italic">
+                Uma empresa extremamente comprometida em cuidar da saúde e garantir o bem estar dos pacientes e seus familiares. Os funcionários se caracterizam pelo imenso respeito, dedicação e cuidado para com os pacientes. Recomendo sem dúvidas a todas as famílias que estejam precisando de cuidados para um ente querido em casa.
+              </p>
+          </div>
+        </div>
+      </div>
+    </li>
+  <li>
+    <div class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden h-full">
+      <div class="p-4 text-center flex flex-col items-center justify-between h-full">
+        <div>
+          <div class="text-lg font-semibold text-gray-900">Rogério Lima, esposo da Senhora Fernanda</div>
+          <div class="flex justify-center items-center my-2">
+              <span>⭐⭐⭐⭐⭐</span>
+              <span class="ml-2 text-gray-600"></span>
+          </div>
+        </div>
+        <div class="flex items-center h-full">
+            <p class="text-gray-700 italic">
+              Realmente cuidam dos pacientes como se fossem da própria família, com muito carinho e respeito. Os profissionais são dedicados e atenciosos, sempre pensando no bem-estar dos pacientes e da família. Se você tem alguém que precisa de cuidados especiais em casa, pode confiar de olhos fechados. Recomendo muito!
+            </p>
+        </div>
+      </div>
+    </div>
+  </li>
+  
+        </ul>
+
+    </div>
+  
+    </div>
+    <!-- End Depoimentos Section-->
+
+      
+ 
     <!-- Falarmos Section-->
     <div id="contato" class="relative bottom-[85px]"></div>
     <div class="container" >
@@ -550,22 +424,22 @@
         </div>
   <div class="gap-5 flex flex-col pt-4">
     <!-- FAQ Item -->
-    <div class="bg-white rounded-lg shadow px-6 py-4">
-      <div class="faq-item flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+    <div class="bg-white rounded-lg shadow px-6 py-4" x-data="{ open: false }">
+      <div class="faq-item flex justify-between items-center cursor-pointer" @click="open = ! open">
         <h3 class="font-semibold text-lg">O que é Home Care?</h3>
         <img src="img/chevron.png" class="h-5 transition-transform duration-300" alt="Chevron icon" />
       </div>
-      <div class="hidden mt-2 flex flex-col gap-2">
+      <div class="mt-2 flex flex-col gap-2" x-show="open">
         <p>Home Care, ou "Serviços de Atenção Domiciliar" em Inglês, abrange uma gama de serviços médicos e de suporte prestados no lar do paciente. Existem dois tipos principais: <strong>assistência domiciliar</strong> e <strong>internação domiciliar</strong>.</p>
          <p>A assistência domiciliar inclui não apenas suporte médico e de enfermagem, mas também o acompanhamento de cuidadores, que auxiliam nas atividades diárias, proporcionando cuidados paliativos, reabilitação após cirurgias, ou tratamento de longa duração. Esse tipo de cuidado ajuda a manter o conforto e a dignidade do paciente, permitindo que permaneçam em um ambiente familiar.</p> <p>Já a internação domiciliar oferece uma forma de cuidado mais intensiva, quase hospitalar, direcionada para pacientes que necessitam de monitoramento médico constante e equipamentos especializados em suas casas.</p><p>É importante destacar que a Union Neil foca na assistência domiciliar, não oferecendo serviços de internação domiciliar, e se dedica a garantir que os pacientes recebam o melhor suporte possível no conforto de suas residências.</p> 
       </div>
     </div>
-    <div class="bg-white rounded-lg shadow px-6 py-4">
-      <div class=" faq-item flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+    <div class="bg-white rounded-lg shadow px-6 py-4 " x-data="{ open: false }">
+      <div class=" faq-item flex justify-between items-center cursor-pointer" @click="open = ! open" >
         <h3 class="font-semibold text-lg">Quais são as vantagens de contratar os serviços da Union Neil para cuidados domiciliares?</h3>
         <img src="img/chevron.png" class="h-5 transition-transform duration-300" alt="Chevron icon" />
       </div>
-      <div class="hidden mt-2 flex flex-col gap-2">
+      <div class="mt-2 flex flex-col gap-2" x-show="open">
         <p class="mb-2">A escolha pela Union Neil traz vantagens cruciais, focando-se principalmente na minimização de riscos:</p>
         <ul class="p-3">
 
@@ -583,12 +457,12 @@
         </ul>
       </div>
     </div>
-    <div class="bg-white rounded-lg shadow px-6 py-4">
-      <div class="faq-item flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+    <div class="bg-white rounded-lg shadow px-6 py-4" x-data="{ open: false }">
+      <div class="faq-item flex justify-between items-center cursor-pointer" @click="open = ! open">
         <h3 class="font-semibold text-lg">Qual o perfil típico dos nossos pacientes?</h3>
         <img src="img/chevron.png" class="h-5 transition-transform duration-300" alt="Chevron icon" />
       </div>
-      <div class="hidden mt-2 flex flex-col gap-2">
+      <div class="mt-2 flex flex-col gap-2" x-show="open">
         <p>O perfil típico dos nossos pacientes em Home Care abrange indivíduos que preferem receber cuidados no conforto e na familiaridade de suas próprias casas. Esses pacientes geralmente buscam assistência domiciliar para gerir condições crônicas, recuperar-se de procedimentos cirúrgicos, ou receber cuidados paliativos de forma digna e confortável. 
         </p>
         <p>
@@ -597,46 +471,46 @@
 
       </div>
     </div>
-    <div class="bg-white rounded-lg shadow px-6 py-4">
-      <div class="faq-item  flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+    <div class="bg-white rounded-lg shadow px-6 py-4" x-data="{ open: false }">
+      <div class="faq-item  flex justify-between items-center cursor-pointer" @click="open = ! open">
         <h3 class="font-semibold text-lg">Qual é a área de cobertura?</h3>
         <img src="img/chevron.png" class="h-5 transition-transform duration-300" alt="Chevron icon" />
       </div>
-      <div class="hidden mt-2 flex flex-col gap-2">
+      <div class="mt-2 flex flex-col gap-2" x-show="open">
         <p>A Union Neil atualmente atende as cidades de Sorocaba e Votorantim. Estamos comprometidos em oferecer assistência de alta qualidade em ambas as regiões, garantindo que nossos pacientes recebam os cuidados necessários com a eficiência e a dedicação que nos caracterizam.</p>
 <p>Se você tem interesse em que a Union Neil estabeleça um polo em outra cidade, por favor, entre em contato conosco pelo telefone <strong>(15) 98 111 3016</strong>. Estamos sempre avaliando oportunidades para expandir nossos serviços e atender mais comunidades.</p>
         
       </div>
     </div>
     
-    <div class="bg-white rounded-lg shadow px-6 py-4">
-      <div class="faq-item  flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+    <div class="bg-white rounded-lg shadow px-6 py-4" x-data="{ open: false }">
+      <div class="faq-item  flex justify-between items-center cursor-pointer" @click="open = ! open">
         <h3 class="font-semibold text-lg">A Union Neil trabalha com atendimentos avulsos?</h3>
         <img src="img/chevron.png" class="h-5 transition-transform duration-300" alt="Chevron icon" />
       </div>
-      <div class="hidden mt-2 flex flex-col gap-2">
+      <div class="mt-2 flex flex-col gap-2" x-show="open">
         <p>Não, a Union Neil não oferece atendimentos avulsos. Nossos pacientes devem necessitar de um mínimo de pelo menos 1 mês de Home Care para serem elegíveis. Isso se deve ao modo detalhado, cuidadoso e extremamente personalizado com que as equipes são montadas, implantadas, organizadas, supervisionadas e orientadas.</p>
         <p>Nosso modelo de atendimento é projetado para o sucesso a longo prazo.</p> 
       </div>
     </div>
-    <div class="bg-white rounded-lg shadow px-6 py-4">
-      <div class=" faq-item flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+    <div class="bg-white rounded-lg shadow px-6 py-4" x-data="{ open: false }">
+      <div class=" faq-item flex justify-between items-center cursor-pointer" @click="open = ! open">
         <h3 class="font-semibold text-lg">Preciso assinar um contrato e, se sim, quão flexível ele é?</h3>
         <img src="img/chevron.png" class="h-5 transition-transform duration-300" alt="Chevron icon" />
       </div>
-      <div class="hidden mt-2 flex flex-col gap-2">
+      <div class="mt-2 flex flex-col gap-2" x-show="open">
         <p>Sim, é necessário assinar um contrato ao iniciar os serviços com a Union Neil. Este contrato é cuidadosamente elaborado para garantir transparência total entre todas as partes envolvidas, definindo claramente os termos, as responsabilidades e as expectativas.</p>
 <p>Entendemos, no entanto, a importância da flexibilidade. Por isso, não prendemos nossos clientes a termos restritivos. Se por qualquer motivo você decidir que o serviço não atende às suas expectativas, é possível rescindir o contrato com um aviso prévio de 7 dias. Para contratos iniciados há menos de 10 dias, o período de aviso é reduzido para apenas 3 dias. Não é necessário fornecer justificativa para a rescisão, permitindo que você faça escolhas que melhor atendam às suas necessidades sem complicações adicionais.</p>
         
       </div>
     </div>
 
-    <div class="bg-white rounded-lg shadow px-6 py-4">
-      <div class="faq-item  flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+    <div class="bg-white rounded-lg shadow px-6 py-4" x-data="{ open: false }">
+      <div class="faq-item  flex justify-between items-center cursor-pointer" @click="open = ! open">
         <h3 class="font-semibold text-lg">Qual é o nível de experiência profissional dos gestores da empresa?</h3>
         <img src="img/chevron.png" class="h-5 transition-transform duration-300" alt="Chevron icon" />
       </div>
-      <div class="hidden mt-2 flex flex-col gap-2">
+      <div class="mt-2 flex flex-col gap-2" x-show="open">
         <p>Os gestores da Union Neil possuem mais de duas décadas de experiência prática em Enfermagem, tendo trabalhado em posições de responsabilidade para os mais prestigiados convênios médicos do Brasil, tanto em ambientes hospitalares quanto em Home Care.</p>
         
         <p>Na dimensão empresarial, nossos gestores também se destacam por suas experiências internacionais, tendo atuado em projetos de grande escala que envolvem a gestão de negócios em diferentes países. Essa exposição internacional aporta uma visão global e práticas avançadas ao gerenciamento dos nossos serviços de Home Care, permitindo uma implementação ágil e eficiente de soluções inovadoras que atendem às necessidades complexas de nossos clientes.</p>
@@ -649,12 +523,12 @@
 
     
     
-    <div class="bg-white rounded-lg shadow px-6 py-4">
-      <div class="faq-item flex justify-between items-center cursor-pointer" onclick="toggleFAQ(this)">
+    <div class="bg-white rounded-lg shadow px-6 py-4" x-data="{ open: false }">
+      <div class="faq-item flex justify-between items-center cursor-pointer" @click="open = ! open">
           <h3 class="font-semibold text-lg">Tenho uma pergunta e não encontrei resposta aqui, com quem posso falar?</h3>
           <img src="img/chevron.png" class="h-5 transition-transform duration-300" alt="Chevron icon" />
       </div>
-      <div class="hidden mt-2 flex flex-col gap-2 items-center">
+      <div class="mt-2 flex flex-col gap-2" x-show="open">
           <p>Se você tem uma pergunta que não foi respondida nesta seção, ficaremos felizes em ajudá-lo. Você pode entrar em contato conosco clicando no botão do WhatsApp abaixo, e nossa equipe retornará o mais rápido possível. Nosso tempo de resposta é geralmente de apenas alguns minutos.</p>
           <!-- WhatsApp Contact Button -->
           <a href="https://wa.link/rtvc0v" target="_blank" class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424] flex flex-row items-center py-3 px-6 shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] w-[280px]">
@@ -679,9 +553,6 @@
       <div class="flex flex-col md:flex-row-reverse justify-between">
         <div class="relative lg:w-1/2 flex flex-col justify-center  items-end">
           <img src="./img/union_espaço_acolhimento.jpg" class="md:w-[400px] relative my-5 md:my-0 rounded-md " loading="lazy" alt="Espaço de acolhimento Union Neil"/>
-          <!-- <img src="./img/reuniao_union.jpg"
-            class="hidden md:block w-[400px] relative xl:left-[150px] top-[10px] rounded-md"
-            alt="Paciente pintando e sorridente" loading="lazy"/> -->
         </div>
 
         <div class="gap-4 flex flex-col md:w-1/2 text-lg md:p-4">
@@ -700,9 +571,6 @@
             <div>Sorocaba</div>
             <div>SP</div>
           </div>
-          <!-- <img src="./img/reuniao_union.jpg"
-          class="md:hidden w-full relative xl:left-[150px] top-[10px] rounded-md"
-          alt="Paciente pintando e sorridente" loading="lazy"/> -->
           
         </div>
         
@@ -711,22 +579,7 @@
     </div>
     </div>
 
-
-
-    
-
-  
-  <!-- Contact Section
-      <div class="container">
-        <div class="md:block text-2xl font-bold mb-5">
-          <h2>Entre em contato conosco hoje</h2>
-          <div class="title-underline"></div>
-        </div>
-        <div id="map" style="position:relative;overflow:hidden">s</div>
-        
-      </div>
-      End Contact Section-->
-  <footer class="h-max w-full p-[30px] bg-[lightyellow]">
+  <footer class="h-max w-full p-[30px] bg-[lightyellow] pb-44">
     <div class="flex flex-col items-center justify-center gap-7">
       <img src="./img/union_neil_favicon.png" class="w-[150px]" alt="Union Neil favicon" loading="lazy" />
       <p class="text-center">
@@ -744,47 +597,20 @@
           <p class="text-center"><a
             href="https://wa.link/rffhb5"
             target="_blank"><strong>📱 (15) 98 111 3016 </strong> 👈🏼 Para profissionais que buscam enviar seu CV</a></p>
-      <p class="text-center">
-        © 2024 Union Neil Ltda. Todos os direitos reservados
+      <p class="text-center" x-data>
+        © <span x-text="new Date().getFullYear(); "></span> Union Neil Ltda. Todos os direitos reservados
       </p>
       <p class="text-center">
         <a href="/privacidade" style="font-size: 18px"><strong>POLÍTICA DE
             PRIVACIDADE DE DADOS</strong></a>
       </p>
     </div>
-    <!-- <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-    <div class="elfsight-app-bae741c3-5d59-4edd-b44a-b56b8f731fdb" data-elfsight-app-lazy></div> -->
+
   </footer>
-  <!-- <button class="fixed bg-white border border-gray-300 p-4 rounded shadow-lg items-center text-left
-  md:bottom-3 md:left-4 bottom-[120px] right-4 w-[260px] flex flex-col">
-  <img src="img/google_review_logo.png" class="h-[20px]" loading="lazy"/>
-<div class="flex items-center">
-<div class="flex text-yellow-500">
-<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-</svg>
-<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-</svg>
-<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-</svg>
-<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-</svg>
-<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-</svg>
-</div>
-<div class="ml-3">
-<strong class="block text-gray-900 text-sm">5.0 estrelas</strong>
-<span class=" text-gray-600 text-xs">10 avaliações</span>
-</div>
-</div>
-</button> -->
+ 
 
   </div>
-  <script src="./global.js" type="module" defer></script>
+  <script src="./wistia-lazyload.js" type="module" defer></script>
 
 </body>
 
