@@ -9,6 +9,9 @@
   <link rel="canonical" href="https://unionneil.com.br">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="./img/union_neil_favicon.png" />
+
+  <link rel="preload" href="./img/mobile_hero_placeholder-min.avif" as="image" />
+  <link rel="preload" href="./img/Union Neil Logo.png" as="image" />
   <title>Union Neil | Assistência e Cuidados Domiciliares</title>
   <link rel="stylesheet" href="./dist/tailwind-output.css" />
   <script type="text/javascript" defer>
@@ -24,6 +27,11 @@
 </head>
 
 <body class="font-lato">
+  <a href="https://wa.link/rtvc0v" target="_blank" class="fixed bottom-3 right-3 md:bottom-4 md:right-4 z-10">
+    <img src="./img/WhatsApp_icon.avif" class="w-[60px] md:w-[65px] mr-3" alt="WhatsApp icon" loading="eager" />
+  </a>
+
+
   <div>
     <nav
       class="flex px-[30px] py-5 flex-col gap-5 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.06)] bg-white navbar  h-max font-notoSans w-[100%] z-[1] fixed"
@@ -95,7 +103,7 @@
         <div
           class="flex flex-row items-center gap-5 md:gap-10 justify-center border-2 py-1 px-2 md:py-2 rounded-[40px] border-solid border-[darkgoldenrod] bg-[rgb(184,134,11,0.1)]">
 
-          <img src="./img/WhatsApp_icon.png" class="w-[35px] " alt="WhatsApp icon" loading="eager" /><span
+          <img src="./img/WhatsApp_icon.avif" class="w-[35px] " alt="WhatsApp icon" loading="lazy" /><span
             class="font-bold md:text-[19px] text-base">
             Quero falar com a Union</span>
         </div>
@@ -543,7 +551,7 @@
       <div class="flex items-center justify-center flex-col">
         <a href="https://wa.link/rtvc0v"
           class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424]  flex flex-row items-center py-3 px-6  shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)]"
-          target="_blank"><img src="./img/WhatsApp_icon.png" class="w-[50px] mr-3" loading="lazy"
+          target="_blank"><img src="./img/WhatsApp_icon.avif" class="w-[50px] mr-3" loading="lazy"
             alt="WhatsApp icon" /><strong class="text-center">Quero falar com a Union</strong></a>
         <a href="https://wa.link/rffhb5"
           class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424]  flex flex-row items-center py-3 px-6  shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.02)]"
@@ -736,7 +744,7 @@
             <!-- WhatsApp Contact Button -->
             <a href="https://wa.link/rtvc0v" target="_blank"
               class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424] flex flex-row items-center py-3 px-6 shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] w-[280px]">
-              <img src="./img/WhatsApp_icon.png" class="w-[50px] mr-3" alt="WhatsApp icon" />
+              <img src="./img/WhatsApp_icon.avif" class="w-[50px] mr-3" alt="WhatsApp icon" loading="lazy" />
               <strong class="text-center">Falar com a Union</strong>
             </a>
           </div>
@@ -798,11 +806,11 @@
       </p>
       <p class="text-center">✉️ atendimento@unionneil.com.br</p>
       <p class="text-center"><a href="https://wa.link/rtvc0v" target="_blank"
-          class="flex flex-wrap items-center justify-center gap-2"><img src="./img/WhatsApp_icon.png" class="w-[35px] "
+          class="flex flex-wrap items-center justify-center gap-2"><img src="./img/WhatsApp_icon.avif" class="w-[35px] "
             alt="WhatsApp icon" loading="lazy" /><strong> (15) 98 101 2944 </strong>
           Para atendimento ao Cliente</a></p>
       <p class="text-center"><a href="https://wa.link/rffhb5" target="_blank"
-          class="flex flex-wrap items-center justify-center gap-2"><img src="./img/WhatsApp_icon.png" class="w-[35px] "
+          class="flex flex-wrap items-center justify-center gap-2"><img src="./img/WhatsApp_icon.avif" class="w-[35px] "
             alt="WhatsApp icon" loading="lazy" /> <strong>(15) 98 111 3016 </strong>Para profissionais
           que buscam enviar seu CV</a></p>
       <p class="text-center" x-data>
@@ -815,7 +823,6 @@
     </div>
 
   </footer>
-
 
   </div>
   <script src="./wistia-lazyload.js" type="module" defer></script>
