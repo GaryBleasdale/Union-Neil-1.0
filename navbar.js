@@ -12,12 +12,12 @@ window.addEventListener("scroll", function () {
   if (scrollY > latestScrollValue) {
     latestScrollValue = scrollY;
     if (window.pageYOffset > 760) {
-      navbar.classList.add("hidden");
+      navbar.classList.add("translate-y-[-140px]");
       mobileMenu.style.display = "none";
       lastMovement = "down";
     }
   } else {
-    navbar.classList.remove("hidden");
+    navbar.classList.remove("translate-y-[-140px]");
     lastMovement = "up";
   }
 });
