@@ -1,0 +1,10 @@
+---
+// Offset anchor so the fixed navbar doesn't cover the section heading.
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<div id={id} class="relative bottom-[85px]"></div>

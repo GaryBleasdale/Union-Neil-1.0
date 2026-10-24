@@ -1,16 +1,19 @@
 {
-  "dependencies": {
-    "@googlemaps/map-loader": "^0.2.0",
-    "@netlify/functions": "^2.4.1",
-    "@qwik.dev/partytown": "^0.11.0",
-    "@splidejs/splide": "^4.1.4",
-    "live-server": "^1.2.2"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.3.7"
-  },
+  "name": "union-neil",
+  "type": "module",
+  "private": true,
   "scripts": {
-    "tailwind-watch": "npx tailwindcss -i ./css/tailwind-input.css -o ./dist/tailwind-output.css --watch",
-    "partytown": "partytown copylib public/~partytown"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/alpinejs": "^1.0.0",
+    "@netlify/functions": "^2.4.1",
+    "@tailwindcss/vite": "^4.1.0",
+    "alpinejs": "^3.14.0",
+    "astro": "7.4.2",
+    "tailwindcss": "^4.1.0",
+    "vite": "^7.3.7"
   }
 }

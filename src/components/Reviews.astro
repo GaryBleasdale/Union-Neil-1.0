@@ -1,0 +1,64 @@
+---
+import Anchor from "./Anchor.astro";
+import SectionTitle from "./SectionTitle.astro";
+
+const reviews = [
+  {
+    name: "Edgar Francisco Pereira",
+    text: "Extremamente excelente, uma equipe que trabalha com amor e carinho, foram 03 meses que cuidaram de um ente querido e sempre deram o melhor, recomendo a todos que necessitam de cuidador de idosos ou pessoas que necessitem de cuidados especiais, a equipe é monitorada por médicas competentes. Você recebe diariamente um resumo dos medicamentos, cuidados e estado de saúde do paciente.",
+  },
+  {
+    name: "Antônio Giangiácomo Junior, filho do Senhor Antônio",
+    text: "Empresa com profissionais qualificados, carinhosos e muito atenciosos em todas situações.",
+  },
+  {
+    name: "Arlete Sanches de Lima, filha do Senhor Bonifácio",
+    text: "Meu nome é Arlete, tenho 64 anos. Meu contato com a UNIONNEIL começou em maio/23, após uma queda sofrida por meu pai Sr. Bonifácio, de 97 anos, que causou fratura de fêmur. Desde então ele tem sido cuidado por profissionais dessa empresa que se mostrou extremamente comprometida com o bem estar do paciente e de seus familiares. A equipe de enfermagem é altamente preparada e competente. Diante disso, só tenho a fazer ótimas recomendações da empresa UNIONNEIL.",
+  },
+  {
+    name: "Maria Katsumi Fukasawa, esposa do Senhor Manolo",
+    text: "Foi muito bom, as profissionais da enfermagem são muito eficientes, gostamos muito, fizeram ótimos trabalhos com muito carinho, amor e dedicação.",
+  },
+  {
+    name: "Bruno Dutra, neto do Senhor Odair",
+    text: "Meu nome é Bruno, e sou neto do Odair, paciente da Union Neil. O Odair perdeu a força nas pernas e ficou difícil para eu cuidar dele sozinho, entramos em contato com a Union Neil por uma indicação. Desde o primeiro momento, me senti ouvido e compreendido e os cuidados para com o Odair tem sido sempre feitos com extrema atenção, dedicação e profissionalismo. Sempre senti que ele estava em boas mãos. Hoje, o Odair está muito melhor, sei que o papel da Union Neil foi fundamental, ajudou a mim e minha família, com muito carinho, hoje, eu também posso indicar a Union Neil para todos aqueles que estiverem precisando de cuidados domiciliares. Obrigado Union Neil de coração.",
+  },
+  {
+    name: "Francine Barros da Silva, enfermeira na Unimed Sorocaba",
+    text: "Uma empresa extremamente comprometida em cuidar da saúde e garantir o bem estar dos pacientes e seus familiares. Os funcionários se caracterizam pelo imenso respeito, dedicação e cuidado para com os pacientes. Recomendo sem dúvidas a todas as famílias que estejam precisando de cuidados para um ente querido em casa.",
+  },
+  {
+    name: "Rogério Lima, esposo da Senhora Fernanda",
+    text: "Realmente cuidam dos pacientes como se fossem da própria família, com muito carinho e respeito. Os profissionais são dedicados e atenciosos, sempre pensando no bem-estar dos pacientes e da família. Se você tem alguém que precisa de cuidados especiais em casa, pode confiar de olhos fechados. Recomendo muito!",
+  },
+];
+---
+
+<Anchor id="google-ratings" />
+<div class="container">
+  <SectionTitle>O que falam da Union</SectionTitle>
+  <p class="mb-10 text-lg">Compartilhamos aqui, com enorme alegria e satisfação, as palavras das famílias as quais
+    servimos
+  </p>
+  <ul class="review-container grid sm:grid-cols-2 gap-12">
+    {
+      reviews.map((review) => (
+        <li>
+          <div class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden h-full">
+            <div class="p-4 text-center flex flex-col items-center justify-between h-full">
+              <div>
+                <div class="text-lg font-semibold text-gray-900">{review.name}</div>
+                <div class="flex justify-center items-center my-2">
+                  <span>⭐⭐⭐⭐⭐</span>
+                </div>
+              </div>
+              <div class="flex items-center h-full">
+                <p class="text-gray-700 italic">{review.text}</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>
