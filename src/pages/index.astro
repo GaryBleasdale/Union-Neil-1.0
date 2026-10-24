@@ -11,6 +11,7 @@ import Contact from "../components/Contact.astro";
 import Faq from "../components/Faq.astro";
 import Visit from "../components/Visit.astro";
 import Footer from "../components/Footer.astro";
+import WhatsAppWidget from "../components/WhatsAppWidget.astro";
 import { getImage } from "astro:assets";
 import { artDirectedSources } from "../lib/images";
 import logo from "../assets/logo.png";
@@ -54,4 +55,5 @@ const optimizedLogo = await getImage({ src: logo, format: "avif" });
     <Visit />
   </main>
   <Footer />
+  <WhatsAppWidget />
 </Layout>
