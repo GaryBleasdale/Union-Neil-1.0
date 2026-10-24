@@ -1,0 +1,29 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+import Img from "./Img.astro";
+import espacoAcolhimento from "../assets/espaco-acolhimento.jpg";
+---
+
+<div class="container">
+  <SectionTitle class="md:hidden text-2xl font-bold font-poppins">Venha nos visitar</SectionTitle>
+  <div class="flex flex-col md:flex-row-reverse justify-between">
+    <div class="relative lg:w-1/2 flex flex-col justify-center  items-end">
+      <Img src={espacoAcolhimento} class="md:w-100 relative my-5 md:my-0 rounded-md "
+        sizes="(min-width: 768px) 400px, calc(100vw - 60px)" alt="Espaço de acolhimento Union Neil" />
+    </div>
+
+    <div class="gap-4 flex flex-col md:w-1/2 text-lg md:p-4">
+      <SectionTitle class="hidden md:block text-2xl font-bold">Venha nos visitar</SectionTitle>
+      <p>Agende uma visita conosco para conversarmos pessoalmente e juntos descobrirmos a melhor solução, acompanhados
+        de um delicioso café mineiro.</p>
+      <p>Estaremos encantados em recebê-los!</p>
+      <div class="font-extrabold text-[#272727]">
+        <div>Av. Washington Luiz 310</div>
+        <div>Torre White, Sala 116</div>
+        <div>Jardim Emilia</div>
+        <div>Sorocaba</div>
+        <div>SP</div>
+      </div>
+    </div>
+  </div>
+</div>

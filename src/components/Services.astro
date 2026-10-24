@@ -1,0 +1,104 @@
+---
+import Anchor from "./Anchor.astro";
+import Img from "./Img.astro";
+import reuniao from "../assets/reuniao.avif";
+import alltogether from "../assets/alltogether.avif";
+import tomandoAgua from "../assets/tomandoagua.avif";
+import uniforme from "../assets/uniforme.avif";
+import driver from "../assets/driver.webp";
+import gestaoRemedio from "../assets/gestao_remedio.jpg";
+import food from "../assets/food.jpg";
+import estetica from "../assets/estetica.avif";
+import SectionTitle from "./SectionTitle.astro";
+
+const services = [
+  {
+    title: "Profissionais caprichosamente selecionados e capacitados",
+    text: "Seleção e designação cuidadosa de profissionais para atender às especificidades de cada lar.",
+    img: reuniao,
+    alt: "Equipe Union Neil em reunião",
+  },
+  {
+    title: "Visitas regulares e dedicadas das Enfermeiras Chefes",
+    text: "Visitas detalhadas e atentas da Enfermeira Chefe para um acompanhamento minucioso.",
+    img: alltogether,
+    alt: "Equipe Union Neil reunida",
+  },
+  {
+    title: "Equipe domiciliar orientada e supervisionada diariamente",
+    text: "Orientação diária para garantir um padrão de cuidado excepcional na casa do paciente.",
+    img: tomandoAgua,
+    alt: "Profissional dando água ao paciente",
+  },
+  {
+    title: "Canal de comunicação direta com as Enfermeiras Chefes",
+    text: "Comunique-se diretamente com as nossas Enfermeiras Chefe a qualquer momento.",
+    img: uniforme,
+    alt: "Uniformes da equipe Union Neil",
+  },
+  {
+    title: "Transporte, agendamento e acompanhamento nas Consultas Médicas",
+    text: "Gerenciamos seus compromissos médicos, com eficiência e cuidado.",
+    img: driver,
+    alt: "Motorista da Union Neil",
+  },
+  {
+    title: "Gestão de Estoque de remédios",
+    text: "Administração precisa do estoque dos medicamentos do paciente, para sua tranquilidade.",
+    img: gestaoRemedio,
+    alt: "Gestão de remédios",
+  },
+  {
+    title: "Serviços Domésticos",
+    text: "Preparo de refeições, higienização das roupas do paciente, e serviços de faxina para seu conforto.",
+    img: food,
+    alt: "Preparo de refeições",
+  },
+  {
+    title: "Serviços de Estética e Bem-estar",
+    text: "Realçe o bem-estar do paciente com serviços estéticos exclusivos no conforto do seu lar.",
+    img: estetica,
+    alt: "Serviço de estética domiciliar",
+  },
+];
+---
+
+<Anchor id="ajudar" />
+<div class="container">
+  <SectionTitle class="md:hidden text-2xl font-bold font-poppins">
+    Como trazemos Paz para a sua família?
+  </SectionTitle>
+
+  <div class="gap-4 flex flex-col md:w-1/2 text-lg md:p-4">
+    <SectionTitle class="hidden md:block text-2xl font-bold">
+      Como trazemos Paz para a sua família?
+    </SectionTitle>
+  </div>
+  <div class="grid grid-cols-[1fr] md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] gap-7.5 pt-8">
+    {
+      services.map((service, i) => (
+        <div
+          class:list={[
+            "md:max-w-87.5 p-4 rounded-md service-title flex flex-col justify-between border-[3px] border-solid",
+            // Cards alternate between a darker and a lighter tint.
+            i % 2 === 0
+              ? "bg-[rgb(184,134,11,0.25)] border-[#daa52026]"
+              : "bg-[rgb(184,134,11,0.15)] border-[#daa5203b]",
+          ]}>
+          <div class="flex flex-row items-center justify-between">
+            <h2 class="font-bold text-lg text-[#000000c5]">{service.title}</h2>
+          </div>
+          <div class="service-card-text md:block">
+            <p class="my-2">{service.text}</p>
+            <Img
+              src={service.img}
+              class:list={["rounded-md", i > 0 && "aspect-4/3 object-cover"]}
+              alt={service.alt}
+              sizes="(min-width: 768px) 320px, calc(100vw - 112px)"
+            />
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>

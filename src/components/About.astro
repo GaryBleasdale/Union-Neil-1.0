@@ -1,0 +1,51 @@
+---
+import Img from "./Img.astro";
+import unionNeil1 from "../assets/union-neil-1.webp";
+import unionNeil2 from "../assets/union-neil-2.webp";
+import Anchor from "./Anchor.astro";
+import SectionTitle from "./SectionTitle.astro";
+---
+
+<Anchor id="intro" />
+<div class="container">
+  <SectionTitle class="md:hidden text-2xl font-bold font-poppins">
+    Compreender as necessidades da sua família é a nossa força
+  </SectionTitle>
+  <div class="flex flex-col md:flex-row">
+    <div class="relative lg:w-1/2 flex flex-col items-center justify-center xl:items-start">
+      <Img src={unionNeil1} class="md:w-100 relative my-5 md:my-0 rounded-md"
+        alt="Enfermeira e Paciente sorrindo" sizes="(min-width: 768px) 400px, calc(100vw - 60px)" loading="eager" />
+      <Img src={unionNeil2} sizes="(min-width: 768px) 400px, calc(100vw - 60px)"
+        class="hidden md:block w-100 relative xl:left-37.5 top-2.5 rounded-md"
+        alt="Paciente pintando e sorridente" />
+    </div>
+
+    <div class="gap-4 flex flex-col md:w-1/2 text-lg md:p-4">
+      <SectionTitle class="hidden md:block text-2xl font-bold">
+        Compreender as necessidades da sua família é a nossa força
+      </SectionTitle>
+      <p>Na Union Neil, elevamos o cuidado domiciliar à forma de arte, focando em soluções que atendem às
+        necessidades únicas de cada paciente, e da sua família, diretamente no conforto do seu lar. </p>
+      <p>Reconhecemos que cuidar de um ente
+        querido exige de atenção ao detalhe, capacidade de resposta rápida, competência técnica, e de compromisso
+        férreo
+        com a nossa missão de providenciar uma vida digna e ordenada.</p>
+      <p>
+        Por isso, oferecemos um sistema de apoio completo para abordar todos os aspectos da vida
+        doméstica. Cada equipe de profissionais, cada
+        rotina de cuidados, são criados por Gestoras com mais de 20 anos de experiência, sob uma cuidadosa e
+        criteriosa compreensão das necessidades da pessoa
+        cuidada e de sua
+        família.
+      </p>
+      <p>
+        Sob a supervisão diária e minuciosa de nossa equipe de Enfermeiras Gestoras, garantimos a qualidade e a
+        eficácia dos cuidados, transformando sua casa em um santuário onde as famílias podem voltar a se concentrar
+        no que realmente importa.
+      </p>
+      <Img src={unionNeil2} sizes="(min-width: 768px) 400px, calc(100vw - 60px)"
+        class="md:hidden w-full relative xl:left-37.5 top-2.5 rounded-md" alt="Paciente pintando e sorridente"
+        />
+    </div>
+  </div>
+</div>

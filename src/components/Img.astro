@@ -1,0 +1,13 @@
+---
+// Thin wrapper over astro:assets <Image>: AVIF by default, and a standard
+// set of srcset widths whenever a `sizes` hint is given.
+import { Image } from "astro:assets";
+import type { ComponentProps } from "astro/types";
+
+type Props = ComponentProps<typeof Image>;
+
+const { format = "avif", ...props } = Astro.props;
+const widths = props.sizes && !props.widths ? [320, 480, 640, 800, 960, 1280] : props.widths;
+---
+
+<Image format={format} {...props} widths={widths} />

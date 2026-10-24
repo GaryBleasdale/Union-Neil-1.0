@@ -1,0 +1,5 @@
+# pnpm settings (not a monorepo). allowBuilds is required: without it,
+# `pnpm install --frozen-lockfile` (what Netlify runs) fails on esbuild.
+allowBuilds:
+  esbuild: true
+  sharp: false

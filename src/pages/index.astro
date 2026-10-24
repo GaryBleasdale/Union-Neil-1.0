@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Services from "../components/Services.astro";
+import VideoTestimonial from "../components/VideoTestimonial.astro";
+import Reviews from "../components/Reviews.astro";
+import CuidadoTotal from "../components/CuidadoTotal.astro";
+import Contact from "../components/Contact.astro";
+import Faq from "../components/Faq.astro";
+import Visit from "../components/Visit.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppWidget from "../components/WhatsAppWidget.astro";
+import { getImage } from "astro:assets";
+import { artDirectedSources } from "../lib/images";
+import logo from "../assets/logo.png";
+import heroMobile from "../assets/mobile_hero_placeholder-min.avif";
+import heroDesktop from "../assets/hero_desktop_placeholder-min.avif";
+
+// Same transforms as <Hero> and <Nav>, so these resolve to the URLs the page requests.
+const hero = await artDirectedSources(heroMobile, heroDesktop);
+const optimizedLogo = await getImage({ src: logo, format: "avif" });
+---
+
+<Layout
+  title="Union Neil | Assistência e Cuidados Domiciliares"
+  description="Na Union Neil, elevamos o cuidado domiciliar à forma de arte, focando em soluções que atendem suas necessidades únicas, diretamente no conforto do lar."
+  canonical="https://unionneil.com.br"
+  bodyClass="font-lato"
+  analytics
+>
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      imagesrcset={hero.mobile.srcSet.attribute}
+      imagesizes="100vw"
+      media="(max-width:639px)"
+      fetchpriority="high"
+    />
+    <link rel="preload" as="image" href={optimizedLogo.src} />
+  </Fragment>
+
+  <Nav />
+  <main>
+    <Hero />
+    <About />
+    <Services />
+    <VideoTestimonial />
+    <Reviews />
+    <CuidadoTotal />
+    <Contact />
+    <Faq />
+    <Visit />
+  </main>
+  <Footer />
+  <WhatsAppWidget />
+</Layout>

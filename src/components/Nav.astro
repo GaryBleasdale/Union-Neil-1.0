@@ -1,0 +1,89 @@
+---
+import Img from "./Img.astro";
+import logo from "../assets/logo.png";
+import whatsappIcon from "../assets/whatsapp-icon.avif";
+
+const links = [
+  { href: "#intro", desktop: "Sobre nós", mobile: "Sobre Nós" },
+  { href: "#depoimento", desktop: "Depoimentos", mobile: "Depoimentos" },
+  { href: "#faq", desktop: "Perguntas Frequentes", mobile: "Pergunas Frequentes" },
+  { href: "#contato", desktop: "Contato", mobile: "Contato" },
+];
+---
+
+<nav
+  class="flex px-7.5 py-5 flex-col gap-5 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.06)] bg-white navbar  h-max font-notoSans w-full z-1 fixed transition-all duration-350 ease-linear"
+  x-data="{ open: false}">
+  <div class="flex items-center justify-between" id="top-navbar">
+    <div>
+      <Img src={logo} class="max-w-45 sm:max-w-62.5" alt="Union Neil Logo" priority />
+    </div>
+    <div class="items-center justify-center w-full hidden lg:flex">
+      <ul class="flex-row w-[70%] flex justify-around">
+        {
+          links.map((link) => (
+            <li class="hover:cursor-pointer hover:border-b-[#CFB52C] relative border-b-[#CFB52C5e] border-b-2 pb-1 transition-[200ms]">
+              <a href={link.href}>{link.desktop}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <button class="flex flex-col h-6 w-6 justify-between items-center lg:hidden hamburger-menu" aria-label="Menu"
+      @click="open = ! open">
+      <span class="block w-full h-0.5 bg-black"></span>
+      <span class="block w-full h-0.5 bg-black"></span>
+      <span class="block w-full h-0.5 bg-black"></span>
+    </button>
+    <div class="mobile-menu absolute z-1 w-screen p-5 left-0 top-26.5 bg-white" style="display:none"
+      x-show="open">
+      <ul class="flex flex-col w-[70%] justify-around h-75">
+        {
+          links.map((link) => (
+            <li class="hover:cursor-pointer flex flex-row items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#CFB52C" class="h-3.75 mr-1">
+                <path d="M12 23a1 1 0 0 1-.78-.38l-8-10c-.29-.37-.29-.88 0-1.25l8-9.99c.38-.47 1.18-.47 1.56 0l8 10c.29.37.29.88 0 1.25l-8 10a1 1 0 0 1-.78.38ZM5.28 12 12 20.4l6.72-8.4L12 3.6 5.28 12Z" />
+              </svg>
+              <a href={link.href}>{link.mobile}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <a href="#contato" class="hidden" id="whatsapp-cta">
+    <div
+      class="flex flex-row items-center gap-5 md:gap-10 justify-center border-2 py-1 px-2 md:py-2 rounded-[40px] border-solid border-[darkgoldenrod] bg-[rgb(184,134,11,0.1)]">
+      <Img src={whatsappIcon} class="w-8.75 " alt="WhatsApp icon" loading="lazy" /><span
+        class="font-bold md:text-[19px] text-base">
+        Quero falar com a Union</span>
+    </div>
+  </a>
+</nav>
+
+<script>
+  // Hide the navbar while scrolling down past the hero, show it again on scroll up.
+  const navbar = document.querySelector("nav")!;
+  const mobileMenu = document.querySelector<HTMLElement>(".mobile-menu")!;
+  let latestScrollValue = 0;
+  let lastMovement = "";
+
+  window.addEventListener("scroll", function () {
+    if (lastMovement === "up") {
+      latestScrollValue = scrollY;
+      lastMovement = "";
+      return;
+    }
+    if (scrollY > latestScrollValue) {
+      latestScrollValue = scrollY;
+      if (window.pageYOffset > 760) {
+        navbar.classList.add("-translate-y-35");
+        mobileMenu.style.display = "none";
+        lastMovement = "down";
+      }
+    } else {
+      navbar.classList.remove("-translate-y-35");
+      lastMovement = "up";
+    }
+  });
+</script>

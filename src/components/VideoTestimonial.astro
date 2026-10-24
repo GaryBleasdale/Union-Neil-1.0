@@ -1,0 +1,70 @@
+---
+import Anchor from "./Anchor.astro";
+import SectionTitle from "./SectionTitle.astro";
+import ArtDirectedPicture from "./ArtDirectedPicture.astro";
+import thumbMobile from "../assets/video_thumbnail_mobile.png";
+import thumbDesktop from "../assets/thumbnail.avif";
+---
+
+<Anchor id="depoimento" />
+<div class="container">
+  <SectionTitle>Histórias do coração</SectionTitle>
+
+  <p class="mb-10 text-lg">Cremos que a melhor testemunha dos nossos serviços vem daqueles de quem cuidamos. Assista
+    esse curto vídeo para ouvir como os nossos pacientes descrevem à Union.</p>
+
+  <div id="wistia-player-container" class=" cursor-pointer group aspect-[2/1.2]">
+    <ArtDirectedPicture
+      mobile={thumbMobile}
+      desktop={thumbDesktop}
+      sizes="(min-width: 1300px) 1240px, calc(100vw - 60px)"
+      loading="lazy"
+      decoding="async"
+      alt="video de depoimento"
+    />
+  </div>
+</div>
+
+<script>
+  // Lazy load the Wistia player: only fetch its scripts once the thumbnail is clicked.
+  function initWistiaPlayer() {
+    const container = document.getElementById("wistia-player-container");
+    if (!container) return;
+
+    const loadWistia = () => {
+      container.removeEventListener("click", loadWistia);
+
+      const wistiaScript1 = document.createElement("script");
+      wistiaScript1.src = "https://fast.wistia.com/player.js";
+      wistiaScript1.defer = true;
+
+      const wistiaScript2 = document.createElement("script");
+      wistiaScript2.src = "https://fast.wistia.com/embed/8a0ge966sw.js";
+      wistiaScript2.defer = true;
+      wistiaScript2.type = "module";
+
+      container.innerHTML = `
+        <style>
+          wistia-player[media-id='8a0ge966sw']:not(:defined) {
+            background-color:black;
+            display: block;
+            padding-top:56.25%;
+          }
+        </style>
+        <wistia-player id="depoimento-wistia" media-id="8a0ge966sw" aspect="1.7777777777777777"></wistia-player>
+      `;
+
+      document.head.appendChild(wistiaScript1);
+      document.head.appendChild(wistiaScript2);
+
+      const player = document.getElementById("depoimento-wistia") as HTMLElement & { play(): void };
+      player.addEventListener("loaded-data", () => {
+        player.play();
+      });
+    };
+
+    container.addEventListener("click", loadWistia);
+  }
+
+  initWistiaPlayer();
+</script>

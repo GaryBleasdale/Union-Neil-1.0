@@ -1,0 +1,253 @@
+---
+import Anchor from "./Anchor.astro";
+import SectionTitle from "./SectionTitle.astro";
+import Img from "./Img.astro";
+import whatsappIcon from "../assets/whatsapp-icon.avif";
+
+const options = [
+    {
+        id: "family",
+        label: "Cuidados e Assistência Domiciliar para um ente querido",
+        message:
+            "Estaremos encantados em poder ajudar. Por favor, clique para iniciar seu atendimento.",
+        cta: "Iniciar atendimento",
+        href: "https://wa.link/rtvc0v",
+    },
+    {
+        id: "work",
+        label: "Trabalhar com a Union",
+        message:
+            "Obrigado pelo seu interesse em trabalhar com a Union, por favor entre em contato anexando seu CV.",
+        cta: "Enviar CV",
+        href: "https://wa.link/rffhb5",
+    },
+];
+---
+
+<Anchor id="contato" />
+<div class="container">
+    <SectionTitle>Vamos conversar</SectionTitle>
+    <div class="text-lg mb-5 lg:my-10 lg:text-xl">
+        <p class="mb-3">
+            Adoramos ouvir sua história e estamos prontos para dialogar, seja
+            por uma chamada rápida ou uma conversa no WhatsApp.
+        </p>
+        <p>
+            Vamos conhecer sua situação detalhadamente e orientá-lo sobre os
+            próximos passos com todo o respeito e atenção que você merece.
+        </p>
+        <div
+            class="flex items-center justify-center flex-col"
+            x-data="{ choice: '' }"
+        >
+            <button
+                type="button"
+                id="contact-cta"
+                @click="$refs.contactDialog.showModal()"
+                class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424] flex flex-row items-center py-3 px-6 shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)]"
+            >
+                <Img src={whatsappIcon} class="w-12.5 mr-3" alt="" />
+                <strong class="text-center">Quero falar com a Union</strong>
+            </button>
+
+            <dialog
+                x-ref="contactDialog"
+                id="contact-dialog"
+                closedby="any"
+                aria-labelledby="contact-dialog-title"
+                @close="choice = ''"
+                class="m-auto w-[calc(100%-2rem)] max-w-md rounded-lg bg-white p-6 text-[#242424] shadow-lg backdrop:bg-black/50"
+            >
+                <div class="flex items-start justify-between gap-4 mb-5">
+                    <h3 id="contact-dialog-title" class="text-xl font-bold">
+                        Como podemos ajudar?
+                    </h3>
+                    <button
+                        type="button"
+                        aria-label="Fechar"
+                        @click="$refs.contactDialog.close()"
+                        class="-mt-1 -mr-2 flex size-9 shrink-0 items-center justify-center rounded-full text-2xl leading-none hover:bg-black/5"
+                    >
+                        ×
+                    </button>
+                </div>
+
+                <p
+                    id="contact-dialog-hint"
+                    x-show="!choice"
+                    class="mb-4 text-base text-[#4a4a4a]"
+                >
+                    Por favor, selecione a opção que melhor descreve sua
+                    necessidade.
+                </p>
+
+                <select
+                    x-model="choice"
+                    aria-label="Eu estou buscando"
+                    aria-describedby="contact-dialog-hint"
+                    class="contact-select"
+                >
+                    <option value="" disabled selected>
+                        Eu estou buscando...
+                    </option>
+                    {options.map((option) => (
+                        <option value={option.id}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="#CFB52C"
+                                aria-hidden="true"
+                                class="option-icon"
+                            >
+                                <path d="M12 23a1 1 0 0 1-.78-.38l-8-10c-.29-.37-.29-.88 0-1.25l8-9.99c.38-.47 1.18-.47 1.56 0l8 10c.29.37.29.88 0 1.25l-8 10a1 1 0 0 1-.78.38ZM5.28 12 12 20.4l6.72-8.4L12 3.6 5.28 12Z" />
+                            </svg>
+                            {option.label}
+                        </option>
+                    ))}
+                </select>
+
+                {options.map((option) => (
+                    <div
+                        x-show={`choice === '${option.id}'`}
+                        style="display: none"
+                        class="mt-6"
+                    >
+                        <p class="mb-4 text-base">{option.message}</p>
+                        <a
+                            href={option.href}
+                            target="_blank"
+                            class="flex flex-row items-center justify-center rounded-[40px] border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] px-6 py-3 text-lg shadow-md transition-all duration-300 hover:shadow-lg"
+                        >
+                            <Img src={whatsappIcon} class="w-10 mr-3" alt="" />
+                            <strong>{option.cta}</strong>
+                        </a>
+                    </div>
+                ))}
+            </dialog>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Base styling: works in every browser. The open list stays the OS menu. */
+    .contact-select {
+        appearance: none;
+        width: 100%;
+        padding: 0.75rem 3rem 0.75rem 1rem;
+        border: 2px solid #daa52066;
+        border-radius: 0.75rem;
+        background: #fff
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b8860b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+            no-repeat right 1rem center / 1.25rem;
+        color: #242424;
+        font: inherit;
+        font-size: 1rem;
+        line-height: 1.4;
+        cursor: pointer;
+        transition: border-color 0.2s;
+    }
+
+    .contact-select:hover {
+        border-color: #daa520aa;
+    }
+
+    .contact-select:focus-visible {
+        outline: 2px solid darkgoldenrod;
+        outline-offset: 2px;
+    }
+
+    /* Placeholder ("Eu estou buscando...") in a softer grey. */
+    .contact-select:has(option[value=""]:checked) {
+        color: #6b6b6b;
+    }
+
+    /* Customizable select (Chrome/Edge 135+, Safari 27+): style the open list too. */
+    @supports (appearance: base-select) {
+        .contact-select,
+        .contact-select::picker(select) {
+            appearance: base-select;
+        }
+
+        .contact-select::picker-icon {
+            display: none;
+        }
+
+        /* Let long options wrap onto two lines, both closed and in the list. */
+        .contact-select,
+        .contact-select option {
+            white-space: normal;
+        }
+
+        .contact-select::picker(select) {
+            /* Match the closed box's width so the list sits directly under it. */
+            width: anchor-size(width);
+            overflow-x: hidden;
+            /* Open downward unless there's no room, rather than over the dialog title. */
+            position-try-order: normal;
+            margin-top: 0.375rem;
+            padding: 0.375rem;
+            border: 2px solid #daa52066;
+            border-radius: 0.75rem;
+            background: #fff;
+            box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.15);
+        }
+
+        .contact-select option {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            color: #242424;
+            cursor: pointer;
+        }
+
+        /* Same gold diamond as the mobile navbar links. */
+        .option-icon {
+            flex-shrink: 0;
+            width: 0.9375rem;
+            height: 0.9375rem;
+        }
+
+        .contact-select option:hover,
+        .contact-select option:focus-visible {
+            background: rgb(184 134 11 / 0.1);
+            outline: none;
+        }
+
+        .contact-select option:checked {
+            background: rgb(184 134 11 / 0.18);
+            font-weight: 600;
+        }
+
+        /* The tint and bold text already mark the chosen option; a checkmark
+         next to the diamond would be clutter. */
+        .contact-select option::checkmark {
+            display: none;
+        }
+
+        /* The placeholder isn't a real choice, so keep it out of the open list. */
+        .contact-select option[value=""] {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    // Safari doesn't support closedby="any" yet: close on backdrop clicks manually.
+    const dialog = document.getElementById(
+        "contact-dialog",
+    ) as HTMLDialogElement;
+    if (!("closedBy" in HTMLDialogElement.prototype)) {
+        dialog.addEventListener("click", (event) => {
+            if (event.target !== dialog) return;
+            const rect = dialog.getBoundingClientRect();
+            const inside =
+                rect.top <= event.clientY &&
+                event.clientY <= rect.bottom &&
+                rect.left <= event.clientX &&
+                event.clientX <= rect.right;
+            if (!inside) dialog.close();
+        });
+    }
+</script>
