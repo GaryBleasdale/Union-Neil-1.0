@@ -2,7 +2,7 @@
 import Anchor from "./Anchor.astro";
 import SectionTitle from "./SectionTitle.astro";
 import Img from "./Img.astro";
-import whatsappIcon from "../assets/whatsapp-icon.avif";
+import whatsappIcon from "../assets/whatsapp-icon.png";
 
 const options = [
     {
@@ -46,7 +46,7 @@ const options = [
                 @click="$refs.contactDialog.showModal()"
                 class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424] flex flex-row items-center py-3 px-6 shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)]"
             >
-                <Img src={whatsappIcon} class="w-12.5 mr-3" alt="" />
+                <Img src={whatsappIcon} width={50} densities={[1, 2, 3]} class="w-12.5 mr-3" alt="" />
                 <strong class="text-center">Quero falar com a Union</strong>
             </button>
 
@@ -118,7 +118,7 @@ const options = [
                             target="_blank"
                             class="flex flex-row items-center justify-center rounded-[40px] border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] px-6 py-3 text-lg shadow-md transition-all duration-300 hover:shadow-lg"
                         >
-                            <Img src={whatsappIcon} class="w-10 mr-3" alt="" />
+                            <Img src={whatsappIcon} width={40} densities={[1, 2, 3]} class="w-10 mr-3" alt="" />
                             <strong>{option.cta}</strong>
                         </a>
                     </div>

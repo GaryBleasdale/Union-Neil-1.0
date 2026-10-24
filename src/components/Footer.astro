@@ -1,7 +1,7 @@
 ---
 import Img from "./Img.astro";
 import icon from "../assets/union_neil_icon.png";
-import whatsappIcon from "../assets/whatsapp-icon.avif";
+import whatsappIcon from "../assets/whatsapp-icon.png";
 ---
 
 <footer class="h-max w-full p-7.5 bg-[lightyellow]">
@@ -17,11 +17,11 @@ import whatsappIcon from "../assets/whatsapp-icon.avif";
     </p>
     <p class="text-center">✉️ atendimento@unionneil.com.br</p>
     <p class="text-center"><a href="https://wa.link/rtvc0v" target="_blank"
-        class="flex flex-wrap items-center justify-center gap-2"><Img src={whatsappIcon} class="w-8.75 "
+        class="flex flex-wrap items-center justify-center gap-2"><Img src={whatsappIcon} width={35} densities={[1, 2, 3]} class="w-8.75 "
           alt="WhatsApp icon" /><strong> (15) 98 101 2944 </strong>
         Para atendimento ao Cliente</a></p>
     <p class="text-center"><a href="https://wa.link/rffhb5" target="_blank"
-        class="flex flex-wrap items-center justify-center gap-2"><Img src={whatsappIcon} class="w-8.75 "
+        class="flex flex-wrap items-center justify-center gap-2"><Img src={whatsappIcon} width={35} densities={[1, 2, 3]} class="w-8.75 "
           alt="WhatsApp icon" /> <strong>(15) 98 111 3016 </strong>Para profissionais
         que buscam enviar seu CV</a></p>
     <p class="text-center" x-data>

@@ -24,7 +24,14 @@ const { title, description, canonical, bodyClass, bodyStyle, analytics = false }
     <link rel="icon" href="/img/union_neil_favicon.png" />
     <slot name="head" />
     <title>{title}</title>
+  </head>
+  <body class={bodyClass} style={bodyStyle}>
+    <slot />
     {
+      /* Clarity must load after the stylesheet: it reads layout as soon as it
+         runs, and doing that before the CSS arrives makes the whole page shift
+         (CLS ~0.9 on slow connections). An inline script at the end of <body>
+         waits for the stylesheet in <head> before it executes. */
       analytics && (
         <script is:inline>
           (function (c, l, a, r, i, t, y) {
@@ -35,8 +42,5 @@ const { title, description, canonical, bodyClass, bodyStyle, analytics = false }
         </script>
       )
     }
-  </head>
-  <body class={bodyClass} style={bodyStyle}>
-    <slot />
   </body>
 </html>
