@@ -11,6 +11,15 @@ import Contact from "../components/Contact.astro";
 import Faq from "../components/Faq.astro";
 import Visit from "../components/Visit.astro";
 import Footer from "../components/Footer.astro";
+import { getImage } from "astro:assets";
+import { artDirectedSources } from "../lib/images";
+import logo from "../assets/logo.png";
+import heroMobile from "../assets/mobile_hero_placeholder-min.avif";
+import heroDesktop from "../assets/hero_desktop_placeholder-min.avif";
+
+// Same transforms as <Hero> and <Nav>, so these resolve to the URLs the page requests.
+const hero = await artDirectedSources(heroMobile, heroDesktop);
+const optimizedLogo = await getImage({ src: logo, format: "avif" });
 ---
 
 <Layout
@@ -21,22 +30,28 @@ import Footer from "../components/Footer.astro";
   analytics
 >
   <Fragment slot="head">
-    <link rel="preload" href="/img/mobile_hero_placeholder-min.avif" as="image" />
-    <link rel="preload" href="/img/Union Neil Logo.png" as="image" />
+    <link
+      rel="preload"
+      as="image"
+      imagesrcset={hero.mobile.srcSet.attribute}
+      imagesizes="100vw"
+      media="(max-width:639px)"
+      fetchpriority="high"
+    />
+    <link rel="preload" as="image" href={optimizedLogo.src} />
   </Fragment>
 
-  <div>
-    <Nav />
+  <Nav />
+  <main>
     <Hero />
     <About />
     <Services />
-  </div>
-
-  <VideoTestimonial />
-  <Reviews />
-  <CuidadoTotal />
-  <Contact />
-  <Faq />
-  <Visit />
+    <VideoTestimonial />
+    <Reviews />
+    <CuidadoTotal />
+    <Contact />
+    <Faq />
+    <Visit />
+  </main>
   <Footer />
 </Layout>

@@ -1,18 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Img from "../components/Img.astro";
+import logo from "../assets/cadastro-logo.png";
 ---
 
 <Layout title="Cadastro | Union Neil" bodyStyle="height: 100vh">
-  <div class=" flex flex-col items-center gap-[27px] h-screen justify-center px-2.5 py-0">
-    <img
-      src="/img/2023-01-25_16-18-removebg-preview (1).png"
+  <div class=" flex flex-col items-center gap-6.75 h-screen justify-center px-2.5 py-0">
+    <Img
+      src={logo}
       alt=""
-      class="w-[150px] md:w-[225px]"
+      class="w-37.5 md:w-56.25"
+      sizes="(min-width: 768px) 225px, 150px"
+      widths={[150, 225, 300, 450, 675]}
+      loading="eager"
     />
     <div class="text-center text-xl">Por favor, insira a senha para continuar com seu cadastro:</div>
-    <div class="flex flex-col gap-[18px] w-[80%] md:w-1/2">
-      <input type="text" name="senha" id="senha" placeholder="Senha" class="h-[40px] text-xl p-[10px] rounded-[10px] border-[#CFB11C] border placeholder:text-xl focus-visible:outline-[#e4c00f]" />
-      <button id="cadastrar" class="text-xl bg-[rgba(207,177,28,0.1)] px-[17px] py-[5px] rounded-[10px] border border-black hover:bg-[rgba(207,177,28,0.4)]">Continuar</button>
+    <div class="flex flex-col gap-4.5 w-[80%] md:w-1/2">
+      <input type="text" name="senha" id="senha" placeholder="Senha" class="h-10 text-xl p-2.5 rounded-[10px] border-[#CFB11C] border placeholder:text-xl focus-visible:outline-[#e4c00f]" />
+      <button id="cadastrar" class="text-xl bg-[rgba(207,177,28,0.1)] px-4.25 py-1.25 rounded-[10px] border border-black hover:bg-[rgba(207,177,28,0.4)]">Continuar</button>
     </div>
   </div>
 </Layout>

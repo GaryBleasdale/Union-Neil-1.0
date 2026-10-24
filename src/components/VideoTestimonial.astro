@@ -1,6 +1,9 @@
 ---
 import Anchor from "./Anchor.astro";
 import SectionTitle from "./SectionTitle.astro";
+import ArtDirectedPicture from "./ArtDirectedPicture.astro";
+import thumbMobile from "../assets/video_thumbnail_mobile.png";
+import thumbDesktop from "../assets/thumbnail.avif";
 ---
 
 <Anchor id="depoimento" />
@@ -11,11 +14,14 @@ import SectionTitle from "./SectionTitle.astro";
     esse curto vídeo para ouvir como os nossos pacientes descrevem à Union.</p>
 
   <div id="wistia-player-container" class=" cursor-pointer group aspect-[2/1.2]">
-    <picture>
-      <source srcset="/img/video_thumbnail_mobile.png" media="(max-width:639px)">
-      <source srcset="/img/thumbnail.avif" media="(min-width:640px)">
-      <img src="/img/thumbnail.avif" loading="lazy" alt="video de depoimento">
-    </picture>
+    <ArtDirectedPicture
+      mobile={thumbMobile}
+      desktop={thumbDesktop}
+      sizes="(min-width: 1300px) 1240px, calc(100vw - 60px)"
+      loading="lazy"
+      decoding="async"
+      alt="video de depoimento"
+    />
   </div>
 </div>
 

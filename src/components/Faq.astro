@@ -2,6 +2,8 @@
 import Anchor from "./Anchor.astro";
 import FaqItem from "./FaqItem.astro";
 import SectionTitle from "./SectionTitle.astro";
+import Img from "./Img.astro";
+import whatsappIcon from "../assets/whatsapp-icon.avif";
 ---
 
 <Anchor id="faq" />
@@ -104,8 +106,8 @@ import SectionTitle from "./SectionTitle.astro";
           entrar em contato conosco clicando no botão do WhatsApp abaixo, e nossa equipe retornará o mais rápido
           possível. Nosso tempo de resposta é geralmente de apenas alguns minutos.</p>
         <a href="https://wa.link/rtvc0v" target="_blank"
-          class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424] flex flex-row items-center py-3 px-6 shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] w-[280px]">
-          <img src="/img/WhatsApp_icon.avif" class="w-[50px] mr-3" alt="WhatsApp icon" loading="lazy" />
+          class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424] flex flex-row items-center py-3 px-6 shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] w-70">
+          <Img src={whatsappIcon} class="w-12.5 mr-3" alt="WhatsApp icon" />
           <strong class="text-center">Falar com a Union</strong>
         </a>
       </FaqItem>

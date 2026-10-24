@@ -1,5 +1,8 @@
 ---
 import SectionTitle from "./SectionTitle.astro";
+import Img from "./Img.astro";
+import alegria from "../assets/alegria.avif";
+import physioBall from "../assets/physio-ball.webp";
 ---
 
 <div class="container">
@@ -8,11 +11,11 @@ import SectionTitle from "./SectionTitle.astro";
   </SectionTitle>
   <div class="flex flex-col md:flex-row-reverse">
     <div class="relative lg:w-1/2 flex flex-col items-center justify-center xl:items-start">
-      <img src="/img/alegria.avif" class="md:w-[400px] relative my-5 md:my-0 rounded-md " loading="lazy"
+      <Img src={alegria} class="md:w-100 relative my-5 md:my-0 rounded-md " sizes="(min-width: 768px) 400px, calc(100vw - 60px)"
         alt="Enfermeira e Paciente sorrindo" />
-      <img src="/img/physio_ball (1) (1).webp"
-        class="hidden md:block w-[400px] relative xl:left-[150px] top-[10px] rounded-md"
-        alt="Paciente pintando e sorridente" loading="lazy" />
+      <Img src={physioBall} sizes="(min-width: 768px) 400px, calc(100vw - 60px)"
+        class="hidden md:block w-100 relative xl:left-37.5 top-2.5 rounded-md"
+        alt="Paciente pintando e sorridente" />
     </div>
 
     <div class="gap-4 flex flex-col md:w-1/2 text-lg md:p-4">
@@ -30,9 +33,8 @@ import SectionTitle from "./SectionTitle.astro";
         sempre sob observação rigorosa. Elas são os olhos da família dentro de casa, assegurando que a execução dos
         cuidados seja impecável e que a paz e o bem-estar reinem, permitindo que você se dedique aos momentos que
         verdadeiramente importam.</p>
-      <img src="/img/physio_ball (1) (1).webp"
-        class="md:hidden w-full relative xl:left-[150px] top-[10px] rounded-md" alt="Paciente pintando e sorridente"
-        loading="lazy" />
+      <Img src={physioBall} sizes="(min-width: 768px) 400px, calc(100vw - 60px)"
+        class="md:hidden w-full relative xl:left-37.5 top-2.5 rounded-md" alt="Paciente pintando e sorridente" />
     </div>
   </div>
 </div>

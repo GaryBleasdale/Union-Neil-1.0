@@ -1,4 +1,7 @@
 ---
+import Img from "./Img.astro";
+import chevron from "../assets/chevron.png";
+
 interface Props {
   question: string;
 }
@@ -9,7 +12,7 @@ const { question } = Astro.props;
 <div class="bg-white rounded-lg shadow-sm px-6 py-4" x-data="{ open: false }">
   <div class="faq-item flex justify-between items-center cursor-pointer" @click="open = ! open">
     <h3 class="font-semibold text-lg">{question}</h3>
-    <img src="/img/chevron.png" class="h-5 transition-transform duration-300" alt="Chevron icon" />
+    <Img src={chevron} width={40} loading="eager" class="h-5 w-5 transition-transform duration-300" alt="Chevron icon" />
   </div>
   <div class="mt-2 flex flex-col gap-2" x-show="open">
     <slot />
