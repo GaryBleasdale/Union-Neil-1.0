@@ -1,4 +1,4 @@
-exports.handler = async function(event, context) {
+export const handler = async function (event, context) {
     const body = JSON.parse(event.body);
     const senha = body.senha;
     if (senha === 'cuidadodourado100'){
