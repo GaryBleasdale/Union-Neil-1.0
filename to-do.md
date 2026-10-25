@@ -28,28 +28,48 @@ Next steps for the Union Neil site, most important first.
 
 ## Analytics & ads tracking
 
-- [ ] **Add Google Analytics / Google Ads tracking.** The site currently has
-  **no Google tracking** — only Microsoft Clarity. The homepage's Google tags
-  were removed in commit `231e465` (2025-05-17, "(bug) add back reactivity,
-  improve review display"), so no GA or Ads data has been collected since then.
-  The IDs it used, to reuse or confirm they're still active:
-  - Google Tag Manager: `GTM-KWFCK44`
-  - Google Analytics 4: `G-T55SWE3RWZ`
-  - Google Ads: `AW-11343656312` (with a conversion label,
-    `AW-11343656312/jEc9CKjlvOQYEPjqiaEq`)
+- [x] **Add Google Ads / GA4 tracking.** Done in `681be11` (2026-10-25). The
+  tags load on the first scroll/tap/click, so Lighthouse is unaffected
+  (see `performance-tracking.md`). Google Ads conversion "Iniciar Atendimento
+  (Whatsapp)" (`AW-11343656312/2TwlCInQgqkdEPjqiaEq`) is the Primary action;
+  the GA4 "Contact (custom_outbound_click)" action was set to Secondary.
 
-  When adding it back:
-  1. Pick one route: a single GTM container (manage GA4 + Ads tags in GTM), or
-     `gtag.js` directly. Not both.
-  2. Track the contact dialog's WhatsApp buttons as conversions: "Iniciar
-     atendimento" (customer lead) and "Enviar CV" (job applicant) as separate
-     events, so ads aren't credited for CV submissions.
-  3. Load the tag at the end of `<body>` in `src/layouts/Layout.astro`, like
-     Clarity. Loading tracking scripts before the stylesheet caused the CLS 0.916
-     problem (see `performance-tracking.md`).
-  4. Check whether a cookie-consent banner is needed under the LGPD before
-     setting advertising cookies.
-  5. Re-run Lighthouse and record the results in `performance-tracking.md`.
+- [ ] **Mark `generate_lead` as a key event in GA4** (Admin → Events, once the
+  first one has arrived). If Google Ads then imports it, keep the imported
+  action **Secondary** so a click isn't counted twice for bidding.
+
+- [ ] **Check conversions are recording** in Google Ads (Goals → Conversions)
+  about 24 hours after the first real "Iniciar atendimento" click.
+
+- [ ] **Consider a target CPA** once the campaign has 15–30 conversions. Until
+  then, leave "Maximize conversions" without a target.
+
+- [ ] **Check LGPD consent** for the advertising cookies the Google tag sets.
+
+## SEO
+
+- [ ] **Run SEOptimer on competitors, one per day** (the free plan allows one
+  audit a day), to compare with Union's report from 2026-10-25 (grade C, Links
+  F, 3 backlinks). In this order:
+  1. anjosnolar.com.br (organic #1 for "home care sorocaba", small one-page site)
+  2. conformed.com.br (local, #2)
+  3. novaaliancahomecare.com.br (local, #4)
+
+  Skip homeangels.com.br: it's a national franchise, so it ranks on the
+  main brand's domain strength, which Union can't copy.
+
+- [ ] **Add a pricing question to the FAQ** (`src/components/Faq.astro`, as the
+  2nd question): "Quanto custa o home care ou um cuidador de idosos?". Explain
+  what the price depends on (12 h / 24 h shifts, days per week, level of care),
+  what's always included (enfermeira chefe supervision, guaranteed
+  replacement, no labour liabilities), and end with "Solicite um orçamento sem
+  compromisso" and a "Solicitar orçamento" button linking to `#contato`, so the
+  click goes through the contact dialog and counts as a conversion. Families
+  search for "quanto custa", "valores" and "orçamento", and two campaign
+  keywords already target these. Don't add FAQ structured data: since 2023
+  Google only shows FAQ results for government and major health sites.
+
+  _About 15 minutes once the text is written._
 
 ## Contact flow
 

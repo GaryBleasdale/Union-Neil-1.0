@@ -23,12 +23,42 @@ done
 
 | Date | Commit | Performance | Accessibility | Best practices | SEO | LCP | CLS | Page weight |
 |---|---|---|---|---|---|---|---|---|
+| 2026-10-25 | `681be11` (Google tags) | **100** | **100** | 77 | 100 | 1.68 s | **0.029** | 295 KiB |
 | 2026-10-24 | `7af46d7` (Astro) | **100** | **100** | 77 | 100 | **1.67 s** | **0.029** | **294 KiB** |
 | 2026-10-24 | `3b0e84c` (old HTML site) | 99 | 98 | 77 | 100 | 1.82 s | 0.044 | 575 KiB |
 
 Values are medians. LCP = Largest Contentful Paint; CLS = Cumulative Layout Shift.
 
 ## Results
+
+### 2026-10-25 · `681be11` · Google Ads + GA4 tags
+
+"add ga and google ads tags back in, post-scroll to avoid lighthouse score
+getting impacted". Lighthouse 13.5.0, mobile, 5 runs.
+
+| Metric | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Median |
+|---|---|---|---|---|---|---|
+| Performance | 72 | 79 | 100 | 100 | 100 | **100** |
+| Accessibility | 100 | 100 | 100 | 100 | 100 | **100** |
+| Best practices | 77 | 77 | 77 | 77 | 77 | **77** |
+| SEO | 100 | 100 | 100 | 100 | 100 | **100** |
+| First Contentful Paint | 1.80 s | 1.80 s | 1.22 s | 1.36 s | 1.06 s | **1.36 s** |
+| Largest Contentful Paint | 6.66 s | 4.85 s | 1.38 s | 1.52 s | 1.68 s | **1.68 s** |
+| Total Blocking Time | 79 ms | 119 ms | 17 ms | 34 ms | 35 ms | **35 ms** |
+| Cumulative Layout Shift | 0.029 | 0.029 | 0.048 | 0.029 | 0.029 | **0.029** |
+| Speed Index | 4.91 s | 3.59 s | 1.22 s | 1.36 s | 1.06 s | **1.36 s** |
+| Page weight | 295 KiB | 295 KiB | 295 KiB | 295 KiB | 294 KiB | **295 KiB** |
+| Server response time | 165 ms | 162 ms | 8 ms | 7 ms | 17 ms | **17 ms** |
+
+Notes:
+- The Google tag (Google Ads `AW-11343656312` + GA4 `G-T55SWE3RWZ`) loads
+  only on the visitor's first scroll, tap, click or key press, so Lighthouse
+  never loads it (0 gtag requests in all runs). Loading it with the page
+  instead cost about 4 performance points (98 → 94 locally), 210 ms of Total
+  Blocking Time and 363 KiB.
+- Runs 1 and 2 were the first requests after the deploy (cold Netlify cache,
+  slower server response) and the hero image rendered late (LCP 4.9–6.7 s).
+  Runs 3–5, with a warm cache, match the previous commit.
 
 ### 2026-10-24 · `7af46d7` · Astro site
 
