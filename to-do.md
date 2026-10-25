@@ -193,11 +193,11 @@ factors for the map results.
 
 ## Contact flow
 
-- [ ] **Decide whether the other WhatsApp links should use the contact dialog.**
-  The FAQ's "Falar com a Union" button and the two footer numbers still link
-  straight to WhatsApp, bypassing the "Como podemos ajudar?" dialog.
+- [x] **Every WhatsApp button goes through the contact dialog.** The FAQ
+  button opens it ("Quero falar com a Union", same as the main button), and
+  the footer numbers were removed (the floating widget covers them).
 
-- [ ] **Decide whether the floating widget should open the dialog directly**
+- [x] **The floating WhatsApp widget opens the contact dialog directly**
   instead of scrolling to "Vamos conversar" (saves visitors one click).
 
 - [ ] **Check the dropdown labels in Firefox and older Safari.** "Um ente querido
