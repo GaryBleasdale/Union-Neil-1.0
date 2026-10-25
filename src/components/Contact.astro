@@ -116,6 +116,7 @@ const options = [
                         <a
                             href={option.href}
                             target="_blank"
+                            data-contact-option={option.id}
                             class="flex flex-row items-center justify-center rounded-[40px] border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] px-6 py-3 text-lg shadow-md transition-all duration-300 hover:shadow-lg"
                         >
                             <Img src={whatsappIcon} width={40} densities={[1, 2, 3]} class="w-10 mr-3" alt="" />
@@ -248,6 +249,23 @@ const options = [
                 rect.left <= event.clientX &&
                 event.clientX <= rect.right;
             if (!inside) dialog.close();
+        });
+    }
+
+    // Google tag events (gtag is defined in Layout.astro when analytics is on).
+    // Only "Iniciar atendimento" is an Ads conversion, so the campaign isn't
+    // credited for job applicants; both buttons are GA4 events, to see which
+    // channels (ads, organic, social...) the clicks come from.
+    declare const gtag: ((...args: unknown[]) => void) | undefined;
+    for (const link of dialog.querySelectorAll<HTMLAnchorElement>("[data-contact-option]")) {
+        link.addEventListener("click", () => {
+            if (typeof gtag !== "function") return;
+            if (link.dataset.contactOption === "family") {
+                gtag("event", "conversion", { send_to: "AW-11343656312/2TwlCInQgqkdEPjqiaEq" });
+                gtag("event", "generate_lead", { send_to: "G-T55SWE3RWZ", method: "whatsapp" });
+            } else {
+                gtag("event", "cv_submit", { send_to: "G-T55SWE3RWZ", method: "whatsapp" });
+            }
         });
     }
 </script>
