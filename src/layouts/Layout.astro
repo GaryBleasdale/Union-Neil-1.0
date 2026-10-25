@@ -1,8 +1,12 @@
 ---
 import "../styles/global.css";
+import { getImage } from "astro:assets";
+import shareImageSrc from "../assets/hero_desktop_placeholder-min.avif";
 
 interface Props {
   title: string;
+  /** Title for shared-link previews, if different from <title>. */
+  shareTitle?: string;
   description?: string;
   canonical?: string;
   bodyClass?: string;
@@ -10,7 +14,11 @@ interface Props {
   analytics?: boolean;
 }
 
-const { title, description, canonical, bodyClass, bodyStyle, analytics = false } = Astro.props;
+const { title, shareTitle = title, description, canonical, bodyClass, bodyStyle, analytics = false } = Astro.props;
+
+// Preview card for shared links (WhatsApp, Facebook...). 1200x630 is the size
+// they expect, and JPEG because WhatsApp doesn't show AVIF previews.
+const shareImage = await getImage({ src: shareImageSrc, width: 1200, height: 630, fit: "cover", format: "jpg" });
 ---
 
 <!doctype html>
@@ -21,6 +29,16 @@ const { title, description, canonical, bodyClass, bodyStyle, analytics = false }
     {description && <meta name="description" content={description} />}
     {canonical && <link rel="canonical" href={canonical} />}
     <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Union Neil" />
+    <meta property="og:title" content={shareTitle} />
+    {description && <meta property="og:description" content={description} />}
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={new URL(shareImage.src, Astro.site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/img/union_neil_favicon.png" />
     <slot name="head" />
     <title>{title}</title>

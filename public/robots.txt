@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /cadastro
+
+Sitemap: https://unionneil.com.br/sitemap-index.xml
