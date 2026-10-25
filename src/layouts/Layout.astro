@@ -42,5 +42,33 @@ const { title, description, canonical, bodyClass, bodyStyle, analytics = false }
         </script>
       )
     }
+    {
+      /* Google tag: Google Ads (conversions for bidding) + GA4 (lead sources
+         across all channels). gtag.js is ~360 KiB and ~500 ms of CPU
+         on mobile, so it's only fetched on the visitor's first scroll, tap,
+         click or key press. Visitors who never interact aren't recorded (on
+         purpose). Calls made before it arrives (the page view, conversions
+         from Contact.astro) queue in dataLayer and are sent once it loads. */
+      analytics && (
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag("js", new Date());
+          gtag("config", "AW-11343656312");
+          gtag("config", "G-T55SWE3RWZ");
+          (function () {
+            var events = ["scroll", "pointerdown", "keydown"];
+            function load() {
+              events.forEach(function (e) { removeEventListener(e, load); });
+              var s = document.createElement("script");
+              s.async = true;
+              s.src = "https://www.googletagmanager.com/gtag/js?id=AW-11343656312";
+              document.body.appendChild(s);
+            }
+            events.forEach(function (e) { addEventListener(e, load, { passive: true }); });
+          })();
+        </script>
+      )
+    }
   </body>
 </html>
