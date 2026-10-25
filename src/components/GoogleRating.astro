@@ -1,0 +1,25 @@
+---
+import { getEntry } from "astro:content";
+
+// "5,0 ⭐ · 16 avaliações no Google", from src/data/reviews.json, with an
+// optional link. Under the video it links down to the review cards, so
+// visitors stay on the page instead of leaving for Google.
+interface Props {
+  class?: string;
+  link?: { href: string; label: string };
+}
+
+const { class: className, link } = Astro.props;
+const google = (await getEntry("googleRating", "google"))!.data;
+---
+
+<p class:list={["flex flex-wrap items-center gap-x-3 gap-y-1 text-lg", className]}>
+  <span>
+    <strong>{google.rating.toFixed(1).replace(".", ",")}</strong> <span aria-hidden="true">⭐</span> · {google.count} avaliações no Google
+  </span>
+  {link && (
+    <a href={link.href} class="font-bold underline underline-offset-2">
+      {link.label}
+    </a>
+  )}
+</p>

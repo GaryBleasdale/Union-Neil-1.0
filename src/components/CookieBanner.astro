@@ -103,6 +103,18 @@
       widget.hidden = open;
     }
 
+    // When the banner closes with focus inside it, keyboard users continue
+    // from the round button. Mouse and touch users don't need the focus
+    // moved, and moving it would draw a focus ring around the button.
+    function handOverFocus(keyboard) {
+      if (keyboard) widget.focus();
+      else if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+    }
+
+    function usingKeyboard() {
+      return !!document.activeElement && document.activeElement.matches(":focus-visible");
+    }
+
     // Google tag (_ga*, _gcl_*) and Clarity (_clck, _clsk) cookies. They're
     // set on the whole domain, so the delete has to name it too.
     function deleteTrackingCookies() {
@@ -120,6 +132,7 @@
     }
 
     function choose(value) {
+      var keyboard = usingKeyboard();
       document.cookie = "union_consent=" + value + "; Max-Age=31536000; path=/; SameSite=Lax" +
         (location.protocol === "https:" ? "; Secure" : "");
       if (value === "granted") {
@@ -138,7 +151,7 @@
       if (dialog.open) dialog.close();
       openedByClick = false;
       show(false);
-      widget.focus();
+      handOverFocus(keyboard);
     }
 
     // The banner only opens by itself at the top of the page, before the
@@ -156,8 +169,9 @@
       var decided = document.cookie.indexOf("union_consent=") !== -1;
       var open = openedByClick || (!decided && atTop());
       var hadFocus = banner.contains(document.activeElement);
+      var keyboard = usingKeyboard();
       show(open);
-      if (!open && hadFocus) widget.focus();
+      if (!open && hadFocus) handOverFocus(keyboard);
     }
 
     addEventListener("scroll", function () {
@@ -181,9 +195,10 @@
       });
     }
     widget.addEventListener("click", function () {
+      var keyboard = usingKeyboard();
       openedByClick = true;
       update();
-      banner.querySelector("button").focus();
+      if (keyboard) banner.querySelector("button").focus();
     });
 
     // Lift the WhatsApp widget above the banner while it's open.

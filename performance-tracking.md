@@ -23,6 +23,7 @@ done
 
 | Date | Commit | Performance | Accessibility | Best practices | SEO | LCP | CLS | Page weight |
 |---|---|---|---|---|---|---|---|---|
+| 2026-10-25 | `d4ba8e3` (cookie banner, contact dialog) | 98.5 (99 warm) | **100** | 77 | 100 | 2.20 s (1.77 s warm) | 0.033 | 298 KiB |
 | 2026-10-25 | `dcf05cc` (SEO updates) | 91 (99 warm) | **100** | 77 | 100 | 3.07 s (2.26 s warm) | **0.029** | 295 KiB |
 | 2026-10-25 | `681be11` (Google tags) | **100** | **100** | 77 | 100 | 1.68 s | **0.029** | 295 KiB |
 | 2026-10-24 | `7af46d7` (Astro) | **100** | **100** | 77 | 100 | **1.67 s** | **0.029** | **294 KiB** |
@@ -31,6 +32,42 @@ done
 Values are medians. LCP = Largest Contentful Paint; CLS = Cumulative Layout Shift.
 
 ## Results
+
+### 2026-10-25 · `d4ba8e3` · Cookie banner and contact dialog
+
+"Add cookie banner" + "fix hamburguer menu not closing without explicit click
+on cross" + "standardize opening modal of whatsapp button": cookie banner and
+preferences dialog, page locked behind open dialogs, mobile menu closes on
+outside tap and scroll, WhatsApp buttons open the contact dialog, footer
+WhatsApp numbers removed. Lighthouse 13.5.0, mobile, 10 runs. "Warm" = runs
+2, 5–8 and 10 (server response ~8 ms).
+
+| Metric | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Median | Median warm |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Performance | 72 | 99 | 72 | 80 | 99 | 100 | 100 | 98 | 79 | 99 | **98.5** | **99** |
+| Accessibility | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | **100** | **100** |
+| Best practices | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | **77** | **77** |
+| SEO | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | **100** | **100** |
+| First Contentful Paint | 3.33 s | 1.06 s | 3.34 s | 2.74 s | 1.03 s | 1.03 s | 1.04 s | 1.03 s | 2.73 s | 1.52 s | **1.29 s** | **1.04 s** |
+| Largest Contentful Paint | 5.08 s | 1.40 s | 5.01 s | 4.05 s | 1.97 s | 1.84 s | 1.68 s | 2.42 s | 4.22 s | 1.69 s | **2.20 s** | **1.77 s** |
+| Total Blocking Time | 0 ms | 23 ms | 41 ms | 34 ms | 21 ms | 24 ms | 22 ms | 24 ms | 16 ms | 18 ms | **23 ms** | **23 ms** |
+| Cumulative Layout Shift | 0.033 | 0.071 | 0.033 | 0.033 | 0.029 | 0.029 | 0.029 | 0.033 | 0.033 | 0.029 | **0.033** | **0.029** |
+| Speed Index | 4.76 s | 1.06 s | 4.68 s | 4.41 s | 1.03 s | 1.03 s | 1.04 s | 1.03 s | 4.57 s | 1.52 s | **1.29 s** | **1.04 s** |
+| Page weight | 299 KiB | 298 KiB | 298 KiB | 299 KiB | 298 KiB | 298 KiB | 298 KiB | 298 KiB | 298 KiB | 298 KiB | **298 KiB** | **298 KiB** |
+| Server response time | 177 ms | 8 ms | 157 ms | 161 ms | 8 ms | 8 ms | 8 ms | 8 ms | 175 ms | 8 ms | **8 ms** | **8 ms** |
+
+Notes:
+- The cookie banner costs about 3 KiB (295 → 298 KiB) and nothing measurable
+  in blocking time. It's position: fixed, so it causes no layout shift.
+  Accessibility stays at 100 with the banner and dialog on the page.
+- Runs 1, 3, 4 and 9 hit a cold Netlify cache (server response 157–177 ms),
+  as with the previous commits. Their first paint was also later than before
+  (2.7–3.3 s against 1.8 s for `dcf05cc`); every warm run was ~1.0 s.
+- CLS rose from 0.029 to 0.033 in half the runs and to 0.071 in run 2. All
+  of it is the hero heading and its container moving (probably the web font
+  swapping in; not confirmed), not the banner.
+- 0 Google tag requests in all runs: gtag still waits for the first
+  scroll/tap. Clarity loads with the page, as before.
 
 ### 2026-10-25 · `dcf05cc` · SEO updates
 

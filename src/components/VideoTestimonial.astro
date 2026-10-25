@@ -2,16 +2,19 @@
 import Anchor from "./Anchor.astro";
 import SectionTitle from "./SectionTitle.astro";
 import ArtDirectedPicture from "./ArtDirectedPicture.astro";
+import GoogleRating from "./GoogleRating.astro";
 import thumbMobile from "../assets/video_thumbnail_mobile.png";
 import thumbDesktop from "../assets/thumbnail.avif";
 ---
 
 <Anchor id="depoimento" />
 <div class="container">
-  <SectionTitle>Histórias do coração</SectionTitle>
+  <SectionTitle>Depoimentos</SectionTitle>
 
-  <p class="mb-10 text-lg">Cremos que a melhor testemunha dos nossos serviços vem daqueles de quem cuidamos. Assista
-    esse curto vídeo para ouvir como os nossos pacientes descrevem à Union.</p>
+  <p class="mb-4 text-lg">Ouça a Beatriz, que voltou a andar e a falar depois de um quadro de meningite que os
+    médicos consideravam irreversível, e o Artur, que trouxe a mãe do Rio e encontrou na Union todo o suporte de que
+    precisava.</p>
+  <p class="mb-10 text-lg">Nas palavras dele: <span class="italic">“Eu simplesmente não fiz nada. Assistência 100%.”</span></p>
 
   <div id="wistia-player-container" class=" cursor-pointer group aspect-[2/1.2]">
     <ArtDirectedPicture
@@ -23,6 +26,7 @@ import thumbDesktop from "../assets/thumbnail.avif";
       alt="video de depoimento"
     />
   </div>
+  <GoogleRating class="mt-6" link={{ href: "#avaliacoes", label: "Ler as avaliações" }} />
 </div>
 
 <script>

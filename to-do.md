@@ -65,10 +65,6 @@ tick them in both places.
 - [ ] **Consider a target CPA** once the campaign has 15–30 conversions. Until
   then, leave "Maximize conversions" without a target.
 
-- [x] **Cookie banner (opt-out)** in `src/components/CookieBanner.astro`:
-  "Personalizar Cookies" → "Recusar todos" turns off Google Ads, GA4 and
-  Clarity and deletes their cookies; the choice is kept in a `union_consent`
-  cookie for a year.
 
 - [ ] **List the cookies in the Política de Privacidade** (`/privacidade`):
   Google Ads (`_gcl_au`, `_gcl_aw`), GA4 (`_ga`, `_ga_T55SWE3RWZ`), Clarity
@@ -147,15 +143,14 @@ factors for the map results.
   the service where it fits (e.g. "...cuidado pós-cirúrgico do seu pai").
   _About 2 minutes per review._
 
-- [ ] **Improve the reviews section** (`src/components/Reviews.astro`). It shows
-  7 fixed reviews, with no link to Google and no overall rating. Add:
-  - The Google rating and count (e.g. "4.9 ★ · 16 avaliações no Google")
-  - A "Ver todas no Google" link to the profile
-  - Newer reviews as they come in
+- [x] **Improve the reviews section.** All 13 Google reviews with text are
+  shown, with the Google rating, count, "Ver todas no Google" link and the
+  bairro of each. Data: `src/data/reviews.json` (schema in
+  `src/content.config.ts`). Don't add review stars to the structured data:
+  Google doesn't show stars for reviews a business publishes about itself.
 
-  Don't add review stars to the structured data: Google doesn't show stars
-  for reviews a business publishes about itself.
-  _About 30 minutes._
+- [ ] **Update `src/data/reviews.json` when a new Google review arrives**, and
+  the rating, count and `checkedOn` date once a month (_about 2 minutes_).
 
 ### Services
 
@@ -191,19 +186,6 @@ factors for the map results.
 
   _About 15 minutes once the text is written._
 
-## Contact flow
-
-- [x] **Every WhatsApp button goes through the contact dialog.** The FAQ
-  button opens it ("Quero falar com a Union", same as the main button), and
-  the footer numbers were removed (the floating widget covers them).
-
-- [x] **The floating WhatsApp widget opens the contact dialog directly**
-  instead of scrolling to "Vamos conversar" (saves visitors one click).
-
-- [ ] **Check the dropdown labels in Firefox and older Safari.** "Um ente querido
-  precisa de cuidados domiciliares" and "Sou cuidador(a) e quero trabalhar com a
-  Union" wrap correctly in Chrome, Edge and Safari 27, but long labels are cut
-  off in the closed dropdown in Firefox and older Safari.
 
 ## Email
 
@@ -217,12 +199,3 @@ factors for the map results.
      authentication".
   3. DMARC: TXT record on `_dmarc.unionneil.com.br`:
      `v=DMARC1; p=none; rua=mailto:atendimento@unionneil.com.br`
-
-  _About 15 minutes, plus up to 48 hours for DNS to update._
-
-## Housekeeping
-
-- [ ] **Set the Node.js version in the Netlify dashboard to 24** (Project
-  configuration → Developer settings → Continuous deployment → Dependency
-  management). Optional: `netlify.toml` already sets `NODE_VERSION = "24"` and
-  takes precedence, but the dashboard still shows the old pinned version (16).
