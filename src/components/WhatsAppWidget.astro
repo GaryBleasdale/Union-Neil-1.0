@@ -5,9 +5,10 @@ import Img from "./Img.astro";
 import whatsappIcon from "../assets/whatsapp-icon.png";
 ---
 
-<!-- Starts hidden; the script below reveals it once the visitor is past the hero. -->
+<!-- Starts hidden; the script below reveals it once the visitor is past the hero.
+     --cookie-banner-h (set by CookieBanner.astro) keeps it above the cookie banner. -->
 <a href="#contato" id="whatsapp-widget" aria-label="Falar com a Union" data-hidden inert
-  class="fixed right-3 bottom-3 z-10 rounded-full drop-shadow-lg transition duration-200 hover:scale-105 data-hidden:pointer-events-none data-hidden:translate-y-2 data-hidden:opacity-0 md:right-4 md:bottom-4">
+  class="fixed right-3 bottom-[calc(--spacing(3)+var(--cookie-banner-h,0px))] z-10 rounded-full drop-shadow-lg transition duration-200 hover:scale-105 data-hidden:pointer-events-none data-hidden:translate-y-2 data-hidden:opacity-0 md:right-4 md:bottom-[calc(--spacing(4)+var(--cookie-banner-h,0px))]">
   <Img src={whatsappIcon} width={65} densities={[1, 2, 3]} class="w-15 md:w-16.25" alt="" loading="eager" />
 </a>
 

@@ -2,6 +2,25 @@
 
 Next steps for the Union Neil site, most important first.
 
+## High urgency
+
+The 5 most impactful items in this file. Details are in the sections below;
+tick them in both places.
+
+1. [ ] **Reply to every Union Google review that has no reply yet**
+   (Business Profile → Avaliações). Replies show Google and families that the
+   business is active. See SEO → Reviews. _About 2 minutes per review._
+2. [ ] **Check conversions are recording by 30 October.** The budget is now
+   R$50/day; if conversions are still 0, investigate before spending more.
+   See Analytics & ads tracking. _About 5 minutes._
+3. [ ] **Ask every family for a Google review** with the profile's review link,
+   asking them to mention the type of care. See SEO → Reviews. _About 10
+   minutes to set up; then ongoing._
+4. [ ] **List the free directories:** Doctoralia, Apontador, GuiaMais (3 of the
+   directories in SEO → Backlinks). Union has 3 backlinks. _About 45 minutes._
+5. [ ] **Add the service sections** once the list of care types is agreed.
+   See SEO → Services. _About 1 hour._
+
 ## Security
 
 - [ ] **Move the `/cadastro` password out of the code.** It is hard-coded in
@@ -46,7 +65,16 @@ Next steps for the Union Neil site, most important first.
 - [ ] **Consider a target CPA** once the campaign has 15–30 conversions. Until
   then, leave "Maximize conversions" without a target.
 
-- [ ] **Check LGPD consent** for the advertising cookies the Google tag sets.
+- [x] **Cookie banner (opt-out)** in `src/components/CookieBanner.astro`:
+  "Personalizar Cookies" → "Recusar todos" turns off Google Ads, GA4 and
+  Clarity and deletes their cookies; the choice is kept in a `union_consent`
+  cookie for a year.
+
+- [ ] **List the cookies in the Política de Privacidade** (`/privacidade`):
+  Google Ads (`_gcl_au`, `_gcl_aw`), GA4 (`_ga`, `_ga_T55SWE3RWZ`), Clarity
+  (`_clck`, `_clsk`), what each is for, and that they can be refused with the
+  cookie button in the bottom-left corner. The banner links there.
+  _About 20 minutes._
 
 ## SEO
 
@@ -95,6 +123,49 @@ listings help the map results.
 
 Don't buy links or "link packages": Google penalises them.
 
+### Reviews
+
+In the "home care sorocaba" map results, competitors have 24–40 Google reviews
+(Master Care 40, ACF 26, Vip 24); Union has 16. Reviews are one of the main
+factors for the map results.
+
+- [ ] **Get more Google reviews.** Copy the review link from the Google
+  Business Profile ("Pedir avaliações") and send it on WhatsApp to each family
+  about a month into care, and again when care ends. Aim for 40+.
+  _About 10 minutes to set up a saved WhatsApp message; then ongoing._
+
+- [ ] **Analyse what competitors' reviews say, not just how many.** Read the
+  Google reviews of Master Care, ACF, Vip Home Care and Anjos no Lar, and
+  compare them with Union's: which services and situations they mention
+  (24 horas, Alzheimer, pós-cirúrgico...), how detailed they are, how recent,
+  and whether the owner replies. Google matches the words in reviews to
+  searches and shows them in the map results ("mencionam 'cuidador noturno'"),
+  so this shows what to ask happy families to mention.
+  _About 30 minutes._
+
+- [ ] **Reply to every Google review** from the Business Profile, mentioning
+  the service where it fits (e.g. "...cuidado pós-cirúrgico do seu pai").
+  _About 2 minutes per review._
+
+- [ ] **Improve the reviews section** (`src/components/Reviews.astro`). It shows
+  7 fixed reviews, with no link to Google and no overall rating. Add:
+  - The Google rating and count (e.g. "4.9 ★ · 16 avaliações no Google")
+  - A "Ver todas no Google" link to the profile
+  - Newer reviews as they come in
+
+  Don't add review stars to the structured data: Google doesn't show stars
+  for reviews a business publishes about itself.
+  _About 30 minutes._
+
+### Services
+
+- [ ] **Add a section for each type of care Union provides** (e.g. 24 horas,
+  plantão 12 h, pós-cirúrgico, Alzheimer e demência, pacientes acamados,
+  acompanhante hospitalar, cuidados paliativos). The top-ranking competitors
+  all have one; Union's page doesn't mention these terms at all, and families
+  search for them. First decide which of these Union actually offers.
+  _About 1 hour once the list is agreed._
+
 ### Other
 
 - [ ] **Run SEOptimer on competitors, one per day** (the free plan allows one
@@ -133,6 +204,21 @@ Don't buy links or "link packages": Google penalises them.
   precisa de cuidados domiciliares" and "Sou cuidador(a) e quero trabalhar com a
   Union" wrap correctly in Chrome, Edge and Safari 27, but long labels are cut
   off in the closed dropdown in Firefox and older Safari.
+
+## Email
+
+- [ ] **Add SPF, DKIM and DMARC records** so emails from @unionneil.com.br
+  don't land in spam (the domain currently has none; email is Google
+  Workspace, DNS is at registro.br):
+  1. SPF: TXT record on `unionneil.com.br`:
+     `v=spf1 include:_spf.google.com ~all`
+  2. DKIM: Google Workspace Admin → Apps → Gmail → Authenticate email →
+     Generate new record, add it as a TXT record, then click "Start
+     authentication".
+  3. DMARC: TXT record on `_dmarc.unionneil.com.br`:
+     `v=DMARC1; p=none; rua=mailto:atendimento@unionneil.com.br`
+
+  _About 15 minutes, plus up to 48 hours for DNS to update._
 
 ## Housekeeping
 

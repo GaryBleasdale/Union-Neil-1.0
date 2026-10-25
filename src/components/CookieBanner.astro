@@ -1,0 +1,196 @@
+---
+// Cookie notice, styled after havaianas.com.br's. Cookies are on by default
+// (opt-out): "Personalizar Cookies" opens a dialog where "Recusar todos" turns
+// off Google Ads, GA4 and Clarity, deletes their cookies and remembers the
+// choice in a union_consent cookie, which Layout.astro checks before loading
+// the tags. Once the visitor has chosen,
+// the banner shrinks to a round button in the bottom-left corner that
+// reopens it, so they can change their mind either way.
+---
+
+<div id="cookie-banner" role="region" aria-label="Aviso de cookies" hidden
+  class="fixed inset-x-0 bottom-0 z-20 bg-white px-4 py-3 text-xs text-[#131313] shadow-[0_0_13px_-5px_#000] md:px-6 md:text-sm">
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 md:flex-row md:items-center md:justify-between md:gap-10">
+    <p class="max-w-175">
+      Por padrão, utilizamos cookies para melhorar sua experiência de navegação.
+      Aceite todos os cookies ou clique em “Personalizar Cookies” para configurar suas preferências.
+      Para mais informações, consulte nossa <a href="/privacidade" class="font-bold">Política de Privacidade</a>.
+    </p>
+    <!-- Phones: text, then Aceitar, then Personalizar, stacked. -->
+    <div class="flex shrink-0 flex-col items-stretch gap-1 md:flex-row md:items-center md:gap-8">
+      <button type="button" data-consent="granted"
+        class="rounded-[15px] border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] px-4 py-2 text-[15px] font-bold text-[#242424] transition-colors md:rounded-none md:border md:border-[#131313] md:bg-transparent md:py-3 md:text-sm md:font-normal md:text-[#131313] md:hover:bg-black/5">
+        Aceitar Cookies
+      </button>
+      <button type="button" id="cookie-customize" aria-haspopup="dialog" aria-controls="cookie-dialog"
+        class="py-2 underline underline-offset-2 hover:no-underline">
+        Personalizar Cookies
+      </button>
+    </div>
+  </div>
+</div>
+
+<dialog id="cookie-dialog" closedby="any" aria-labelledby="cookie-dialog-title"
+  class="m-auto w-[calc(100%-2rem)] max-w-md rounded-lg bg-white p-6 text-sm text-[#131313] shadow-lg backdrop:bg-black/50">
+  <div class="mb-4 flex items-start justify-between gap-4">
+    <h3 id="cookie-dialog-title" class="text-xl font-bold">Preferências de cookies</h3>
+    <button type="button" id="cookie-dialog-close" aria-label="Fechar"
+      class="-mt-1 -mr-2 flex size-9 shrink-0 items-center justify-center rounded-full text-2xl leading-none hover:bg-black/5">
+      ×
+    </button>
+  </div>
+  <p class="mb-4">
+    Utilizamos cookies para entender como o site é usado e medir os resultados
+    dos nossos anúncios. Você pode aceitar ou recusar todos.
+  </p>
+  <dl class="mb-4 space-y-3">
+    <div>
+      <dt class="font-bold">Obrigatórios <span class="font-normal text-[#4a4a4a]">· sempre ativos</span></dt>
+      <dd>Guardam sua escolha sobre cookies.</dd>
+    </div>
+    <div>
+      <dt class="font-bold">Estatísticas</dt>
+      <dd>Google Analytics e Microsoft Clarity: mostram como os visitantes usam o site.</dd>
+    </div>
+    <div>
+      <dt class="font-bold">Marketing</dt>
+      <dd>Google Ads: mede os contatos que chegam pelos nossos anúncios.</dd>
+    </div>
+  </dl>
+  <p class="mb-6">
+    Para mais informações, consulte nossa <a href="/privacidade" class="font-bold">Política de Privacidade</a>.
+  </p>
+  <div class="flex flex-wrap items-center justify-end gap-3">
+    <button type="button" data-consent="granted"
+      class="border border-[#131313] px-4 py-3 font-bold transition hover:bg-black/5 hover:shadow-[inset_0_0_0_1px_#131313]">
+      Aceitar todos
+    </button>
+    <button type="button" data-consent="denied"
+      class="px-4 py-3 text-[13px] text-[#5a5a5a] underline underline-offset-2 transition-colors hover:text-[#131313]">
+      Recusar todos
+    </button>
+  </div>
+</dialog>
+
+<button type="button" id="cookie-widget" aria-label="Preferências de cookies" aria-controls="cookie-banner" hidden
+  class="fixed bottom-3 left-3 z-10 flex size-12.5 items-center justify-center rounded-full bg-[#c5a75b] text-white shadow-lg transition hover:scale-105 md:bottom-4 md:left-4">
+  <!-- "cookie" icon from Lucide (ISC licence) -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-7" fill="none" stroke="currentColor"
+    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
+    <path d="M8.5 8.5v.01" /><path d="M16 15.5v.01" /><path d="M12 12v.01" />
+    <path d="M11 17v.01" /><path d="M7 14v.01" />
+  </svg>
+</button>
+
+<!-- Inline, so the banner or button appears with the page instead of after
+     the bundled scripts load. -->
+<script is:inline>
+  (function () {
+    var banner = document.getElementById("cookie-banner");
+    var widget = document.getElementById("cookie-widget");
+    var dialog = document.getElementById("cookie-dialog");
+    var all = ["ad_storage", "ad_user_data", "ad_personalization", "analytics_storage"];
+
+    function consentFor(value) {
+      var c = {};
+      all.forEach(function (k) { c[k] = value; });
+      return c;
+    }
+
+    function show(open) {
+      banner.hidden = !open;
+      widget.hidden = open;
+    }
+
+    // Google tag (_ga*, _gcl_*) and Clarity (_clck, _clsk) cookies. They're
+    // set on the whole domain, so the delete has to name it too.
+    function deleteTrackingCookies() {
+      var domain = location.hostname.replace(/^www\./, "");
+      document.cookie.split("; ").forEach(function (c) {
+        var name = c.split("=")[0];
+        if (!/^(_ga|_gcl_|_clck$|_clsk$)/.test(name)) return;
+        document.cookie = name + "=; Max-Age=0; path=/";
+        document.cookie = name + "=; Max-Age=0; path=/; domain=" + domain;
+      });
+      try {
+        localStorage.removeItem("_gcl_ls");
+        sessionStorage.removeItem("_cltk");
+      } catch (e) {}
+    }
+
+    function choose(value) {
+      document.cookie = "union_consent=" + value + "; Max-Age=31536000; path=/; SameSite=Lax" +
+        (location.protocol === "https:" ? "; Secure" : "");
+      if (value === "granted") {
+        // Start whatever was skipped because of an earlier refusal. The
+        // visitor has just clicked, so gtag.js is fetched straight away.
+        unionGtag.start();
+        gtag("consent", "update", consentFor("granted"));
+        unionGtag.fetchScript();
+        if (window.clarity) clarity("consentv2", { ad_Storage: "granted", analytics_Storage: "granted" });
+        else unionLoadClarity();
+      } else {
+        if (window.gtag) gtag("consent", "update", consentFor("denied"));
+        if (window.clarity) clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
+        deleteTrackingCookies();
+      }
+      if (dialog.open) dialog.close();
+      openedByClick = false;
+      show(false);
+      widget.focus();
+    }
+
+    // The banner only opens by itself at the top of the page, before the
+    // point where the WhatsApp button appears (the same marker
+    // WhatsAppWidget.astro uses), so the two don't stack up. Further down it
+    // waits as the round button. Opening it from the round button there
+    // shows it (with WhatsApp lifted above it) until the visitor chooses or
+    // scrolls again.
+    var start = document.getElementById("whatsapp-widget-start");
+    var openedByClick = false;
+
+    function atTop() { return !start || start.getBoundingClientRect().top >= innerHeight; }
+
+    function update() {
+      var decided = document.cookie.indexOf("union_consent=") !== -1;
+      var open = openedByClick || (!decided && atTop());
+      var hadFocus = banner.contains(document.activeElement);
+      show(open);
+      if (!open && hadFocus) widget.focus();
+    }
+
+    addEventListener("scroll", function () {
+      if (openedByClick && !atTop()) openedByClick = false;
+      update();
+    }, { passive: true });
+
+    document.querySelectorAll("[data-consent]").forEach(function (button) {
+      button.addEventListener("click", function () { choose(button.dataset.consent); });
+    });
+    document.getElementById("cookie-customize").addEventListener("click", function () { dialog.showModal(); });
+    document.getElementById("cookie-dialog-close").addEventListener("click", function () { dialog.close(); });
+    // Safari doesn't support closedby="any" yet: close on backdrop clicks manually.
+    if (!("closedBy" in HTMLDialogElement.prototype)) {
+      dialog.addEventListener("click", function (event) {
+        if (event.target !== dialog) return;
+        var rect = dialog.getBoundingClientRect();
+        var inside = rect.top <= event.clientY && event.clientY <= rect.bottom &&
+          rect.left <= event.clientX && event.clientX <= rect.right;
+        if (!inside) dialog.close();
+      });
+    }
+    widget.addEventListener("click", function () {
+      openedByClick = true;
+      update();
+      banner.querySelector("button").focus();
+    });
+
+    // Lift the WhatsApp widget above the banner while it's open.
+    new ResizeObserver(function () {
+      document.documentElement.style.setProperty("--cookie-banner-h", banner.offsetHeight + "px");
+    }).observe(banner);
+
+    update();
+  })();
+</script>
