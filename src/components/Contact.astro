@@ -7,19 +7,19 @@ import whatsappIcon from "../assets/whatsapp-icon.png";
 const options = [
     {
         id: "family",
-        label: "Cuidados e Assistência Domiciliar para um ente querido",
+        label: "Um ente querido precisa de cuidados domiciliares",
         message:
-            "Estaremos encantados em poder ajudar. Por favor, clique para iniciar seu atendimento.",
+            "Estamos encantados em poder ajudar. Por favor, clique para iniciar seu atendimento.",
         cta: "Iniciar atendimento",
         href: "https://wa.link/rtvc0v",
     },
     {
         id: "work",
-        label: "Trabalhar com a Union",
+        label: "Sou cuidador(a) e quero trabalhar com a Union",
         message:
-            "Obrigado pelo seu interesse em trabalhar com a Union, por favor entre em contato anexando seu CV.",
-        cta: "Enviar CV",
-        href: "https://wa.link/rffhb5",
+            "Obrigado pelo seu interesse em trabalhar com a Union, por favor entre em contato anexando seu currículo.",
+        cta: "Enviar currículo",
+        href: "https://wa.me/5515981113016?text=Ol%C3%A1%20Union%2C%20estou%20interessado%20em%20deixar%20meu%20curr%C3%ADculo%20com%20voc%C3%AAs.",
     },
 ];
 ---
@@ -46,7 +46,13 @@ const options = [
                 @click="$refs.contactDialog.showModal()"
                 class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424] flex flex-row items-center py-3 px-6 shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)]"
             >
-                <Img src={whatsappIcon} width={50} densities={[1, 2, 3]} class="w-12.5 mr-3" alt="" />
+                <Img
+                    src={whatsappIcon}
+                    width={50}
+                    densities={[1, 2, 3]}
+                    class="w-12.5 mr-3"
+                    alt=""
+                />
                 <strong class="text-center">Quero falar com a Union</strong>
             </button>
 
@@ -83,12 +89,12 @@ const options = [
 
                 <select
                     x-model="choice"
-                    aria-label="Eu estou buscando"
+                    aria-label="Selecionar opção"
                     aria-describedby="contact-dialog-hint"
                     class="contact-select"
                 >
                     <option value="" disabled selected>
-                        Eu estou buscando...
+                        Selecionar opção
                     </option>
                     {options.map((option) => (
                         <option value={option.id}>
@@ -119,7 +125,13 @@ const options = [
                             data-contact-option={option.id}
                             class="flex flex-row items-center justify-center rounded-[40px] border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] px-6 py-3 text-lg shadow-md transition-all duration-300 hover:shadow-lg"
                         >
-                            <Img src={whatsappIcon} width={40} densities={[1, 2, 3]} class="w-10 mr-3" alt="" />
+                            <Img
+                                src={whatsappIcon}
+                                width={40}
+                                densities={[1, 2, 3]}
+                                class="w-10 mr-3"
+                                alt=""
+                            />
                             <strong>{option.cta}</strong>
                         </a>
                     </div>
@@ -157,7 +169,7 @@ const options = [
         outline-offset: 2px;
     }
 
-    /* Placeholder ("Eu estou buscando...") in a softer grey. */
+    /* Placeholder ("Selecionar opção") in a softer grey. */
     .contact-select:has(option[value=""]:checked) {
         color: #6b6b6b;
     }
@@ -257,14 +269,24 @@ const options = [
     // credited for job applicants; both buttons are GA4 events, to see which
     // channels (ads, organic, social...) the clicks come from.
     declare const gtag: ((...args: unknown[]) => void) | undefined;
-    for (const link of dialog.querySelectorAll<HTMLAnchorElement>("[data-contact-option]")) {
+    for (const link of dialog.querySelectorAll<HTMLAnchorElement>(
+        "[data-contact-option]",
+    )) {
         link.addEventListener("click", () => {
             if (typeof gtag !== "function") return;
             if (link.dataset.contactOption === "family") {
-                gtag("event", "conversion", { send_to: "AW-11343656312/2TwlCInQgqkdEPjqiaEq" });
-                gtag("event", "generate_lead", { send_to: "G-T55SWE3RWZ", method: "whatsapp" });
+                gtag("event", "conversion", {
+                    send_to: "AW-11343656312/2TwlCInQgqkdEPjqiaEq",
+                });
+                gtag("event", "generate_lead", {
+                    send_to: "G-T55SWE3RWZ",
+                    method: "whatsapp",
+                });
             } else {
-                gtag("event", "cv_submit", { send_to: "G-T55SWE3RWZ", method: "whatsapp" });
+                gtag("event", "cv_submit", {
+                    send_to: "G-T55SWE3RWZ",
+                    method: "whatsapp",
+                });
             }
         });
     }
