@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { getImage } from "astro:assets";
 import shareImageSrc from "../assets/hero_desktop_placeholder-min.avif";
+import CookieBanner from "../components/CookieBanner.astro";
 
 interface Props {
   title: string;
@@ -49,14 +50,19 @@ const shareImage = await getImage({ src: shareImageSrc, width: 1200, height: 630
       /* Clarity must load after the stylesheet: it reads layout as soon as it
          runs, and doing that before the CSS arrives makes the whole page shift
          (CLS ~0.9 on slow connections). An inline script at the end of <body>
-         waits for the stylesheet in <head> before it executes. */
+         waits for the stylesheet in <head> before it executes. Skipped for
+         visitors who refused cookies in CookieBanner.astro, which calls
+         unionLoadClarity() if they accept later. */
       analytics && (
         <script is:inline>
-          (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-          })(window, document, "clarity", "script", "fy7s8gh2x9");
+          window.unionLoadClarity = function () {
+            (function (c, l, a, r, i, t, y) {
+              c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+              t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+              y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "fy7s8gh2x9");
+          };
+          if (document.cookie.indexOf("union_consent=denied") === -1) unionLoadClarity();
         </script>
       )
     }
@@ -66,27 +72,43 @@ const shareImage = await getImage({ src: shareImageSrc, width: 1200, height: 630
          on mobile, so it's only fetched on the visitor's first scroll, tap,
          click or key press. Visitors who never interact aren't recorded (on
          purpose). Calls made before it arrives (the page view, conversions
-         from Contact.astro) queue in dataLayer and are sent once it loads. */
+         from Contact.astro) queue in dataLayer and are sent once it loads.
+         Visitors who refused cookies in CookieBanner.astro get no gtag at
+         all; the banner calls unionGtag.start() and .fetchScript() if they accept
+         later. */
       analytics && (
         <script is:inline>
-          window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
-          gtag("js", new Date());
-          gtag("config", "AW-11343656312");
-          gtag("config", "G-T55SWE3RWZ");
           (function () {
             var events = ["scroll", "pointerdown", "keydown"];
-            function load() {
-              events.forEach(function (e) { removeEventListener(e, load); });
+            var started = false;
+            var fetched = false;
+            function denied() { return document.cookie.indexOf("union_consent=denied") !== -1; }
+            function start() {
+              if (started) return;
+              started = true;
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = function () { dataLayer.push(arguments); };
+              gtag("js", new Date());
+              gtag("config", "AW-11343656312");
+              gtag("config", "G-T55SWE3RWZ");
+              events.forEach(function (e) { addEventListener(e, fetchScript, { passive: true }); });
+            }
+            function fetchScript() {
+              events.forEach(function (e) { removeEventListener(e, fetchScript); });
+              // The visitor may have refused cookies since the page loaded.
+              if (fetched || denied()) return;
+              fetched = true;
               var s = document.createElement("script");
               s.async = true;
               s.src = "https://www.googletagmanager.com/gtag/js?id=AW-11343656312";
               document.body.appendChild(s);
             }
-            events.forEach(function (e) { addEventListener(e, load, { passive: true }); });
+            window.unionGtag = { start: start, fetchScript: fetchScript };
+            if (!denied()) start();
           })();
         </script>
       )
     }
+    {analytics && <CookieBanner />}
   </body>
 </html>

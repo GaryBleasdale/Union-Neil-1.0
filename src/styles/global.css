@@ -110,4 +110,17 @@
   h2 {
     font-weight: 800;
   }
+
+  /* Stop the page behind a modal (contact, cookie preferences) from
+     scrolling. The stable gutter keeps the page from shifting sideways when
+     the scrollbar is hidden. */
+  html {
+    scrollbar-gutter: stable;
+  }
+  html:has(dialog:modal) {
+    overflow: hidden;
+  }
+  dialog {
+    overscroll-behavior: contain;
+  }
 }
