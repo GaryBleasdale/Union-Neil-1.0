@@ -13,7 +13,7 @@ const links = [
 
 <nav
   class="flex px-7.5 py-5 flex-col gap-5 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.06)] bg-white navbar  h-max font-notoSans w-full z-1 fixed transition-all duration-350 ease-linear"
-  x-data="{ open: false}">
+  x-data="{ open: false}" @click.outside="open = false" @scroll.window="open = false">
   <div class="flex items-center justify-between" id="top-navbar">
     <div>
       <Img src={logo} class="max-w-45 sm:max-w-62.5" alt="Union Neil Logo" priority />
@@ -63,8 +63,9 @@ const links = [
 
 <script>
   // Hide the navbar while scrolling down past the hero, show it again on scroll up.
+  // (The mobile menu closes itself on scroll and on clicks outside the nav,
+  // via the Alpine handlers on <nav>.)
   const navbar = document.querySelector("nav")!;
-  const mobileMenu = document.querySelector<HTMLElement>(".mobile-menu")!;
   let latestScrollValue = 0;
   let lastMovement = "";
 
@@ -78,7 +79,6 @@ const links = [
       latestScrollValue = scrollY;
       if (window.pageYOffset > 760) {
         navbar.classList.add("-translate-y-35");
-        mobileMenu.style.display = "none";
         lastMovement = "down";
       }
     } else {
