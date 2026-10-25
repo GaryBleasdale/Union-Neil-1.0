@@ -1,64 +1,149 @@
 ---
+import { getCollection } from "astro:content";
 import Anchor from "./Anchor.astro";
+import GoogleRating from "./GoogleRating.astro";
 import SectionTitle from "./SectionTitle.astro";
 
-const reviews = [
-  {
-    name: "Edgar Francisco Pereira",
-    text: "Extremamente excelente, uma equipe que trabalha com amor e carinho, foram 03 meses que cuidaram de um ente querido e sempre deram o melhor, recomendo a todos que necessitam de cuidador de idosos ou pessoas que necessitem de cuidados especiais, a equipe é monitorada por médicas competentes. Você recebe diariamente um resumo dos medicamentos, cuidados e estado de saúde do paciente.",
-  },
-  {
-    name: "Antônio Giangiácomo Junior, filho do Senhor Antônio",
-    text: "Empresa com profissionais qualificados, carinhosos e muito atenciosos em todas situações.",
-  },
-  {
-    name: "Arlete Sanches de Lima, filha do Senhor Bonifácio",
-    text: "Meu nome é Arlete, tenho 64 anos. Meu contato com a UNIONNEIL começou em maio/23, após uma queda sofrida por meu pai Sr. Bonifácio, de 97 anos, que causou fratura de fêmur. Desde então ele tem sido cuidado por profissionais dessa empresa que se mostrou extremamente comprometida com o bem estar do paciente e de seus familiares. A equipe de enfermagem é altamente preparada e competente. Diante disso, só tenho a fazer ótimas recomendações da empresa UNIONNEIL.",
-  },
-  {
-    name: "Maria Katsumi Fukasawa, esposa do Senhor Manolo",
-    text: "Foi muito bom, as profissionais da enfermagem são muito eficientes, gostamos muito, fizeram ótimos trabalhos com muito carinho, amor e dedicação.",
-  },
-  {
-    name: "Bruno Dutra, neto do Senhor Odair",
-    text: "Meu nome é Bruno, e sou neto do Odair, paciente da Union Neil. O Odair perdeu a força nas pernas e ficou difícil para eu cuidar dele sozinho, entramos em contato com a Union Neil por uma indicação. Desde o primeiro momento, me senti ouvido e compreendido e os cuidados para com o Odair tem sido sempre feitos com extrema atenção, dedicação e profissionalismo. Sempre senti que ele estava em boas mãos. Hoje, o Odair está muito melhor, sei que o papel da Union Neil foi fundamental, ajudou a mim e minha família, com muito carinho, hoje, eu também posso indicar a Union Neil para todos aqueles que estiverem precisando de cuidados domiciliares. Obrigado Union Neil de coração.",
-  },
-  {
-    name: "Francine Barros da Silva, enfermeira na Unimed Sorocaba",
-    text: "Uma empresa extremamente comprometida em cuidar da saúde e garantir o bem estar dos pacientes e seus familiares. Os funcionários se caracterizam pelo imenso respeito, dedicação e cuidado para com os pacientes. Recomendo sem dúvidas a todas as famílias que estejam precisando de cuidados para um ente querido em casa.",
-  },
-  {
-    name: "Rogério Lima, esposo da Senhora Fernanda",
-    text: "Realmente cuidam dos pacientes como se fossem da própria família, com muito carinho e respeito. Os profissionais são dedicados e atenciosos, sempre pensando no bem-estar dos pacientes e da família. Se você tem alguém que precisa de cuidados especiais em casa, pode confiar de olhos fechados. Recomendo muito!",
-  },
-];
+// Reviews live in src/data/reviews.json (schema in src/content.config.ts),
+// most persuasive first. Star-only reviews have no text, so they're kept
+// for the record but not shown.
+const reviews = (await getCollection("reviews"))
+  .map((entry) => entry.data)
+  .filter((review) => review.featured && review.text)
+  .sort((a, b) => a.order - b.order);
+
+const initials = (name: string) => {
+  const words = name.split(" ");
+  return (words[0][0] + (words.length > 1 ? words[words.length - 1][0] : "")).toUpperCase();
+};
 ---
 
-<Anchor id="google-ratings" />
+<!-- Sits just before "Vamos conversar": the families' words reassure
+     visitors right before they're asked to get in touch.
+
+     The carousel is a CSS scroll-snap row, so swiping and scrolling work
+     without JavaScript. Alpine only drives the arrows and
+     "Ler mais". -->
+<Anchor id="avaliacoes" />
 <div class="container">
   <SectionTitle>O que falam da Union</SectionTitle>
-  <p class="mb-10 text-lg">Compartilhamos aqui, com enorme alegria e satisfação, as palavras das famílias as quais
-    servimos
-  </p>
-  <ul class="review-container grid sm:grid-cols-2 gap-12">
-    {
-      reviews.map((review) => (
-        <li>
-          <div class="max-w-md mx-auto bg-[#cfb52c1c] rounded-lg border border-gray-200 shadow-md overflow-hidden h-full">
-            <div class="p-4 text-center flex flex-col items-center justify-between h-full">
-              <div>
-                <div class="text-lg font-semibold text-gray-900">{review.name}</div>
-                <div class="flex justify-center items-center my-2">
-                  <span>⭐⭐⭐⭐⭐</span>
-                </div>
-              </div>
-              <div class="flex items-center h-full">
-                <p class="text-gray-700 italic">{review.text}</p>
-              </div>
-            </div>
-          </div>
-        </li>
-      ))
-    }
-  </ul>
+  <GoogleRating class="mb-8" />
+
+  <div
+    role="region"
+    aria-roledescription="carrossel"
+    aria-label="Avaliações das famílias"
+    x-data={`{
+      atStart: true,
+      atEnd: false,
+      sync() {
+        const track = $refs.track;
+        this.atStart = track.scrollLeft < 1;
+        this.atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+      },
+      go(direction) {
+        const track = $refs.track;
+        const step = track.firstElementChild.offsetWidth + parseFloat(getComputedStyle(track).columnGap);
+        const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        track.scrollBy({ left: direction * step, behavior: reduce ? 'auto' : 'smooth' });
+      },
+    }`}
+    x-init="sync()"
+  >
+    <ul
+      x-ref="track"
+      @scroll.debounce.50ms="sync()"
+      tabindex="0"
+      aria-label="Avaliações (role para o lado para ver mais)"
+      class="review-track -mx-1 flex snap-x snap-mandatory scroll-px-1 gap-6 overflow-x-auto px-1 pb-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[darkgoldenrod]"
+    >
+      {
+        reviews.map((review, i) => (
+          <li
+            aria-roledescription="slide"
+            aria-label={`${i + 1} de ${reviews.length}`}
+            class="shrink-0 basis-[85%] snap-start sm:basis-[calc((100%-1.5rem)/2)] lg:basis-[calc((100%-3rem)/3)]"
+          >
+            <figure
+              class="flex h-full flex-col rounded-lg border border-[#cfb52c4d] bg-white p-6 shadow-md"
+              x-data="{ open: false, clamped: false }"
+              x-init="$nextTick(() => clamped = $refs.body.scrollHeight > $refs.body.clientHeight + 1)"
+            >
+              <span role="img" aria-label={`${review.rating} estrelas`} class="mb-3 text-sm">
+                {"⭐".repeat(review.rating)}
+              </span>
+              {review.headline && (
+                <p class="mb-3 text-lg leading-snug font-bold text-[#242424]">“{review.headline}”</p>
+              )}
+              <blockquote>
+                <p x-ref="body" class="line-clamp-5 leading-relaxed text-[#4a4a4a]" :class="{ 'line-clamp-5': !open }">
+                  {review.text}
+                </p>
+              </blockquote>
+              <button
+                type="button"
+                x-show="clamped"
+                style="display: none"
+                @click="open = !open"
+                :aria-expanded="open"
+                x-text="open ? 'Ler menos' : 'Ler mais'"
+                class="mt-2 self-start text-sm font-bold underline underline-offset-2"
+              >
+                Ler mais
+              </button>
+              <figcaption class="mt-auto flex items-center gap-3 border-t border-[#cfb52c33] pt-4">
+                <span
+                  aria-hidden="true"
+                  class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[rgb(184,134,11,0.15)] text-sm font-bold text-[#242424]"
+                >
+                  {initials(review.name)}
+                </span>
+                <span class="text-sm leading-snug">
+                  <strong class="block text-base text-[#242424]">{review.name}</strong>
+                  {review.relation && <span class="block text-[#4a4a4a]">{review.relation}</span>}
+                  {review.bairro && (
+                    <span class="block text-[#6b6b6b]">
+                      📍 {review.bairro}{review.cidade && `, ${review.cidade}`}
+                    </span>
+                  )}
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-4 flex items-center justify-center gap-5">
+      <button
+        type="button"
+        @click="go(-1)"
+        :disabled="atStart"
+        aria-label="Avaliação anterior"
+        class="flex size-11 items-center justify-center rounded-full border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] text-[#242424] transition-opacity disabled:cursor-default disabled:opacity-40"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+      </button>
+      <button
+        type="button"
+        @click="go(1)"
+        :disabled="atEnd"
+        aria-label="Próxima avaliação"
+        class="flex size-11 items-center justify-center rounded-full border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] text-[#242424] transition-opacity disabled:cursor-default disabled:opacity-40"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+      </button>
+    </div>
+  </div>
 </div>
+
+<style>
+  /* The arrows and the peek of the next card show there's more to see, so the
+     scrollbar would only add clutter. */
+  .review-track {
+    scrollbar-width: none;
+  }
+  .review-track::-webkit-scrollbar {
+    display: none;
+  }
+</style>
