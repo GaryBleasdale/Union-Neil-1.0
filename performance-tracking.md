@@ -23,6 +23,7 @@ done
 
 | Date | Commit | Performance | Accessibility | Best practices | SEO | LCP | CLS | Page weight |
 |---|---|---|---|---|---|---|---|---|
+| 2026-10-25 | `51b5604` (reviews carousel, video moved up) | 98 (99 warm) | **100** | 77 | 100 | 2.20 s (2.00 s warm) | 0.033 | **295 KiB** |
 | 2026-10-25 | `d4ba8e3` (cookie banner, contact dialog) | 98.5 (99 warm) | **100** | 77 | 100 | 2.20 s (1.77 s warm) | 0.033 | 298 KiB |
 | 2026-10-25 | `dcf05cc` (SEO updates) | 91 (99 warm) | **100** | 77 | 100 | 3.07 s (2.26 s warm) | **0.029** | 295 KiB |
 | 2026-10-25 | `681be11` (Google tags) | **100** | **100** | 77 | 100 | 1.68 s | **0.029** | 295 KiB |
@@ -32,6 +33,41 @@ done
 Values are medians. LCP = Largest Contentful Paint; CLS = Cumulative Layout Shift.
 
 ## Results
+
+### 2026-10-25 · `51b5604` · Reviews carousel, video moved up
+
+"overhaul review section" + "minor fixes to meta description and meta
+title": reviews from `src/data/reviews.json` in a scroll-snap carousel,
+Depoimentos (video) moved up after the intro, new title and description.
+Lighthouse 13.5.0, mobile, 10 runs. "Warm" = runs 3–9 (server response
+8–19 ms).
+
+| Metric | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Median | Median warm |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Performance | 78 | 72 | 100 | 99 | 99 | 98 | 98 | 99 | 98 | 72 | **98** | **99** |
+| Accessibility | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | **100** | **100** |
+| Best practices | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | 77 | **77** | **77** |
+| SEO | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | **100** | **100** |
+| First Contentful Paint | 2.92 s | 3.35 s | 1.32 s | 1.51 s | 1.36 s | 1.82 s | 1.67 s | 1.21 s | 1.21 s | 3.33 s | **1.59 s** | **1.36 s** |
+| Largest Contentful Paint | 4.16 s | 5.06 s | 1.34 s | 2.12 s | 1.99 s | 2.00 s | 2.27 s | 1.82 s | 2.42 s | 5.03 s | **2.20 s** | **2.00 s** |
+| Total Blocking Time | 83 ms | 43 ms | 21 ms | 27 ms | 19 ms | 20 ms | 21 ms | 20 ms | 20 ms | 50 ms | **21 ms** | **20 ms** |
+| Cumulative Layout Shift | 0.029 | 0.033 | 0.033 | 0.033 | 0.033 | 0.033 | 0.033 | 0.033 | 0.033 | 0.033 | **0.033** | **0.033** |
+| Speed Index | 4.74 s | 4.72 s | 1.32 s | 1.51 s | 1.36 s | 1.82 s | 1.67 s | 1.21 s | 1.21 s | 4.70 s | **1.59 s** | **1.36 s** |
+| Page weight | 295 KiB | 295 KiB | 295 KiB | 295 KiB | 295 KiB | 295 KiB | 295 KiB | 295 KiB | 295 KiB | 295 KiB | **295 KiB** | **295 KiB** |
+| Server response time | 301 ms | 182 ms | 8 ms | 19 ms | 8 ms | 8 ms | 8 ms | 8 ms | 8 ms | 164 ms | **8 ms** | **8 ms** |
+
+Notes:
+- Page weight fell 3 KiB (298 → 295 KiB): the footer's WhatsApp icons
+  are gone, which outweighs the bigger HTML.
+- The HTML grew from 16.0 to 18.6 KiB (13 review cards with headlines and
+  the carousel markup) and the CSS from 6.2 to 6.6 KiB.
+- Warm-cache first paint was 1.2–1.8 s, against ~1.0 s for `d4ba8e3`, and
+  warm LCP 2.00 s against 1.77 s. Part of it may be the larger HTML and
+  CSS, both needed before the first paint; not confirmed, and the scores
+  stayed at 98–100.
+- Runs 1, 2 and 10 hit a cold Netlify cache (164–301 ms server response),
+  as before.
+- 0 Google tag requests in all runs.
 
 ### 2026-10-25 · `d4ba8e3` · Cookie banner and contact dialog
 

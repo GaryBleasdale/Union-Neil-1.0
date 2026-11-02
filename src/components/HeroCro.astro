@@ -1,0 +1,119 @@
+---
+import ArtDirectedPicture from "./ArtDirectedPicture.astro";
+import GoogleRating from "./GoogleRating.astro";
+import Img from "./Img.astro";
+import teamPhoto from "../assets/alltogether.avif";
+import desktopPhoto from "../assets/hero_desktop_placeholder-min.avif";
+import whatsappIcon from "../assets/whatsapp-icon.png";
+
+// Conversion-focused hero: headline, subline, Google rating and the WhatsApp
+// button come first, so the call to action is in the first screen and nothing
+// sits on top of a face.
+// - Phones: text, then the real team photo as a card.
+// - md and up: a cream band filling the screen under the nav, text on the
+//   left, and the full-bleed photo filling the right half (the woman sits on
+//   the right of that image, so it crops naturally). The team photo is too
+//   small (700px) to fill half a desktop screen.
+// One <picture>, so each device downloads only its own photo. The alternative
+// full-bleed photo hero is HeroFullImage.astro; index.astro picks one.
+---
+
+<div
+  class="relative pt-26.5 sm:pt-32.5 md:flex md:min-h-[min(100svh,920px)] bg-[radial-gradient(ellipse_at_12%_25%,#f2e4bf_0%,#f6eedb_40%,#fbf8f0_80%)]">
+  <!-- A barely visible paper grain over the cream (and, from md, through the
+       photo's faded edge), so it reads as a surface rather than a flat colour. -->
+  <div aria-hidden="true"
+    class="pointer-events-none absolute inset-0 opacity-[0.07] mix-blend-multiply bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22200%22%20height=%22200%22%3E%3Cfilter%20id=%22n%22%3E%3CfeTurbulence%20type=%22fractalNoise%22%20baseFrequency=%220.9%22%20numOctaves=%223%22%20stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect%20width=%22100%25%22%20height=%22100%25%22%20filter=%22url(%23n)%22/%3E%3C/svg%3E')]">
+  </div>
+  <!-- md and up: the text half is the full left half of the screen, not the
+       site's 1300px container: its left margin follows the container up to
+       about 1500px wide, then grows only with the screen (10vw), so wide
+       screens get a proportionate margin instead of a large empty one. -->
+  <div class="container relative pb-0! md:pt-8! md:pb-5! md:px-0! md:max-w-none! md:m-0! md:flex md:w-full md:items-center">
+    <div class="flex flex-col gap-4 md:w-1/2 md:gap-6 md:py-8 md:pl-[clamp(1.875rem,calc(50vw-620px),10vw)] md:pr-12 lg:pr-24 xl:pr-32">
+      <!-- Editorial eyebrow; fills the space above the headline. -->
+      <p class="flex items-center gap-2.5 md:gap-3 -mb-2 text-xs tracking-[0.12em] min-[400px]:tracking-[0.15em] md:text-sm md:tracking-[0.2em] 3xl:text-base font-bold uppercase text-[darkgoldenrod]">
+        <span class="h-px w-6 md:w-10 bg-[darkgoldenrod]" aria-hidden="true"></span>
+        Home care · Sorocaba e região
+      </p>
+      <h1
+        class="font-bold text-[2.5rem] leading-10.5 tracking-[-1.5px] text-[#393939] md:text-5xl md:leading-[1.05] xl:text-6xl xl:tracking-[-2px] 3xl:text-7xl">
+        Cuidados domiciliares para pessoas <strong class="text-[#151515]">exigentes</strong>
+      </h1>
+      <!-- Placeholder subline: edit freely. -->
+      <p class="text-lg text-[#393939] md:text-xl 3xl:text-2xl">
+        Cuidadores supervisionados por enfermeiras, na sua casa. Sorocaba e região.
+      </p>
+      <GoogleRating class="3xl:text-xl" />
+      <div class="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-3 lg:gap-y-3">
+        <a href="#contato" data-open-contact
+          class="flex items-center justify-center gap-3 whitespace-nowrap md:self-start rounded-[40px] border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] px-6 lg:px-5 py-3 text-lg font-bold text-[#242424] shadow-md transition-all duration-300 hover:shadow-lg">
+          <Img src={whatsappIcon} width={35} densities={[1, 2, 3]} class="w-8.75" alt="" loading="eager" />
+          Falar no WhatsApp
+        </a>
+        <!-- Second CTA for visitors not ready to message yet: the family
+             testimonial video (scrolls there and starts it). Outlined, so the
+             WhatsApp button stays the main action. -->
+        <a href="#depoimento" data-play-testimonial
+          class="flex items-center justify-center gap-2 whitespace-nowrap md:self-start rounded-[40px] border-2 border-[darkgoldenrod] px-6 lg:px-5 py-[13.5px] text-lg font-bold text-[#242424] transition-colors duration-300 hover:bg-[rgb(184,134,11,0.08)]">
+          <!-- "circle-play" icon from Lucide (ISC licence) -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="darkgoldenrod"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="size-8">
+            <circle cx="12" cy="12" r="10" />
+            <path d="m10 8 6 4-6 4z" fill="darkgoldenrod" />
+          </svg>
+          Assistir vídeo
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- The <picture> must be a full-height block for the image to fill the half.
+       md and up: the photo is mirrored so the woman faces the text and the
+       buttons (her gaze leads the eye there), and its left edge fades out
+       (CSS mask, written "to_left" because the mirror flips it too) into
+       the cream behind it, so the two halves blend. -->
+  <div class="relative px-7.5 pt-6 pb-10 md:absolute md:top-32.5 md:right-0 md:bottom-0 md:w-1/2 md:p-0 md:[&>picture]:block md:[&>picture]:h-full">
+    <ArtDirectedPicture
+      mobile={teamPhoto}
+      desktop={desktopPhoto}
+      breakpoint={768}
+      sizes="(min-width: 768px) 50vw, calc(100vw - 60px)"
+      alt="Cuidados domiciliares Union Neil"
+      class="w-full rounded-lg border-4 border-white shadow-xl md:h-full md:rounded-none md:border-0 md:shadow-none md:object-cover md:object-[100%_center] md:-scale-x-100 md:[mask-image:linear-gradient(to_left,transparent,black_clamp(3rem,6vw,6rem))]"
+      fetchpriority="high"
+    />
+    <!-- md and up: the real team, in uniform, as a white-framed card that
+         crosses the seam between the text and the photo (bottom, by a third
+         of its width plus 1vw, about 14px at 1440; the text column's right
+         padding leaves room). Phones already show this photo in full, so
+         it's hidden there; lazy, so phones don't download it. -->
+    <div
+      class="hidden md:block absolute bottom-6 left-0 w-52 translate-x-[calc(-100%/3_-_1vw)] lg:bottom-8 lg:w-60 xl:w-72 rounded-lg bg-white p-1 shadow-xl">
+      <Img src={teamPhoto} sizes="(min-width: 1280px) 280px, (min-width: 1024px) 232px, 200px"
+        alt="Equipe de enfermeiras da Union Neil, de uniforme" class="w-full rounded-md" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<script>
+  // "Assistir vídeo": let the link scroll to the video, and load the player
+  // (VideoTestimonial.astro loads Wistia on a click on its thumbnail and
+  // starts playback once loaded).
+  for (const link of document.querySelectorAll("[data-play-testimonial]")) {
+    link.addEventListener("click", () => {
+      document.getElementById("wistia-player-container")?.click();
+    });
+  }
+
+  // Open the contact dialog directly instead of scrolling down to the
+  // "Vamos conversar" button first. Without JS the link still scrolls there.
+  const dialog = document.getElementById("contact-dialog") as HTMLDialogElement | null;
+  if (dialog) {
+    for (const link of document.querySelectorAll("[data-open-contact]")) {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        dialog.showModal();
+      });
+    }
+  }
+</script>

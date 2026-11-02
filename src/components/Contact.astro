@@ -4,21 +4,17 @@ import SectionTitle from "./SectionTitle.astro";
 import Img from "./Img.astro";
 import whatsappIcon from "../assets/whatsapp-icon.png";
 
+// Each option goes straight to WhatsApp. Only "family" counts as a Google
+// Ads conversion (see the script below).
 const options = [
     {
         id: "family",
-        label: "Um ente querido precisa de cuidados domiciliares",
-        message:
-            "Estamos encantados em poder ajudar. Por favor, clique para iniciar seu atendimento.",
-        cta: "Iniciar atendimento",
+        label: "Preciso de cuidados para uma pessoa amada",
         href: "https://wa.link/rtvc0v",
     },
     {
         id: "work",
         label: "Sou cuidador(a) e quero trabalhar com a Union",
-        message:
-            "Obrigado pelo seu interesse em trabalhar com a Union, por favor entre em contato anexando seu currículo.",
-        cta: "Enviar currículo",
         href: "https://wa.me/5515981113016?text=Ol%C3%A1%20Union%2C%20estou%20interessado%20em%20deixar%20meu%20curr%C3%ADculo%20com%20voc%C3%AAs.",
     },
 ];
@@ -36,10 +32,7 @@ const options = [
             Vamos conhecer sua situação detalhadamente e orientá-lo sobre os
             próximos passos com todo o respeito e atenção que você merece.
         </p>
-        <div
-            class="flex items-center justify-center flex-col"
-            x-data="{ choice: '' }"
-        >
+        <div class="flex items-center justify-center flex-col" x-data>
             <button
                 type="button"
                 id="contact-cta"
@@ -61,7 +54,6 @@ const options = [
                 id="contact-dialog"
                 closedby="any"
                 aria-labelledby="contact-dialog-title"
-                @close="choice = ''"
                 class="m-auto w-[calc(100%-2rem)] max-w-md rounded-lg bg-white p-6 text-[#242424] shadow-lg backdrop:bg-black/50"
             >
                 <div class="flex items-start justify-between gap-4 mb-5">
@@ -78,173 +70,66 @@ const options = [
                     </button>
                 </div>
 
-                <p
-                    id="contact-dialog-hint"
-                    x-show="!choice"
-                    class="mb-4 text-base text-[#4a4a4a]"
-                >
-                    Por favor, selecione a opção que melhor descreve sua
-                    necessidade.
+                <p class="mb-4 flex items-center gap-2.5 text-base text-[#4a4a4a]">
+                    <Img
+                        src={whatsappIcon}
+                        width={28}
+                        densities={[1, 2, 3]}
+                        class="w-7 shrink-0"
+                        alt=""
+                        loading="eager"
+                    />
+                    Clique na opção certa para iniciar seu atendimento no WhatsApp.
                 </p>
-
-                <select
-                    x-model="choice"
-                    aria-label="Selecionar opção"
-                    aria-describedby="contact-dialog-hint"
-                    class="contact-select"
-                >
-                    <option value="" disabled selected>
-                        Selecionar opção
-                    </option>
+                <!-- Rows in the old dropdown's style, each opening WhatsApp
+                     directly. The chevron shows they're tappable; the family
+                     row (the main option) gets a faint gold tint. -->
+                <div class="flex flex-col gap-3">
                     {options.map((option) => (
-                        <option value={option.id}>
+                        <a
+                            href={option.href}
+                            target="_blank"
+                            rel="noopener"
+                            data-contact-option={option.id}
+                            class:list={[
+                                "flex items-center gap-2.5 rounded-xl border-2 px-4 py-3 text-base leading-[1.4] text-[#242424] transition-colors hover:border-[#daa520aa] hover:bg-[rgb(184,134,11,0.1)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[darkgoldenrod]",
+                                option.id === "family"
+                                    ? "border-[#daa52099] bg-[rgb(184,134,11,0.06)]"
+                                    : "border-[#daa52066] bg-white",
+                            ]}
+                        >
+                            <!-- Same gold diamond as the mobile navbar links. -->
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24"
                                 fill="#CFB52C"
                                 aria-hidden="true"
-                                class="option-icon"
+                                class="size-3.75 shrink-0"
                             >
                                 <path d="M12 23a1 1 0 0 1-.78-.38l-8-10c-.29-.37-.29-.88 0-1.25l8-9.99c.38-.47 1.18-.47 1.56 0l8 10c.29.37.29.88 0 1.25l-8 10a1 1 0 0 1-.78.38ZM5.28 12 12 20.4l6.72-8.4L12 3.6 5.28 12Z" />
                             </svg>
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
-
-                {options.map((option) => (
-                    <div
-                        x-show={`choice === '${option.id}'`}
-                        style="display: none"
-                        class="mt-6"
-                    >
-                        <p class="mb-4 text-base">{option.message}</p>
-                        <a
-                            href={option.href}
-                            target="_blank"
-                            data-contact-option={option.id}
-                            class="flex flex-row items-center justify-center rounded-[40px] border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] px-6 py-3 text-lg shadow-md transition-all duration-300 hover:shadow-lg"
-                        >
-                            <Img
-                                src={whatsappIcon}
-                                width={40}
-                                densities={[1, 2, 3]}
-                                class="w-10 mr-3"
-                                alt=""
-                            />
-                            <strong>{option.cta}</strong>
+                            <span class="grow">{option.label}</span>
+                            <!-- "chevron-right" icon from Lucide (ISC licence) -->
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="#b8860b"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                                class="size-5 shrink-0"
+                            >
+                                <path d="m9 18 6-6-6-6" />
+                            </svg>
                         </a>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </dialog>
         </div>
     </div>
 </div>
-
-<style>
-    /* Base styling: works in every browser. The open list stays the OS menu. */
-    .contact-select {
-        appearance: none;
-        width: 100%;
-        padding: 0.75rem 3rem 0.75rem 1rem;
-        border: 2px solid #daa52066;
-        border-radius: 0.75rem;
-        background: #fff
-            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b8860b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
-            no-repeat right 1rem center / 1.25rem;
-        color: #242424;
-        font: inherit;
-        font-size: 1rem;
-        line-height: 1.4;
-        cursor: pointer;
-        transition: border-color 0.2s;
-    }
-
-    .contact-select:hover {
-        border-color: #daa520aa;
-    }
-
-    .contact-select:focus-visible {
-        outline: 2px solid darkgoldenrod;
-        outline-offset: 2px;
-    }
-
-    /* Placeholder ("Selecionar opção") in a softer grey. */
-    .contact-select:has(option[value=""]:checked) {
-        color: #6b6b6b;
-    }
-
-    /* Customizable select (Chrome/Edge 135+, Safari 27+): style the open list too. */
-    @supports (appearance: base-select) {
-        .contact-select,
-        .contact-select::picker(select) {
-            appearance: base-select;
-        }
-
-        .contact-select::picker-icon {
-            display: none;
-        }
-
-        /* Let long options wrap onto two lines, both closed and in the list. */
-        .contact-select,
-        .contact-select option {
-            white-space: normal;
-        }
-
-        .contact-select::picker(select) {
-            /* Match the closed box's width so the list sits directly under it. */
-            width: anchor-size(width);
-            overflow-x: hidden;
-            /* Open downward unless there's no room, rather than over the dialog title. */
-            position-try-order: normal;
-            margin-top: 0.375rem;
-            padding: 0.375rem;
-            border: 2px solid #daa52066;
-            border-radius: 0.75rem;
-            background: #fff;
-            box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.15);
-        }
-
-        .contact-select option {
-            display: flex;
-            align-items: center;
-            gap: 0.625rem;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            color: #242424;
-            cursor: pointer;
-        }
-
-        /* Same gold diamond as the mobile navbar links. */
-        .option-icon {
-            flex-shrink: 0;
-            width: 0.9375rem;
-            height: 0.9375rem;
-        }
-
-        .contact-select option:hover,
-        .contact-select option:focus-visible {
-            background: rgb(184 134 11 / 0.1);
-            outline: none;
-        }
-
-        .contact-select option:checked {
-            background: rgb(184 134 11 / 0.18);
-            font-weight: 600;
-        }
-
-        /* The tint and bold text already mark the chosen option; a checkmark
-         next to the diamond would be clutter. */
-        .contact-select option::checkmark {
-            display: none;
-        }
-
-        /* The placeholder isn't a real choice, so keep it out of the open list. */
-        .contact-select option[value=""] {
-            display: none;
-        }
-    }
-</style>
 
 <script>
     // Safari doesn't support closedby="any" yet: close on backdrop clicks manually.
@@ -265,7 +150,7 @@ const options = [
     }
 
     // Google tag events (gtag is defined in Layout.astro when analytics is on).
-    // Only "Iniciar atendimento" is an Ads conversion, so the campaign isn't
+    // Only the family option is an Ads conversion, so the campaign isn't
     // credited for job applicants; both buttons are GA4 events, to see which
     // channels (ads, organic, social...) the clicks come from.
     declare const gtag: ((...args: unknown[]) => void) | undefined;

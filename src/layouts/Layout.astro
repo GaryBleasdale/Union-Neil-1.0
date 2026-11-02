@@ -47,64 +47,163 @@ const shareImage = await getImage({ src: shareImageSrc, width: 1200, height: 630
   <body class={bodyClass} style={bodyStyle}>
     <slot />
     {
-      /* Clarity must load after the stylesheet: it reads layout as soon as it
-         runs, and doing that before the CSS arrives makes the whole page shift
-         (CLS ~0.9 on slow connections). An inline script at the end of <body>
-         waits for the stylesheet in <head> before it executes. Skipped for
-         visitors who refused cookies in CookieBanner.astro, which calls
-         unionLoadClarity() if they accept later. */
-      analytics && (
-        <script is:inline>
-          window.unionLoadClarity = function () {
-            (function (c, l, a, r, i, t, y) {
-              c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-              t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-              y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-            })(window, document, "clarity", "script", "fy7s8gh2x9");
-          };
-          if (document.cookie.indexOf("union_consent=denied") === -1) unionLoadClarity();
-        </script>
-      )
-    }
-    {
-      /* Google tag: Google Ads (conversions for bidding) + GA4 (lead sources
-         across all channels). gtag.js is ~360 KiB and ~500 ms of CPU
-         on mobile, so it's only fetched on the visitor's first scroll, tap,
-         click or key press. Visitors who never interact aren't recorded (on
-         purpose). Calls made before it arrives (the page view, conversions
-         from Contact.astro) queue in dataLayer and are sent once it loads.
-         Visitors who refused cookies in CookieBanner.astro get no gtag at
-         all; the banner calls unionGtag.start() and .fetchScript() if they accept
-         later. */
+      /* Consent controller for Google Ads + GA4 (gtag) and Microsoft Clarity.
+         Opt-out: everything loads by default, but a refusal is enforced
+         whenever it happens, here or in another tab:
+         - refused on an earlier visit: no tag is loaded at all;
+         - refused before gtag.js has arrived: its queued commands (page view,
+           conversions) are dropped, so it does nothing when it runs;
+         - refused after it's running: consent is updated to denied, the
+           ga-disable-* flags stop every further hit, and gtag() becomes a
+           no-op so Contact.astro's conversions go nowhere;
+         - Clarity is switched to denied and stopped; cookies are deleted.
+         Accepting later starts whatever was skipped. CookieBanner.astro only
+         calls unionConsent.set(); other open tabs follow via BroadcastChannel,
+         and pages restored from the back/forward cache re-check the cookie.
+
+         gtag.js is ~360 KiB and ~500 ms of CPU on mobile, so it's only
+         fetched on the visitor's first scroll, tap, click or key press.
+         Clarity must load after the stylesheet (it reads layout as soon as
+         it runs; before the CSS that made the page shift, CLS ~0.9), which
+         an inline script at the end of <body> guarantees. */
       analytics && (
         <script is:inline>
           (function () {
-            var events = ["scroll", "pointerdown", "keydown"];
-            var started = false;
-            var fetched = false;
-            function denied() { return document.cookie.indexOf("union_consent=denied") !== -1; }
-            function start() {
-              if (started) return;
-              started = true;
-              window.dataLayer = window.dataLayer || [];
-              window.gtag = function () { dataLayer.push(arguments); };
-              gtag("js", new Date());
-              gtag("config", "AW-11343656312");
-              gtag("config", "G-T55SWE3RWZ");
-              events.forEach(function (e) { addEventListener(e, fetchScript, { passive: true }); });
+            var IDS = ["AW-11343656312", "G-T55SWE3RWZ"];
+            var KEYS = ["ad_storage", "ad_user_data", "ad_personalization", "analytics_storage"];
+            var EVENTS = ["scroll", "pointerdown", "keydown"];
+            var state = null; // consent applied in this page: "granted" | "denied"
+            var gtagConfigured = false; // js/config commands are in dataLayer
+            var gtagRequested = false; // gtag.js <script> has been added
+            var gtagRan = false; // gtag.js has executed
+            var clarityLoaded = false;
+            var clarityStopped = false;
+
+            function stored() {
+              var m = document.cookie.match(/(?:^|; )union_consent=(granted|denied)(?:;|$)/);
+              return m ? m[1] : null;
             }
-            function fetchScript() {
-              events.forEach(function (e) { removeEventListener(e, fetchScript); });
-              // The visitor may have refused cookies since the page loaded.
-              if (fetched || denied()) return;
-              fetched = true;
+            function consentFor(value) {
+              var c = {};
+              KEYS.forEach(function (k) { c[k] = value; });
+              return c;
+            }
+            function queue() { dataLayer.push(arguments); }
+            function noop() {}
+            function disableGoogle(off) {
+              IDS.forEach(function (id) { window["ga-disable-" + id] = off; });
+            }
+
+            function configureGtag() {
+              if (gtagConfigured) return;
+              gtagConfigured = true;
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = queue;
+              gtag("consent", "default", consentFor("granted"));
+              gtag("js", new Date());
+              IDS.forEach(function (id) { gtag("config", id); });
+            }
+            function fetchGtag() {
+              EVENTS.forEach(function (e) { removeEventListener(e, fetchGtag); });
+              if (gtagRequested || state !== "granted") return;
+              gtagRequested = true;
               var s = document.createElement("script");
               s.async = true;
-              s.src = "https://www.googletagmanager.com/gtag/js?id=AW-11343656312";
+              s.src = "https://www.googletagmanager.com/gtag/js?id=" + IDS[0];
+              s.onload = function () { gtagRan = true; };
               document.body.appendChild(s);
             }
-            window.unionGtag = { start: start, fetchScript: fetchScript };
-            if (!denied()) start();
+
+            function loadClarity() {
+              if (clarityLoaded) {
+                clarity("consentv2", { ad_Storage: "granted", analytics_Storage: "granted" });
+                if (clarityStopped) clarity("start");
+                clarityStopped = false;
+                return;
+              }
+              clarityLoaded = true;
+              (function (c, l, a, r, i, t, y) {
+                c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+              })(window, document, "clarity", "script", "fy7s8gh2x9");
+            }
+
+            // Google tag (_ga*, _gcl_*) and Clarity (_clck, _clsk) cookies. They're
+            // set on the whole domain, so the delete has to name it too.
+            function deleteTrackingCookies() {
+              var domain = location.hostname.replace(/^www\./, "");
+              document.cookie.split("; ").forEach(function (c) {
+                var name = c.split("=")[0];
+                if (!/^(_ga|_gcl_|_clck$|_clsk$)/.test(name)) return;
+                document.cookie = name + "=; Max-Age=0; path=/";
+                document.cookie = name + "=; Max-Age=0; path=/; domain=" + domain;
+              });
+              try {
+                localStorage.removeItem("_gcl_ls");
+                sessionStorage.removeItem("_cltk");
+              } catch (e) {}
+            }
+
+            function deny() {
+              state = "denied";
+              disableGoogle(true);
+              EVENTS.forEach(function (e) { removeEventListener(e, fetchGtag); });
+              if (gtagConfigured) {
+                if (gtagRan) {
+                  queue("consent", "update", consentFor("denied"));
+                } else {
+                  // gtag.js hasn't run yet (maybe still downloading): empty the
+                  // queue so it finds nothing to send, and leave it denied.
+                  dataLayer.length = 0;
+                  queue("consent", "default", consentFor("denied"));
+                  gtagConfigured = false;
+                }
+                window.gtag = noop;
+              }
+              if (clarityLoaded && !clarityStopped) {
+                clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
+                clarity("stop");
+                clarityStopped = true;
+              }
+              deleteTrackingCookies();
+            }
+
+            // `now`: the visitor just clicked, so fetch gtag.js straight away
+            // instead of waiting for an interaction.
+            function grant(now) {
+              state = "granted";
+              disableGoogle(false);
+              configureGtag(); // no-op unless a refusal emptied the queue
+              window.gtag = queue;
+              gtag("consent", "update", consentFor("granted"));
+              if (now) fetchGtag();
+              else EVENTS.forEach(function (e) { addEventListener(e, fetchGtag, { passive: true }); });
+              loadClarity();
+            }
+
+            function apply(value, now) {
+              var effective = value === "denied" ? "denied" : "granted";
+              if (effective === state) return;
+              if (effective === "denied") deny();
+              else grant(now);
+            }
+
+            var channel = "BroadcastChannel" in window ? new BroadcastChannel("union_consent") : null;
+            if (channel) channel.onmessage = function () { apply(stored(), false); };
+            addEventListener("pageshow", function (e) { if (e.persisted) apply(stored(), false); });
+
+            window.unionConsent = {
+              get: stored,
+              set: function (value) {
+                document.cookie = "union_consent=" + value + "; Max-Age=31536000; path=/; SameSite=Lax" +
+                  (location.protocol === "https:" ? "; Secure" : "");
+                apply(value, true);
+                if (channel) channel.postMessage(value);
+              },
+            };
+
+            apply(stored(), false);
           })();
         </script>
       )
