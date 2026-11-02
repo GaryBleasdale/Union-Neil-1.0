@@ -10,9 +10,11 @@ interface Props extends Omit<HTMLAttributes<"img">, "src"> {
     desktop: ImageMetadata;
     sizes: string;
     alt: string;
+    /** Viewport width (px) from which the desktop image is used. */
+    breakpoint?: number;
 }
 
-const { mobile, desktop, sizes, ...imgAttrs } = Astro.props;
+const { mobile, desktop, sizes, breakpoint = 640, class: className, ...imgAttrs } = Astro.props;
 const sources = await artDirectedSources(mobile, desktop);
 ---
 
@@ -20,22 +22,22 @@ const sources = await artDirectedSources(mobile, desktop);
     <source
         srcset={sources.mobile.srcSet.attribute}
         sizes={sizes}
-        media="(max-width:639px)"
+        media={`(max-width:${breakpoint - 1}px)`}
         width={mobile.width}
         height={mobile.height}
     />
     <source
         srcset={sources.desktop.srcSet.attribute}
         sizes={sizes}
-        media="(min-width:640px)"
+        media={`(min-width:${breakpoint}px)`}
         width={desktop.width}
         height={desktop.height}
     />
     <img
         src={sources.desktop.src}
-        width="{desktop.width}"
+        width={desktop.width}
         height={desktop.height}
-        class="w-full"
+        class:list={["w-full", className]}
         {...imgAttrs}
     />
 </picture>

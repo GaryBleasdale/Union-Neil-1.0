@@ -1,9 +1,9 @@
 ---
 // Cookie notice, styled after havaianas.com.br's. Cookies are on by default
 // (opt-out): "Personalizar Cookies" opens a dialog where "Recusar todos" turns
-// off Google Ads, GA4 and Clarity, deletes their cookies and remembers the
-// choice in a union_consent cookie, which Layout.astro checks before loading
-// the tags. Once the visitor has chosen,
+// off Google Ads, GA4 and Clarity. The banner only records the choice through
+// window.unionConsent.set() (Layout.astro), which stores it in a union_consent
+// cookie and enforces it. Once the visitor has chosen,
 // the banner shrinks to a round button in the bottom-left corner that
 // reopens it, so they can change their mind either way.
 ---
@@ -90,13 +90,6 @@
     var banner = document.getElementById("cookie-banner");
     var widget = document.getElementById("cookie-widget");
     var dialog = document.getElementById("cookie-dialog");
-    var all = ["ad_storage", "ad_user_data", "ad_personalization", "analytics_storage"];
-
-    function consentFor(value) {
-      var c = {};
-      all.forEach(function (k) { c[k] = value; });
-      return c;
-    }
 
     function show(open) {
       banner.hidden = !open;
@@ -115,39 +108,9 @@
       return !!document.activeElement && document.activeElement.matches(":focus-visible");
     }
 
-    // Google tag (_ga*, _gcl_*) and Clarity (_clck, _clsk) cookies. They're
-    // set on the whole domain, so the delete has to name it too.
-    function deleteTrackingCookies() {
-      var domain = location.hostname.replace(/^www\./, "");
-      document.cookie.split("; ").forEach(function (c) {
-        var name = c.split("=")[0];
-        if (!/^(_ga|_gcl_|_clck$|_clsk$)/.test(name)) return;
-        document.cookie = name + "=; Max-Age=0; path=/";
-        document.cookie = name + "=; Max-Age=0; path=/; domain=" + domain;
-      });
-      try {
-        localStorage.removeItem("_gcl_ls");
-        sessionStorage.removeItem("_cltk");
-      } catch (e) {}
-    }
-
     function choose(value) {
       var keyboard = usingKeyboard();
-      document.cookie = "union_consent=" + value + "; Max-Age=31536000; path=/; SameSite=Lax" +
-        (location.protocol === "https:" ? "; Secure" : "");
-      if (value === "granted") {
-        // Start whatever was skipped because of an earlier refusal. The
-        // visitor has just clicked, so gtag.js is fetched straight away.
-        unionGtag.start();
-        gtag("consent", "update", consentFor("granted"));
-        unionGtag.fetchScript();
-        if (window.clarity) clarity("consentv2", { ad_Storage: "granted", analytics_Storage: "granted" });
-        else unionLoadClarity();
-      } else {
-        if (window.gtag) gtag("consent", "update", consentFor("denied"));
-        if (window.clarity) clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
-        deleteTrackingCookies();
-      }
+      unionConsent.set(value);
       if (dialog.open) dialog.close();
       openedByClick = false;
       show(false);

@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
-import Hero from "../components/Hero.astro";
+import HeroCro from "../components/HeroCro.astro";
+import HeroFullImage from "../components/HeroFullImage.astro";
 import About from "../components/About.astro";
 import Services from "../components/Services.astro";
 import VideoTestimonial from "../components/VideoTestimonial.astro";
@@ -18,8 +19,15 @@ import logo from "../assets/logo.png";
 import heroMobile from "../assets/mobile_hero_placeholder-min.avif";
 import heroDesktop from "../assets/hero_desktop_placeholder-min.avif";
 
-// Same transforms as <Hero> and <Nav>, so these resolve to the URLs the page requests.
-const hero = await artDirectedSources(heroMobile, heroDesktop);
+// Which hero to show: "cro" (text and WhatsApp button first, team photo beside
+// or below) or "full" (full-bleed photo with the headline over it).
+const HERO = "cro" as "cro" | "full";
+const Hero = HERO === "cro" ? HeroCro : HeroFullImage;
+
+// The full-image hero's photo is preloaded on phones; same transforms as
+// HeroFullImage, so these resolve to the URLs the page requests. HeroCro's
+// photo is a plain <img> near the top with `priority`, so it needs no preload.
+const hero = HERO === "full" ? await artDirectedSources(heroMobile, heroDesktop) : null;
 const optimizedLogo = await getImage({ src: logo, format: "avif" });
 
 // Business details for Google (address, phone, service area), shown in local results.
@@ -65,14 +73,16 @@ const businessJsonLd = {
     analytics
 >
     <Fragment slot="head">
-        <link
-            rel="preload"
-            as="image"
-            imagesrcset={hero.mobile.srcSet.attribute}
-            imagesizes="100vw"
-            media="(max-width:639px)"
-            fetchpriority="high"
-        />
+        {hero && (
+            <link
+                rel="preload"
+                as="image"
+                imagesrcset={hero.mobile.srcSet.attribute}
+                imagesizes="100vw"
+                media="(max-width:639px)"
+                fetchpriority="high"
+            />
+        )}
         <link rel="preload" as="image" href={optimizedLogo.src} />
         <script
             type="application/ld+json"
