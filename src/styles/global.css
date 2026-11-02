@@ -67,6 +67,10 @@
 
 @theme {
   --font-lato: Lato, sans-serif;
+  /* Very wide screens, 1700px (HeroCro scales up its text there). In rem,
+     like the default breakpoints: Tailwind sorts px and rem breakpoints
+     separately, and a px one would come before xl and lose to it. */
+  --breakpoint-3xl: 106.25rem;
 }
 
 /*
