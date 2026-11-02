@@ -1,8 +1,8 @@
 {
   "googleRating": {
     "rating": 5.0,
-    "count": 16,
-    "checkedOn": "2026-10-25",
+    "count": 17,
+    "checkedOn": "2026-11-02",
     "profileUrl": "https://maps.google.com/?cid=2645807140813797670"
   },
   "reviews": [
@@ -47,6 +47,20 @@
       "date": "2026-10",
       "bairro": "Parque Campolim",
       "cidade": "Sorocaba",
+      "source": "google",
+      "featured": true
+    },
+    {
+      "id": "ana-clara-barros",
+      "name": "Ana Clara Barros",
+      "relation": "neta de um paciente",
+      "googleName": "Ana Clara Barros",
+      "rating": 5,
+      "text": "Meu avô foi paciente da clínica Union Neil, e só temos a agradecer por todo o cuidado e carinho que tiveram com ele e com nossa família ao longo desses 3 anos. Todos os profissionais são extremamente bem preparados, atenciosos, respeitosos e sempre demonstraram muita dedicação e preocupação com o bem-estar dele. Somos muito gratos por todo o acolhimento e pela excelência no atendimento durante esse período. Recomendo a clínica de olhos fechados!",
+      "headline": "Todos os profissionais são extremamente bem preparados.",
+      "date": "2026-10",
+      "bairro": null,
+      "cidade": null,
       "source": "google",
       "featured": true
     },

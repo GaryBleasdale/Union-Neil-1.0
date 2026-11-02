@@ -84,6 +84,14 @@ const businessJsonLd = {
             />
         )}
         <link rel="preload" as="image" href={optimizedLogo.src} />
+        <!-- The hero's text (bold headline and eyebrow, regular subline) sits
+             above its photo, so if these fonts arrive after first paint the
+             text reflows and pushes the photo down (CLS). Preloading them
+             makes them usually ready before first paint. -->
+        <link rel="preload" as="font" type="font/woff2" href="/fonts/lato-v24-latin-700.woff2" crossorigin />
+        <link rel="preload" as="font" type="font/woff2" href="/fonts/lato-v24-latin-regular.woff2" crossorigin />
+        <!-- The hero subline is italic. -->
+        <link rel="preload" as="font" type="font/woff2" href="/fonts/lato-v24-latin-italic.woff2" crossorigin />
         <script
             type="application/ld+json"
             set:html={JSON.stringify(businessJsonLd)}
