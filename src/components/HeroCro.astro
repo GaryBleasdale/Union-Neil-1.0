@@ -40,11 +40,12 @@ import whatsappIcon from "../assets/whatsapp-icon.png";
         class="font-bold text-[2.5rem] leading-10.5 tracking-[-1.5px] text-[#393939] md:text-5xl md:leading-[1.05] xl:text-6xl xl:tracking-[-2px] 3xl:text-7xl">
         Cuidados domiciliares para pessoas <strong class="text-[#151515]">exigentes</strong>
       </h1>
-      <!-- Placeholder subline: edit freely. -->
-      <p class="text-lg text-[#393939] md:text-xl 3xl:text-2xl">
-        Cuidadores supervisionados por enfermeiras, na sua casa. Sorocaba e região.
+      <!-- Italic: 22/24px on phones, 25/30px from md. (The italic font is
+           preloaded in index.astro, to avoid a layout shift.) -->
+      <p class="text-[22px] leading-6 italic text-[#393939] md:text-[25px] md:leading-[30px]">
+        Cuidadores supervisionados por enfermeiras com mais de 20 anos de experiência.
       </p>
-      <GoogleRating class="3xl:text-xl" />
+      <GoogleRating class="3xl:text-xl" countHref="#avaliacoes" />
       <div class="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-3 lg:gap-y-3">
         <a href="#contato" data-open-contact
           class="flex items-center justify-center gap-3 whitespace-nowrap md:self-start rounded-[40px] border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] px-6 lg:px-5 py-3 text-lg font-bold text-[#242424] shadow-md transition-all duration-300 hover:shadow-lg">

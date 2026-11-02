@@ -1,21 +1,31 @@
 ---
 import { getEntry } from "astro:content";
 
-// "5,0 ⭐ · 16 avaliações no Google", from src/data/reviews.json, with an
+// "5,0 ⭐ · 17 avaliações no Google", from src/data/reviews.json, with an
 // optional link. Under the video it links down to the review cards, so
 // visitors stay on the page instead of leaving for Google.
+// - `link`: a separate link after the rating ("Ler as avaliações").
+// - `countHref`: makes "N avaliações no Google" itself the link (hero).
 interface Props {
   class?: string;
   link?: { href: string; label: string };
+  countHref?: string;
 }
 
-const { class: className, link } = Astro.props;
+const { class: className, link, countHref } = Astro.props;
 const google = (await getEntry("googleRating", "google"))!.data;
+const count = `${google.count} avaliações no Google`;
 ---
 
 <p class:list={["flex flex-wrap items-center gap-x-3 gap-y-1 text-lg", className]}>
   <span>
-    <strong>{google.rating.toFixed(1).replace(".", ",")}</strong> <span aria-hidden="true">⭐</span> · {google.count} avaliações no Google
+    <strong>{google.rating.toFixed(1).replace(".", ",")}</strong> <span aria-hidden="true">⭐</span> ·{" "}
+    {countHref ? (
+      <a href={countHref}
+        class="underline decoration-dotted decoration-[darkgoldenrod] decoration-2 underline-offset-4 transition-colors hover:decoration-solid">{count}</a>
+    ) : (
+      count
+    )}
   </span>
   {link && (
     <a href={link.href} class="font-bold underline underline-offset-2">
