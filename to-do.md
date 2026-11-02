@@ -152,6 +152,14 @@ factors for the map results.
 - [ ] **Update `src/data/reviews.json` when a new Google review arrives**, and
   the rating, count and `checkedOn` date once a month (_about 2 minutes_).
 
+- [ ] **Give every review a headline, even the one-liners.** 8 of the 13
+  shown reviews have one (a sentence from the review, in bold above the
+  text); Antônio, Maria Katsumi, Miriam, Rita and Everton don't. Add a
+  `headline` to each in `src/data/reviews.json`, taken from the review's own
+  words. For a one-line review, decide whether the headline is the whole
+  review (and the text below is then hidden) or a short part of it.
+  _About 15 minutes._
+
 ### Services
 
 - [ ] **Add a section for each type of care Union provides** (e.g. 24 horas,

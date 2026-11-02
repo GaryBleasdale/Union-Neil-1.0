@@ -6,10 +6,10 @@ import type { ImageMetadata } from "astro";
 import type { HTMLAttributes } from "astro/types";
 
 interface Props extends Omit<HTMLAttributes<"img">, "src"> {
-  mobile: ImageMetadata;
-  desktop: ImageMetadata;
-  sizes: string;
-  alt: string;
+    mobile: ImageMetadata;
+    desktop: ImageMetadata;
+    sizes: string;
+    alt: string;
 }
 
 const { mobile, desktop, sizes, ...imgAttrs } = Astro.props;
@@ -17,19 +17,25 @@ const sources = await artDirectedSources(mobile, desktop);
 ---
 
 <picture>
-  <source
-    srcset={sources.mobile.srcSet.attribute}
-    sizes={sizes}
-    media="(max-width:639px)"
-    width={mobile.width}
-    height={mobile.height}
-  />
-  <source
-    srcset={sources.desktop.srcSet.attribute}
-    sizes={sizes}
-    media="(min-width:640px)"
-    width={desktop.width}
-    height={desktop.height}
-  />
-  <img src={sources.desktop.src} width={desktop.width} height={desktop.height} {...imgAttrs} />
+    <source
+        srcset={sources.mobile.srcSet.attribute}
+        sizes={sizes}
+        media="(max-width:639px)"
+        width={mobile.width}
+        height={mobile.height}
+    />
+    <source
+        srcset={sources.desktop.srcSet.attribute}
+        sizes={sizes}
+        media="(min-width:640px)"
+        width={desktop.width}
+        height={desktop.height}
+    />
+    <img
+        src={sources.desktop.src}
+        width="{desktop.width}"
+        height={desktop.height}
+        class="w-full"
+        {...imgAttrs}
+    />
 </picture>
