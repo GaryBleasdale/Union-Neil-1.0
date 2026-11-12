@@ -4,7 +4,7 @@ import GoogleRating from "./GoogleRating.astro";
 import Img from "./Img.astro";
 import teamPhoto from "../assets/alltogether.avif";
 import desktopPhoto from "../assets/hero_desktop_placeholder-min.avif";
-import whatsappIcon from "../assets/whatsapp-icon.png";
+import WhatsAppButton from "./WhatsAppButton.astro";
 
 // Conversion-focused hero: headline, subline, Google rating and the WhatsApp
 // button come first, so the call to action is in the first screen and nothing
@@ -50,11 +50,7 @@ import whatsappIcon from "../assets/whatsapp-icon.png";
       </p>
       <GoogleRating class="3xl:text-xl" countHref="#avaliacoes" />
       <div class="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-3 lg:gap-y-3">
-        <a href="#contato" data-open-contact
-          class="flex items-center justify-center gap-3 whitespace-nowrap md:self-start rounded-[40px] border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] px-6 lg:px-5 py-3 text-lg font-bold text-[#242424] shadow-md transition-all duration-300 hover:shadow-lg">
-          <Img src={whatsappIcon} width={35} densities={[1, 2, 3]} class="w-8.75" alt="" loading="eager" />
-          Falar no WhatsApp
-        </a>
+        <WhatsAppButton class="md:self-start lg:px-5" eager />
         <!-- Second CTA for visitors not ready to message yet: the family
              testimonial video (scrolls there and starts it). Outlined, so the
              WhatsApp button stays the main action. -->
@@ -112,15 +108,4 @@ import whatsappIcon from "../assets/whatsapp-icon.png";
     });
   }
 
-  // Open the contact dialog directly instead of scrolling down to the
-  // "Vamos conversar" button first. Without JS the link still scrolls there.
-  const dialog = document.getElementById("contact-dialog") as HTMLDialogElement | null;
-  if (dialog) {
-    for (const link of document.querySelectorAll("[data-open-contact]")) {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        dialog.showModal();
-      });
-    }
-  }
 </script>

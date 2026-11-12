@@ -2,8 +2,7 @@
 import Anchor from "./Anchor.astro";
 import FaqItem from "./FaqItem.astro";
 import SectionTitle from "./SectionTitle.astro";
-import Img from "./Img.astro";
-import whatsappIcon from "../assets/whatsapp-icon.png";
+import WhatsAppButton from "./WhatsAppButton.astro";
 ---
 
 <Anchor id="faq" />
@@ -186,24 +185,7 @@ import whatsappIcon from "../assets/whatsapp-icon.png";
                     retornará o mais rápido possível. Nosso tempo de resposta é
                     geralmente de apenas alguns minutos.
                 </p>
-                <!-- Opens the contact dialog in Contact.astro, like the
-                     "Vamos conversar" button. -->
-                <button
-                    type="button"
-                    aria-haspopup="dialog"
-                    x-data
-                    @click="document.getElementById('contact-dialog').showModal()"
-                    class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424] flex flex-row items-center py-3 px-6 shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)]"
-                >
-                    <Img
-                        src={whatsappIcon}
-                        width={50}
-                        densities={[1, 2, 3]}
-                        class="w-12.5 mr-3"
-                        alt=""
-                    />
-                    <strong class="text-center">Quero falar com a Union</strong>
-                </button>
+                <WhatsAppButton class="mt-12 w-max" />
             </FaqItem>
         </div>
     </div>

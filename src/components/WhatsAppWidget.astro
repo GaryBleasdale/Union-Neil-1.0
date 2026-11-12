@@ -15,8 +15,8 @@ import whatsappIcon from "../assets/whatsapp-icon.png";
 
 <script>
   // Show the widget only once the second paragraph of the section after the
-  // hero comes into view, and hide it again while the section's own "Quero
-  // falar com a Union" button is on screen, so the two don't compete.
+  // hero comes into view, and hide it again while any "Falar no WhatsApp"
+  // button (WhatsAppButton.astro) is on screen, so the two don't compete.
   const widget = document.getElementById("whatsapp-widget")!;
   const dialog = document.getElementById("contact-dialog") as HTMLDialogElement | null;
 
@@ -27,13 +27,13 @@ import whatsappIcon from "../assets/whatsapp-icon.png";
     });
   }
   const start = document.getElementById("whatsapp-widget-start");
-  const cta = document.getElementById("contact-cta");
+  const buttons = document.querySelectorAll("[data-whatsapp-button]");
 
   let pastStart = false;
-  let ctaVisible = false;
+  const visibleButtons = new Set<Element>();
 
   function update() {
-    const hidden = !pastStart || ctaVisible;
+    const hidden = !pastStart || visibleButtons.size > 0;
     widget.toggleAttribute("data-hidden", hidden);
     widget.inert = hidden;
   }
@@ -54,10 +54,12 @@ import whatsappIcon from "../assets/whatsapp-icon.png";
     update();
   }
 
-  if (cta) {
-    new IntersectionObserver(([entry]) => {
-      ctaVisible = entry.isIntersecting;
-      update();
-    }).observe(cta);
-  }
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) visibleButtons.add(entry.target);
+      else visibleButtons.delete(entry.target);
+    }
+    update();
+  });
+  buttons.forEach((button) => observer.observe(button));
 </script>

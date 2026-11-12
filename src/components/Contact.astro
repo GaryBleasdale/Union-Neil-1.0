@@ -2,6 +2,7 @@
 import Anchor from "./Anchor.astro";
 import SectionTitle from "./SectionTitle.astro";
 import Img from "./Img.astro";
+import WhatsAppButton from "./WhatsAppButton.astro";
 import whatsappIcon from "../assets/whatsapp-icon.png";
 
 // Each option goes straight to WhatsApp. Only "family" counts as a Google
@@ -35,21 +36,7 @@ const options = [
             próximos passos com todo o respeito e atenção que você merece.
         </p>
         <div class="flex items-center justify-center flex-col" x-data>
-            <button
-                type="button"
-                id="contact-cta"
-                @click="$refs.contactDialog.showModal()"
-                class="mt-12 p-3 rounded-[40px] border-2 text-lg text-[#242424] flex flex-row items-center py-3 px-6 shadow-md hover:shadow-lg transition-all duration-300 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)]"
-            >
-                <Img
-                    src={whatsappIcon}
-                    width={50}
-                    densities={[1, 2, 3]}
-                    class="w-12.5 mr-3"
-                    alt=""
-                />
-                <strong class="text-center">Quero falar com a Union</strong>
-            </button>
+            <WhatsAppButton id="contact-cta" class="mt-12" />
 
             <dialog
                 x-ref="contactDialog"
@@ -134,10 +121,20 @@ const options = [
 </div>
 
 <script>
-    // Safari doesn't support closedby="any" yet: close on backdrop clicks manually.
     const dialog = document.getElementById(
         "contact-dialog",
     ) as HTMLDialogElement;
+
+    // Every "Falar no WhatsApp" button (WhatsAppButton.astro, data-open-contact)
+    // opens this dialog straight away; without JS they scroll here.
+    for (const link of document.querySelectorAll("[data-open-contact]")) {
+        link.addEventListener("click", (event) => {
+            event.preventDefault();
+            dialog.showModal();
+        });
+    }
+
+    // Safari doesn't support closedby="any" yet: close on backdrop clicks manually.
     if (!("closedBy" in HTMLDialogElement.prototype)) {
         dialog.addEventListener("click", (event) => {
             if (event.target !== dialog) return;
