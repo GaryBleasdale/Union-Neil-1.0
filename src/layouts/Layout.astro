@@ -16,6 +16,10 @@ interface Props {
 }
 
 const { title, shareTitle = title, description, canonical, bodyClass, bodyStyle, analytics = false } = Astro.props;
+// Google tag and Clarity only load in production builds (the deployed site and
+// `astro preview`), so local development doesn't send test visits to GA4,
+// Google Ads or Clarity. The cookie banner still shows in dev, for working on it.
+const loadTags = analytics && import.meta.env.PROD;
 
 // Preview card for shared links (WhatsApp, Facebook...). 1200x630 is the size
 // they expect, and JPEG because WhatsApp doesn't show AVIF previews.
@@ -66,7 +70,7 @@ const shareImage = await getImage({ src: shareImageSrc, width: 1200, height: 630
          Clarity must load after the stylesheet (it reads layout as soon as
          it runs; before the CSS that made the page shift, CLS ~0.9), which
          an inline script at the end of <body> guarantees. */
-      analytics && (
+      loadTags && (
         <script is:inline>
           (function () {
             var IDS = ["AW-11343656312", "G-T55SWE3RWZ"];
@@ -135,7 +139,7 @@ const shareImage = await getImage({ src: shareImageSrc, width: 1200, height: 630
               var domain = location.hostname.replace(/^www\./, "");
               document.cookie.split("; ").forEach(function (c) {
                 var name = c.split("=")[0];
-                if (!/^(_ga|_gcl_|_clck$|_clsk$)/.test(name)) return;
+                if (!/^(_ga|_gcl_|_clck$|_clsk$|union_click$)/.test(name)) return;
                 document.cookie = name + "=; Max-Age=0; path=/";
                 document.cookie = name + "=; Max-Age=0; path=/; domain=" + domain;
               });
@@ -204,7 +208,43 @@ const shareImage = await getImage({ src: shareImageSrc, width: 1200, height: 630
             };
 
             apply(stored(), false);
+
+            // Keep the Google Ads click IDs from the landing URL for 90 days,
+            // so a WhatsApp click on a later visit can still be matched to
+            // the ad (Contact.astro sends them to the click log). gbraid and
+            // wbraid replace gclid on iOS traffic.
+            if (state === "granted") {
+              var params = new URLSearchParams(location.search);
+              var ids = {};
+              ["gclid", "gbraid", "wbraid"].forEach(function (k) {
+                var v = params.get(k);
+                if (v && /^[\w-]{1,200}$/.test(v)) ids[k] = v;
+              });
+              if (Object.keys(ids).length) {
+                ids.at = new Date().toISOString();
+                document.cookie = "union_click=" + encodeURIComponent(JSON.stringify(ids)) +
+                  "; Max-Age=7776000; path=/; SameSite=Lax" +
+                  (location.protocol === "https:" ? "; Secure" : "");
+              }
+            }
           })();
+        </script>
+      )
+    }
+    {
+      /* Dev only: a stand-in for the consent controller, so the cookie banner
+         works (it stores the choice) without loading any tags. */
+      analytics && !loadTags && (
+        <script is:inline>
+          window.unionConsent = {
+            get: function () {
+              var m = document.cookie.match(/(?:^|; )union_consent=(granted|denied)(?:;|$)/);
+              return m ? m[1] : null;
+            },
+            set: function (value) {
+              document.cookie = "union_consent=" + value + "; Max-Age=31536000; path=/; SameSite=Lax";
+            },
+          };
         </script>
       )
     }

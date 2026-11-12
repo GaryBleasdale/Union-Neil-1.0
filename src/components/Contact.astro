@@ -10,7 +10,9 @@ const options = [
     {
         id: "family",
         label: "Preciso de cuidados para uma pessoa amada",
-        href: "https://wa.link/rtvc0v",
+        // Where https://wa.link/rtvc0v pointed. A direct link, so the script
+        // below can add the click's reference code to the message.
+        href: "https://wa.me/5515981012944?text=Ol%C3%A1%20Union%20Neil!%20Estou%20precisando%20de%20cuidados%20domiciliares.%F0%9F%8F%A1%20%20Podem%20me%20ajudar%3F%F0%9F%A4%97",
     },
     {
         id: "work",
@@ -154,10 +156,75 @@ const options = [
     // credited for job applicants; both buttons are GA4 events, to see which
     // channels (ads, organic, social...) the clicks come from.
     declare const gtag: ((...args: unknown[]) => void) | undefined;
+
+    // Click log: each family click gets a short reference code, added to the
+    // WhatsApp message and sent with the visitor's Google Ads click IDs to a
+    // Google Sheet (Apps Script in scripts/lead-log.gs). When the chat
+    // arrives, its code finds the gclid to upload as an offline conversion.
+    // Skipped if the visitor refused cookies.
+    // Apps Script web app URL (scripts/lead-log.gs)
+    const LEAD_LOG_URL =
+        "https://script.google.com/macros/s/AKfycbxf2YupSV69ruj_mogt6Qptdv0nwU1Lsw5tlqDs6_DXHErOAa-HIgbpvQRBkV6pSeM-qw/exec";
+
+    function newRef() {
+        const chars = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"; // no 0/O, 1/I/L
+        const bytes = crypto.getRandomValues(new Uint8Array(5));
+        return Array.from(bytes, (b) => chars[b % chars.length]).join("");
+    }
+
+    function readCookie(name: string) {
+        const m = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+        return m ? decodeURIComponent(m[1]) : "";
+    }
+
+    // IDs saved on landing (Layout.astro); gtag's own _gcl_aw cookie
+    // ("GCL.<time>.<gclid>") is the fallback for the gclid.
+    function clickIds() {
+        let ids: Record<string, string> = {};
+        try {
+            ids = JSON.parse(readCookie("union_click") || "{}");
+        } catch {}
+        if (!ids.gclid) {
+            const aw = readCookie("_gcl_aw").split(".");
+            if (aw.length >= 3) ids.gclid = aw.slice(2).join(".");
+        }
+        return ids;
+    }
+
+    function logClick(link: HTMLAnchorElement, baseHref: string) {
+        const consent = (window as any).unionConsent?.get?.();
+        if (consent === "denied") {
+            link.href = baseHref;
+            return;
+        }
+        const ref = newRef();
+        // Appended as %-encoded text: URLSearchParams would turn the
+        // message's spaces into "+".
+        link.href = `${baseHref}${encodeURIComponent(`\n\nCódigo: ${ref}`)}`;
+        if (!LEAD_LOG_URL) return;
+        const ids = clickIds();
+        navigator.sendBeacon(
+            LEAD_LOG_URL,
+            JSON.stringify({
+                ref,
+                option: link.dataset.contactOption,
+                gclid: ids.gclid || "",
+                gbraid: ids.gbraid || "",
+                wbraid: ids.wbraid || "",
+                landed_at: ids.at || "",
+                clicked_at: new Date().toISOString(),
+                page: location.pathname,
+            }),
+        );
+    }
+
     for (const link of dialog.querySelectorAll<HTMLAnchorElement>(
         "[data-contact-option]",
     )) {
+        const baseHref = link.href;
         link.addEventListener("click", () => {
+            if (link.dataset.contactOption === "family")
+                logClick(link, baseHref);
             if (typeof gtag !== "function") return;
             if (link.dataset.contactOption === "family") {
                 gtag("event", "conversion", {
