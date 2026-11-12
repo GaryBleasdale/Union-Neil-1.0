@@ -2,52 +2,71 @@
 import Anchor from "./Anchor.astro";
 import SectionTitle from "./SectionTitle.astro";
 import ArtDirectedPicture from "./ArtDirectedPicture.astro";
-import GoogleRating from "./GoogleRating.astro";
 import thumbMobile from "../assets/video_thumbnail_mobile.png";
 import thumbDesktop from "../assets/thumbnail.avif";
 ---
 
 <Anchor id="depoimento" />
 <div class="container">
-  <SectionTitle>Depoimentos</SectionTitle>
+    <SectionTitle>Depoimentos</SectionTitle>
 
-  <p class="mb-4 text-lg">Ouça a Beatriz, que voltou a andar e a falar depois de um quadro de meningite que os
-    médicos consideravam irreversível, e o Artur, que trouxe a mãe do Rio e encontrou na Union todo o suporte de que
-    precisava.</p>
-  <p class="mb-10 text-lg">Nas palavras dele: <span class="italic">“Eu simplesmente não fiz nada. Assistência 100%.”</span></p>
+    <p class="mb-4 text-lg">
+        Ouça a Beatriz, que voltou a andar e a falar depois de um quadro de
+        meningite que os médicos consideravam irreversível, e o Artur, que
+        trouxe a mãe do Rio e encontrou na Union todo o suporte de que
+        precisava.
+    </p>
+    <p class="mb-10 text-lg">
+        Nas palavras dele:{" "}
+        <span class="italic">
+            “Eu simplesmente não fiz nada. Assistência 100%.”
+        </span>
+    </p>
 
-  <div id="wistia-player-container" class=" cursor-pointer group aspect-[2/1.2]">
-    <ArtDirectedPicture
-      mobile={thumbMobile}
-      desktop={thumbDesktop}
-      sizes="(min-width: 1300px) 1240px, calc(100vw - 60px)"
-      loading="lazy"
-      decoding="async"
-      alt="video de depoimento"
-    />
-  </div>
-  <GoogleRating class="mt-6" link={{ href: "#avaliacoes", label: "Ler as avaliações" }} />
+    <div
+        id="wistia-player-container"
+        class="cursor-pointer group aspect-[2/1.2]"
+    >
+        <ArtDirectedPicture
+            mobile={thumbMobile}
+            desktop={thumbDesktop}
+            sizes="(min-width: 1300px) 1240px, calc(100vw - 60px)"
+            loading="lazy"
+            decoding="async"
+            alt="video de depoimento"
+        />
+    </div>
+    <!-- The Google rating is already in the hero (and above the reviews), so
+       only a pointer to the written reviews here. -->
+    <p class="mt-6 text-lg">
+        <a
+            href="#avaliacoes"
+            class="font-bold underline underline-offset-2 hover:no-underline"
+        >
+            Ler mais depoimentos
+        </a>
+    </p>
 </div>
 
 <script>
-  // Lazy load the Wistia player: only fetch its scripts once the thumbnail is clicked.
-  function initWistiaPlayer() {
-    const container = document.getElementById("wistia-player-container");
-    if (!container) return;
+    // Lazy load the Wistia player: only fetch its scripts once the thumbnail is clicked.
+    function initWistiaPlayer() {
+        const container = document.getElementById("wistia-player-container");
+        if (!container) return;
 
-    const loadWistia = () => {
-      container.removeEventListener("click", loadWistia);
+        const loadWistia = () => {
+            container.removeEventListener("click", loadWistia);
 
-      const wistiaScript1 = document.createElement("script");
-      wistiaScript1.src = "https://fast.wistia.com/player.js";
-      wistiaScript1.defer = true;
+            const wistiaScript1 = document.createElement("script");
+            wistiaScript1.src = "https://fast.wistia.com/player.js";
+            wistiaScript1.defer = true;
 
-      const wistiaScript2 = document.createElement("script");
-      wistiaScript2.src = "https://fast.wistia.com/embed/8a0ge966sw.js";
-      wistiaScript2.defer = true;
-      wistiaScript2.type = "module";
+            const wistiaScript2 = document.createElement("script");
+            wistiaScript2.src = "https://fast.wistia.com/embed/8a0ge966sw.js";
+            wistiaScript2.defer = true;
+            wistiaScript2.type = "module";
 
-      container.innerHTML = `
+            container.innerHTML = `
         <style>
           wistia-player[media-id='8a0ge966sw']:not(:defined) {
             background-color:black;
@@ -58,17 +77,19 @@ import thumbDesktop from "../assets/thumbnail.avif";
         <wistia-player id="depoimento-wistia" media-id="8a0ge966sw" aspect="1.7777777777777777"></wistia-player>
       `;
 
-      document.head.appendChild(wistiaScript1);
-      document.head.appendChild(wistiaScript2);
+            document.head.appendChild(wistiaScript1);
+            document.head.appendChild(wistiaScript2);
 
-      const player = document.getElementById("depoimento-wistia") as HTMLElement & { play(): void };
-      player.addEventListener("loaded-data", () => {
-        player.play();
-      });
-    };
+            const player = document.getElementById(
+                "depoimento-wistia",
+            ) as HTMLElement & { play(): void };
+            player.addEventListener("loaded-data", () => {
+                player.play();
+            });
+        };
 
-    container.addEventListener("click", loadWistia);
-  }
+        container.addEventListener("click", loadWistia);
+    }
 
-  initWistiaPlayer();
+    initWistiaPlayer();
 </script>
