@@ -1,104 +1,190 @@
 ---
+import type { ImageMetadata } from "astro";
 import Anchor from "./Anchor.astro";
 import Img from "./Img.astro";
-import reuniao from "../assets/reuniao.avif";
-import alltogether from "../assets/alltogether.avif";
-import tomandoAgua from "../assets/tomandoagua.avif";
-import uniforme from "../assets/uniforme.avif";
-import driver from "../assets/driver.webp";
-import gestaoRemedio from "../assets/gestao_remedio.jpg";
-import food from "../assets/food.jpg";
-import estetica from "../assets/estetica.avif";
 import SectionTitle from "./SectionTitle.astro";
+import whatsappIcon from "../assets/whatsapp-icon.png";
+// The services included in every atendimento, from servicos.md (the list
+// sent with each orçamento). Keep the two in sync. On the site the groups
+// start with supervision and the team, which set Union apart, and "Saúde
+// Física" and "Cuidados Pessoais e Higiene" are one card ("Saúde e Cuidados
+// Pessoais"), so the 6 cards fill 3 × 2 / 2 × 3 grids.
+import { groups } from "../data/servicos.json";
 
-const services = [
-  {
-    title: "Profissionais caprichosamente selecionados e capacitados",
-    text: "Seleção e designação cuidadosa de profissionais para atender às especificidades de cada lar.",
-    img: reuniao,
-    alt: "Equipe Union Neil em reunião",
-  },
-  {
-    title: "Visitas regulares e dedicadas das Enfermeiras Chefes",
-    text: "Visitas detalhadas e atentas da Enfermeira Chefe para um acompanhamento minucioso.",
-    img: alltogether,
-    alt: "Equipe Union Neil reunida",
-  },
-  {
-    title: "Equipe domiciliar orientada e supervisionada diariamente",
-    text: "Orientação diária para garantir um padrão de cuidado excepcional na casa do paciente.",
-    img: tomandoAgua,
-    alt: "Profissional dando água ao paciente",
-  },
-  {
-    title: "Canal de comunicação direta com as Enfermeiras Chefes",
-    text: "Comunique-se diretamente com as nossas Enfermeiras Chefe a qualquer momento.",
-    img: uniforme,
-    alt: "Uniformes da equipe Union Neil",
-  },
-  {
-    title: "Transporte, agendamento e acompanhamento nas Consultas Médicas",
-    text: "Gerenciamos seus compromissos médicos, com eficiência e cuidado.",
-    img: driver,
-    alt: "Motorista da Union Neil",
-  },
-  {
-    title: "Gestão de Estoque de remédios",
-    text: "Administração precisa do estoque dos medicamentos do paciente, para sua tranquilidade.",
-    img: gestaoRemedio,
-    alt: "Gestão de remédios",
-  },
-  {
-    title: "Serviços Domésticos",
-    text: "Preparo de refeições, higienização das roupas do paciente, e serviços de faxina para seu conforto.",
-    img: food,
-    alt: "Preparo de refeições",
-  },
-  {
-    title: "Serviços de Estética e Bem-estar",
-    text: "Realçe o bem-estar do paciente com serviços estéticos exclusivos no conforto do seu lar.",
-    img: estetica,
-    alt: "Serviço de estética domiciliar",
-  },
-];
+// Each group's photo is named in servicos.json by its file in src/assets.
+// Optional "position" (CSS object-position, e.g. "center 35%") sets where the
+// dialog's wide header crops that photo, when the centre would cut a face.
+const assets = import.meta.glob<{ default: ImageMetadata }>("../assets/*.{avif,webp,jpg,png}", { eager: true });
+const photo = (file: string) => {
+  const image = assets[`../assets/${file}`];
+  if (!image) throw new Error(`servicos.json: no image src/assets/${file}`);
+  return image.default;
+};
+
+// A card names the first SHOWN services (servicos.json lists each group's
+// strongest selling points first), then "e mais N serviços" (or "serviço") in gold for the
+// rest, which also invites the click. The dialog lists them all.
+const SHOWN = 3;
+
+const ctaClass =
+  "flex items-center justify-center gap-3 whitespace-nowrap rounded-[40px] border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] px-6 py-3 text-lg font-bold text-[#242424] shadow-md transition-all duration-300 hover:shadow-lg";
 ---
 
 <Anchor id="ajudar" />
 <div class="container">
-  <SectionTitle class="md:hidden text-2xl font-bold font-poppins">
-    Como trazemos Paz para a sua família?
-  </SectionTitle>
-
-  <div class="gap-4 flex flex-col md:w-1/2 text-lg md:p-4">
-    <SectionTitle class="hidden md:block text-2xl font-bold">
-      Como trazemos Paz para a sua família?
-    </SectionTitle>
-  </div>
-  <div class="grid grid-cols-[1fr] md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] gap-7.5 pt-8">
+  <SectionTitle>Cuidado total: o que está incluído</SectionTitle>
+  <!-- md and up: every row as tall as the tallest card (auto-rows-fr), so
+       the grid lines up. The details open in a dialog, so a card never
+       changes size. Phones show one card per row: no need to align. -->
+  <div class="grid grid-cols-1 md:grid-cols-2 md:auto-rows-fr lg:grid-cols-3 gap-7.5 pt-4">
     {
-      services.map((service, i) => (
-        <div
+      groups.map((group, i) => (
+        <section
           class:list={[
-            "md:max-w-87.5 p-4 rounded-md service-title flex flex-col justify-between border-[3px] border-solid",
-            // Cards alternate between a darker and a lighter tint.
+            // The whole card opens its dialog (the button's ::after covers it).
+            "relative flex flex-col overflow-hidden rounded-md border-2 border-solid",
+            // Cards alternate between a darker and a lighter tint. (One tint
+            // for all was tried, 2026-11-12: it looked flat.)
             i % 2 === 0
               ? "bg-[rgb(184,134,11,0.25)] border-[#daa52026]"
               : "bg-[rgb(184,134,11,0.15)] border-[#daa5203b]",
           ]}>
-          <div class="flex flex-row items-center justify-between">
-            <h2 class="font-bold text-lg text-[#000000c5]">{service.title}</h2>
+          <!-- Photo first, edge to edge (the card clips its top corners). -->
+          <Img
+            src={photo(group.image)}
+            alt={group.alt}
+            class="aspect-video md:aspect-4/3 w-full object-cover"
+            sizes="(min-width: 1300px) 400px, (min-width: 1024px) 30vw, (min-width: 768px) 45vw, calc(100vw - 60px)"
+          />
+          <div class="flex flex-1 flex-col p-5">
+            <h3 class="text-[22px] font-bold leading-tight text-[#242424]">{group.title}</h3>
+            <p class="mt-2 italic text-[#4a4a4a]">{group.summary}</p>
+            <!-- The first service names (see SHOWN), so the card shows what's
+                 included without a click, then "e mais N serviços" in gold for a
+                 longer group; "Ver detalhes" opens them all, with
+                 their descriptions. The names flow like a sentence, each after a small gold diamond (the
+                 brand mark), which is kept on the same line as the name's
+                 first word so it never ends a line on its own. -->
+            <p class="mt-3 text-[15px] leading-relaxed text-[#3a3a3a]">
+              {group.services.slice(0, SHOWN).map((service) => {
+                const [first, ...rest] = service.name.split(" ");
+                return (
+                  <span class="mr-2.5">
+                    <span class="whitespace-nowrap">
+                      <svg viewBox="0 0 10 10" aria-hidden="true"
+                        class="mr-1.5 inline-block size-2 -translate-y-px fill-[#CFB52C]">
+                        <path d="M5 0 10 5 5 10 0 5Z" />
+                      </svg>{first}
+                    </span>{rest.length > 0 && " " + rest.join(" ")}
+                  </span>
+                );
+              })}
+              {group.services.length > SHOWN && (
+                <span class="whitespace-nowrap font-bold text-[darkgoldenrod]">
+                  e mais {group.services.length - SHOWN} {group.services.length - SHOWN === 1 ? "serviço" : "serviços"}
+                </span>
+              )}
+            </p>
+            <button type="button" data-services-open={`servicos-${i}`} aria-haspopup="dialog" aria-label={`Ver detalhes: ${group.title}`}
+              class="mt-auto flex w-max items-center gap-1.5 pt-3 text-left font-bold text-[#4a4a4a] after:absolute after:inset-0 after:content-['']">
+              <span class="underline underline-offset-2">Ver detalhes</span>
+              <span aria-hidden="true">→</span>
+            </button>
           </div>
-          <div class="service-card-text md:block">
-            <p class="my-2">{service.text}</p>
-            <Img
-              src={service.img}
-              class:list={["rounded-md", i > 0 && "aspect-4/3 object-cover"]}
-              alt={service.alt}
-              sizes="(min-width: 768px) 320px, calc(100vw - 112px)"
-            />
-          </div>
-        </div>
+
+          <!-- The card's details, in the site's style: the photo as a header,
+               gold underline under the title, gold diamonds (as in the menu
+               and the contact dialog) before each service. -->
+          <dialog id={`servicos-${i}`} closedby="any" aria-labelledby={`servicos-${i}-title`} data-services-dialog
+            class="m-auto max-h-[92dvh] w-[calc(100%-2rem)] max-w-xl overflow-y-auto overscroll-contain rounded-lg border-[3px] border-[#daa52066] bg-[#fffdf8] p-0 text-[#242424] shadow-xl backdrop:bg-black/65">
+            <div class="relative">
+              <Img src={photo(group.image)} alt=""
+                class="h-24 md:h-36 w-full object-cover"
+                style={"position" in group ? `object-position: ${group.position}` : undefined}
+                sizes="(min-width: 640px) 576px, calc(100vw - 2rem)" />
+              <button type="button" aria-label="Fechar" data-services-close
+                class="absolute right-3 top-3 flex size-9 items-center justify-center rounded-full bg-white/90 text-2xl leading-none shadow-md hover:bg-white">
+                ×
+              </button>
+            </div>
+            <div class="p-5 md:p-8">
+              <h3 id={`servicos-${i}-title`} class="text-xl md:text-2xl font-bold">{group.title}</h3>
+              <div class="title-underline w-20!"></div>
+              <p class="mt-3 md:mt-4 md:text-lg italic">{group.summary}</p>
+              <!-- One service open at a time: details with the same name
+                   close each other (native, no script). The first starts
+                   open, so the dialog shows a description straight away and
+                   fits without scrolling. -->
+              <ul class="mt-3 md:mt-5 divide-y divide-[#daa52040]">
+                {group.services.map((service, j) => (
+                  <li>
+                    <details name={`servicos-${i}`} open={j === 0} class="group/item">
+                      <summary class="flex cursor-pointer list-none items-center gap-3 py-2.5 md:py-3 [&::-webkit-details-marker]:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#CFB52C" aria-hidden="true"
+                          class="size-3.75 shrink-0">
+                          <path d="M12 23a1 1 0 0 1-.78-.38l-8-10c-.29-.37-.29-.88 0-1.25l8-9.99c.38-.47 1.18-.47 1.56 0l8 10c.29.37.29.88 0 1.25l-8 10a1 1 0 0 1-.78.38ZM5.28 12 12 20.4l6.72-8.4L12 3.6 5.28 12Z" />
+                        </svg>
+                        <h4 class="grow font-bold md:text-lg">{service.name}</h4>
+                        <!-- "chevron-down" icon from Lucide (ISC licence) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#b8860b"
+                          stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                          class="size-5 shrink-0 transition-transform group-open/item:rotate-180">
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      </summary>
+                      <p class="pb-3 md:pb-4 pl-6.75 text-[#4a4a4a]">{service.description}</p>
+                    </details>
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-1 md:mt-2 border-t border-[#daa52040] pt-3 md:pt-4 text-xs md:text-sm font-bold uppercase tracking-[0.12em] text-[darkgoldenrod]">
+                Incluído em todos os atendimentos
+              </p>
+            </div>
+          </dialog>
+        </section>
       ))
     }
   </div>
+  <!-- Opens the contact dialog (HeroCro's script handles data-open-contact);
+       without JS it scrolls to the contact section. -->
+  <div class="flex justify-center pt-10">
+    <a href="#contato" data-open-contact class={ctaClass}>
+      <Img src={whatsappIcon} width={35} densities={[1, 2, 3]} class="w-8.75" alt="" />
+      Solicitar orçamento
+    </a>
+  </div>
 </div>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLElement>("[data-services-open]")) {
+    const dialog = document.getElementById(button.dataset.servicesOpen!) as HTMLDialogElement;
+    button.addEventListener("click", () => dialog.showModal());
+  }
+  // A lazy image inside a closed dialog only starts loading when the dialog
+  // opens, so its header photo would pop in. Start it once the card is in
+  // view instead.
+  const preload = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      preload.unobserve(entry.target);
+      const img = entry.target.querySelector<HTMLImageElement>("[data-services-dialog] img");
+      if (img) img.loading = "eager";
+    }
+  });
+  for (const dialog of document.querySelectorAll<HTMLDialogElement>("[data-services-dialog]")) {
+    preload.observe(dialog.parentElement!);
+    for (const close of dialog.querySelectorAll("[data-services-close]")) {
+      close.addEventListener("click", () => dialog.close());
+    }
+    // Safari doesn't support closedby="any" yet: close on backdrop clicks.
+    if (!("closedBy" in HTMLDialogElement.prototype)) {
+      dialog.addEventListener("click", (event) => {
+        if (event.target !== dialog) return;
+        const r = dialog.getBoundingClientRect();
+        const inside = r.top <= event.clientY && event.clientY <= r.bottom && r.left <= event.clientX && event.clientX <= r.right;
+        if (!inside) dialog.close();
+      });
+    }
+  }
+</script>
