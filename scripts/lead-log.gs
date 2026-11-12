@@ -1,10 +1,11 @@
 /**
  * WhatsApp click log for unionneil.com.br (Google Apps Script).
  *
- * Contact.astro sends one JSON row per "family" WhatsApp click: a reference
- * code (also added to the WhatsApp message) plus the visitor's Google Ads
- * click IDs. When a chat arrives, search the sheet for its "Código" to find
- * the gclid/gbraid/wbraid for an offline conversion upload.
+ * Contact.astro sends one JSON row per "family" WhatsApp click: a row ID
+ * plus the visitor's Google Ads click IDs. When a chat arrives, match it to
+ * the row by time ("recebido_em", in the script's time zone: set it to
+ * America/Sao_Paulo in Project Settings) to find the gclid/gbraid/wbraid for
+ * an offline conversion upload. "clicou_em" and "chegou_em" are UTC.
  *
  * Setup:
  * 1. Create a Google Sheet. Extensions > Apps Script, paste this file, save.

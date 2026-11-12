@@ -10,9 +10,9 @@ const options = [
     {
         id: "family",
         label: "Preciso de cuidados para uma pessoa amada",
-        // Where https://wa.link/rtvc0v pointed. A direct link, so the script
-        // below can add the click's reference code to the message.
-        href: "https://wa.me/5515981012944?text=Ol%C3%A1%20Union%20Neil!%20Estou%20precisando%20de%20cuidados%20domiciliares.%F0%9F%8F%A1%20%20Podem%20me%20ajudar%3F%F0%9F%A4%97",
+        // Same number as the old https://wa.link/rtvc0v, without its emojis
+        // (they showed as "?" for some visitors).
+        href: "https://wa.me/5515981012944?text=Ol%C3%A1%20Union%20Neil!%20Estou%20precisando%20de%20cuidados%20domiciliares.%20Podem%20me%20ajudar%3F",
     },
     {
         id: "work",
@@ -157,11 +157,11 @@ const options = [
     // channels (ads, organic, social...) the clicks come from.
     declare const gtag: ((...args: unknown[]) => void) | undefined;
 
-    // Click log: each family click gets a short reference code, added to the
-    // WhatsApp message and sent with the visitor's Google Ads click IDs to a
-    // Google Sheet (Apps Script in scripts/lead-log.gs). When the chat
-    // arrives, its code finds the gclid to upload as an offline conversion.
-    // Skipped if the visitor refused cookies.
+    // Click log: each family click sends the visitor's Google Ads click IDs
+    // to a Google Sheet (Apps Script in scripts/lead-log.gs), with the click
+    // time. When a chat arrives, its time finds the row, and the gclid is
+    // uploaded as an offline conversion. The ref is only the row's ID (the
+    // Sheet script requires one). Skipped if the visitor refused cookies.
     // Apps Script web app URL (scripts/lead-log.gs)
     const LEAD_LOG_URL =
         "https://script.google.com/macros/s/AKfycbxf2YupSV69ruj_mogt6Qptdv0nwU1Lsw5tlqDs6_DXHErOAa-HIgbpvQRBkV6pSeM-qw/exec";
@@ -191,22 +191,14 @@ const options = [
         return ids;
     }
 
-    function logClick(link: HTMLAnchorElement, baseHref: string) {
+    function logClick(link: HTMLAnchorElement) {
         const consent = (window as any).unionConsent?.get?.();
-        if (consent === "denied") {
-            link.href = baseHref;
-            return;
-        }
-        const ref = newRef();
-        // Appended as %-encoded text: URLSearchParams would turn the
-        // message's spaces into "+".
-        link.href = `${baseHref}${encodeURIComponent(`\n\nCódigo: ${ref}`)}`;
-        if (!LEAD_LOG_URL) return;
+        if (consent === "denied") return;
         const ids = clickIds();
         navigator.sendBeacon(
             LEAD_LOG_URL,
             JSON.stringify({
-                ref,
+                ref: newRef(),
                 option: link.dataset.contactOption,
                 gclid: ids.gclid || "",
                 gbraid: ids.gbraid || "",
@@ -221,10 +213,8 @@ const options = [
     for (const link of dialog.querySelectorAll<HTMLAnchorElement>(
         "[data-contact-option]",
     )) {
-        const baseHref = link.href;
         link.addEventListener("click", () => {
-            if (link.dataset.contactOption === "family")
-                logClick(link, baseHref);
+            if (link.dataset.contactOption === "family") logClick(link);
             if (typeof gtag !== "function") return;
             if (link.dataset.contactOption === "family") {
                 gtag("event", "conversion", {
