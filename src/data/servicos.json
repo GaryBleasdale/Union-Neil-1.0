@@ -1,0 +1,153 @@
+{
+  "groups": [
+    {
+      "title": "Supervisão dos Cuidados",
+      "summary": "As Enfermeiras Gestoras são os olhos da família dentro de casa.",
+      "image": "tomandoagua.avif",
+      "alt": "Enfermeira da Union dando água a uma pessoa cuidada",
+      "position": "center 35%",
+      "services": [
+        {
+          "name": "Supervisão diária",
+          "description": "A Enfermeira Gestora realiza uma supervisão diária detalhada dos cuidados prestados na residência, avaliando cuidadosamente a evolução do atendimento e fornecendo orientações aos colaboradores em tempo real."
+        },
+        {
+          "name": "Visitas de enfermagem semanais",
+          "description": "A Enfermeira Gestora faz visitas presenciais semanais à residência, fazendo uma avaliação minuciosa da evolução da pessoa cuidada e do seu entorno, e acompanhando presencialmente os colaboradores na rotina da residência, para garantir a excelência nos cuidados."
+        },
+        {
+          "name": "Atendimento direto via WhatsApp",
+          "description": "Contato direto com a Enfermeira Gestora pelo WhatsApp, 7 dias por semana, para qualquer assunto relacionado aos cuidados."
+        },
+        {
+          "name": "Criação e atualização da rotina na residência",
+          "description": "A rotina única de cuidados na residência, que evolui segundo o quadro da pessoa cuidada e as necessidades da família, é criada pela equipe de enfermagem e seguida por todos os colaboradores da equipe."
+        },
+        {
+          "name": "Gestão de intercorrências",
+          "description": "A equipe de enfermagem é notificada em caso de intercorrências ou de alteração dos sinais vitais, acionando, se necessário, o serviço de ambulância e participando do processo de recepção no hospital."
+        }
+      ]
+    },
+    {
+      "title": "Gestão da Equipe",
+      "summary": "Conhecemos as particularidades de cada lar para conectar você aos profissionais mais adequados.",
+      "image": "reuniao.avif",
+      "alt": "Equipe Union Neil em reunião",
+      "services": [
+        {
+          "name": "Cobertura garantida",
+          "description": "Garantimos a presença de substitutos em casos de afastamento por doença ou emergência."
+        },
+        {
+          "name": "Troca por insatisfação",
+          "description": "Substituímos profissionais caso haja insatisfação do cliente, garantindo um atendimento de qualidade."
+        },
+        {
+          "name": "Escala de profissionais",
+          "description": "Criação da escala, com profissionais treinados e selecionados conforme as necessidades específicas da residência."
+        },
+        {
+          "name": "Implantação assistida",
+          "description": "Cada profissional é integrado na residência com acompanhamento da Enfermeira Gestora."
+        },
+        {
+          "name": "Gestão de contratações",
+          "description": "Cuidamos da administração de contratações, eliminando a burocracia do processo de contratação e os riscos trabalhistas."
+        }
+      ]
+    },
+    {
+      "title": "Saúde e Cuidados Pessoais",
+      "summary": "Medicamentos, sinais vitais, higiene e alimentação, com segurança e dignidade.",
+      "image": "uniformes-union.jpg",
+      "alt": "Jalecos da equipe de enfermagem Union Neil",
+      "services": [
+        {
+          "name": "Administração de medicamentos",
+          "description": "Via oral ou via dispositivo. Garantimos a administração de medicamentos de forma precisa e pontual."
+        },
+        {
+          "name": "Monitoramento de sinais vitais",
+          "description": "Fazemos um controle rigoroso e regular dos sinais vitais da pessoa cuidada para garantir sua saúde e segurança."
+        },
+        {
+          "name": "Banho",
+          "description": "Auxiliamos a pessoa cuidada no banho, com segurança, mantendo seu conforto e dignidade."
+        },
+        {
+          "name": "Assistência em procedimentos",
+          "description": "Auxiliamos em curativos e medidas de conforto de acordo com o quadro clínico."
+        },
+        {
+          "name": "Monitoramento contínuo",
+          "description": "Observamos atentamente o comportamento da pessoa cuidada, identificando sinais de desconforto, dor ou mudanças no seu estado, e comunicando-os à Enfermeira Gestora."
+        },
+        {
+          "name": "Higiene íntima e cuidados pessoais",
+          "description": "Inclui a troca de fraldas, higienização, corte de unhas, entre outros cuidados pessoais."
+        },
+        {
+          "name": "Auxílio na alimentação",
+          "description": "Seja por sonda ou via oral, garantimos que a pessoa cuidada receba a nutrição adequada."
+        }
+      ]
+    },
+    {
+      "title": "Consultas",
+      "summary": "Cuidamos da agenda médica e acompanhamos a pessoa cuidada em cada consulta.",
+      "image": "sala-atendimento.jpg",
+      "alt": "Sala de atendimento da Union Neil",
+      "services": [
+        {
+          "name": "Agendamento de consultas",
+          "description": "Agendamento de consultas médicas e integração das orientações médicas na rotina de cuidados da residência."
+        },
+        {
+          "name": "Acompanhamento em consultas",
+          "description": "Acompanhamento em consultas médicas e terapias, garantindo que a pessoa cuidada esteja sempre bem assistida fora de casa."
+        }
+      ]
+    },
+    {
+      "title": "Bem-estar e Qualidade de Vida",
+      "summary": "Companhia e estímulos para manter o corpo e a mente ativos.",
+      "image": "hero_desktop_placeholder-min.avif",
+      "alt": "Senhora sorrindo ao sol, de olhos fechados",
+      "services": [
+        {
+          "name": "Companhia e suporte emocional",
+          "description": "Apoio emocional à pessoa cuidada com atenção e cuidado, ajudando a enfrentar os desafios com conforto e tranquilidade."
+        },
+        {
+          "name": "Estimulação física e cognitiva",
+          "description": "Desenvolvimento de atividades personalizadas para manter o corpo e a mente ativos, conforme as necessidades e capacidades da pessoa cuidada."
+        }
+      ]
+    },
+    {
+      "title": "Gestão da Casa",
+      "summary": "O quarto, as roupas e as refeições da pessoa cuidada sempre em ordem.",
+      "image": "food.jpg",
+      "alt": "Refeições preparadas para a pessoa cuidada",
+      "services": [
+        {
+          "name": "Refeições",
+          "description": "Preparo de refeições para a pessoa cuidada."
+        },
+        {
+          "name": "Organização do quarto",
+          "description": "Mantemos o ambiente onde a pessoa cuidada permanece organizado e confortável."
+        },
+        {
+          "name": "Roupas",
+          "description": "Lavagem de roupas para a pessoa cuidada."
+        },
+        {
+          "name": "Gestão de insumos",
+          "description": "Gerenciamos e compramos estoques de medicamentos e de comida para a pessoa cuidada."
+        }
+      ]
+    }
+  ]
+}

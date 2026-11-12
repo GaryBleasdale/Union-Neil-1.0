@@ -2,10 +2,14 @@
 import Anchor from "./Anchor.astro";
 import SectionTitle from "./SectionTitle.astro";
 import ArtDirectedPicture from "./ArtDirectedPicture.astro";
-import thumbMobile from "../assets/video_thumbnail_mobile.png";
-import thumbDesktop from "../assets/thumbnail.avif";
+// Thumbnails: Beatriz with her on-screen name, at 0:03 of each video.
+import thumbVertical from "../assets/video-thumb-beatriz-vertical.jpg";
+import thumbHorizontal from "../assets/video-thumb-beatriz.jpg";
 ---
 
+<!-- The 90-second testimonial, on Wistia: vertical on phones (fills the
+     screen, like Stories), horizontal from md. Both have Portuguese
+     captions in Wistia. -->
 <Anchor id="depoimento" />
 <div class="container">
     <SectionTitle>Depoimentos</SectionTitle>
@@ -19,22 +23,42 @@ import thumbDesktop from "../assets/thumbnail.avif";
     <p class="mb-10 text-lg">
         Nas palavras dele:{" "}
         <span class="italic">
-            “Eu simplesmente não fiz nada. Assistência 100%.”
+            “A enfermeira chefe me acompanhou, e eu simplesmente não fiz nada.”
         </span>
     </p>
 
+    <!-- Wistia's scripts load only on a click (the hero's "Assistir vídeo"
+         and the About quote's link click this container too). -->
     <div
         id="wistia-player-container"
-        class="cursor-pointer group aspect-[2/1.2]"
+        class="relative aspect-[9/16] md:aspect-video overflow-hidden rounded-md bg-black"
     >
         <ArtDirectedPicture
-            mobile={thumbMobile}
-            desktop={thumbDesktop}
+            mobile={thumbVertical}
+            desktop={thumbHorizontal}
+            breakpoint={768}
             sizes="(min-width: 1300px) 1240px, calc(100vw - 60px)"
             loading="lazy"
             decoding="async"
-            alt="video de depoimento"
+            alt=""
+            class="h-full object-cover"
         />
+        <button
+            type="button"
+            aria-label="Assistir ao depoimento (1 minuto e 30 segundos)"
+            class="group absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/10 transition-colors hover:bg-black/20"
+        >
+            <span
+                class="flex size-20 md:size-24 items-center justify-center rounded-full bg-[darkgoldenrod]/90 shadow-lg transition-transform group-hover:scale-105"
+            >
+                <svg viewBox="0 0 24 24" fill="white" aria-hidden="true" class="ml-1 size-9 md:size-11">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+            </span>
+            <span class="rounded-full bg-black/55 px-3 py-1 text-sm font-bold text-white">
+                Depoimento · 1:30
+            </span>
+        </button>
     </div>
     <!-- The Google rating is already in the hero (and above the reviews), so
        only a pointer to the written reviews here. -->
@@ -49,6 +73,10 @@ import thumbDesktop from "../assets/thumbnail.avif";
 </div>
 
 <script>
+    // Wistia media: the same 90-second cut, vertical for phones.
+    const VERTICAL = { id: "no7n6ot8bc", aspect: 9 / 16 };
+    const HORIZONTAL = { id: "ao4s3ybnnr", aspect: 16 / 9 };
+
     // Lazy load the Wistia player: only fetch its scripts once the thumbnail is clicked.
     function initWistiaPlayer() {
         const container = document.getElementById("wistia-player-container");
@@ -56,25 +84,26 @@ import thumbDesktop from "../assets/thumbnail.avif";
 
         const loadWistia = () => {
             container.removeEventListener("click", loadWistia);
+            const media = matchMedia("(min-width: 768px)").matches ? HORIZONTAL : VERTICAL;
 
             const wistiaScript1 = document.createElement("script");
             wistiaScript1.src = "https://fast.wistia.com/player.js";
             wistiaScript1.defer = true;
 
             const wistiaScript2 = document.createElement("script");
-            wistiaScript2.src = "https://fast.wistia.com/embed/8a0ge966sw.js";
+            wistiaScript2.src = `https://fast.wistia.com/embed/${media.id}.js`;
             wistiaScript2.defer = true;
             wistiaScript2.type = "module";
 
             container.innerHTML = `
         <style>
-          wistia-player[media-id='8a0ge966sw']:not(:defined) {
-            background-color:black;
+          wistia-player[media-id='${media.id}']:not(:defined) {
+            background-color: black;
             display: block;
-            padding-top:56.25%;
+            padding-top: ${100 / media.aspect}%;
           }
         </style>
-        <wistia-player id="depoimento-wistia" media-id="8a0ge966sw" aspect="1.7777777777777777"></wistia-player>
+        <wistia-player id="depoimento-wistia" media-id="${media.id}" aspect="${media.aspect}"></wistia-player>
       `;
 
             document.head.appendChild(wistiaScript1);

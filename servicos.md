@@ -4,6 +4,11 @@ The service descriptions sent with each orçamento ("Descritivo dos Serviços").
 Version history, newest first; versions are separated by `---`. Copy the
 newest version into new orçamentos.
 
+The website's "Cuidado total: o que está incluído" section shows the newest
+version from `src/data/servicos.json`: when a version is added here, update
+that file too. The site shows "Saúde Física" and "Cuidados Pessoais e
+Higiene" as one card, "Saúde e Cuidados Pessoais", so there are 6 cards.
+
 ## 2026-11-05
 
 7 groups, 25 services. Applied to the Sra Selma orçamento

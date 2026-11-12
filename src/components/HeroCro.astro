@@ -14,12 +14,15 @@ import whatsappIcon from "../assets/whatsapp-icon.png";
 //   left, and the full-bleed photo filling the right half (the woman sits on
 //   the right of that image, so it crops naturally). The team photo is too
 //   small (700px) to fill half a desktop screen.
+// Background: a warm radial gradient, evened out over the bottom 8rem into
+// #fbf8f0, the colour the quote band below (About.astro) starts with, so the
+// two meet without a change of hue along the join.
 // One <picture>, so each device downloads only its own photo. The alternative
 // full-bleed photo hero is HeroFullImage.astro; index.astro picks one.
 ---
 
 <div
-  class="relative pt-26.5 sm:pt-32.5 md:flex md:min-h-[min(100svh,920px)] bg-[radial-gradient(ellipse_at_12%_25%,#f2e4bf_0%,#f6eedb_40%,#fbf8f0_80%)]">
+  class="relative pt-26.5 sm:pt-32.5 md:flex md:min-h-[min(100svh,920px)] bg-[linear-gradient(to_bottom,transparent_calc(100%-8rem),#fbf8f0),radial-gradient(ellipse_at_12%_25%,#f2e4bf_0%,#f6eedb_40%,#fbf8f0_80%)]">
   <!-- A barely visible paper grain over the cream (and, from md, through the
        photo's faded edge), so it reads as a surface rather than a flat colour. -->
   <div aria-hidden="true"
@@ -72,8 +75,11 @@ import whatsappIcon from "../assets/whatsapp-icon.png";
        md and up: the photo is mirrored so the woman faces the text and the
        buttons (her gaze leads the eye there), and its left edge fades out
        (CSS mask, written "to_left" because the mirror flips it too) into
-       the cream behind it, so the two halves blend. -->
-  <div class="relative px-7.5 pt-6 pb-10 md:absolute md:top-32.5 md:right-0 md:bottom-0 md:w-1/2 md:p-0 md:[&>picture]:block md:[&>picture]:h-full">
+       the cream behind it, so the two halves blend. Its bottom edge fades
+       too, into the cream of the quote band below (About.astro). That mask
+       is on the <picture> around it: two masks combined on the <img>
+       (mask-composite) drew a thin line down its left edge. -->
+  <div class="relative px-7.5 pt-6 pb-10 md:absolute md:top-32.5 md:right-0 md:bottom-0 md:w-1/2 md:p-0 md:[&>picture]:block md:[&>picture]:h-full md:[&>picture]:[mask-image:linear-gradient(to_top,transparent,black_clamp(4rem,9vw,8rem))]">
     <ArtDirectedPicture
       mobile={teamPhoto}
       desktop={desktopPhoto}
