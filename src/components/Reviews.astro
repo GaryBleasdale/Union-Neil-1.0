@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import Anchor from "./Anchor.astro";
 import GoogleRating from "./GoogleRating.astro";
-import SectionTitle from "./SectionTitle.astro";
 
 // Reviews live in src/data/reviews.json (schema in src/content.config.ts),
 // most persuasive first. Star-only reviews have no text, so they're kept
@@ -26,7 +25,8 @@ const initials = (name: string) => {
      "Ler mais". -->
 <Anchor id="avaliacoes" />
 <div class="container">
-  <SectionTitle>O que falam da Union</SectionTitle>
+  <!-- No heading of its own: the reviews follow the video under its
+       "Depoimentos" heading, so the Google rating leads into them. -->
   <GoogleRating class="mb-8" />
 
   <div

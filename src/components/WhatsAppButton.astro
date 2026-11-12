@@ -1,0 +1,31 @@
+---
+// The site's one WhatsApp button ("Falar no WhatsApp"), used in the hero, under
+// the service cards and in the contact section. It opens the contact dialog
+// (Contact.astro handles every [data-open-contact]), where the visitor picks
+// family or job seeker, so only families count as Google Ads conversions.
+// Without JS it scrolls to the contact section.
+import Img from "./Img.astro";
+import whatsappIcon from "../assets/whatsapp-icon.png";
+
+interface Props {
+  class?: string;
+  id?: string;
+  /** Load the icon straight away (the hero's button is above the fold). */
+  eager?: boolean;
+}
+
+const { class: className, id, eager = false } = Astro.props;
+---
+
+<a
+  href="#contato"
+  id={id}
+  data-open-contact
+  data-whatsapp-button
+  class:list={[
+    "flex items-center justify-center gap-3 whitespace-nowrap rounded-[40px] border-2 border-[darkgoldenrod] bg-[rgb(184,134,11,0.15)] px-6 py-3 text-lg font-bold text-[#242424] shadow-md transition-all duration-300 hover:shadow-lg",
+    className,
+  ]}>
+  <Img src={whatsappIcon} width={35} densities={[1, 2, 3]} class="w-8.75" alt="" loading={eager ? "eager" : "lazy"} />
+  Falar no WhatsApp
+</a>
